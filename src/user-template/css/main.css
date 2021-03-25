@@ -27,19 +27,42 @@
 }
 
 .actions {
-  text-align: right;
-  justify-content: end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.actions #cart-counter {
+  line-height: 1.6;
 }
 
 .search-bar {
   background-color: var(--bg-primary);
   position: absolute;
-  padding: 1.25em 0 1.25em 0;
   width: 100%;
   height: 100%;
+  right: 0;
   top: -100%;
   transition: 0.3s ease-in-out;
+  z-index: 99;
 }
+
+.search-bar .search-content {
+  position: absolute;
+  padding: 1.7em 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  transition: 0.3s ease-in-out;
+  z-index: 99;
+}
+@media only screen and (min-width: 62em) {
+  .search-bar .search-content {
+    padding: 1.4em 132px 1.4em 132px;
+  }
+}
+
 .search-bar.show {
   top: 0;
 }
@@ -59,7 +82,24 @@
 .search-bar input:focus {
   outline: none !important;
 }
-/*============== 2.slider =============*/
+
+.search-bar .nav-item {
+  padding-right: 0;
+}
+
+/*============== 2.nav - mobile =============*/
+.nav-mobile {
+  flex-flow: column;
+  font-size: 1.6em;
+}
+.nav-mobile .nav-item {
+  margin-bottom: 1em;
+}
+
+.jPopup-content {
+  /* top: 32% !important; */
+}
+/*============== 3.slider =============*/
 .slider {
   position: relative;
   width: 100%;
@@ -72,10 +112,16 @@
   top: 50%;
   left: 50%;
   z-index: 1;
+  font-size: 0.7em;
   transform: translate(-50%, -50%);
   text-transform: uppercase;
 }
-/*============== 3.product =============*/
+@media only screen and (min-width: 62em) {
+  .slider .title-slider {
+    font-size: inherit;
+  }
+}
+/*============== 2.product =============*/
 .product-content {
   text-align: center;
   font-weight: 400;
@@ -88,7 +134,7 @@
   color: var(--impress);
 }
 
-.product-content:hover a[product-add-cart]{
+.product-content:hover a[product-add-cart] {
   background-color: white;
   color: var(--primary);
 }

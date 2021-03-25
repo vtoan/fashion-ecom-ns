@@ -29,6 +29,7 @@ button {
 .las,
 .lar {
   font-size: 24px;
+  padding-top: 3px;
 }
 /*============== form =============*/
 input,

@@ -1,4 +1,5 @@
-"# fashion-ecom-ns" 
+"# fashion-ecom-ns"
+
 # Requirement
 
 Build an ecommerce web site with minimum functionality below:
@@ -19,3 +20,11 @@ Build an ecommerce web site with minimum functionality below:
 - Manage product categories (Name, Description)
 - Manage products (Name, Category, Description, Price, Images, CreatedDate, UpdatedDate)
 - View customers
+
+# Resource
+
+- Jpopup - https://github.com/robiveli/jpopup
+- Splidejs - https://github.com/Splidejs/splide
+- Normalize - https://necolas.github.io/normalize.css/
+- Bootstrap (Grid System) - https://github.com/twbs/bootstrap
+- Line Awesome - https://icons8.com/line-awesome
