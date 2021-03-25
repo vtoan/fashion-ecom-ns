@@ -1,0 +1,55 @@
+/*============= slider =============*/
+.slider {
+    position: relative;
+    margin: 0 -15px;
+}
+
+.slider-container {
+    overflow: hidden;
+}
+
+.slider-container .slider-item {
+    flex-shrink: 0;
+    width: 100%;
+    background-color: var(--clr-empty);
+}
+
+.slider-handle {
+    display: flex;
+    outline: none;
+}
+
+.slider-item img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.slider .slider-next,
+.slider .slider-prev {
+    position: absolute;
+    font-size: 48px;
+    top: 50%;
+    bottom: 50%;
+    padding: 0 0.25em;
+    margin: -0.5em 0;
+}
+
+@media only screen and (min-width: 62em) {
+    .slider-item img,
+    .slider-container {
+        height: 730px !important;
+    }
+
+    .slider .slider-next,
+    .slider .slider-prev {
+        padding: 0 1em !important;
+    }
+}
+
+.slider .slider-next {
+    right: 0;
+}
+
+.slider .slider-prev {
+    left: 0;
+}
