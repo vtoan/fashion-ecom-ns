@@ -1,3 +1,18 @@
+.title-float {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  font-size: 0.7em;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+}
+@media only screen and (min-width: 62em) {
+  .title-float {
+    font-size: inherit;
+  }
+}
 /*============== 1.header =============*/
 .header {
   padding-top: 1.25em;
@@ -96,9 +111,6 @@
   margin-bottom: 1em;
 }
 
-.jPopup-content {
-  /* top: 32% !important; */
-}
 /*============== 3.slider =============*/
 .slider {
   position: relative;
@@ -106,22 +118,7 @@
   height: 100%;
 }
 
-.slider .title-slider {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 1;
-  font-size: 0.7em;
-  transform: translate(-50%, -50%);
-  text-transform: uppercase;
-}
-@media only screen and (min-width: 62em) {
-  .slider .title-slider {
-    font-size: inherit;
-  }
-}
-/*============== 2.product =============*/
+/*============== 4.product =============*/
 .product-content {
   text-align: center;
   font-weight: 400;
@@ -130,15 +127,86 @@
   cursor: pointer;
 }
 
-.product-content:hover p[product-name] {
+.product-content p[product-name]:hover {
   color: var(--impress);
 }
 
-.product-content:hover a[product-add-cart] {
+.product-content a[product-add-cart]:hover {
   background-color: white;
   color: var(--primary);
 }
 
-.product-content > p:not(:nth-child(3)) {
-  margin-bottom: 0.5em;
+.product-content .rating{
+  color: #faad14;
 }
+
+.product-content .price{
+  font-weight: 500;
+}
+
+/*============== 5. categoies =============*/
+.categories{
+  display: flex;
+}
+
+.category-item{
+  padding: 0 16px;
+  min-height:130px;
+}
+
+.title{
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+
+.more-product{
+  text-align: center;
+  display: block;
+  color: var(--primary);
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.more-product:hover{
+  color: var(--impress);
+}
+
+.about{
+  position: relative;
+}
+
+.about .img-warpper{
+  position: relative;
+}
+
+.about .img-warpper::after{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: black;
+  opacity: 0.4;
+}
+
+.policy{
+  padding-top: 4em;
+  padding-bottom: 3em;
+  background-color: var(--bg-secondary);
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 400;
+}
+
+.policy-item{
+  align-self: flex-start;
+}
+

@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="./css/utilities.css" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
-  <body style="min-height: 2000px">
+  <body style="min-height: 3000px">
     <!------ header ----->
     <header class="header container">
       <div class="row align-items-center">
@@ -109,52 +109,189 @@
           <div class="splide__progress__bar"></div>
         </div>
       </div>
-      <div class="title-slider white">
+      <div class="title-float white">
         <h4 class="heading impress text-3">Best offer</h4>
         <p class="text-1 mb-none">new arrivals on sale</p>
       </div>
     </div>
-    <!------ main----->
-    <div class="container-fluid">
-      <div class="row row-contents">
-        <div class="col-lg-4">
-          <h3>Filter by Price</h3>
-          <form id="form-filter">
-            <p>
-              <label for="min-price">Min price</label>
-              <input
-                type="text"
-                id="min-price"
-                placeholder="Enter the min price"
-              />
-            </p>
-            <p>
-              <label for="max-price">Max price</label>
-              <input
-                type="text"
-                id="max-price"
-                placeholder="Enter the max price"
-              />
-            </p>
-            <button class="btn btn-sm white bg-impress" type="submit">
-              FILTER
-            </button>
-            <button class="btn btn-sm white bg-black" type="reset">
-              RESET
-            </button>
-          </form>
+    <!------ categories preview----->
+    <div class="container-fluid section">
+      <div class="categories"> 
+        <div class="category-item">
+          <div class="img"><img src="./images/product-1.png"></div>
         </div>
-        <div class="col-lg-8">
-          <div id="list-product"></div>
+        <div class="category-item">
+          <div class="img"><img src="./images/product-2.png"></div>
         </div>
+        <div class="category-item">
+          <div class="img"><img src="./images/product-3.png"></div>
+        </div>
+        <div class="category-item">
+          <div class="img"><img src="./images/product-4.png"></div>
+        </div>
+       
       </div>
     </div>
+
+    <!------ list product----->
+    <div class="container section">
+        <h2 class="title">New <br/> arrival</h2>
+        <div id="list-product">
+          <div class="row">
+              <div class="col-3">
+                <div class="product-img border">
+                  <div class="img">
+                    <img src="./images/product-3.png" alt="" srcset="" />
+                  </div>
+                </div>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
+                  <a
+                      product-add-cart
+                      href="javascript:void(0)"
+                      class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
+                      >ADD TO CART</a>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="product-img border">
+                  <div class="img">
+                    <img src="./images/product-5.png" alt="" srcset="" />
+                  </div>
+                </div>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
+                  <a
+                      product-add-cart
+                      href="javascript:void(0)"
+                      class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
+                      >ADD TO CART</a>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="product-img border">
+                  <div class="img">
+                    <img src="./images/product-6.png" alt="" srcset="" />
+                  </div>
+                </div>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
+                  <a
+                      product-add-cart
+                      href="javascript:void(0)"
+                      class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
+                      >ADD TO CART</a>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="product-img border">
+                  <div class="img">
+                    <img src="./images/product-7.png" alt="" srcset="" />
+                  </div>
+                </div>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
+                  <a
+                      product-add-cart
+                      href="javascript:void(0)"
+                      class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
+                      >ADD TO CART</a>
+                </div>
+              </div>
+              
+
+          </div>
+        </div>
+          <a
+          href="javascript:void(0)"
+          class="more-product "
+        >more product</a>
+    </div>
+
+    <!------ about-us ----->
+    <div class="about section">
+      <div class="img-warpper">
+        <div class="img">
+          <img src="images/pic01.jpg" alt="" srcset="">
+        </div>
+      </div>
+      <div class="title-float white">
+        <h4 class="heading normal white text-3">About us</h4>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A ad obcaecati sit est.</p>
+        <a
+            href="javascript:void(0)"
+            class="btn btn-sm btn-anim-no bg-impress white d-block w-25 m-auto"
+            >see more</a>
+      </div>
+    </div>
+    <!------ feature-cost ----->
+    <div class="container-fluid section">
+        <div class="policy row">
+          <div class="col-4 policy-item bg-secondary">
+            <div class="img">
+              <img width="45" height="45" src="./icons/wallet.svg" alt="">
+            </div>
+            <p>fast & free delivery</p>
+          </div>
+          <div class="col-4 policy-item bg-secondary">
+            <div class="img">
+              <img width="45" height="45" src="./icons/shipped.svg" alt="">
+            </div>
+            <p>fast & free delivery</p>
+          </div>
+          <div class="col-4 policy-item bg-secondary">
+            <div class="img">
+              <img width="45" height="45" src="./icons/security.svg" alt="">
+            </div>
+            <p>fast & free delivery</p>
+          </div>
+      </div>    
+    </div>
+  
+      
+
     <!------ referenct res ----->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
     <script src="./libs/jpopup/dist//js/index.min.js"></script>
     <!------ js res ----->
       <!-- <script src="./js/gallary.js"></script> -->
     <script src="./js//main.js"></script>
-    <script src="./js/list-product.js"></script>
+    <!-- <script src="./js/list-product.js"></script> -->
   </body>
 </html>

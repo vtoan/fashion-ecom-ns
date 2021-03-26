@@ -51,7 +51,7 @@ var splide = new Splide(".splide", {
 var jPopupDemo = new jPopup({
   content: `
   <div class="nav-mobile d-flex">
-    <a href="#" class="nav-item">search</a>
+    <a id="search-trigger-mobile" href="#" class="nav-item">search</a>
     <a href="#" class="nav-item">login</a>
     <a href="#" class="nav-item">sale</a>
     <a href="#" class="nav-item">features</a>

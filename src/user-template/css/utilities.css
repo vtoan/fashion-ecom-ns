@@ -82,13 +82,16 @@ input:invalid,
 .bg-white {
   background-color: var(--bg-primary);
 }
+.bg-secondary{
+  background-color: var(--bg-secondary);
+}
 /*============== typography =============*/
 h1,
 h2,
 h3,
 h4,
 h5 {
-  margin: 0 0 1em 0;
+  margin: 0 0 0 0;
   line-height: 1;
 }
 p {
@@ -217,11 +220,20 @@ button {
 .border-round {
   border-radius: 50%;
 }
-.border-primary {
-  border: 1px solid var(--primary);
+
+.border-impress {
+  border: 1px solid;
+  border-color: var(--impress);
 }
+
+.border-primary {
+  border: 1px solid;
+  border-color: var(--primary);
+}
+
 .border-secondary {
-  border: 1px solid var(--secondary);
+  border: 1px solid;
+  border-color: var(--secondary);
 }
 .border-none {
   border: none !important;
@@ -230,6 +242,9 @@ button {
 /*============== helpful =============*/
 .mb-none {
   margin-bottom: 0;
+}
+.m-auto{
+  margin: 0 auto;
 }
 .w-25 {
   width: 25%;
@@ -264,7 +279,7 @@ button {
 }
 @media only screen and (min-width: 62em) {
   .section {
-    margin-bottom: 4em !important;
+    margin-bottom: 5em !important;
   }
   .heading {
     margin-bottom: 1.5em !important;
