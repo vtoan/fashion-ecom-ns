@@ -76,8 +76,8 @@
   padding: 1.7em 15px;
   top: 50%;
   transform: translateY(-50%);
-  left: 0;
-  right: 0;
+  left: 15px;
+  right: 15px;
   transition: 0.3s ease-in-out;
   z-index: 99;
 }

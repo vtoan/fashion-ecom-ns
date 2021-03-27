@@ -62,6 +62,8 @@ var jPopupDemo = new jPopup({
   transition: "fade",
 });
 
+attachSearchTriger();
+
 let menuTrigger = document.querySelector("#menu-trigger");
 menuTrigger.addEventListener("click", (e) => {
   jPopupDemo.open();
