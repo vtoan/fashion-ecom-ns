@@ -119,6 +119,22 @@
 }
 
 /*============== 4.product =============*/
+.policy-item{
+  position: relative;
+}
+
+.product-item .product-sale{
+  background-color:var(--impress);
+  padding: 0.25em 0.75em;
+  border-radius: 5px;
+  position: absolute;
+  top: 6px;
+  left: 22px;
+  z-index: 99;
+  color: white;
+  font-weight: 500;
+}
+
 .product-content {
   text-align: center;
   font-weight: 400;
@@ -136,26 +152,57 @@
   color: var(--primary);
 }
 
-.product-content .rating{
+.product-content .rating {
   color: #faad14;
 }
 
-.product-content .price{
+.product-content .price {
   font-weight: 500;
 }
 
+.product-img {
+  position: relative;
+  padding-top: 110%;
+  background-image: url(../icons/no-img.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.3s;
+
+}
+
+.product-img .img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.product-img img {
+  border-radius: 10px;
+}
+
+.product-img:hover{
+  transform: scale(1.1);
+}
+
 /*============== 5. categoies =============*/
-.categories{
+.categories {
   display: flex;
   justify-content: space-evenly;
 }
 
-.category-item{
+.category-item {
   padding: 0 16px;
-  min-height:130px;
+  min-height: 130px;
 }
 
-.title{
+.category-item img {
+  border-radius: 10px;
+
+}
+
+.title {
   text-transform: uppercase;
   font-weight: 500;
   text-align: center;
@@ -164,7 +211,7 @@
   margin-bottom: 1em;
 }
 
-.more-product{
+.more-product {
   text-align: center;
   display: block;
   color: var(--primary);
@@ -173,20 +220,22 @@
   font-weight: 500;
 }
 
-.more-product:hover{
+.more-product:hover {
   color: var(--impress);
 }
 
-.about{
+/*============== 6.about =============*/
+
+.about {
   position: relative;
 }
 
-.about .img-warpper{
+.about .img-warpper {
   position: relative;
 }
 
-.about .img-warpper::after{
-  content: '';
+.about .img-warpper::after {
+  content: "";
   display: block;
   position: absolute;
   top: 0;
@@ -198,7 +247,20 @@
   opacity: 0.4;
 }
 
-.policy{
+.about .btn:hover {
+  color: var(--impress);
+  background-color: white;
+}
+
+@media only screen and (min-width: 62em) {
+  .about .btn{
+    width: 25%;
+  }
+}
+
+/*============== 7.policy =============*/
+
+.policy {
   padding-top: 5em;
   padding-bottom: 4em;
   background-color: var(--bg-secondary);
@@ -207,59 +269,62 @@
   font-weight: 400;
 }
 
-.policy-item{
+.policy-item {
   align-self: flex-start;
 }
 
-.footer{
+/*============== 8.footer =============*/
+
+.footer {
   background-color: var(--primary);
   color: var(--bg-primary);
 }
 
-.footer div[class="row"]{
-  padding:4em 2em;
+.footer div[class="row"] {
+  padding: 4em 2em;
 }
 
-.footer > div[class^="col-"]{
+.footer > div[class^="col-"] {
   padding: 0 2em;
 }
 
-.footer-title{
+.footer-title {
   margin-bottom: 2em;
   font-weight: 400;
 }
-.footer-items{
+.footer-items {
   cursor: pointer;
 }
 
-.footer-links >a{
+.footer-links > a {
   opacity: 0.7;
 }
 
-.footer-links > a:hover{
+.footer-links > a:hover {
   opacity: 1;
 }
+.footer-items{
+margin-bottom: 2em;
+}
 
-.footer-items >  a{
+.footer-items > a {
   color: inherit;
   display: block;
   margin-bottom: 1em;
 }
 
-.copy-right{
+.copy-right {
   text-align: center;
   opacity: 0.7;
   padding-bottom: 1.5em;
   margin: 0;
 }
 
-.social{
+.social {
   padding: 1em 0;
   cursor: pointer;
 }
 
-.social > a{
+.social > a {
   padding-right: 1em;
 }
-
-
