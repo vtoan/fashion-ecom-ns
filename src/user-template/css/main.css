@@ -1,3 +1,12 @@
+.title {
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+
 .title-float {
   text-align: center;
   position: absolute;
@@ -111,15 +120,12 @@
   margin-bottom: 1em;
 }
 
-/*============== 3.slider =============*/
-.slider {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 /*============== 4.product =============*/
-.policy-item {
+.product-item {
+  text-align: center;
+  font-weight: 400;
+  cursor: pointer;
+  margin-bottom: 4em;
   position: relative;
 }
 
@@ -129,34 +135,9 @@
   border-radius: 5px;
   position: absolute;
   top: 6px;
-  left: 22px;
+  left: 6px;
   z-index: 99;
   color: white;
-  font-weight: 500;
-}
-
-.product-content {
-  text-align: center;
-  font-weight: 400;
-  padding-top: 1.5em;
-  margin-bottom: 4em;
-  cursor: pointer;
-}
-
-.product-content p[product-name]:hover {
-  color: var(--impress);
-}
-
-.product-content a[product-add-cart]:hover {
-  background-color: white;
-  color: var(--primary);
-}
-
-.product-content .rating {
-  color: #faad14;
-}
-
-.product-content .price {
   font-weight: 500;
 }
 
@@ -167,6 +148,10 @@
   background-repeat: no-repeat;
   background-position: center;
   transition: all 0.3s;
+}
+
+.product-img:hover {
+  transform: scale(1.1);
 }
 
 .product-img .img {
@@ -181,143 +166,35 @@
   border-radius: 10px;
 }
 
-.product-img:hover {
-  transform: scale(1.1);
+.product-item a[product-link] {
+  color: var(--primary) !important;
 }
 
-.title {
-  text-transform: uppercase;
-  font-weight: 500;
-  text-align: center;
-  line-height: 1.5;
-  font-size: 3em;
-  margin-bottom: 1em;
-}
-
-/*============== 5. categoies =============*/
-.categories {
-  justify-content: space-evenly;
-}
-
-.category-item {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 1em;
-}
-
-.category-item img {
-  border-radius: 10px;
-}
-
-.category-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 16px;
-  background-color: black;
-  opacity: 0;
-  transition: all 0.5s;
-  border-radius: 10px;
-}
-
-.category-item:hover::before {
-  opacity: 0.1;
-}
-
-.category-title {
-  position: absolute;
-  text-align: center;
-  padding: 0.5em 0;
-  background-color:rgba(0, 0, 0, 0.9);
+.product-item a[product-add-cart] {
   color: white;
-  bottom: 12px;
-  left: 0;
-  right: 0;
-  opacity: 1;
-  transition: all 0.3s ease-out;
-  font-weight: 500;
-  text-transform: uppercase;
+  background-color: var(--primary);
 }
 
-@media only screen and (min-width: 62em) {
-  .category-title{
-    opacity: 0;
-    padding: 1em 0;
-  }
-}
-
-.category-item:hover .category-title {
-  opacity: 1;
-  bottom: 16px;
-}
-
-.category-link {
-  position: absolute;
-  top: 35%;
-  left: 25%;
-  right: 25%;
-  opacity: 0;
-  transition: all 0.3s ease-out;
-  z-index: 99;
-}
-.category-item:hover .category-link {
-  opacity: 1;
-  top: 40%;
-}
-
-.category-link .btn:hover {
-  color: var(--impress);
+.product-item a[product-add-cart]:hover {
   background-color: white;
-}
-/*============== 6.about =============*/
-.about {
-  position: relative;
-}
-
-.about .img-warpper {
-  position: relative;
-}
-
-.about .img-warpper::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  background-color: black;
-  opacity: 0.4;
-}
-
-.about .btn:hover {
-  color: var(--impress);
-  background-color: white;
-}
-
-.more-product {
-  text-align: center;
-  display: block;
   color: var(--primary);
-  text-transform: uppercase;
-  text-decoration: underline;
+}
+
+.product-content {
+  padding-top: 1em;
+}
+
+.product-content .rating {
+  color: #faad14;
+}
+
+.product-content .price {
   font-weight: 500;
 }
 
-.more-product:hover {
+.product-content p[product-name]:hover {
   color: var(--impress);
 }
-
-@media only screen and (min-width: 62em) {
-  .about .btn {
-    width: 25%;
-  }
-}
-
 /*============== 7.policy =============*/
 .policy {
   padding-top: 5em;
@@ -331,9 +208,7 @@
 .policy-item {
   align-self: flex-start;
 }
-
 /*============== 8.footer =============*/
-
 .footer {
   background-color: var(--primary);
   color: var(--bg-primary);

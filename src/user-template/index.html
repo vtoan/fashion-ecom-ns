@@ -25,10 +25,11 @@
     <!------ css res ----->
     <link rel="stylesheet" href="./css/utilities.css" />
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/home.css" />
   </head>
   <body>
     <!------ header ----->
-    <header class="header container">
+    <header class="container header">
       <div class="row align-items-center">
         <div class="col-9 col-lg-3">
           <div class="img logo">
@@ -63,7 +64,7 @@
         <!-- nav - mobile -->
         <div class="d-block d-lg-none col-3">
           <div class="actions d-flex">
-            <span id="cart-counter" class="impress bold">0</span>
+            <span id="cart-counter-mobile" class="impress bold">0</span>
             <a href="#" class="nav-item">
               <i class="las la-shopping-bag"></i
             ></a>
@@ -120,44 +121,53 @@
     </div>
     <!------ categories preview----->
     <div class="container-fluid section">
-      <div class="categories row">
-        <div class="col-6 col-lg-3 ">
-          <div class="category-item">
-            <div class="img"><img src="./images/product-1.png" /></div>
-            <div class="category-title">men</div>
-            <div class="category-link">
-              <a class="btn btn-sm btn-anim-no bold bg-impress white d-block ">SHOP NOW</a>
+      <div class="categories">
+        <div class="row justify-content-around mb-padding">
+          <div class="col-6 col-lg-3">
+            <div class="category-item">
+              <div class="img"><img src="./images/product-1.png" /></div>
+              <div class="category-title">men</div>
+              <div class="category-link">
+                <a class="btn btn-sm btn-anim-no bold bg-impress white d-block"
+                  >SHOP NOW</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="category-item">
+              <div class="img"><img src="./images/product-4.png" /></div>
+              <div class="category-title">woman</div>
+              <div class="category-link">
+                <a class="btn btn-sm btn-anim-no bold bg-impress white d-block"
+                  >SHOP NOW</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="category-item">
+              <div class="img"><img src="./images/product-2.png" /></div>
+              <div class="category-title">men</div>
+              <div class="category-link">
+                <a class="btn btn-sm btn-anim-no bold bg-impress white d-block"
+                  >SHOP NOW</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="category-item">
+              <div class="img"><img src="./images/product-3.png" /></div>
+              <div class="category-title">woman</div>
+              <div class="category-link">
+                <a class="btn btn-sm btn-anim-no bold bg-impress white d-block"
+                  >SHOP NOW</a
+                >
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-6 col-lg-3 ">
-          <div class="category-item">
-            <div class="img"><img src="./images/product-4.png" /></div>
-            <div class="category-title">woman</div>
-            <div class="category-link">
-              <a class="btn btn-sm btn-anim-no bold bg-impress white d-block ">SHOP NOW</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3 ">
-          <div class="category-item">
-            <div class="img"><img src="./images/product-2.png" /></div>
-            <div class="category-title">men</div>
-            <div class="category-link">
-              <a class="btn btn-sm btn-anim-no bold bg-impress white d-block ">SHOP NOW</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3 ">
-          <div class="category-item">
-            <div class="img"><img src="./images/product-3.png" /></div>
-            <div class="category-title">woman</div>
-            <div class="category-link">
-              <a class="btn btn-sm btn-anim-no bold bg-impress white d-block ">SHOP NOW</a>
-            </div>
-          </div>
-        </div>
-       
       </div>
     </div>
     <!------ list product----->
@@ -167,117 +177,125 @@
         arrival
       </h2>
       <div id="list-product">
-        <div class="row">
+        <div class="row mb-padding">
           <div class="col-6 col-lg-3">
             <div class="product-item">
               <span class="product-sale">- 30%</span>
-              <div class="product-img">
-                <div class="img">
-                  <img src="./images/product-3.png" alt="" srcset="" />
+              <a product-link href="/">
+                <div class="product-img">
+                  <div class="img">
+                    <img src="./images/product-3.png" alt="" srcset="" />
+                  </div>
                 </div>
-              </div>
-              <div class="product-content">
-                <p product-name class="mb-none bold">Product 1</p>
-                <p>This is a description of product 1</p>
-                <div class="rating">
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="lar la-star"></i>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
                 </div>
-                <p class="price">300.000 VND</p>
-                <a
-                  product-add-cart
-                  href="javascript:void(0)"
-                  class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
-                  >ADD TO CART</a
-                >
-              </div>
+              </a>
+              <a
+                product-add-cart
+                href="javascript:void(0)"
+                class="d-none d-lg-block btn btn-sm btn-anim-no border-primary"
+                >ADD TO CART</a
+              >
             </div>
           </div>
           <div class="col-6 col-lg-3">
             <div class="product-item">
               <span class="product-sale">- 30%</span>
-              <div class="product-img">
-                <div class="img">
-                  <img src="./images/product-3.png" alt="" srcset="" />
+              <a product-link href="/">
+                <div class="product-img">
+                  <div class="img">
+                    <img src="./images/product-3.png" alt="" srcset="" />
+                  </div>
                 </div>
-              </div>
-              <div class="product-content">
-                <p product-name class="mb-none bold">Product 1</p>
-                <p>This is a description of product 1</p>
-                <div class="rating">
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="lar la-star"></i>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
                 </div>
-                <p class="price">300.000 VND</p>
-                <a
-                  product-add-cart
-                  href="javascript:void(0)"
-                  class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
-                  >ADD TO CART</a
-                >
-              </div>
+              </a>
+              <a
+                product-add-cart
+                href="javascript:void(0)"
+                class="d-none d-lg-block btn btn-sm btn-anim-no border-primary"
+                >ADD TO CART</a
+              >
             </div>
           </div>
           <div class="col-6 col-lg-3">
             <div class="product-item">
               <span class="product-sale">- 30%</span>
-              <div class="product-img">
-                <div class="img">
-                  <img src="./images/product-3.png" alt="" srcset="" />
+              <a product-link href="/">
+                <div class="product-img">
+                  <div class="img">
+                    <img src="./images/product-3.png" alt="" srcset="" />
+                  </div>
                 </div>
-              </div>
-              <div class="product-content">
-                <p product-name class="mb-none bold">Product 1</p>
-                <p>This is a description of product 1</p>
-                <div class="rating">
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="lar la-star"></i>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
                 </div>
-                <p class="price">300.000 VND</p>
-                <a
-                  product-add-cart
-                  href="javascript:void(0)"
-                  class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
-                  >ADD TO CART</a
-                >
-              </div>
+              </a>
+              <a
+                product-add-cart
+                href="javascript:void(0)"
+                class="d-none d-lg-block btn btn-sm btn-anim-no border-primary"
+                >ADD TO CART</a
+              >
             </div>
           </div>
           <div class="col-6 col-lg-3">
             <div class="product-item">
               <span class="product-sale">- 30%</span>
-              <div class="product-img">
-                <div class="img">
-                  <img src="./images/product-3.png" alt="" srcset="" />
+              <a product-link href="/">
+                <div class="product-img">
+                  <div class="img">
+                    <img src="./images/product-3.png" alt="" srcset="" />
+                  </div>
                 </div>
-              </div>
-              <div class="product-content">
-                <p product-name class="mb-none bold">Product 1</p>
-                <p>This is a description of product 1</p>
-                <div class="rating">
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="lar la-star"></i>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
                 </div>
-                <p class="price">300.000 VND</p>
-                <a
-                  product-add-cart
-                  href="javascript:void(0)"
-                  class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
-                  >ADD TO CART</a
-                >
-              </div>
+              </a>
+              <a
+                product-add-cart
+                href="javascript:void(0)"
+                class="d-none d-lg-block btn btn-sm btn-anim-no border-primary"
+                >ADD TO CART</a
+              >
             </div>
           </div>
         </div>
@@ -285,131 +303,138 @@
       <!-- <a href="javascript:void(0)" class="more-product">more product</a> -->
     </div>
 
-     <!------ list product sale----->
-     <div class="container section">
+    <!------ list product sale----->
+    <div class="container section">
       <h2 class="title impress">
         New <br />
         arrival
       </h2>
       <div id="list-product">
-        <div class="row">
+        <div class="row mb-padding">
           <div class="col-6 col-lg-3">
             <div class="product-item">
               <span class="product-sale">- 30%</span>
-              <div class="product-img">
-                <div class="img">
-                  <img src="./images/product-3.png" alt="" srcset="" />
+              <a product-link href="/">
+                <div class="product-img">
+                  <div class="img">
+                    <img src="./images/product-3.png" alt="" srcset="" />
+                  </div>
                 </div>
-              </div>
-              <div class="product-content">
-                <p product-name class="mb-none bold">Product 1</p>
-                <p>This is a description of product 1</p>
-                <div class="rating">
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="lar la-star"></i>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
                 </div>
-                <p class="price">300.000 VND</p>
-                <a
-                  product-add-cart
-                  href="javascript:void(0)"
-                  class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
-                  >ADD TO CART</a
-                >
-              </div>
+              </a>
+              <a
+                product-add-cart
+                href="javascript:void(0)"
+                class="d-none d-lg-block btn btn-sm btn-anim-no border-primary"
+                >ADD TO CART</a
+              >
             </div>
           </div>
           <div class="col-6 col-lg-3">
             <div class="product-item">
               <span class="product-sale">- 30%</span>
-              <div class="product-img">
-                <div class="img">
-                  <img src="./images/product-3.png" alt="" srcset="" />
+              <a product-link href="/">
+                <div class="product-img">
+                  <div class="img">
+                    <img src="./images/product-3.png" alt="" srcset="" />
+                  </div>
                 </div>
-              </div>
-              <div class="product-content">
-                <p product-name class="mb-none bold">Product 1</p>
-                <p>This is a description of product 1</p>
-                <div class="rating">
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="lar la-star"></i>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
                 </div>
-                <p class="price">300.000 VND</p>
-                <a
-                  product-add-cart
-                  href="javascript:void(0)"
-                  class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
-                  >ADD TO CART</a
-                >
-              </div>
+              </a>
+              <a
+                product-add-cart
+                href="javascript:void(0)"
+                class="d-none d-lg-block btn btn-sm btn-anim-no border-primary"
+                >ADD TO CART</a
+              >
             </div>
           </div>
           <div class="col-6 col-lg-3">
             <div class="product-item">
               <span class="product-sale">- 30%</span>
-              <div class="product-img">
-                <div class="img">
-                  <img src="./images/product-3.png" alt="" srcset="" />
+              <a product-link href="/">
+                <div class="product-img">
+                  <div class="img">
+                    <img src="./images/product-3.png" alt="" srcset="" />
+                  </div>
                 </div>
-              </div>
-              <div class="product-content">
-                <p product-name class="mb-none bold">Product 1</p>
-                <p>This is a description of product 1</p>
-                <div class="rating">
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="lar la-star"></i>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
                 </div>
-                <p class="price">300.000 VND</p>
-                <a
-                  product-add-cart
-                  href="javascript:void(0)"
-                  class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
-                  >ADD TO CART</a
-                >
-              </div>
+              </a>
+              <a
+                product-add-cart
+                href="javascript:void(0)"
+                class="d-none d-lg-block btn btn-sm btn-anim-no border-primary"
+                >ADD TO CART</a
+              >
             </div>
           </div>
           <div class="col-6 col-lg-3">
             <div class="product-item">
               <span class="product-sale">- 30%</span>
-              <div class="product-img">
-                <div class="img">
-                  <img src="./images/product-3.png" alt="" srcset="" />
+              <a product-link href="/">
+                <div class="product-img">
+                  <div class="img">
+                    <img src="./images/product-3.png" alt="" srcset="" />
+                  </div>
                 </div>
-              </div>
-              <div class="product-content">
-                <p product-name class="mb-none bold">Product 1</p>
-                <p>This is a description of product 1</p>
-                <div class="rating">
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="las la-star"></i>
-                  <i class="lar la-star"></i>
+                <div class="product-content">
+                  <p product-name class="mb-none bold">Product 1</p>
+                  <p>This is a description of product 1</p>
+                  <div class="rating">
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="las la-star"></i>
+                    <i class="lar la-star"></i>
+                  </div>
+                  <p class="price">300.000 VND</p>
                 </div>
-                <p class="price">300.000 VND</p>
-                <a
-                  product-add-cart
-                  href="javascript:void(0)"
-                  class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
-                  >ADD TO CART</a
-                >
-              </div>
+              </a>
+              <a
+                product-add-cart
+                href="javascript:void(0)"
+                class="d-none d-lg-block btn btn-sm btn-anim-no border-primary"
+                >ADD TO CART</a
+              >
             </div>
           </div>
         </div>
       </div>
       <a href="javascript:void(0)" class="more-product">more product</a>
     </div>
-
     <!------ about-us ----->
     <div class="about section">
       <div class="img-warpper">
