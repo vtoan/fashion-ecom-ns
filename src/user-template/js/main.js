@@ -10,7 +10,7 @@ function removeListener(arrElms) {
   });
 }
 // ======  define - event  ====== //
-function toggleClass(elmOpenQuery, elmCloseQuery, elmTargetQuery) {
+function toggleClass(elmOpenQuery, elmCloseQuery, elmTargetQuery, callBack) {
   let elmOpen = document.querySelector(elmOpenQuery),
     elmClose = document.querySelector(elmCloseQuery),
     elmTarget = document.querySelector(elmTargetQuery);
@@ -18,7 +18,10 @@ function toggleClass(elmOpenQuery, elmCloseQuery, elmTargetQuery) {
     {
       elm: elmOpen,
       event: "click",
-      handle: () => elmTarget.classList.add("show"),
+      handle: () => {
+        callBack && callBack();
+        elmTarget.classList.add("show");
+      },
     },
     {
       elm: elmClose,
@@ -32,39 +35,43 @@ function toggleClass(elmOpenQuery, elmCloseQuery, elmTargetQuery) {
   });
 }
 
+function attachSearchMobile() {
+  let searchTriger = "#search-trigger-mobile";
+  let menuTrigger = document.querySelector("#menu-trigger");
+  var jPopupDemo = new jPopup({
+    content: `
+    <div class="nav-mobile d-flex">
+      <a id="search-trigger-mobile" href="#" class="nav-item">search</a>
+      <a href="#" class="nav-item">login</a>
+      <a href="#" class="nav-item">sale</a>
+      <a href="#" class="nav-item">features</a>
+      <a href="#" class="nav-item">men</a>
+      <a href="#" class="nav-item">women</a>
+      <a href="#" class="nav-item">contacts</a>
+      </div>`,
+    transition: "fade",
+  });
+
+  menuTrigger.addEventListener("click", (e) => {
+    jPopupDemo.open();
+  });
+
+  toggleClass(searchTriger, "#search-close", ".search-bar", () =>
+    jPopupDemo.close()
+  );
+}
+
 function attachSearchTriger() {
   let wScreen = window.screen.width;
-  let searchTriger =
-    wScreen < 992 ? "#search-trigger-mobile" : "#search-trigger";
-  toggleClass(searchTriger, "#search-close", ".search-bar");
+  if (wScreen < 992) attachSearchMobile();
+  else toggleClass("#search-trigger", "#search-close", ".search-bar");
 }
+
 // ====== exce ====== //
-
-attachSearchTriger();
-window.addEventListener("resize", (e) => attachSearchTriger());
-
 var splide = new Splide(".splide", {
   type: "loop",
   autoplay: true,
 }).mount();
 
-var jPopupDemo = new jPopup({
-  content: `
-  <div class="nav-mobile d-flex">
-    <a id="search-trigger-mobile" href="#" class="nav-item">search</a>
-    <a href="#" class="nav-item">login</a>
-    <a href="#" class="nav-item">sale</a>
-    <a href="#" class="nav-item">features</a>
-    <a href="#" class="nav-item">men</a>
-    <a href="#" class="nav-item">women</a>
-    <a href="#" class="nav-item">contacts</a>
-    </div>`,
-  transition: "fade",
-});
-
 attachSearchTriger();
-
-let menuTrigger = document.querySelector("#menu-trigger");
-menuTrigger.addEventListener("click", (e) => {
-  jPopupDemo.open();
-});
+window.addEventListener("resize", (e) => attachSearchTriger());
