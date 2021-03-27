@@ -147,6 +147,7 @@
 /*============== 5. categoies =============*/
 .categories{
   display: flex;
+  justify-content: space-evenly;
 }
 
 .category-item{
