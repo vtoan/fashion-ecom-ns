@@ -239,6 +239,7 @@
   opacity: 1;
   transition: all 0.3s ease-out;
   font-weight: 500;
+  text-transform: uppercase;
 }
 
 @media only screen and (min-width: 62em) {
