@@ -51,6 +51,7 @@ details {
   border-radius: 6px;
   margin-right: 1em;
   margin-left: 1em;
+  color: var(--primary);
 }
 
 .page-item.active {
