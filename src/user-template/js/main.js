@@ -30,48 +30,84 @@ function toggleClass(elmOpenQuery, elmCloseQuery, elmTargetQuery, callBack) {
     },
   ];
   addListener(arrElms);
-  document.addEventListener("unload", function (e) {
-    removeListener(arrElms);
+  document.addEventListener("unload", () => removeListener(arrElms));
+}
+
+// ======  add cart product event  ====== //
+function handleAddToCart(productId) {
+  cartMng.addItem(productId);
+  cartCounterElm.textContent = cartMng.getCount();
+}
+
+function attachProductEvent() {
+  let products = document.querySelectorAll(".product-item");
+  products.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      let itemid = item.getAttribute("data-itemid");
+      handleAddToCart(itemid);
+    });
   });
 }
 
-function attachSearchMobile() {
-  let searchTriger = "#search-trigger-mobile";
+// ====== view resize ====== //
+function checkViewClient() {
+  let wScreen = window.screen.width;
+  let classNameCouter = "#cart-counter";
+  if ( wScreen < 992) {
+    viewModile();
+    classNameCouter += "-mobile";
+  } else {
+    viewLarge();
+  }
+  cartCounterElm = document.querySelector(classNameCouter);
+}
+
+function viewLarge() {
+  toggleClass("#search-trigger", "#search-close", ".search-bar");
+  //
+  let details = document.querySelector("details");
+  details?.setAttribute("open", "");
+}
+
+function viewModile() {
   let menuTrigger = document.querySelector("#menu-trigger");
-  var jPopupDemo = new jPopup({
+  var popup = new jPopup({
     content: `
     <div class="nav-mobile d-flex">
-      <a id="search-trigger-mobile" href="#" class="nav-item">search</a>
+      <a id="search-trigger-mobile"  href="#" class="nav-item">search</a>
       <a href="#" class="nav-item">login</a>
       <a href="#" class="nav-item">sale</a>
       <a href="#" class="nav-item">features</a>
       <a href="#" class="nav-item">men</a>
       <a href="#" class="nav-item">women</a>
       <a href="#" class="nav-item">contacts</a>
-      </div>`,
+    </div>`,
     transition: "fade",
   });
 
-  menuTrigger.addEventListener("click", (e) => {
-    jPopupDemo.open();
-  });
-
-  toggleClass(searchTriger, "#search-close", ".search-bar", () =>
-    jPopupDemo.close()
+  toggleClass(
+    "#search-trigger-mobile",
+    "#search-close",
+    ".search-bar",
+    function () {
+      popup.close();
+    }
   );
-}
-
-function attachSearchTriger() {
-  let wScreen = window.screen.width;
-  if (wScreen < 992) attachSearchMobile();
-  else toggleClass("#search-trigger", "#search-close", ".search-bar");
+  
+  menuTrigger.addEventListener("click", function (e) {
+    popup.open();
+  });
 }
 
 // ====== exce ====== //
-var splide = new Splide(".splide", {
-  type: "loop",
-  autoplay: true,
-}).mount();
+var cartMng = new Cart();
+var cartCounterElm;
 
-attachSearchTriger();
-window.addEventListener("resize", (e) => attachSearchTriger());
+checkViewClient();
+attachProductEvent();
+
+cartMng._getStorage();
+cartCounterElm.textContent = cartMng.getCount();
+
+window.addEventListener("resize", () => checkViewClient());
+window.addEventListener("beforeunload", () => cartMng._saveStorage());

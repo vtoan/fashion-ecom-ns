@@ -1,0 +1,85 @@
+/*============= ?dropdown =============*/
+.dropdown {
+  min-width: 150px;
+  position: relative;
+  text-align: left;
+  padding-left: 0.5em;
+}
+
+.dropdown .select {
+  cursor: pointer;
+  display: block;
+  padding: 0.85em 1em;
+  border: 1 solid #f0f0f0;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.dropdown .select > i {
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  line-height: 1em;
+  float: right;
+}
+
+.dropdown:focus {
+  outline: none;
+}
+
+.dropdown-ouline:hover {
+  box-shadow: 0 0 4px rgb(204, 204, 204);
+}
+
+.dropdown.active .select > i {
+  transform: rotate(-180deg);
+}
+
+.dropdown .dropdown-menu {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  margin-top: 1px;
+  box-shadow: 0 1px 3px rgb(204, 204, 204);
+  border-radius: 0 1px 2px 2px;
+  transition: 0.3s all;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 105;
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+  background-color: white;
+}
+
+.dropdown.active .dropdown-menu {
+  visibility: visible;
+  top: 100%;
+  opacity: 1;
+}
+
+.dropdown .dropdown-menu li {
+  cursor: pointer;
+}
+.dropdown .dropdown-menu li {
+  padding: 1em;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.dropdown .dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  border-radius: 25px;
+  border: 10px solid gainsboro;
+}
