@@ -106,8 +106,8 @@ var cartCounterElm;
 checkViewClient();
 attachProductEvent();
 
-cartMng.setData(cartMng._getCookie());
+cartMng._getStorage();
 cartCounterElm.textContent = cartMng.getCount();
 
 window.addEventListener("resize", () => checkViewClient());
-window.addEventListener("beforeunload", () => cartMng._saveCookie());
+window.addEventListener("beforeunload", () => cartMng._saveStorage());

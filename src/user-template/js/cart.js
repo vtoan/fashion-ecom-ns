@@ -57,13 +57,13 @@ function Cart() {
     order = [];
   };
 
-  this._saveCookie = function () {
+  this._saveStorage = function () {
     let dt = new Date(Date.now() + 30 * 86400000);
     document.cookie = `basketshopping=${JSON.stringify(
       this.getData()
     )};expires=${dt.toString()};path=/;`;
   };
-  this._getCookie = function () {
+  this._getStorage = function () {
     let cookie = document.cookie;
     let stringUtf = decodeURIComponent(cookie);
     let asset = stringUtf.split(";");
@@ -74,7 +74,7 @@ function Cart() {
         cart = data[1];
       }
     }
-    if (cart) return JSON.parse(cart);
-    return [];
+    if (cart) this.setData (JSON.parse(cart));
+    this.setData([])
   };
 }
