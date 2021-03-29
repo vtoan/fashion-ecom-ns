@@ -30,52 +30,10 @@ function toggleClass(elmOpenQuery, elmCloseQuery, elmTargetQuery, callBack) {
     },
   ];
   addListener(arrElms);
-  document.addEventListener("unload", function (e) {
-    removeListener(arrElms);
-  });
+  document.addEventListener("unload", () => removeListener(arrElms));
 }
 
-function attachSearchMobile() {
-  let searchTriger = "#search-trigger-mobile";
-  let menuTrigger = document.querySelector("#menu-trigger");
-  var jPopupDemo = new jPopup({
-    content: `
-    <div class="nav-mobile d-flex">
-      <a id="search-trigger-mobile" href="#" class="nav-item">search</a>
-      <a href="#" class="nav-item">login</a>
-      <a href="#" class="nav-item">sale</a>
-      <a href="#" class="nav-item">features</a>
-      <a href="#" class="nav-item">men</a>
-      <a href="#" class="nav-item">women</a>
-      <a href="#" class="nav-item">contacts</a>
-      </div>`,
-    transition: "fade",
-  });
-
-  menuTrigger.addEventListener("click", (e) => {
-    jPopupDemo.open();
-  });
-
-  toggleClass(searchTriger, "#search-close", ".search-bar", () =>
-    jPopupDemo.close()
-  );
-}
-
-function checkViewOnMobile() {
-  let wScreen = window.screen.width;
-  let classNameCouter = "#cart-counter";
-  if (wScreen < 992) {
-    attachSearchMobile();
-    classNameCouter += "-mobile";
-  } else {
-    toggleClass("#search-trigger", "#search-close", ".search-bar");
-    let details = document.querySelector("details");
-    details.setAttribute("open", "");
-  }
-  cartCounterElm = document.querySelector(classNameCouter);
-}
-
-// defint add cart event
+// ======  add cart product event  ====== //
 function handleAddToCart(productId) {
   cartMng.addItem(productId);
   cartCounterElm.textContent = cartMng.getCount();
@@ -90,15 +48,66 @@ function attachProductEvent() {
     });
   });
 }
+
+// ====== view resize ====== //
+function checkViewClient() {
+  let wScreen = window.screen.width;
+  let classNameCouter = "#cart-counter";
+  if ( wScreen < 992) {
+    viewModile();
+    classNameCouter += "-mobile";
+  } else {
+    viewLarge();
+  }
+  cartCounterElm = document.querySelector(classNameCouter);
+}
+
+function viewLarge() {
+  toggleClass("#search-trigger", "#search-close", ".search-bar");
+  //
+  let details = document.querySelector("details");
+  details?.setAttribute("open", "");
+}
+
+function viewModile() {
+  let menuTrigger = document.querySelector("#menu-trigger");
+  var popup = new jPopup({
+    content: `
+    <div class="nav-mobile d-flex">
+      <a id="search-trigger-mobile"  href="#" class="nav-item">search</a>
+      <a href="#" class="nav-item">login</a>
+      <a href="#" class="nav-item">sale</a>
+      <a href="#" class="nav-item">features</a>
+      <a href="#" class="nav-item">men</a>
+      <a href="#" class="nav-item">women</a>
+      <a href="#" class="nav-item">contacts</a>
+    </div>`,
+    transition: "fade",
+  });
+
+  toggleClass(
+    "#search-trigger-mobile",
+    "#search-close",
+    ".search-bar",
+    function () {
+      popup.close();
+    }
+  );
+  
+  menuTrigger.addEventListener("click", function (e) {
+    popup.open();
+  });
+}
+
 // ====== exce ====== //
 var cartMng = new Cart();
 var cartCounterElm;
 
-checkViewOnMobile();
+checkViewClient();
 attachProductEvent();
 
 cartMng.setData(cartMng._getCookie());
 cartCounterElm.textContent = cartMng.getCount();
 
-window.addEventListener("resize", (e) => checkViewOnMobile());
+window.addEventListener("resize", () => checkViewClient());
 window.addEventListener("beforeunload", () => cartMng._saveCookie());
