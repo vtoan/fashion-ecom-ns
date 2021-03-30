@@ -1,0 +1,28 @@
+.line {
+  background-color: var(--bg-secondary);
+  height: 1px;
+  width: 100%;
+  margin-top: 1.5em;
+}
+
+#cart .title-table {
+  padding-bottom: 1em;
+}
+#cart a[prom-submit] {
+  padding: 0.6em 1.5em;
+}
+#cart a[prom-submit],
+#cart button[checkout] {
+  padding: 0.6em 1.5em;
+  font-weight: 500;
+  background-color: var(--impress);
+  color: var(--bg-primary);
+}
+#cart a[prom-submit]:hover,
+#cart button[checkout]:hover {
+  background-color: var(--bg-primary);
+  color: var(--primary);
+}
+.table tr td:last-child {
+  text-align: right;
+}

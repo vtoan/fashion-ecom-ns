@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/product.css" />
     <link rel="stylesheet" href="./css/dropdown.css" />
+    <link rel="stylesheet" href="./css/cart.css" />
   </head>
   <body>
     <!------ header ----->
@@ -91,8 +92,81 @@
     </header>
     <!------ breadcrum ----->
     <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
+
     <!------ cart ----->
-    <div></div>
+    <div class="container section">
+      <div id="cart" class="list-wrapper">
+        <div class="row">
+          <div class="col-12 col-lg-7 section">
+            <!------ cart - header list ----->
+            <div class="title-table">
+              <div>
+                <h4 class="d-inline-block semi-bold">Products</h4>
+                <p class="m-none float-right">
+                  <span id="count-items">0</span> items
+                </p>
+              </div>
+              <div class="line"></div>
+            </div>
+            <!------ cart - list ----->
+            <div id="cart-container">
+              <p class="text-center secondary">Loading ...</p>
+            </div>
+          </div>
+          <div class="col-12 col-lg-5 section">
+            <!------ cart - header total ----->
+            <div class="title-table">
+              <h4 class="d-inline-block semi-bold">Totals</h4>
+              <div class="line"></div>
+            </div>
+            <!------ cart - promote ----->
+            <div style="margin-bottom: 1em">
+              <input
+                prom-code
+                name="promotion"
+                style="width: 70%"
+                type="text"
+                placeholder="Promotion Code"
+              />
+              <a
+                prom-submit
+                class="btn btn-sm btn-anim-no border-impress float-right"
+                >Apply</a
+              >
+            </div>
+            <!------ cart - table ----->
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Total</td>
+                  <td order-total="">0 đ</td>
+                </tr>
+                <tr>
+                  <td>Discount</td>
+                  <td order-promotion="">0 đ</td>
+                </tr>
+                <tr class="semi-bold">
+                  <td>Payment</td>
+                  <td class="red" order-pay>0 đ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-12 text-center pt-4">
+            <form method="POST">
+              <button
+                checkout
+                class="btn btn-sm w-50 border-impress"
+                style="max-width: 250px"
+                type="submit"
+              >
+                Tiếp tục
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <!------ policy ----->
     <div class="container-fluid policy">
       <div class="row">
@@ -198,11 +272,11 @@
     <!------ referenct res ----->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
     <script src="./libs/jpopup/dist//js/index.min.js"></script>
-    <script src="./js/dropdown.js"></script>
+    <!-- <script src="./js/dropdown.js"></script> -->
     <!------ js res ----->
     <!-- <script src="./js/list-product.js"></script> -->
     <script src="./js/cart.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/products.js"></script>
+    <!-- <script src="./js/products.js"></script> -->
   </body>
 </html>
