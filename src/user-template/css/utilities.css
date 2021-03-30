@@ -148,7 +148,7 @@ h4,
   font-weight: 600;
 }
 .semi-bold {
-  font-weight: 400;
+  font-weight: 500;
 }
 .normal {
   font-weight: normal;
@@ -206,9 +206,9 @@ button {
 .btn-lg {
   padding: 1em 2.5em;
 }
-.btn:hover {
+/* .btn:hover {
   box-shadow: 1px 1px 5px -2px black;
-}
+} */
 .btn-anim-no:hover {
   box-shadow: none;
 }
@@ -242,13 +242,44 @@ button {
   border: none !important;
   box-shadow: none !important;
 }
+/*============== table =============*/
+table {
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table td {
+  padding: 0.75em;
+}
+
+.table td[scope="row"] {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.table tr {
+  padding: 1em 0;
+}
+
+.table.table-color tr:nth-child(odd) {
+  background-color: whitesmoke;
+}
 /*============== helpful =============*/
+.float-right {
+  float: right;
+}
 .mb-padding {
   margin-left: 0;
   margin-right: 0;
 }
 .mb-none {
   margin-bottom: 0;
+}
+.m-none {
+  margin: 0;
 }
 .m-auto {
   margin: 0 auto;
