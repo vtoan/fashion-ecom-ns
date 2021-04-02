@@ -9,18 +9,16 @@
 #cart .title-table {
   padding-bottom: 1em;
 }
-#cart a[prom-submit] {
+a[prom-submit] {
   padding: 0.6em 1.5em;
 }
-#cart a[prom-submit],
-#cart button[checkout] {
+.btn-anim {
   padding: 0.6em 1.5em;
   font-weight: 500;
   background-color: var(--impress);
   color: var(--bg-primary);
 }
-#cart a[prom-submit]:hover,
-#cart button[checkout]:hover {
+.btn-anim:hover {
   background-color: var(--bg-primary);
   color: var(--primary);
 }
