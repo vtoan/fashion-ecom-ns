@@ -33,13 +33,13 @@
   margin: 2em 0;
 }
 
-.product-detail .to-cart {
+.product-detail .add-cart {
   padding: 0.6em 1.5em;
   font-weight: 500;
   background-color: var(--impress);
   color: var(--bg-primary);
 }
-.product-detail .to-cart:hover {
+.product-detail .add-cart:hover {
   background-color: var(--bg-primary);
   color: var(--primary);
 }

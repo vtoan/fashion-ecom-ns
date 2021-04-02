@@ -45,21 +45,6 @@ function updateCountInCart() {
   cartCounterElm.textContent = cartMng.getCount();
 }
 
-function handleAddToCart(productId) {
-  cartMng.addItem(productId);
-  updateCountInCart();
-}
-
-function attachProductEvent() {
-  let products = document.querySelectorAll(".product-item");
-  products.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      let itemid = item.getAttribute("data-itemid");
-      handleAddToCart(itemid);
-    });
-  });
-}
-
 // ====== view resize ====== //
 function checkViewClient() {
   let wScreen = window.screen.width;

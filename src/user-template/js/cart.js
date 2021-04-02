@@ -21,23 +21,22 @@ function Cart() {
     return order.find((i) => i.ProductId == id);
   };
   this.getCount = function () {
-    return count;
+    return order.reduce((accur, item) => (accur += item.Quantity), 0);
   };
   this.isEmpty = function () {
     if (!order || order.length == 0) return true;
     return false;
   };
-  this.addItem = function (id) {
+  this.addItem = function (id, quantity = 1) {
     id = Number(id);
     let index = order.findIndex((item) => item.ProductId == id);
-    if (index >= 0) order[index].Quantity++;
-    else
+    if (index >= 0) {
+      order[index].Quantity += quantity;
+    } else
       order.push({
         ProductId: id,
-        Quantity: 1,
+        Quantity: quantity,
       });
-    count++;
-    console.log(order);
   };
   this.changeQuantityItem = function (id, operation) {
     if (this.isEmpty());
