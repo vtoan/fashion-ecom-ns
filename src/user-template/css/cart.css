@@ -22,6 +22,7 @@ a[prom-submit] {
   background-color: var(--bg-primary);
   color: var(--primary);
 }
+
 .table tr td:last-child {
   text-align: right;
 }

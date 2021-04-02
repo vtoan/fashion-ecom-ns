@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart Page</title>
+    <title>Document</title>
     <!------ reference res ----->
     <link
       rel="stylesheet"
@@ -25,9 +25,9 @@
     <!------ css res ----->
     <link rel="stylesheet" href="./css/utilities.css" />
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/product.css" />
-    <link rel="stylesheet" href="./css/dropdown.css" />
-    <link rel="stylesheet" href="./css/cart.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/gallery.css" />
+    <link rel="stylesheet" href="./css/product-detail.css" />
   </head>
   <body>
     <!------ header ----->
@@ -42,8 +42,8 @@
           <div class="nav d-flex">
             <a href="#" class="nav-item">sale</a>
             <a href="#" class="nav-item">features</a>
-            <a href="#" class="nav-item">shirt</a>
-            <a href="#" class="nav-item">pants</a>
+            <a href="#" class="nav-item">men</a>
+            <a href="#" class="nav-item">women</a>
             <a href="#" class="nav-item">contacts</a>
           </div>
         </div>
@@ -53,10 +53,10 @@
               <i class="las la-search"></i
             ></a>
             <!-- <a class="nav-item" href="#">Login</a> -->
-            <a href="#" class="nav-item"> <i class="las la-user"></i></a>
+            <a href="#" class="nav-item"> <i class="las la-user"></i> </a>
             <!-- <a href="#" class="nav-item">
-                <i class="las la-sign-out-alt"></i>
-              </a> -->
+              <i class="las la-sign-out-alt"></i>
+            </a> -->
             <a href="#" class="nav-item">
               <i class="las la-shopping-bag"></i
             ></a>
@@ -90,136 +90,133 @@
         </div>
       </div>
     </header>
-    <!------ breadcrum ----->
-    <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
-
-    <!------ cart ----->
-    <div class="container section">
-      <div id="cart" class="list-wrapper">
-        <div class="row">
-          <div class="col-12 col-lg-7 section">
-            <!------ cart - header list ----->
-            <div class="title-table">
-              <div>
-                <h4 class="d-inline-block semi-bold">Products</h4>
-                <p class="m-none float-right">
-                  <span id="count-items">0</span> items
-                </p>
+    <!------ content ----->
+    <div class="product-detail">
+      <div class="container section pt-5">
+        <div class="row row-contents">
+          <div class="col-12 col-md-6 col-lg-7">
+            <div class="gallery">
+              <div class="img-anim">
+                <div
+                  class="img"
+                  style="background-image: url('./images/noimage.jpg')"
+                ></div>
               </div>
-              <div class="line"></div>
+              <a class="arrow-prev black"><i class="las la-angle-left"></i></a>
+              <a class="arrow-next black"><i class="las la-angle-right"></i></a>
             </div>
-            <!------ cart - list ----->
-            <div id="cart-container">
-              <!-- <p class="text-center secondary">Loading ...</p> -->
-              <div class="cart-item mb-3" item-id="1">
-                <div class="row row-contents align-items-lg-center">
-                  <div class="col-3 col-lg-2">
-                    <div class="img">
-                      <img
-                        width="100"
-                        class="border"
-                        src="./images/product-1.png"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-7 col-lg-9">
-                    <div class="row align-items-center">
-                      <div class="col-12 col-lg-4">
-                        <p class="text-4">Name</p>
-                        <span class="text-4 impress bold">2000</span>
-                        <del class="normal text-sub">3000</del>
-                      </div>
-                      <div class="col-12 col-lg-4">
-                        <div class="d-flex align-items-center">
-                          <a quantity-add class="btn btn-sm"
-                            ><i class="las la-angle-up"></i
-                          ></a>
-                          <span item-count class="px-3">1</span>
-                          <a quantity-subtract class="btn btn-sm"
-                            ><i class="las la-angle-down"></i
-                          ></a>
-                        </div>
-                      </div>
-                      <div class="col-12 col-lg-4">
-                        <span class="d-block">Tổng: </span>
-                        <span item-total="2000" class="text-4 semi-bold"
-                          >2000</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-2 col-lg-1 text-right">
-                    <a
-                      quantity-remove
-                      class="btn btn-no impress remove"
-                      href="javascript:void(0)"
-                      ><i class="icon las la-times"></i
-                    ></a>
-                  </div>
-                  <hr class="mx-3 white w-100" />
+            <div class="gallery-nav">
+              <div class="img">
+                <img src="./images/product-2.png" loading="lazy" />
+              </div>
+              <div class="img">
+                <img src="./images/product-3.png" loading="lazy" />
+              </div>
+              <div class="img">
+                <img src="./images/product-4.png" loading="lazy" />
+              </div>
+              <div class="img">
+                <img src="./images/product-5.png" loading="lazy" />
+              </div>
+              <div class="img">
+                <img src="./images/product-6.png" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-5">
+            <h1 class="normal text-2">Product Name</h1>
+            <div class="product-info rating">
+              <i class="las la-star"></i>
+              <i class="las la-star"></i>
+              <i class="las la-star"></i>
+              <i class="las la-star"></i>
+              <i class="lar la-star"></i>
+            </div>
+            <div class="text-4 product-info">
+              <!-- <p class="bold mb-3">
+              <span class="underline">Giá :</span>
+              <span class="text-4 red bold d-lg-inline-block mb-1 px-2">
+                1000
+              </span>
+            </p> -->
+              <p>
+                <span>Giá gốc :</span>
+                <del class="normal">1000</del>
+                <span class="impress"> 2000</span>
+              </p>
+            </div>
+            <div class="product-info">
+              <div class="d-flex">
+                <a class="attr-item active" href="">Xanh</a>
+                <a class="attr-item" href="">Do</a>
+                <a class="attr-item disable" href="">Vang</a>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="d-flex">
+                <a class="attr-item active" href="">XS</a>
+                <a class="attr-item" href="">S</a>
+                <a class="attr-item" href="">L</a>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="d-flex align-items-center">
+                <span class="semi-bold" style="margin-right: 1em"
+                  >Quantity</span
+                >
+                <div class="d-flex align-items-center">
+                  <a quantity-add class="btn btn-sm"
+                    ><i class="las la-angle-up"></i
+                  ></a>
+                  <span item-count item-price="2000" class="px-3">1</span>
+                  <a quantity-subtract class="btn btn-sm"
+                    ><i class="las la-angle-down"></i
+                  ></a>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-12 col-lg-5 section">
-            <!------ cart - header total ----->
-            <div class="title-table">
-              <h4 class="d-inline-block semi-bold">Totals</h4>
-              <div class="line"></div>
-            </div>
-            <!------ cart - promote ----->
-            <!-- <div style="margin-bottom: 1em">
-              <input
-                prom-code
-                name="promotion"
-                style="width: 70%"
-                type="text"
-                placeholder="Promotion Code"
-              />
+            <div class="group-btns text-center">
               <a
-                prom-submit
-                class="btn btn-sm btn-anim-no border-impress float-right "
-                >Apply</a
+                style="margin-bottom: 0.5em"
+                class="d-block to-cart btn btn-sm border-impress upper-case bold"
+                >Add to cart</a
               >
-            </div> -->
-            <!------ cart - table ----->
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>Total</td>
-                  <td order-total="">0 đ</td>
-                </tr>
-                <!-- <tr class="d-none">
-                  <td>Discount</td>
-                  <td order-promotion="">0 đ</td>
-                </tr> -->
-                <tr>
-                  <td>Fees</td>
-                  <td order-fees fee-cost="1000">0 đ</td>
-                </tr>
-                <tr class="semi-bold">
-                  <td>Payment</td>
-                  <td class="impress" order-pay>0 đ</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-12 text-center pt-4">
-            <form method="POST">
-              <button
-                checkout
-                class="btn btn-sm w-50 border-impress btn-anim"
-                style="max-width: 250px"
-                type="submit"
+              <span class="float-clear text-center d-block"
+                >Or contact us with Facebook
+                <a class="link blue" href="Instance.Messenger"> here </a></span
               >
-                Tiếp tục
-              </button>
-            </form>
+            </div>
+            <div class="product-info">
+              <span class="label">Product info</span>
+              <table class="table table-color">
+                <tbody>
+                  <tr>
+                    <td scope="row">thương hiệu</td>
+                    <td item-related>@Model.Product.BandName</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">phân loại</td>
+                    <td>@Model.Product.CategoryName</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">dây đeo</td>
+                    <td>@Model.Product.WireName</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="product-info">
+              <span class="label">Description</span>
+              <p style="margin-top: 0">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. In
+                officiis hic natus quibusdam saepe placeat reprehenderit.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!------ policy ----->
+    <!------ feature-cost ----->
     <div class="container-fluid policy">
       <div class="row">
         <div class="col-4 policy-item">
@@ -242,7 +239,6 @@
         </div>
       </div>
     </div>
-    <!------ footer ----->
     <div class="container-fluid footer">
       <div class="row">
         <div class="col-lg-2 order-lg-1">
@@ -321,14 +317,17 @@
         vtoan.2805
       </p>
     </div>
+
     <!------ referenct res ----->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
     <script src="./libs/jpopup/dist//js/index.min.js"></script>
-    <!-- <script src="./js/dropdown.js"></script> -->
     <!------ js res ----->
-    <!-- <script src="./js/list-product.js"></script> -->
     <script src="./js/cart.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/cart-site.js"></script>
+    <script src="./js/gallary.js"></script>
+
+    <script>
+      Gallery();
+    </script>
   </body>
 </html>
