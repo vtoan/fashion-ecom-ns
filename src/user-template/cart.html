@@ -110,7 +110,103 @@
             </div>
             <!------ cart - list ----->
             <div id="cart-container">
-              <p class="text-center secondary">Loading ...</p>
+              <!-- <p class="text-center secondary">Loading ...</p> -->
+              <div class="cart-item mb-3" item-id="@item.ProductId">
+                <div class="row row-contents align-items-lg-center">
+                  <div class="col-3 col-lg-2">
+                    <div class="img">
+                      <img
+                        width="100"
+                        class="border"
+                        src="./images/product-1.png"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-7 col-lg-9">
+                    <div class="row align-items-center">
+                      <div class="col-12 col-lg-4">
+                        <p class="text-4">Name</p>
+                        <span class="text-4 impress bold">2000</span>
+                        <del class="normal text-sub">3000</del>
+                      </div>
+                      <div class="col-12 col-lg-4">
+                        <div class="d-flex align-items-center">
+                          <a quantity-add class="btn btn-sm"
+                            ><i class="las la-angle-up"></i
+                          ></a>
+                          <span item-count item-price="@item.Price" class="px-3"
+                            >1</span
+                          >
+                          <a quantity-subtract class="btn btn-sm"
+                            ><i class="las la-angle-down"></i
+                          ></a>
+                        </div>
+                      </div>
+                      <div class="col-12 col-lg-4">
+                        <span class="d-block">Tổng: </span>
+                        <span item-total="@total" class="text-4 bold">1</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-2 col-lg-1 text-right">
+                    <a
+                      quantity-remove
+                      class="btn btn-no impress remove"
+                      href="javascript:void(0)"
+                      ><i class="icon las la-times"></i
+                    ></a>
+                  </div>
+                  <hr class="mx-3 white w-100" />
+                </div>
+              </div>
+              <div class="cart-item mb-3" item-id="@item.ProductId">
+                <div class="row row-contents align-items-lg-center">
+                  <div class="col-3 col-lg-2">
+                    <div class="img">
+                      <img
+                        width="100"
+                        class="border"
+                        src="./images/product-1.png"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-7 col-lg-9">
+                    <div class="row align-items-center">
+                      <div class="col-12 col-lg-4">
+                        <p class="text-4">Name</p>
+                        <span class="text-4 impress bold">2000</span>
+                        <del class="normal text-sub">3000</del>
+                      </div>
+                      <div class="col-12 col-lg-4">
+                        <div class="d-flex align-items-center">
+                          <a quantity-add class="btn btn-sm"
+                            ><i class="las la-angle-up"></i
+                          ></a>
+                          <span item-count item-price="@item.Price" class="px-3"
+                            >1</span
+                          >
+                          <a quantity-subtract class="btn btn-sm"
+                            ><i class="las la-angle-down"></i
+                          ></a>
+                        </div>
+                      </div>
+                      <div class="col-12 col-lg-4">
+                        <span class="d-block">Tổng: </span>
+                        <span item-total="@total" class="text-4 bold">1</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-2 col-lg-1 text-right">
+                    <a
+                      quantity-remove
+                      class="btn btn-no impress remove"
+                      href="javascript:void(0)"
+                      ><i class="icon las la-times"></i
+                    ></a>
+                  </div>
+                  <hr class="mx-3 white w-100" />
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-12 col-lg-5 section">
