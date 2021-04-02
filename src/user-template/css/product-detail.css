@@ -118,3 +118,27 @@
   overflow: auto;
   flex-wrap: nowrap;
 }
+#feedbackForm .rating-form {
+  margin-bottom: 1em;
+}
+#feedbackForm .rating-form input {
+  width: inherit !important;
+  margin-right: 1em;
+  display: inline-block;
+}
+
+#feedbackForm .btn {
+  padding: 0.6em 1.5em;
+  font-weight: 500;
+  background-color: var(--impress);
+  color: var(--bg-primary);
+}
+#feedbackForm .btn:hover {
+  background-color: var(--bg-primary);
+  color: var(--primary);
+}
+
+.feedback-item .user-name {
+  padding-right: 1em;
+  font-weight: 500;
+}

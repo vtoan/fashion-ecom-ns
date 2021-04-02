@@ -24,9 +24,6 @@ function updateQuantityItem(countElm, operation) {
   countElm.textContent = totalQuanlity;
 }
 
-// function updateCountInCart() {
-//   cartCounterElm.textContent = cartMng.getCount();
-// }
 // ====== execx ====== //
 let quantityElm = document.querySelector("div[quantity]");
 let addCartElm = document.querySelector(".add-cart");

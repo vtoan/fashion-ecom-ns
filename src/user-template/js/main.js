@@ -100,7 +100,6 @@ var cartMng = new Cart();
 var cartCounterElm;
 
 checkViewClient();
-attachProductEvent();
 
 cartMng._getStorage();
 cartCounterElm.textContent = cartMng.getCount();

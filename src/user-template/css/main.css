@@ -22,6 +22,13 @@
     font-size: inherit;
   }
 }
+.line {
+  background-color: var(--bg-secondary);
+  height: 1px;
+  width: 100%;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
 /*============== 1.header =============*/
 .header {
   padding-top: 1.25em;
@@ -261,4 +268,17 @@
 
 .social > a {
   padding-right: 1em;
+}
+/*============== breadcrumb =============*/
+.breadcrumb {
+  background-color: var(--bg-secondary);
+  padding: 1em 0;
+  text-align: center;
+  font-weight: 500;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.breadcrumb a:hover {
+  color: var(--impress);
 }

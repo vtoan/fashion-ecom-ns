@@ -1,17 +1,3 @@
-/*============== breadcrumb =============*/
-.breadcrumb {
-  background-color: var(--bg-secondary);
-  padding: 1em 0;
-  text-align: center;
-  font-weight: 500;
-  text-transform: capitalize;
-  cursor: pointer;
-}
-
-.breadcrumb a:hover {
-  color: var(--impress);
-}
-
 details {
   cursor: pointer;
 }

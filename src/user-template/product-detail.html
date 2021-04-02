@@ -18,10 +18,6 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css"
-    />
     <!------ css res ----->
     <link rel="stylesheet" href="./css/utilities.css" />
     <link rel="stylesheet" href="./css/main.css" />
@@ -90,10 +86,12 @@
         </div>
       </div>
     </header>
+    <!------ breadcrum ----->
+    <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
     <!------ content ----->
     <div class="product-detail">
       <div class="container section pt-5">
-        <div class="row row-contents">
+        <div class="row list-wrapper">
           <div class="col-12 col-md-6 col-lg-7">
             <div class="gallery">
               <div class="img-anim">
@@ -216,6 +214,80 @@
         </div>
       </div>
     </div>
+
+    <!------ feedback ----->
+    <div class="container section" style="padding: 0 15px">
+      <h3 class="semi-bold">User's Feedbacks</h3>
+      <div class="line"></div>
+      <div class="row">
+        <div class="col-12 col-lg-7" style="margin-bottom: 1.5em">
+          <div class="feedback-item">
+            <div class="d-flex align-items-center">
+              <span class="user-name">John Wick</span>
+              <span class="rating">
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="lar la-star"></i>
+              </span>
+            </div>
+            <p>
+              - Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Repellat possimus soluta officiis repudiandae accusantium at
+              perferendis tenetur illum repellendus. Neque, natus quaerat
+              blanditiis quod alias unde atque ad beatae quasi.
+            </p>
+          </div>
+          <div class="feedback-item">
+            <div class="d-flex align-items-center">
+              <span class="user-name">John Wick</span>
+              <span class="rating">
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="lar la-star"></i>
+              </span>
+            </div>
+            <p>
+              - Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Repellat possimus soluta officiis repudiandae accusantium at
+              perferendis tenetur illum repellendus. Neque, natus quaerat
+              blanditiis quod alias unde atque ad beatae quasi.
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5">
+          <p class="semi-bold upper-case">send feedback</p>
+          <form id="feedbackForm">
+            <div class="rating-form d-flex justify-content-start">
+              <input type="radio" id="male" name="gender" value="male" />
+              <!-- <label for="male">Male</label><br /> -->
+              <input type="radio" id="female" name="gender" value="female" />
+              <!-- <label for="female">Female</label><br /> -->
+              <input type="radio" id="other" name="gender" value="other" />
+              <input type="radio" id="other" name="gender" value="other" />
+              <input type="radio" id="other" name="gender" value="other" />
+              <!-- <label for="other">Other</label> -->
+            </div>
+            <p style="padding-top: 1em">
+              <textarea
+                class="mb-3 d-block w-100"
+                name="Note"
+                rows="3"
+                placeholder="enter something .."
+              ></textarea>
+            </p>
+            <a
+              style="margin-bottom: 0.5em"
+              class="btn btn-sm border-impress upper-case bold"
+              >Submit</a
+            >
+          </form>
+        </div>
+      </div>
+    </div>
     <!------ feature-cost ----->
     <div class="container-fluid policy">
       <div class="row">
@@ -325,7 +397,6 @@
     <script src="./js/main.js"></script>
     <script src="./js/gallary.js"></script>
     <script src="./js/product-detail.js"></script>
-
     <script>
       Gallery();
     </script>
