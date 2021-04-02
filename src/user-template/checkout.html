@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="./css/product.css" />
     <link rel="stylesheet" href="./css/dropdown.css" />
     <link rel="stylesheet" href="./css/cart.css" />
-    <link rel="stylesheet" href="./css/checkout.css" />
   </head>
   <body>
     <!------ header ----->
@@ -108,6 +107,7 @@
               class="row-contents"
               id="form-confirm"
               method="POST"
+              action=""
             >
               <div class="control-input">
                 <label>Họ tên người nhận <span class="impress">*</span></label>
@@ -144,12 +144,7 @@
                         <i class="las la-angle-down"></i>
                       </div>
                       <input name="CustomerProvince" type="hidden" required />
-                      <ul class="dropdown-menu">
-                        <li value="0"><a href="">High</a></li>
-                        <li value="0"><a href="">Low</a></li>
-                        <li value="0"><a href="">Popular</a></li>
-                        <li value="0"><a href="">Popular</a></li>
-                      </ul>
+                      <ul class="dropdown-menu"></ul>
                     </div>
                   </div>
                   <div class="col-lg-6">
@@ -159,12 +154,7 @@
                         <i class="las la-angle-down"></i>
                       </div>
                       <input type="hidden" name="CustomerDistrict" required />
-                      <ul class="dropdown-menu">
-                        <li value="0"><a href="">High</a></li>
-                        <li value="0"><a href="">Low</a></li>
-                        <li value="0"><a href="">Popular</a></li>
-                        <li value="0"><a href="">Popular</a></li>
-                      </ul>
+                      <ul class="dropdown-menu"></ul>
                     </div>
                   </div>
                 </div>
@@ -237,19 +227,19 @@
                   <tbody>
                     <tr>
                       <td>Total</td>
-                      <td order-total="">0 đ</td>
+                      <td>0 đ</td>
                     </tr>
-                    <tr class="d-none">
+                    <!-- <tr class="d-none">
                       <td>Discount</td>
-                      <td order-promotion="">0 đ</td>
-                    </tr>
+                      <td>0 đ</td>
+                    </tr> -->
                     <tr>
                       <td>Fees</td>
-                      <td order-fees fee-cost="1000">0 đ</td>
+                      <td>0 đ</td>
                     </tr>
                     <tr class="semi-bold">
                       <td>Payment</td>
-                      <td class="impress" order-pay>0 đ</td>
+                      <td class="impress">0 đ</td>
                     </tr>
                   </tbody>
                 </table>

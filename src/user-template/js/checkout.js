@@ -1,12 +1,6 @@
-// let dropdownProvince = new UIDropDown(
-//   (idx) => console.log(idx),
-//   "div[local-province]"
-// );
-// let dropdownDistrict = new UIDropDown(
-//   (idx) => console.log(idx),
-//   "div[local-district]"
-// );
-
+//requset api : location.origin + "/asset/province.json"
+//requset api : location.origin + "/asset/district/${id}.json"
+// ====== main ====== //
 let province = "";
 let district = "";
 let dropProvince = null;
@@ -18,18 +12,18 @@ document.querySelector("#send-order").addEventListener("click", function (e) {
 
 let form = document.querySelector("#formOrder");
 form.addEventListener("submit", function (e) {
-  // if (!province || dropProvince == null) {
-  //   dropProvince.invalid();
-  //   window.alert("Vui lòng nhập thông tin giao hàng.");
-  //   e.preventDefault();
-  //   return;
-  // }
-  // if (!district || dropDistrict == null) {
-  //   dropDistrict.invalid();
-  //   window.alert("Vui lòng nhập thông tin giao hàng.");
-  //   e.preventDefault();
-  //   return;
-  // }
+  if (!province || dropProvince == null) {
+    dropProvince.invalid();
+    window.alert("Vui lòng nhập thông tin giao hàng.");
+    e.preventDefault();
+    return;
+  }
+  if (!district || dropDistrict == null) {
+    dropDistrict.invalid();
+    window.alert("Vui lòng nhập thông tin giao hàng.");
+    e.preventDefault();
+    return;
+  }
   console.log(form);
   e.preventDefault();
 });
