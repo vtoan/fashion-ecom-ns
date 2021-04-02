@@ -1,6 +1,11 @@
 function Cart() {
-  let order = [];
-  let count = 0;
+  let order = [
+    {
+      ProductId: 1,
+      Quantity: 1,
+    },
+  ];
+  let count = 1;
   this.setData = function (asset) {
     if (!asset) return;
     order = asset;
@@ -36,6 +41,7 @@ function Cart() {
   };
   this.changeQuantityItem = function (id, operation) {
     if (this.isEmpty());
+    id = Number(id);
     let indx = order.findIndex((i) => i.ProductId == id);
     if (indx < 0) return;
     if (operation) {
@@ -74,7 +80,7 @@ function Cart() {
         cart = data[1];
       }
     }
-    if (cart) this.setData (JSON.parse(cart));
-    this.setData([])
+    // if (cart) this.setData(JSON.parse(cart));
+    // this.setData([]);
   };
 }

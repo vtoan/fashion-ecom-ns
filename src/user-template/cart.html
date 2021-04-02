@@ -111,7 +111,7 @@
             <!------ cart - list ----->
             <div id="cart-container">
               <!-- <p class="text-center secondary">Loading ...</p> -->
-              <div class="cart-item mb-3" item-id="@item.ProductId">
+              <div class="cart-item mb-3" item-id="1">
                 <div class="row row-contents align-items-lg-center">
                   <div class="col-3 col-lg-2">
                     <div class="img">
@@ -134,7 +134,7 @@
                           <a quantity-add class="btn btn-sm"
                             ><i class="las la-angle-up"></i
                           ></a>
-                          <span item-count item-price="@item.Price" class="px-3"
+                          <span item-count item-price="2000" class="px-3"
                             >1</span
                           >
                           <a quantity-subtract class="btn btn-sm"
@@ -144,55 +144,7 @@
                       </div>
                       <div class="col-12 col-lg-4">
                         <span class="d-block">Tổng: </span>
-                        <span item-total="@total" class="text-4 bold">1</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-2 col-lg-1 text-right">
-                    <a
-                      quantity-remove
-                      class="btn btn-no impress remove"
-                      href="javascript:void(0)"
-                      ><i class="icon las la-times"></i
-                    ></a>
-                  </div>
-                  <hr class="mx-3 white w-100" />
-                </div>
-              </div>
-              <div class="cart-item mb-3" item-id="@item.ProductId">
-                <div class="row row-contents align-items-lg-center">
-                  <div class="col-3 col-lg-2">
-                    <div class="img">
-                      <img
-                        width="100"
-                        class="border"
-                        src="./images/product-1.png"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-7 col-lg-9">
-                    <div class="row align-items-center">
-                      <div class="col-12 col-lg-4">
-                        <p class="text-4">Name</p>
-                        <span class="text-4 impress bold">2000</span>
-                        <del class="normal text-sub">3000</del>
-                      </div>
-                      <div class="col-12 col-lg-4">
-                        <div class="d-flex align-items-center">
-                          <a quantity-add class="btn btn-sm"
-                            ><i class="las la-angle-up"></i
-                          ></a>
-                          <span item-count item-price="@item.Price" class="px-3"
-                            >1</span
-                          >
-                          <a quantity-subtract class="btn btn-sm"
-                            ><i class="las la-angle-down"></i
-                          ></a>
-                        </div>
-                      </div>
-                      <div class="col-12 col-lg-4">
-                        <span class="d-block">Tổng: </span>
-                        <span item-total="@total" class="text-4 bold">1</span>
+                        <span item-total="1" class="text-4 semi-bold">0</span>
                       </div>
                     </div>
                   </div>
@@ -216,7 +168,7 @@
               <div class="line"></div>
             </div>
             <!------ cart - promote ----->
-            <div style="margin-bottom: 1em">
+            <!-- <div style="margin-bottom: 1em">
               <input
                 prom-code
                 name="promotion"
@@ -229,7 +181,7 @@
                 class="btn btn-sm btn-anim-no border-impress float-right"
                 >Apply</a
               >
-            </div>
+            </div> -->
             <!------ cart - table ----->
             <table class="table">
               <tbody>
@@ -237,13 +189,17 @@
                   <td>Total</td>
                   <td order-total="">0 đ</td>
                 </tr>
-                <tr>
+                <tr class="d-none">
                   <td>Discount</td>
                   <td order-promotion="">0 đ</td>
                 </tr>
+                <tr>
+                  <td>Fees</td>
+                  <td order-fees fee-cost="1000">0 đ</td>
+                </tr>
                 <tr class="semi-bold">
                   <td>Payment</td>
-                  <td class="red" order-pay>0 đ</td>
+                  <td class="impress" order-pay>0 đ</td>
                 </tr>
               </tbody>
             </table>
@@ -373,6 +329,6 @@
     <!-- <script src="./js/list-product.js"></script> -->
     <script src="./js/cart.js"></script>
     <script src="./js/main.js"></script>
-    <!-- <script src="./js/products.js"></script> -->
+    <script src="./js/cart-site.js"></script>
   </body>
 </html>

@@ -1,3 +1,10 @@
+// ====== helpful ====== //
+function toCurrency(number) {
+  return new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: "VND",
+  }).format(number);
+}
 // ====== event listener  ====== //
 function addListener(arrElms) {
   arrElms.forEach((item) => {
@@ -34,9 +41,13 @@ function toggleClass(elmOpenQuery, elmCloseQuery, elmTargetQuery, callBack) {
 }
 
 // ======  add cart product event  ====== //
+function updateCountInCart() {
+  cartCounterElm.textContent = cartMng.getCount();
+}
+
 function handleAddToCart(productId) {
   cartMng.addItem(productId);
-  cartCounterElm.textContent = cartMng.getCount();
+  updateCountInCart();
 }
 
 function attachProductEvent() {
@@ -53,7 +64,7 @@ function attachProductEvent() {
 function checkViewClient() {
   let wScreen = window.screen.width;
   let classNameCouter = "#cart-counter";
-  if ( wScreen < 992) {
+  if (wScreen < 992) {
     viewModile();
     classNameCouter += "-mobile";
   } else {
@@ -93,7 +104,7 @@ function viewModile() {
       popup.close();
     }
   );
-  
+
   menuTrigger.addEventListener("click", function (e) {
     popup.open();
   });
