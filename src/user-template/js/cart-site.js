@@ -1,3 +1,5 @@
+// request api :" ?handler=cartitem&&ids="
+// ====== main ====== //
 function cartSite(config) {
   let options = {
     cart: null,
@@ -18,7 +20,18 @@ function cartSite(config) {
   let elmPay = root.querySelector("[order-pay]");
   // let elmPromo = root.querySelector("[order-promotion]");
   let countItem = root.querySelector("#count-items");
+
+  // ====== attach event ====== //
   countItem.textContent = cart.getCount();
+  //get fees in cart;
+  root.querySelectorAll("td[order-fees]").forEach(function (element) {
+    let cost = element.getAttribute("fee-cost");
+    if (!cost) return;
+    listFees.push(cost);
+    element.textContent =
+      cost % 1 == 0 ? options.currency(cost) : cost * 100 + " %";
+  });
+
   //get list item in cart;
   root.querySelectorAll(".cart-item").forEach((element) => {
     let itemId = element.getAttribute("item-id");
@@ -28,14 +41,7 @@ function cartSite(config) {
     });
     attachEventItem(element, itemId);
   });
-  //get fees in cart;
-  root.querySelectorAll("td[order-fees]").forEach(function (element) {
-    let cost = element.getAttribute("fee-cost");
-    if (!cost) return;
-    listFees.push(cost);
-    element.textContent =
-      cost % 1 == 0 ? options.currency(cost) : cost * 100 + " %";
-  });
+
   // trigger submit form
   // root.querySelector("a[prom-submit]").addEventListener("click", function (e) {
   //   e.preventDefault();
@@ -83,6 +89,7 @@ function cartSite(config) {
         removeItem(this);
       });
   }
+
   // handler remove item
   function removeItem(element) {
     let index = listCartItem.findIndex((obj) => obj.elm.contains(element));
@@ -102,6 +109,7 @@ function cartSite(config) {
     countItem.textContent = cart.getCount();
     updateSummaryOrder();
   }
+
   // handler quantity change.
   function updateQuantityItem(countElm, itemId, operation) {
     let count = parseInt(countElm.textContent) + (operation ? 1 : -1);
@@ -114,6 +122,7 @@ function cartSite(config) {
     countItem.textContent = cart.getCount();
     updateSummaryOrder();
   }
+
   function updateTotalItem(element, count) {
     let price = element.getAttribute("item-price");
     let total = price * (count ?? 1);
@@ -123,12 +132,15 @@ function cartSite(config) {
     elm.textContent = options.currency(total);
     elm.setAttribute("item-total", total);
   }
+
+  // update Summary Order
   function updateSummaryOrder() {
     let totalOrder = listCartItem.reduce((count, value) => {
       return (count += Number(
         value.elm.querySelector("span[item-total]").getAttribute("item-total")
       ));
     }, 0);
+    // cal total fee
     let totalFee =
       listFees?.reduce((count, value) => {
         return (count += Number(value % 1 == 0 ? value : totalOrder * value));
@@ -164,6 +176,7 @@ function cartSite(config) {
 }
 // ====== exe ====== //
 let container = document.querySelector("#cart-container");
+
 function renderCartItem(data) {
   //   container.innerHTML = "";
   // container.innerHTML = data;
