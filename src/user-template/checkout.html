@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Page</title>
+    <!------ reference res ----->
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./libs/normalize/normalize.css" />
+    <link rel="stylesheet" href="./libs/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="./libs/jpopup/dist/css/index.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css"
+    />
+    <!------ css res ----->
+    <link rel="stylesheet" href="./css/utilities.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/product.css" />
+    <link rel="stylesheet" href="./css/dropdown.css" />
+    <link rel="stylesheet" href="./css/cart.css" />
+    <link rel="stylesheet" href="./css/checkout.css" />
+  </head>
+  <body>
+    <!------ header ----->
+    <header class="container header">
+      <div class="row align-items-center">
+        <div class="col-9 col-lg-3">
+          <div class="img logo">
+            <img src="./images/rstore-icon.png" alt="" srcset="" />
+          </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-6">
+          <div class="nav d-flex">
+            <a href="#" class="nav-item">sale</a>
+            <a href="#" class="nav-item">features</a>
+            <a href="#" class="nav-item">shirt</a>
+            <a href="#" class="nav-item">pants</a>
+            <a href="#" class="nav-item">contacts</a>
+          </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-3">
+          <div class="actions d-flex">
+            <a id="search-trigger" href="#" class="nav-item">
+              <i class="las la-search"></i
+            ></a>
+            <!-- <a class="nav-item" href="#">Login</a> -->
+            <a href="#" class="nav-item"> <i class="las la-user"></i></a>
+            <!-- <a href="#" class="nav-item">
+                <i class="las la-sign-out-alt"></i>
+              </a> -->
+            <a href="#" class="nav-item">
+              <i class="las la-shopping-bag"></i
+            ></a>
+            <span id="cart-counter" class="impress bold">0</span>
+          </div>
+        </div>
+        <!-- nav - mobile -->
+        <div class="d-block d-lg-none col-3">
+          <div class="actions d-flex">
+            <span id="cart-counter-mobile" class="impress bold">0</span>
+            <a href="#" class="nav-item">
+              <i class="las la-shopping-bag"></i
+            ></a>
+            <a
+              id="menu-trigger"
+              href="#"
+              class="nav-item"
+              style="padding: 0; font-size: 28px"
+            >
+              <i class="las la-bars"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="search-bar">
+        <div class="search-content">
+          <div class="d-flex">
+            <input type="text" placeholder="Search something ..." />
+            <i id="search-close" class="las la-times nav-item"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!------ breadcrum ----->
+    <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
+    <!------ cart ----->
+    <div class="container section">
+      <div id="checkout" class="row section">
+        <div class="col-12 col-lg-7 mb-4">
+          <!------ form ----->
+          <div class="title-table">
+            <h4 class="d-inline-block semi-bold">Customer Info</h4>
+            <div class="line"></div>
+          </div>
+          <div>
+            <form
+              id="formOrder"
+              class="row-contents"
+              id="form-confirm"
+              method="POST"
+            >
+              <div class="control-input">
+                <label>Họ tên người nhận <span class="impress">*</span></label>
+                <input class="mb-3" name="CustomerName" type="text" required />
+              </div>
+              <div class="control-input">
+                <label>Số điện thoại <span class="impress">*</span></label>
+                <input
+                  class="mb-3"
+                  name="CustomerPhone"
+                  type="tel"
+                  pattern="^0\d+"
+                  minlength="9"
+                  maxlength="10"
+                  required
+                />
+              </div>
+              <div class="control-input">
+                <label>Email</label>
+                <input
+                  class="mb-3"
+                  name="CustomerEmail"
+                  type="email"
+                  pattern="[\w+|\W+]*[@@]\w+[.]\w+"
+                />
+              </div>
+              <div class="control-input local">
+                <label>Địa chỉ giao hàng <span class="impress">*</span></label>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div local-province class="dropdown">
+                      <div class="select">
+                        <span>Order by</span>
+                        <i class="las la-angle-down"></i>
+                      </div>
+                      <inputname
+                        name="CustomerProvince"
+                        type="hidden"
+                        required
+                      />
+                      <ul class="dropdown-menu">
+                        <li value="0"><a href="">High</a></li>
+                        <li value="0"><a href="">Low</a></li>
+                        <li value="0"><a href="">Popular</a></li>
+                        <li value="0"><a href="">Popular</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div local-district class="dropdown">
+                      <div class="select">
+                        <span>Order by</span>
+                        <i class="las la-angle-down"></i>
+                      </div>
+                      <input type="hidden" name="CustomerDistrict" required />
+                      <ul class="dropdown-menu">
+                        <li value="0"><a href="">High</a></li>
+                        <li value="0"><a href="">Low</a></li>
+                        <li value="0"><a href="">Popular</a></li>
+                        <li value="0"><a href="">Popular</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <span><span class="error text-sub"></span></span>
+              </div>
+              <div class="control-input">
+                <label
+                  >Số nhà, tên đường (hoặc địa chỉ cụ thể)
+                  <span class="impress">*</span></label
+                >
+                <input
+                  class="mb-3"
+                  name="CustomerAddress"
+                  type="text"
+                  required
+                />
+              </div>
+              <div>
+                <label>Ghi chú</label>
+                <textarea
+                  class="mb-3 d-block w-100"
+                  name="Note"
+                  rows="3"
+                ></textarea>
+              </div>
+              <button type="submit" class="d-none"></button>
+            </form>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5">
+          <div style="margin-bottom: 2.5em">
+            <div class="title-table">
+              <div>
+                <h4 class="d-inline-block semi-bold">Products</h4>
+                <p class="m-none float-right">
+                  <span id="count-items">0</span> items
+                </p>
+              </div>
+              <div class="line"></div>
+              <div class="px-1 mx-2 section">
+                <table class="table table-color">
+                  <tbody>
+                    <tr>
+                      <td>Name</td>
+                      <td class="bold">x2</td>
+                      <td>1000</td>
+                    </tr>
+                    <tr>
+                      <td>Name</td>
+                      <td class="bold">x2</td>
+                      <td>1000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--Cart - Header List-->
+          </div>
+          <div style="margin-bottom: 2.5em">
+            <div class="title-table">
+              <div>
+                <h4 class="d-inline-block semi-bold">Totals</h4>
+                <p class="m-none float-right">
+                  <span id="count-items">0</span> items
+                </p>
+              </div>
+              <div class="line"></div>
+              <div class="px-1 mx-2 section">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>Total</td>
+                      <td order-total="">0 đ</td>
+                    </tr>
+                    <tr class="d-none">
+                      <td>Discount</td>
+                      <td order-promotion="">0 đ</td>
+                    </tr>
+                    <tr>
+                      <td>Fees</td>
+                      <td order-fees fee-cost="1000">0 đ</td>
+                    </tr>
+                    <tr class="semi-bold">
+                      <td>Payment</td>
+                      <td class="impress" order-pay>0 đ</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--Cart - Header List-->
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <a
+          id="send-order"
+          class="btn btn-sm bg-red white w-50 bold"
+          style="max-width: 250px"
+          >Đặt hàng</a
+        >
+      </div>
+    </div>
+    <!------ policy ----->
+    <div class="container-fluid policy">
+      <div class="row">
+        <div class="col-4 policy-item">
+          <div class="img">
+            <img width="45" height="45" src="./icons/wallet.svg" alt="" />
+          </div>
+          <p>fast & free delivery</p>
+        </div>
+        <div class="col-4 policy-item">
+          <div class="img">
+            <img width="45" height="45" src="./icons/shipped.svg" alt="" />
+          </div>
+          <p>fast & free delivery</p>
+        </div>
+        <div class="col-4 policy-item">
+          <div class="img">
+            <img width="45" height="45" src="./icons/security.svg" alt="" />
+          </div>
+          <p>fast & free delivery</p>
+        </div>
+      </div>
+    </div>
+    <!------ footer ----->
+    <div class="container-fluid footer">
+      <div class="row">
+        <div class="col-lg-2 order-lg-1">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Men product</a>
+            <a>Woman product</a>
+            <a>Sale product</a>
+            <a>Features product</a>
+            <a>Contacts us</a>
+          </div>
+        </div>
+        <div class="col-lg-2 order-lg-2">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Men product</a>
+            <a>Woman product</a>
+            <a>Sale product</a>
+          </div>
+        </div>
+        <div class="col-lg-2 order-lg-3">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Men product</a>
+            <a>Woman product</a>
+            <a>Contacts us</a>
+          </div>
+        </div>
+        <div class="col-lg-2 order-lg-4">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Features product</a>
+            <a>Contacts us</a>
+          </div>
+        </div>
+        <div class="col-lg-4 order-lg-0">
+          <h3 style="margin-bottom: 1em">MY SHOP</h3>
+          <p style="opacity: 0.7">
+            Quibusdam ex, nihil harum voluptas aut repellendus dolor quo
+            possimus nesciunt sint cupiditate nostrum. Magni aspernatur
+            provident molestiae, laudantium culpa quasi non.
+          </p>
+          <div class="social footer-links">
+            <a>
+              <img
+                width="40"
+                height="40"
+                src="./icons/instagram.svg"
+                alt=""
+                srcset=""
+              />
+            </a>
+            <a>
+              <img
+                width="40"
+                height="40"
+                src="./icons/facebook.svg"
+                alt=""
+                srcset=""
+              />
+            </a>
+            <a>
+              <img
+                width="40"
+                height="40"
+                src="./icons/youtube.svg"
+                alt=""
+                srcset=""
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <p class="copy-right">
+        &copy Copyright ©2021 All rights reserved | This development by
+        vtoan.2805
+      </p>
+    </div>
+    <!------ referenct res ----->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script src="./libs/jpopup/dist//js/index.min.js"></script>
+    <script src="./js/dropdown.js"></script>
+    <!------ js res ----->
+    <!-- <script src="./js/list-product.js"></script> -->
+    <script src="./js/cart.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/checkout.js"></script>
+  </body>
+</html>
