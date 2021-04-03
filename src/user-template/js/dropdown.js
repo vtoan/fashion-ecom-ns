@@ -1,7 +1,5 @@
 function UIDropDown(callBack, target = ".dropdown") {
   let dropdown = document.querySelector(target);
-  console.log(target);
-  console.log(dropdown);
   let selected = dropdown.querySelector(".select span");
   let showDrop = function (item) {
     item.classList.add("active");
