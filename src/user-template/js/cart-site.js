@@ -188,12 +188,13 @@ function renderCartItem(data) {
     checkOutUri: "/gio-hang",
   });
 }
-window.addEventListener("load", function () {
-  let val = JSON.stringify(cartMng.getData());
-  let path = location.href.replaceAll(/[#!]/g, "");
-  let url = path + "?handler=cartitem&&ids=" + val;
-  fetch(url).then((response) => {
-    if (response.ok) response.text().then(renderCartItem);
-    return null;
-  });
-});
+renderCartItem();
+// window.addEventListener("load", function () {
+//   let val = JSON.stringify(cartMng.getData());
+//   let path = location.href.replaceAll(/[#!]/g, "");
+//   let url = path + "?handler=cartitem&&ids=" + val;
+//   fetch(url).then((response) => {
+//     if (response.ok) response.text().then(renderCartItem);
+//     return null;
+//   });
+// });
