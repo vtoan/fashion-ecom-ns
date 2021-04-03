@@ -1,158 +1,108 @@
-const productInCarts = [];
-const productItems = [
-  {
-    name: "Product 1",
-    price: 100000,
-    image: "./images/product-1.png",
-    type: "woman",
-    description: "This is a description of product 1",
-  },
-  {
-    name: "Product 2",
-    price: 200000,
-    image: "./images/product-2.png",
-    type: "woman",
-    description: "This is a description of product 2",
-  },
-  {
-    name: "Product 3",
-    price: 300000,
-    image: "./images/product-3.png",
-    type: "woman",
-    description: "This is a description of product 3",
-  },
-  {
-    name: "Product 4",
-    price: 100000,
-    image: "./images/product-4.png",
-    type: "men",
-    description: "This is a description of product 4",
-  },
-  {
-    name: "Product 5",
-    price: 200000,
-    image: "./images/product-5.png",
-    type: "men",
-    description: "This is a description of product 5",
-  },
-  {
-    name: "Product 6",
-    price: 300000,
-    image: "./images/product-6.png",
-    type: "men",
-    description: "This is a description of product 6",
-  },
-];
 // ====== helpful ====== //
 function toCurrency(number) {
-  return new Intl.NumberFormat("de-DE").format(number);
+  return new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: "VND",
+  }).format(number);
+}
+// ====== event listener  ====== //
+function addListener(arrElms) {
+  arrElms.forEach((item) => {
+    if (item.elm) item.elm.addEventListener(item.event, item.handle);
+  });
+}
+function removeListener(arrElms) {
+  arrElms.forEach((item) => {
+    if (item.elm) item.elm.removeEventListener(item.event, item.handle);
+  });
+}
+// ======  define - event  ====== //
+function toggleClass(elmOpenQuery, elmCloseQuery, elmTargetQuery, callBack) {
+  let elmOpen = document.querySelector(elmOpenQuery),
+    elmClose = document.querySelector(elmCloseQuery),
+    elmTarget = document.querySelector(elmTargetQuery);
+  let arrElms = [
+    {
+      elm: elmOpen,
+      event: "click",
+      handle: () => {
+        callBack && callBack();
+        elmTarget.classList.add("show");
+      },
+    },
+    {
+      elm: elmClose,
+      event: "click",
+      handle: () => elmTarget.classList.remove("show"),
+    },
+  ];
+  addListener(arrElms);
+  document.addEventListener("unload", () => removeListener(arrElms));
 }
 
-function filterGender(ar, typeGender) {
-  return ar.filter((item) => item.type === typeGender);
+// ======  add cart product event  ====== //
+function updateCountInCart() {
+  cartCounterElm.textContent = cartMng.getCount();
 }
 
-// ====== add cart ====== //
-
-let cartCounterElm = document.querySelector("#cart-counter");
-// defint add cart event
-function handleAddToCart(product) {
-  productInCarts.push(product);
-  cartCounterElm.textContent = productInCarts.length;
-  console.log(product);
-}
-
-// ====== reander product ====== //
-// create one product
-function createProductElm(item) {
-  let colElm = document.createElement("div");
-  colElm.classList.add("col-4");
-  // product elm
-  let productElm = document.createElement("div");
-  productElm.classList.add("product");
-  // content html elm
-  let elmString = `
-        <div class="product-img border">
-          <div class="img">
-            <img src="${item.image}" alt="" srcset="" />
-          </div>
-        </div>
-        <div class="product-content">
-          <p product-name class="mb-none bold">${item.name}</p>
-          <p>${item.description}</p>
-          <p class="bold">${toCurrency(item.price)} VND</p>
-          <a
-              product-add-cart
-              href="javascript:void(0)"
-              class="btn btn-sm btn-anim-no bg-black white d-block border-primary"
-              >ADD TO CART</a
-          >
-        </div>`;
-  productElm.innerHTML = elmString;
-  // append to col.
-  colElm.appendChild(productElm);
-  // attach event add cart to product;
-  let addCartElm = productElm.querySelector("a[product-add-cart]");
-  addCartElm.addEventListener("click", () => handleAddToCart(item));
-  return colElm;
-}
-// create list product and append to container
-function renderProducts(arr, container, title) {
-  // row elm
-  let rowElm = document.createElement("div");
-  rowElm.classList.add("row");
-  // create title tag
-  if (title) {
-    let heading = document.createElement("h3");
-    heading.textContent = title;
-    container.append(heading);
+// ====== view resize ====== //
+function checkViewClient() {
+  let wScreen = window.screen.width;
+  let classNameCouter = "#cart-counter";
+  if (wScreen < 992) {
+    viewModile();
+    classNameCouter += "-mobile";
+  } else {
+    viewLarge();
   }
-  // check empty
-  if (arr.length == 0) {
-    let p = document.createElement("p");
-    p.textContent = "Not find product matched.";
-    container.append(p);
-    return;
-  }
-  // append to container
-  arr.forEach((item) => rowElm.appendChild(createProductElm(item)));
-  container.append(rowElm);
+  cartCounterElm = document.querySelector(classNameCouter);
 }
 
-let container = document.querySelector("#list-product");
-let productMens = filterGender(productItems, "men");
-let productWomans = filterGender(productItems, "woman");
-
-function renderData() {
-  renderProducts(productMens, container, "Men Products");
-  renderProducts(productWomans, container, "Woman Products");
+function viewLarge() {
+  toggleClass("#search-trigger", "#search-close", ".search-bar");
+  //
+  let details = document.querySelector("details");
+  details?.setAttribute("open", "");
 }
-renderData();
 
-// ====== filter ====== //
-let formFilter = document.querySelector("#form-filter");
+function viewModile() {
+  let menuTrigger = document.querySelector("#menu-trigger");
+  var popup = new jPopup({
+    content: `
+    <div class="nav-mobile d-flex">
+      <a id="search-trigger-mobile"  href="#" class="nav-item">search</a>
+      <a href="#" class="nav-item">login</a>
+      <a href="#" class="nav-item">sale</a>
+      <a href="#" class="nav-item">features</a>
+      <a href="#" class="nav-item">men</a>
+      <a href="#" class="nav-item">women</a>
+      <a href="#" class="nav-item">contacts</a>
+    </div>`,
+    transition: "fade",
+  });
 
-// define filter event
-function filter(minVal, maxVal) {
-  if (!minVal) minVal = 0;
-  if (!maxVal) maxVal = Number.MAX_VALUE;
-  let temp = productItems.filter(
-    (item) => item.price >= minVal && item.price <= maxVal
+  toggleClass(
+    "#search-trigger-mobile",
+    "#search-close",
+    ".search-bar",
+    function () {
+      popup.close();
+    }
   );
-  container.innerHTML = "";
-  renderProducts(temp, container, "Filter results");
+
+  menuTrigger.addEventListener("click", function (e) {
+    popup.open();
+  });
 }
 
-// attach event when submit form
-formFilter.addEventListener("submit", function (e) {
-  let minVal = formFilter.querySelector("#min-price").value;
-  let maxVal = formFilter.querySelector("#max-price").value;
-  filter(minVal, maxVal);
-  e.preventDefault();
-});
+// ====== exce ====== //
+var cartMng = new Cart();
+var cartCounterElm;
 
-// attach event when reset form
-formFilter.addEventListener("reset", function (e) {
-  container.innerHTML = "";
-  renderData();
-});
+checkViewClient();
+
+cartMng._getStorage();
+cartCounterElm.textContent = cartMng.getCount();
+
+window.addEventListener("resize", () => checkViewClient());
+window.addEventListener("beforeunload", () => cartMng._saveStorage());

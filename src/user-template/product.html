@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!------ reference res ----->
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./libs/normalize/normalize.css" />
+    <link rel="stylesheet" href="./libs/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="./libs/jpopup/dist/css/index.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css"
+    />
+    <!------ css res ----->
+    <link rel="stylesheet" href="./css/utilities.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/product.css" />
+    <link rel="stylesheet" href="./css/dropdown.css" />
+  </head>
+
+  <body>
+    <!------ header ----->
+    <header class="container header">
+      <div class="row align-items-center">
+        <div class="col-9 col-lg-3">
+          <div class="img logo">
+            <img src="./images/rstore-icon.png" alt="" srcset="" />
+          </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-6">
+          <div class="nav d-flex">
+            <a href="#" class="nav-item">sale</a>
+            <a href="#" class="nav-item">features</a>
+            <a href="#" class="nav-item">shirt</a>
+            <a href="#" class="nav-item">pants</a>
+            <a href="#" class="nav-item">contacts</a>
+          </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-3">
+          <div class="actions d-flex">
+            <a id="search-trigger" href="#" class="nav-item">
+              <i class="las la-search"></i
+            ></a>
+            <!-- <a class="nav-item" href="#">Login</a> -->
+            <a href="#" class="nav-item"> <i class="las la-user"></i></a>
+            <!-- <a href="#" class="nav-item">
+              <i class="las la-sign-out-alt"></i>
+            </a> -->
+            <a href="#" class="nav-item">
+              <i class="las la-shopping-bag"></i
+            ></a>
+            <span id="cart-counter" class="impress bold">0</span>
+          </div>
+        </div>
+        <!-- nav - mobile -->
+        <div class="d-block d-lg-none col-3">
+          <div class="actions d-flex">
+            <span id="cart-counter-mobile" class="impress bold">0</span>
+            <a href="#" class="nav-item">
+              <i class="las la-shopping-bag"></i
+            ></a>
+            <a
+              id="menu-trigger"
+              href="#"
+              class="nav-item"
+              style="padding: 0; font-size: 28px"
+            >
+              <i class="las la-bars"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="search-bar">
+        <div class="search-content">
+          <div class="d-flex">
+            <input type="text" placeholder="Search something ..." />
+            <i id="search-close" class="las la-times nav-item"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!------ breadcrum ----->
+    <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
+    <!------ list product----->
+    <div class="list-product-wrapper section">
+      <div class="container-fluid">
+        <div class="row">
+          <!------ filter ----->
+          <div class="col-12 col-lg-3">
+            <details>
+              <summary
+                class="bold text-4 upper-case"
+                style="margin-bottom: 1em"
+              >
+                Filter products
+              </summary>
+              <form id="filter-form">
+                <input type="checkbox" id="vehicle1" name="jacket" value="1" />
+                <label for="vehicle1">Jackets & Coast</label><br />
+                <input type="checkbox" id="vehicle2" name="t-short" value="2" />
+                <label for="vehicle2">T-Shirts</label><br />
+                <input type="checkbox" id="vehicle3" name="t-short" value="3" />
+                <label for="vehicle2">Shirts</label><br />
+                <input type="checkbox" id="vehicle4" name="t-short" value="3" />
+                <label for="vehicle2">Hoodies</label><br />
+                <!------  ----->
+                <hr style="margin-bottom: 1.5em; width: 60%; margin-left: 0" />
+                <button
+                  class="btn btn-sm bg-black white"
+                  type="submit"
+                  style="margin-right: 1em"
+                >
+                  Apply
+                </button>
+                <button class="btn btn-sm bg-seconday black" type="reset">
+                  Reset
+                </button>
+              </form>
+            </details>
+          </div>
+          <!------ product----->
+          <div class="col-12 col-lg-9">
+            <!------ order ----->
+            <div class="order-by">
+              <div class="row align-items-top justify-content-between">
+                <div style="padding-left: 15px">12 products</div>
+                <div class="dropdown">
+                  <div class="select" style="padding-top: 0">
+                    <span style="font-weight: 500">Order by</span>
+                    <i class="las la-angle-down"></i>
+                  </div>
+                  <input id="filter" type="hidden" name="filter" />
+                  <ul class="dropdown-menu">
+                    <li value="0"><a href="">High</a></li>
+                    <li value="0"><a href="">Low</a></li>
+                    <li value="0"><a href="">Popular</a></li>
+                    <li value="0"><a href="">Popular</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!------ list ----->
+            <div id="list-product">
+              <!-- <p class="data-empty">no matched data!</p> -->
+              <div class="row">
+                <div class="col-6 col-lg-3">
+                  <div class="product-item" data-itemid="1">
+                    <span class="product-sale">- 30%</span>
+                    <a product-link href="/">
+                      <div class="product-img">
+                        <div class="img">
+                          <img src="./images/-3.png" alt="" srcset="" />
+                        </div>
+                      </div>
+                      <div class="product-content">
+                        <p product-name class="mb-none bold">Product 1</p>
+                        <p>This is a description of product 1</p>
+                        <div class="rating">
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="lar la-star"></i>
+                        </div>
+                        <p class="price">300.000 VND</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                  <div class="product-item" data-itemid="1">
+                    <span class="product-sale">- 30%</span>
+                    <a product-link href="/">
+                      <div class="product-img">
+                        <div class="img">
+                          <img src="./images/product-3.png" alt="" srcset="" />
+                        </div>
+                      </div>
+                      <div class="product-content">
+                        <p product-name class="mb-none bold">Product 1</p>
+                        <p>This is a description of product 1</p>
+                        <div class="rating">
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="lar la-star"></i>
+                        </div>
+                        <p class="price">300.000 VND</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                  <div class="product-item" data-itemid="1">
+                    <span class="product-sale">- 30%</span>
+                    <a product-link href="/">
+                      <div class="product-img">
+                        <div class="img">
+                          <img src="./images/product-3.png" alt="" srcset="" />
+                        </div>
+                      </div>
+                      <div class="product-content">
+                        <p product-name class="mb-none bold">Product 1</p>
+                        <p>This is a description of product 1</p>
+                        <div class="rating">
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="lar la-star"></i>
+                        </div>
+                        <p class="price">300.000 VND</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                  <div class="product-item" data-itemid="1">
+                    <span class="product-sale">- 30%</span>
+                    <a product-link href="/">
+                      <div class="product-img">
+                        <div class="img">
+                          <img src="./images/product-3.png" alt="" srcset="" />
+                        </div>
+                      </div>
+                      <div class="product-content">
+                        <p product-name class="mb-none bold">Product 1</p>
+                        <p>This is a description of product 1</p>
+                        <div class="rating">
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="las la-star"></i>
+                          <i class="lar la-star"></i>
+                        </div>
+                        <p class="price">300.000 VND</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!------ paginaton ----->
+            <div class="pagination">
+              <a class="page-item active" href="">1</a>
+              <a class="page-item" href="">2</a>
+              <a class="page-item" href="">3</a>
+              <a class="page-item" href="">4</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------ feature-cost ----->
+    <div class="container-fluid policy">
+      <div class="row">
+        <div class="col-4 policy-item">
+          <div class="img">
+            <img width="45" height="45" src="./icons/wallet.svg" alt="" />
+          </div>
+          <p>fast & free delivery</p>
+        </div>
+        <div class="col-4 policy-item">
+          <div class="img">
+            <img width="45" height="45" src="./icons/shipped.svg" alt="" />
+          </div>
+          <p>fast & free delivery</p>
+        </div>
+        <div class="col-4 policy-item">
+          <div class="img">
+            <img width="45" height="45" src="./icons/security.svg" alt="" />
+          </div>
+          <p>fast & free delivery</p>
+        </div>
+      </div>
+    </div>
+    <!------ footer ----->
+    <div class="container-fluid footer">
+      <div class="row">
+        <div class="col-lg-2 order-lg-1">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Men product</a>
+            <a>Woman product</a>
+            <a>Sale product</a>
+            <a>Features product</a>
+            <a>Contacts us</a>
+          </div>
+        </div>
+        <div class="col-lg-2 order-lg-2">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Men product</a>
+            <a>Woman product</a>
+            <a>Sale product</a>
+          </div>
+        </div>
+        <div class="col-lg-2 order-lg-3">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Men product</a>
+            <a>Woman product</a>
+            <a>Contacts us</a>
+          </div>
+        </div>
+        <div class="col-lg-2 order-lg-4">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Features product</a>
+            <a>Contacts us</a>
+          </div>
+        </div>
+        <div class="col-lg-4 order-lg-0">
+          <h3 style="margin-bottom: 1em">MY SHOP</h3>
+          <p style="opacity: 0.7">
+            Quibusdam ex, nihil harum voluptas aut repellendus dolor quo
+            possimus nesciunt sint cupiditate nostrum. Magni aspernatur
+            provident molestiae, laudantium culpa quasi non.
+          </p>
+          <div class="social footer-links">
+            <a>
+              <img
+                width="40"
+                height="40"
+                src="./icons/instagram.svg"
+                alt=""
+                srcset=""
+              />
+            </a>
+            <a>
+              <img
+                width="40"
+                height="40"
+                src="./icons/facebook.svg"
+                alt=""
+                srcset=""
+              />
+            </a>
+            <a>
+              <img
+                width="40"
+                height="40"
+                src="./icons/youtube.svg"
+                alt=""
+                srcset=""
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <p class="copy-right">
+        &copy Copyright ©2021 All rights reserved | This development by
+        vtoan.2805
+      </p>
+    </div>
+    <!------ referenct res ----->
+    <script src="./libs/jpopup/dist//js/index.min.js"></script>
+    <script src="./js/dropdown.js"></script>
+    <!------ js res ----->
+    <!-- <script src="./js/list-product.js"></script> -->
+    <script src="./js/cart.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/products.js"></script>
+  </body>
+</html>

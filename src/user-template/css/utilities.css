@@ -26,9 +26,17 @@ button {
 .img img {
   width: 100%;
 }
+/*============== icon =============*/
 .las,
 .lar {
   font-size: 24px;
+  padding-top: 3px;
+}
+.icon {
+  font-size: 24px;
+}
+.icon-big {
+  font-size: 1.5em;
 }
 /*============== form =============*/
 input,
@@ -68,9 +76,6 @@ input:invalid,
 .secondary {
   color: var(--secondary);
 }
-.icon-big {
-  font-size: 1.5em;
-}
 /*========== Background ==========*/
 .bg-impress {
   background-color: var(--impress);
@@ -81,13 +86,16 @@ input:invalid,
 .bg-white {
   background-color: var(--bg-primary);
 }
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
 /*============== typography =============*/
 h1,
 h2,
 h3,
 h4,
 h5 {
-  margin: 0 0 1em 0;
+  margin: 0 0 0 0;
   line-height: 1;
 }
 p {
@@ -112,11 +120,8 @@ h4,
 .text-sub {
   font-size: 0.875em;
 }
-.icon {
-  font-size: 24px;
-}
-.big-icon {
-  font-size: 28px;
+.upper-case {
+  text-transform: uppercase;
 }
 @media only screen and (min-width: 62em) {
   h1,
@@ -141,7 +146,7 @@ h4,
   font-weight: 600;
 }
 .semi-bold {
-  font-weight: 400;
+  font-weight: 500;
 }
 .normal {
   font-weight: normal;
@@ -177,17 +182,13 @@ h4,
   .text-lg-right {
     text-align: right;
   }
-  .contents {
-    margin: 0;
-  }
 }
 /*========== Button ==========*/
 button {
   border: none;
   box-shadow: none;
 }
-.btn,
-.btn-classic {
+.btn {
   border-radius: 6px;
   text-align: center;
   transition: all 0.2s;
@@ -199,15 +200,8 @@ button {
 .btn-lg {
   padding: 1em 2.5em;
 }
-.btn:hover {
+.btn-anim:hover {
   box-shadow: 1px 1px 5px -2px black;
-}
-.btn-anim-no:hover {
-  box-shadow: none;
-}
-.btn-bg:hover {
-  box-shadow: none;
-  background-color: var(--primary);
 }
 /*========== Border ==========*/
 [class*="border"] {
@@ -216,19 +210,62 @@ button {
 .border-round {
   border-radius: 50%;
 }
+.border-impress {
+  border: 1px solid;
+  border-color: var(--impress);
+}
 .border-primary {
-  border: 1px solid var(--primary);
+  border: 1px solid;
+  border-color: var(--primary);
 }
 .border-secondary {
-  border: 1px solid var(--secondary);
+  border: 1px solid;
+  border-color: var(--secondary);
 }
 .border-none {
   border: none !important;
   box-shadow: none !important;
 }
-/*============== helpful =============*/
+/*============== table =============*/
+table {
+  width: 100%;
+}
+.table {
+  border-collapse: collapse;
+}
+.table td {
+  padding: 0.75em;
+}
+.table td[scope="row"] {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.table tr {
+  padding: 1em 0;
+}
+.table.table-color tr:nth-child(odd) {
+  background-color: whitesmoke;
+}
+/*============== float =============*/
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+/*============== spacing =============*/
+.mb-padding {
+  margin-left: 0;
+  margin-right: 0;
+}
 .mb-none {
   margin-bottom: 0;
+}
+.m-none {
+  margin: 0;
+}
+.m-auto {
+  margin: 0 auto;
 }
 .w-25 {
   width: 25%;
@@ -242,6 +279,19 @@ button {
 .w-100 {
   width: 100%;
 }
+@media only screen and (min-width: 62em) {
+  .mb-padding {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+/*============== content =============*/
+.section {
+  margin-bottom: 3em !important;
+}
+.heading {
+  margin-bottom: 1.25em !important;
+}
 .no-overflow {
   overflow: hidden;
 }
@@ -252,28 +302,11 @@ button {
 .middle-inline > * {
   vertical-align: middle;
 }
-.row-contents {
-  padding: 0 15px;
-}
-.section {
-  margin-bottom: 2em !important;
-}
-.heading {
-  margin-bottom: 1.25em !important;
-}
 @media only screen and (min-width: 62em) {
   .section {
-    margin-bottom: 4em !important;
+    margin-bottom: 5em !important;
   }
   .heading {
     margin-bottom: 1.5em !important;
   }
-}
-.no-select {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none;
 }

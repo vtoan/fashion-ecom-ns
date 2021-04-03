@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!------ reference res ----->
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./libs/normalize/normalize.css" />
+    <link rel="stylesheet" href="./libs/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="./libs/jpopup/dist/css/index.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!------ css res ----->
+    <link rel="stylesheet" href="./css/utilities.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/gallery.css" />
+    <link rel="stylesheet" href="./css/product-detail.css" />
+  </head>
+  <body>
+    <!------ header ----->
+    <header class="container header">
+      <div class="row align-items-center">
+        <div class="col-9 col-lg-3">
+          <div class="img logo">
+            <img src="./images/rstore-icon.png" alt="" srcset="" />
+          </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-6">
+          <div class="nav d-flex">
+            <a href="#" class="nav-item">sale</a>
+            <a href="#" class="nav-item">features</a>
+            <a href="#" class="nav-item">men</a>
+            <a href="#" class="nav-item">women</a>
+            <a href="#" class="nav-item">contacts</a>
+          </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-3">
+          <div class="actions d-flex">
+            <a id="search-trigger" href="#" class="nav-item">
+              <i class="las la-search"></i
+            ></a>
+            <!-- <a class="nav-item" href="#">Login</a> -->
+            <a href="#" class="nav-item"> <i class="las la-user"></i> </a>
+            <!-- <a href="#" class="nav-item">
+              <i class="las la-sign-out-alt"></i>
+            </a> -->
+            <a href="#" class="nav-item">
+              <i class="las la-shopping-bag"></i
+            ></a>
+            <span id="cart-counter" class="impress bold">0</span>
+          </div>
+        </div>
+        <!-- nav - mobile -->
+        <div class="d-block d-lg-none col-3">
+          <div class="actions d-flex">
+            <span id="cart-counter-mobile" class="impress bold">0</span>
+            <a href="#" class="nav-item">
+              <i class="las la-shopping-bag"></i
+            ></a>
+            <a
+              id="menu-trigger"
+              href="#"
+              class="nav-item"
+              style="padding: 0; font-size: 28px"
+            >
+              <i class="las la-bars"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="search-bar">
+        <div class="search-content">
+          <div class="d-flex">
+            <input type="text" placeholder="Search something ..." />
+            <i id="search-close" class="las la-times nav-item"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!------ breadcrum ----->
+    <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
+    <!------ content ----->
+    <div class="product-detail">
+      <div class="container section pt-5">
+        <div class="row list-wrapper">
+          <div class="col-12 col-md-6 col-lg-7">
+            <div class="gallery">
+              <div class="img-anim">
+                <div
+                  class="img"
+                  style="background-image: url('./images/noimage.jpg')"
+                ></div>
+              </div>
+              <a class="arrow-prev black"
+                ><i class="las la-angle-left icon-big"></i
+              ></a>
+              <a class="arrow-next black"
+                ><i class="las la-angle-right icon-big"></i
+              ></a>
+            </div>
+            <div class="gallery-nav">
+              <div class="img">
+                <img src="./images/product-2.png" loading="lazy" />
+              </div>
+              <div class="img">
+                <img src="./images/product-3.png" loading="lazy" />
+              </div>
+              <div class="img">
+                <img src="./images/product-4.png" loading="lazy" />
+              </div>
+              <div class="img">
+                <img src="./images/product-5.png" loading="lazy" />
+              </div>
+              <div class="img">
+                <img src="./images/product-6.png" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-5">
+            <h1 class="normal text-2">Product Name</h1>
+            <div class="product-info rating">
+              <i class="las la-star"></i>
+              <i class="las la-star"></i>
+              <i class="las la-star"></i>
+              <i class="las la-star"></i>
+              <i class="lar la-star"></i>
+            </div>
+            <div class="text-4 product-info">
+              <!-- <p class="bold mb-3">
+              <span class="underline">Giá :</span>
+              <span class="text-4 red bold d-lg-inline-block mb-1 px-2">
+                1000
+              </span>
+            </p> -->
+              <p>
+                <span>Giá gốc :</span>
+                <del class="normal">1000</del>
+                <span class="impress"> 2000</span>
+              </p>
+            </div>
+            <div class="product-info">
+              <div class="d-flex">
+                <a class="attr-item active" href="">Xanh</a>
+                <a class="attr-item" href="">Do</a>
+                <a class="attr-item disable" href="">Vang</a>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="d-flex">
+                <a class="attr-item active" href="">XS</a>
+                <a class="attr-item" href="">S</a>
+                <a class="attr-item" href="">L</a>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="d-flex align-items-center">
+                <span class="semi-bold" style="margin-right: 1em"
+                  >Quantity</span
+                >
+                <div quantity class="d-flex align-items-center">
+                  <a quantity-add class="btn btn-sm"
+                    ><i class="las la-angle-up"></i
+                  ></a>
+                  <span item-count class="px-3">1</span>
+                  <a quantity-subtract class="btn btn-sm"
+                    ><i class="las la-angle-down"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="group-btns text-center">
+              <a
+                style="margin-bottom: 0.5em"
+                class="d-block add-cart btn btn-sm border-impress upper-case bold"
+                >Add to cart</a
+              >
+              <span class="float-clear text-center d-block"
+                >Or contact us with Facebook
+                <a class="link blue" href="Instance.Messenger"> here </a></span
+              >
+            </div>
+            <div class="product-info">
+              <span class="label">Product info</span>
+              <table class="table table-color">
+                <tbody>
+                  <tr>
+                    <td scope="row">thương hiệu</td>
+                    <td item-related>@Model.Product.BandName</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">phân loại</td>
+                    <td>@Model.Product.CategoryName</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">dây đeo</td>
+                    <td>@Model.Product.WireName</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="product-info">
+              <span class="label">Description</span>
+              <p style="margin-top: 0">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. In
+                officiis hic natus quibusdam saepe placeat reprehenderit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!------ feedback ----->
+    <div class="container section" style="padding: 0 15px">
+      <h3 class="semi-bold">User's Feedbacks</h3>
+      <div class="line"></div>
+      <div class="row">
+        <div class="col-12 col-lg-7" style="margin-bottom: 1.5em">
+          <div class="feedback-item">
+            <div class="d-flex align-items-center">
+              <span class="user-name">John Wick</span>
+              <span class="rating">
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="lar la-star"></i>
+              </span>
+            </div>
+            <p>
+              - Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Repellat possimus soluta officiis repudiandae accusantium at
+              perferendis tenetur illum repellendus. Neque, natus quaerat
+              blanditiis quod alias unde atque ad beatae quasi.
+            </p>
+          </div>
+          <div class="feedback-item">
+            <div class="d-flex align-items-center">
+              <span class="user-name">John Wick</span>
+              <span class="rating">
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="las la-star"></i>
+                <i class="lar la-star"></i>
+              </span>
+            </div>
+            <p>
+              - Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Repellat possimus soluta officiis repudiandae accusantium at
+              perferendis tenetur illum repellendus. Neque, natus quaerat
+              blanditiis quod alias unde atque ad beatae quasi.
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5">
+          <p class="semi-bold upper-case">send feedback</p>
+          <form id="feedbackForm">
+            <div class="rating-form d-flex justify-content-start">
+              <input type="radio" id="male" name="gender" value="male" />
+              <!-- <label for="male">Male</label><br /> -->
+              <input type="radio" id="female" name="gender" value="female" />
+              <!-- <label for="female">Female</label><br /> -->
+              <input type="radio" id="other" name="gender" value="other" />
+              <input type="radio" id="other" name="gender" value="other" />
+              <input type="radio" id="other" name="gender" value="other" />
+              <!-- <label for="other">Other</label> -->
+            </div>
+            <p style="padding-top: 1em">
+              <textarea
+                class="mb-3 d-block w-100"
+                name="Note"
+                rows="3"
+                placeholder="enter something .."
+              ></textarea>
+            </p>
+            <a
+              style="margin-bottom: 0.5em"
+              class="btn btn-sm border-impress upper-case bold"
+              >Submit</a
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+    <!------ feature-cost ----->
+    <div class="container-fluid policy">
+      <div class="row">
+        <div class="col-4 policy-item">
+          <div class="img">
+            <img width="45" height="45" src="./icons/wallet.svg" alt="" />
+          </div>
+          <p>fast & free delivery</p>
+        </div>
+        <div class="col-4 policy-item">
+          <div class="img">
+            <img width="45" height="45" src="./icons/shipped.svg" alt="" />
+          </div>
+          <p>fast & free delivery</p>
+        </div>
+        <div class="col-4 policy-item">
+          <div class="img">
+            <img width="45" height="45" src="./icons/security.svg" alt="" />
+          </div>
+          <p>fast & free delivery</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid footer">
+      <div class="row">
+        <div class="col-lg-2 order-lg-1">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Men product</a>
+            <a>Woman product</a>
+            <a>Sale product</a>
+            <a>Features product</a>
+            <a>Contacts us</a>
+          </div>
+        </div>
+        <div class="col-lg-2 order-lg-2">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Men product</a>
+            <a>Woman product</a>
+            <a>Sale product</a>
+          </div>
+        </div>
+        <div class="col-lg-2 order-lg-3">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Men product</a>
+            <a>Woman product</a>
+            <a>Contacts us</a>
+          </div>
+        </div>
+        <div class="col-lg-2 order-lg-4">
+          <h4 class="footer-title">Quick links</h4>
+          <div class="footer-items footer-links">
+            <a>Features product</a>
+            <a>Contacts us</a>
+          </div>
+        </div>
+        <div class="col-lg-4 order-lg-0">
+          <h3 style="margin-bottom: 1em">MY SHOP</h3>
+          <p style="opacity: 0.7">
+            Quibusdam ex, nihil harum voluptas aut repellendus dolor quo
+            possimus nesciunt sint cupiditate nostrum. Magni aspernatur
+            provident molestiae, laudantium culpa quasi non.
+          </p>
+          <div class="social footer-links">
+            <a>
+              <img
+                width="40"
+                height="40"
+                src="./icons/instagram.svg"
+                alt=""
+                srcset=""
+              />
+            </a>
+            <a>
+              <img
+                width="40"
+                height="40"
+                src="./icons/facebook.svg"
+                alt=""
+                srcset=""
+              />
+            </a>
+            <a>
+              <img
+                width="40"
+                height="40"
+                src="./icons/youtube.svg"
+                alt=""
+                srcset=""
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <p class="copy-right">
+        &copy Copyright ©2021 All rights reserved | This development by
+        vtoan.2805
+      </p>
+    </div>
+
+    <!------ referenct res ----->
+    <script src="./libs/jpopup/dist//js/index.min.js"></script>
+    <!------ js res ----->
+    <script src="./js/cart.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/gallary.js"></script>
+    <script src="./js/product-detail.js"></script>
+    <script>
+      Gallery();
+    </script>
+  </body>
+</html>
