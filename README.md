@@ -30,4 +30,5 @@ Build an ecommerce web site with minimum functionality below:
 - Line Awesome - https://icons8.com/line-awesome
 
 # ERD
+![Image Erd](https://github.com/vtoan/fashion-ecom-ns/blob/doc/docs/fashion_ns_ecom_db.png)
 
