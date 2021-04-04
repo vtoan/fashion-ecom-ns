@@ -32,3 +32,5 @@ Build an ecommerce web site with minimum functionality below:
 # ERD
 ![Image Erd](https://github.com/vtoan/fashion-ecom-ns/blob/doc/docs/fashion_ns_ecom_db.png)
 
+# Service Diagram
+![Image Service](https://github.com/vtoan/fashion-ecom-ns/blob/doc/docs/service%20diagram.png)
