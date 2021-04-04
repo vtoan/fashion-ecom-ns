@@ -28,3 +28,6 @@ Build an ecommerce web site with minimum functionality below:
 - Normalize - https://necolas.github.io/normalize.css/
 - Bootstrap (Grid System) - https://github.com/twbs/bootstrap
 - Line Awesome - https://icons8.com/line-awesome
+
+# ERD
+
