@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace BUS.Domains
@@ -15,6 +16,8 @@ namespace BUS.Domains
         public string ProductDescription { get; set; }
         public int? CategoryId { get; set; }
         public int? TypeID { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateModified { get; set; }
         //Nav property
         public virtual TypeProduct Type { get; set; }
         public virtual Category Category { get; set; }
