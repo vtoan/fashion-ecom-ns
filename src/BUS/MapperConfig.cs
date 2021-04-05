@@ -1,5 +1,7 @@
 ﻿using System;
 using AutoMapper;
+using BUS.Domains;
+using Shared.ViewModels;
 
 namespace BUS
 {
@@ -7,7 +9,15 @@ namespace BUS
     {
         public MapperConfig()
         {
-
+            //Category
+            CreateMap<CategoryVM, Category>();
+            CreateMap<Category, CategoryVM>();
+            //Fee
+            CreateMap<FeeVM, Fee>();
+            CreateMap<Fee, Fee>();
+            //Type Product
+            CreateMap<TypeProductVM, TypeProduct>();
+            CreateMap<TypeProduct, TypeProductVM>();
         }
     }
 }
