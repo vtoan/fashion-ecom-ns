@@ -1,6 +1,6 @@
 using Shared.ViewModels;
 
-namespace BUS.Interfaces
+namespace BUS.Interfaces.Services
 {
     public interface ITypeProductService :
         IGet<TypeProductVM>,

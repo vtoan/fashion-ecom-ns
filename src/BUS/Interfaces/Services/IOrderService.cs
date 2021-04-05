@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Shared.ViewModels;
 
-namespace BUS.Interfaces
+namespace BUS.Interfaces.Services
 {
     public interface IOrderService :
         IGet<OrderVM>,

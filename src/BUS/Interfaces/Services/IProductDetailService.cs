@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using BUS.Domains;
 using Shared.ViewModels;
 
-namespace BUS.Interfaces
+namespace BUS.Interfaces.Services
 {
     public interface IProductDetailService :
          IGet<ProductDetailVM>,

@@ -4,7 +4,7 @@ using BUS.Domains;
 using BUS.Enums;
 using Shared.ViewModels;
 
-namespace BUS.Interfaces
+namespace BUS.Interfaces.Services
 {
     public interface IProductService :
         IGet<ProductVM>,
