@@ -14,7 +14,7 @@ namespace BUS.Domains
         public int? CategoryId { get; set; }
         public int? TypeID { get; set; }
         //Nav property
-        public Type Type { get; set; }
+        public TypeProduct Type { get; set; }
         public Category Category { get; set; }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace BUS.Domains
 {
-    public class Type
+    public class TypeProduct
     {
         public int Id { get; set; }
         public string Name { get; set; }
