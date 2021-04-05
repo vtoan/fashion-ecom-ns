@@ -32,7 +32,7 @@ Build an ecommerce web site with minimum functionality below:
 # ERD
 ![Image Erd](https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/fashion_ns_ecom_db.png)
 
-# Service Diagram
+# Service Class Diagram
 ![Image Service](https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/service%20diagram.png)
 
 # Use EF Migrations on different Assembly
