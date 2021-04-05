@@ -27,7 +27,7 @@ namespace DAO
             modelBuilder.Entity<Category>().Property(p => p.Name).HasMaxLength(50);
             //Fee
             modelBuilder.Entity<Fee>().Property(p => p.Name).HasMaxLength(100);
-            modelBuilder.Entity<Fee>().Property(p => p.Cost).HasColumnType("deciaml(2,2)");
+            modelBuilder.Entity<Fee>().Property(p => p.Cost).HasColumnType("decimal(2,2)");
             //Order
             modelBuilder.Entity<Order>().Property(o => o.DateCreated).HasColumnType("smalldatetime");
             modelBuilder.Entity<Order>().Property(o => o.CustomerName).HasMaxLength(250);
@@ -41,7 +41,7 @@ namespace DAO
             modelBuilder.Entity<Order>().Property(o => o.Fees).HasMaxLength(150);
             //OrderDetail
             modelBuilder.Entity<OrderDetail>().HasKey(od => new { od.OrderId, od.ProductId });
-            modelBuilder.Entity<OrderDetail>().Property(p => p.Discount).HasColumnType("deciaml(2,2)");
+            modelBuilder.Entity<OrderDetail>().Property(p => p.Discount).HasColumnType("decimal(2,2)");
             //Product
             modelBuilder.Entity<Product>().Property(p => p.Name).HasMaxLength(250);
             modelBuilder.Entity<Product>().Property(p => p.Image).HasMaxLength(150);
@@ -57,7 +57,7 @@ namespace DAO
             modelBuilder.Entity<Promotion>().Property(p => p.ToDate).HasColumnType("smalldatetime");
             modelBuilder.Entity<Promotion>().Property(p => p.FromDate).HasColumnType("smalldatetime");
             modelBuilder.Entity<Promotion>().Property(p => p.isAll).HasDefaultValue(false);
-            modelBuilder.Entity<Promotion>().Property(p => p.Discount).HasColumnType("deciaml(2,2)");
+            modelBuilder.Entity<Promotion>().Property(p => p.Discount).HasColumnType("decimal(2,2)");
             modelBuilder.Entity<Promotion>().Property(p => p.TypeIds).HasMaxLength(20);
             modelBuilder.Entity<Promotion>().Property(p => p.CateIds).HasMaxLength(30);
             modelBuilder.Entity<Promotion>().Property(p => p.ProductIds).HasMaxLength(250);
