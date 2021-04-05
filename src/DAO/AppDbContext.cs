@@ -15,6 +15,7 @@ namespace DAO
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductDetail> ProductDetails { get; set; }
         public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
