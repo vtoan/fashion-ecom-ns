@@ -29,6 +29,10 @@ Build an ecommerce web site with minimum functionality below:
 - Bootstrap (Grid System) - https://github.com/twbs/bootstrap
 - Line Awesome - https://icons8.com/line-awesome
 
+# Architecture 
+## BackEnd Project
+![BackEnd Project]()
+
 # ERD
 ![Image Erd](https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/fashion_ns_ecom_db.png)
 
