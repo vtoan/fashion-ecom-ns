@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace BUS.Domains
 {
     public class Product
@@ -14,7 +16,8 @@ namespace BUS.Domains
         public int? CategoryId { get; set; }
         public int? TypeID { get; set; }
         //Nav property
-        public TypeProduct Type { get; set; }
-        public Category Category { get; set; }
+        public virtual TypeProduct Type { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
     }
 }
