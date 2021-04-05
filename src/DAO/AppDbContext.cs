@@ -53,6 +53,9 @@ namespace DAO
             //ProductDetail
             modelBuilder.Entity<ProductDetail>().Property(p => p.Size).HasMaxLength(20);
             modelBuilder.Entity<ProductDetail>().Property(p => p.Color).HasMaxLength(20);
+            //Rating
+            modelBuilder.Entity<Rating>().HasKey(od => new { od.ProductId, od.UserId });
+            modelBuilder.Entity<Rating>().Property(p => p.Feedback).HasMaxLength(250);
             //Config Promotion
             modelBuilder.Entity<Promotion>().Property(p => p.ToDate).HasColumnType("smalldatetime");
             modelBuilder.Entity<Promotion>().Property(p => p.FromDate).HasColumnType("smalldatetime");

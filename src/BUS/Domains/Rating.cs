@@ -7,7 +7,7 @@ namespace BUS.Domains
         public int DateCreated { get; set; }
         public int Feedback { get; set; }
         // nav property
-        public User User { get; set; }
-        public Product Product { get; set; }
+        public virtual User User { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
