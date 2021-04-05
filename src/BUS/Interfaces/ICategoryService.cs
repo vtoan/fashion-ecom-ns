@@ -2,11 +2,11 @@ using Shared.ViewModels;
 
 namespace BUS.Interfaces
 {
-    public interface ICategoryService :
-        IGet<CategoryVM>,
-        IGetList<CategoryVM>,
-        IAdd<CategoryVM>,
-        IUpdate<CategoryVM>,
-        IDelete<CategoryVM>
+    public interface ITypeProductService :
+        IGet<TypeProductVM>,
+        IGetList<TypeProductVM>,
+        IAdd<TypeProductVM>,
+        IUpdate<TypeProductVM>,
+        IDelete<TypeProductVM>
     { }
 }
