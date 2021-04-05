@@ -36,10 +36,15 @@ Build an ecommerce web site with minimum functionality below:
 ![Image Service](https://github.com/vtoan/fashion-ecom-ns/blob/doc/docs/service%20diagram.png)
 
 # Use EF Migrations on different Assembly
+- On Assembly contain BbContext, with "Core" is Project StartUp
 ## add migrations
-- On Assembly contain BbContext 
 ```
     dotnet ef migrations add Init -s ../Core
 ```
-With "Core" is Project StartUp
+## database update
+```
+    dotnet ef database update -s ../Core
+```
+
+
 
