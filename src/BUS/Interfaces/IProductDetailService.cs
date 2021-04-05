@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using BUS.Domains;
+using Shared.ViewModels;
 
 namespace BUS.Interfaces
 {
     public interface IProductDetailService :
-         IGet<ProductDetail>,
-         IAdd<ProductDetail>,
-         IUpdate<ProductDetail>,
-         IDelete<ProductDetail>
+         IGet<ProductDetailVM>,
+         IAdd<ProductDetailVM>,
+         IUpdate<ProductDetailVM>,
+         IDelete<ProductDetailVM>
     {
-        ICollection<ProductDetail> GetList(int productId, string size, string color);
+        ICollection<ProductDetailVM> GetList(int productId, string size, string color);
     }
 }
