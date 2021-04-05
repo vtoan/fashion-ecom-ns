@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using BUS.Domains;
 using Core.ServiceExtension;
 using DAO;
@@ -34,10 +35,14 @@ namespace Core
             //Db
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("default")));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
-            //My Servie
+
+            //Reference Service;
+            services.AddAutoMapper(typeof(Startup));
+
+            //My Service
             services.AddBUS();
             services.AddDAO();
-            //
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
