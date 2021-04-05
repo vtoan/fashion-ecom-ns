@@ -92,13 +92,101 @@
     </header>
     <!------ breadcrum ----->
     <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
-
     <!------ cart ----->
     <div class="container section">
-      <div id="cart" class="list-wrapper">
-        <div class="row">
-          <div class="col-12 col-lg-7 section">
-            <!------ cart - header list ----->
+      <div id="checkout" class="row section">
+        <div class="col-12 col-lg-7 mb-4">
+          <!------ form ----->
+          <div class="title-table">
+            <h4 class="d-inline-block semi-bold">Customer Info</h4>
+            <div class="line"></div>
+          </div>
+          <div>
+            <form
+              id="formOrder"
+              class="row-contents"
+              style="margin-bottom: 3em"
+              id="form-confirm"
+              method="POST"
+              action=""
+            >
+              <div class="control-input">
+                <label>Họ tên người nhận <span class="impress">*</span></label>
+                <input class="mb-3" name="CustomerName" type="text" required />
+              </div>
+              <div class="control-input">
+                <label>Số điện thoại <span class="impress">*</span></label>
+                <input
+                  class="mb-3"
+                  name="CustomerPhone"
+                  type="tel"
+                  pattern="^0\d+"
+                  minlength="9"
+                  maxlength="10"
+                  required
+                />
+              </div>
+              <div class="control-input">
+                <label>Email</label>
+                <input
+                  class="mb-3"
+                  name="CustomerEmail"
+                  type="email"
+                  pattern="[\w+|\W+]*[@@]\w+[.]\w+"
+                />
+              </div>
+              <div class="control-input local">
+                <label>Địa chỉ giao hàng <span class="impress">*</span></label>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div local-province class="dropdown">
+                      <div class="select">
+                        <span>Order by</span>
+                        <i class="las la-angle-down"></i>
+                      </div>
+                      <input name="CustomerProvince" type="hidden" required />
+                      <ul class="dropdown-menu"></ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div local-district class="dropdown">
+                      <div class="select">
+                        <span>Order by</span>
+                        <i class="las la-angle-down"></i>
+                      </div>
+                      <input type="hidden" name="CustomerDistrict" required />
+                      <ul class="dropdown-menu"></ul>
+                    </div>
+                  </div>
+                </div>
+                <span><span class="error text-sub"></span></span>
+              </div>
+              <div class="control-input">
+                <label
+                  >Số nhà, tên đường (hoặc địa chỉ cụ thể)
+                  <span class="impress">*</span></label
+                >
+                <input
+                  class="mb-3"
+                  name="CustomerAddress"
+                  type="text"
+                  required
+                />
+              </div>
+              <div>
+                <label>Ghi chú</label>
+                <textarea
+                  class="mb-3 d-block w-100"
+                  name="Note"
+                  rows="3"
+                ></textarea>
+              </div>
+              <button type="submit" class="d-none"></button>
+            </form>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5">
+          <div style="margin-bottom: 2.5em">
             <div class="title-table">
               <div>
                 <h4 class="d-inline-block semi-bold">Products</h4>
@@ -107,118 +195,68 @@
                 </p>
               </div>
               <div class="line"></div>
-            </div>
-            <!------ cart - list ----->
-            <div id="cart-container">
-              <!-- <p class="text-center secondary">Loading ...</p> -->
-              <div class="cart-item mb-3" item-id="1">
-                <div class="row row-contents align-items-lg-center">
-                  <div class="col-3 col-lg-2">
-                    <div class="img">
-                      <img
-                        width="100"
-                        class="border"
-                        src="./images/product-1.png"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-7 col-lg-9">
-                    <div class="row align-items-center">
-                      <div class="col-12 col-lg-4">
-                        <p class="text-4">Name</p>
-                        <span class="text-4 impress bold">2000</span>
-                        <del class="normal text-sub">3000</del>
-                      </div>
-                      <div class="col-12 col-lg-4">
-                        <div class="d-flex align-items-center">
-                          <a quantity-add class="btn btn-sm"
-                            ><i class="las la-angle-up"></i
-                          ></a>
-                          <span item-count item-price="2000" class="px-3"
-                            >1</span
-                          >
-                          <a quantity-subtract class="btn btn-sm"
-                            ><i class="las la-angle-down"></i
-                          ></a>
-                        </div>
-                      </div>
-                      <div class="col-12 col-lg-4">
-                        <span class="d-block">Tổng: </span>
-                        <span item-total="2000" class="text-4 semi-bold"
-                          >2000</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-2 col-lg-1 text-right">
-                    <a
-                      quantity-remove
-                      class="btn btn-no impress remove"
-                      href="javascript:void(0)"
-                      ><i class="icon las la-times"></i
-                    ></a>
-                  </div>
-                  <hr class="mx-3 white w-100" />
-                </div>
+              <div class="px-1 mx-2 section">
+                <table class="table table-color">
+                  <tbody>
+                    <tr>
+                      <td>Name</td>
+                      <td class="bold">x2</td>
+                      <td>1000</td>
+                    </tr>
+                    <tr>
+                      <td>Name</td>
+                      <td class="bold">x2</td>
+                      <td>1000</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
+            <!--Cart - Header List-->
           </div>
-          <div class="col-12 col-lg-5 section">
-            <!------ cart - header total ----->
+          <div style="margin-bottom: 2.5em">
             <div class="title-table">
-              <h4 class="d-inline-block semi-bold">Totals</h4>
+              <div>
+                <h4 class="d-inline-block semi-bold">Totals</h4>
+                <p class="m-none float-right">
+                  <span id="count-items">0</span> items
+                </p>
+              </div>
               <div class="line"></div>
+              <div class="px-1 mx-2 section">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>Total</td>
+                      <td>0 đ</td>
+                    </tr>
+                    <!-- <tr class="d-none">
+                      <td>Discount</td>
+                      <td>0 đ</td>
+                    </tr> -->
+                    <tr>
+                      <td>Fees</td>
+                      <td>0 đ</td>
+                    </tr>
+                    <tr class="semi-bold">
+                      <td>Payment</td>
+                      <td class="impress">0 đ</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <!------ cart - promote ----->
-            <!-- <div style="margin-bottom: 1em">
-              <input
-                prom-code
-                name="promotion"
-                style="width: 70%"
-                type="text"
-                placeholder="Promotion Code"
-              />
-              <a
-                prom-submit
-                class="btn btn-sm btn-anim-no border-impress float-right "
-                >Apply</a
-              >
-            </div> -->
-            <!------ cart - table ----->
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>Total</td>
-                  <td order-total="">0 đ</td>
-                </tr>
-                <!-- <tr class="d-none">
-                  <td>Discount</td>
-                  <td order-promotion="">0 đ</td>
-                </tr> -->
-                <tr>
-                  <td>Fees</td>
-                  <td order-fees fee-cost="1000">0 đ</td>
-                </tr>
-                <tr class="semi-bold">
-                  <td>Payment</td>
-                  <td class="impress" order-pay>0 đ</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-12 text-center pt-4">
-            <form method="POST">
-              <button
-                checkout
-                class="btn btn-sm w-50 border-impress btn-submit"
-                style="max-width: 250px"
-                type="submit"
-              >
-                Tiếp tục
-              </button>
-            </form>
+            <!--Cart - Header List-->
           </div>
         </div>
+      </div>
+      <div class="text-center">
+        <a
+          id="send-order"
+          class="d-inline-block btn btn-sm w-50 border-impress btn-anim"
+          style="max-width: 250px"
+          >Đặt hàng</a
+        >
       </div>
     </div>
     <!------ policy ----->
@@ -325,9 +363,11 @@
     </div>
     <!------ referenct res ----->
     <script src="./libs/jpopup/dist//js/index.min.js"></script>
+    <script src="./js/dropdown.js"></script>
     <!------ js res ----->
+    <!-- <script src="./js/list-product.js"></script> -->
     <script src="./js/cart.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/cart-site.js"></script>
+    <script src="./js/checkout.js"></script>
   </body>
 </html>

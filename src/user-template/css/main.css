@@ -6,7 +6,6 @@
   font-size: 3em;
   margin-bottom: 1em;
 }
-
 .title-float {
   text-align: center;
   position: absolute;
@@ -22,17 +21,26 @@
     font-size: inherit;
   }
 }
-/*============== 1.header =============*/
+.line {
+  background-color: var(--bg-secondary);
+  height: 1px;
+  width: 100%;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+.rating {
+  color: #faad14;
+}
+/*============== header =============*/
 .header {
   padding-top: 1.25em;
   padding-bottom: 1.25em;
   position: relative;
 }
-
 .logo {
   width: 45%;
 }
-
+/*============== nav =============*/
 .nav {
   justify-content: space-between;
   align-content: center;
@@ -49,17 +57,16 @@
 .nav-item:hover {
   color: var(--impress);
 }
-
+/*============== action =============*/
 .actions {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
-
 .actions #cart-counter {
   line-height: 1.6;
 }
-
+/*============== search-bar =============*/
 .search-bar {
   background-color: var(--bg-primary);
   position: absolute;
@@ -70,7 +77,6 @@
   transition: 0.3s ease-in-out;
   z-index: 99;
 }
-
 .search-bar .search-content {
   position: absolute;
   padding: 1.7em 15px;
@@ -86,17 +92,14 @@
     padding: 1.4em 132px 1.4em 132px;
   }
 }
-
 .search-bar.show {
   top: 0;
 }
-
 .search-bar .d-flex {
   justify-content: space-evenly;
   justify-items: center;
   align-items: center;
 }
-
 .search-bar input {
   border: none;
   width: 90%;
@@ -106,12 +109,10 @@
 .search-bar input:focus {
   outline: none !important;
 }
-
 .search-bar .nav-item {
   padding-right: 0;
 }
-
-/*============== 2.nav - mobile =============*/
+/*============== nav - mobile =============*/
 .nav-mobile {
   flex-flow: column;
   font-size: 1.6em;
@@ -119,8 +120,7 @@
 .nav-mobile .nav-item {
   margin-bottom: 1em;
 }
-
-/*============== 4.product =============*/
+/*============== product =============*/
 .product-item {
   text-align: center;
   font-weight: 400;
@@ -128,7 +128,6 @@
   margin-bottom: 4em;
   position: relative;
 }
-
 .product-item .product-sale {
   background-color: var(--impress);
   padding: 0.25em 0.75em;
@@ -140,8 +139,7 @@
   color: white;
   font-weight: 500;
 }
-
-.product-img {
+.product-item .product-img {
   position: relative;
   padding-top: 110%;
   background-image: url(../icons/no-img.png);
@@ -150,11 +148,11 @@
   transition: all 0.3s;
 }
 
-.product-img:hover {
+.product-item .product-img:hover {
   transform: scale(1.1);
 }
 
-.product-img .img {
+.product-item .product-img .img {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -162,7 +160,7 @@
   right: 0;
 }
 
-.product-img img {
+.product-item .product-img img {
   border-radius: 10px;
 }
 
@@ -180,22 +178,18 @@
   color: var(--primary);
 }
 
-.product-content {
+.product-item .product-content {
   padding-top: 1em;
 }
 
-.product-content .rating {
-  color: #faad14;
-}
-
-.product-content .price {
+.product-item .product-content .price {
   font-weight: 500;
 }
 
-.product-content p[product-name]:hover {
+.product-item .product-content p[product-name]:hover {
   color: var(--impress);
 }
-/*============== 7.policy =============*/
+/*============== policy =============*/
 .policy {
   padding-top: 5em;
   padding-bottom: 4em;
@@ -204,24 +198,20 @@
   text-transform: capitalize;
   font-weight: 400;
 }
-
 .policy-item {
   align-self: flex-start;
 }
-/*============== 8.footer =============*/
+/*============== footer =============*/
 .footer {
   background-color: var(--primary);
   color: var(--bg-primary);
 }
-
 .footer div[class="row"] {
   padding: 4em 2em;
 }
-
 .footer > div[class^="col-"] {
   padding: 0 2em;
 }
-
 .footer-title {
   margin-bottom: 2em;
   font-weight: 400;
@@ -229,36 +219,46 @@
 .footer-items {
   cursor: pointer;
 }
-
 .footer-links > a {
   opacity: 0.7;
 }
-
 .footer-links > a:hover {
   opacity: 1;
 }
 .footer-items {
   margin-bottom: 2em;
 }
-
 .footer-items > a {
   color: inherit;
   display: block;
   margin-bottom: 1em;
 }
-
 .copy-right {
   text-align: center;
   opacity: 0.7;
   padding-bottom: 1.5em;
   margin: 0;
 }
-
 .social {
   padding: 1em 0;
   cursor: pointer;
 }
-
 .social > a {
   padding-right: 1em;
+}
+/*============== breadcrumb =============*/
+.breadcrumb {
+  background-color: var(--bg-secondary);
+  padding: 1em 0;
+  text-align: center;
+  font-weight: 500;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.breadcrumb a:hover:not(:last-child) {
+  color: var(--impress);
+}
+
+.breadcrumb a:last-child {
+  pointer-events: none;
 }

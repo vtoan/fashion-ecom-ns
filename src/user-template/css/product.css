@@ -1,21 +1,6 @@
-/*============== breadcrumb =============*/
-.breadcrumb {
-  background-color: var(--bg-secondary);
-  padding: 1em 0;
-  text-align: center;
-  font-weight: 500;
-  text-transform: capitalize;
-  cursor: pointer;
-}
-
-.breadcrumb a:hover {
-  color: var(--impress);
-}
-
 details {
   cursor: pointer;
 }
-
 #filter-form {
   margin-bottom: 2em;
 }
@@ -27,25 +12,24 @@ details {
 .list-wrapper {
   padding: 0 15px;
 }
-
+.list-product-wrapper {
+  padding: 0 30px;
+}
 .order-by {
   margin-bottom: 1em;
 }
-
 .data-empty {
   padding: 10em 0;
   text-align: center;
   opacity: 0.6;
   text-transform: uppercase;
 }
-
 /*============== pagination =============*/
 .pagination {
   display: flex;
   justify-content: center;
   cursor: pointer;
 }
-
 .page-item {
   padding: 0.5em 1em;
   border-radius: 6px;
@@ -53,13 +37,11 @@ details {
   margin-left: 1em;
   color: var(--primary);
 }
-
 .page-item.active {
   pointer-events: none;
   color: var(--bg-primary);
   background-color: var(--impress);
 }
-
 .page-item:hover {
   background-color: var(--bg-secondary);
 }

@@ -28,3 +28,18 @@ Build an ecommerce web site with minimum functionality below:
 - Normalize - https://necolas.github.io/normalize.css/
 - Bootstrap (Grid System) - https://github.com/twbs/bootstrap
 - Line Awesome - https://icons8.com/line-awesome
+
+# ERD
+![Image Erd](https://github.com/vtoan/fashion-ecom-ns/blob/doc/docs/fashion_ns_ecom_db.png)
+
+# Service Diagram
+![Image Service](https://github.com/vtoan/fashion-ecom-ns/blob/doc/docs/service%20diagram.png)
+
+# Use EF Migrations on different Assembly
+## add migrations
+- On Assembly contain BbContext 
+```
+    dotnet ef migrations add Init -s ../Core
+```
+With "Core" is Project StartUp
+

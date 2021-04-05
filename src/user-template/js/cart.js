@@ -1,6 +1,11 @@
 function Cart() {
-  let order = [];
-  let count = 0;
+  let order = [
+    {
+      ProductId: 1,
+      Quantity: 1,
+    },
+  ];
+  let count = 1;
   this.setData = function (asset) {
     if (!asset) return;
     order = asset;
@@ -16,26 +21,26 @@ function Cart() {
     return order.find((i) => i.ProductId == id);
   };
   this.getCount = function () {
-    return count;
+    return order.reduce((accur, item) => (accur += item.Quantity), 0);
   };
   this.isEmpty = function () {
     if (!order || order.length == 0) return true;
     return false;
   };
-  this.addItem = function (id) {
+  this.addItem = function (id, quantity = 1) {
     id = Number(id);
     let index = order.findIndex((item) => item.ProductId == id);
-    if (index >= 0) order[index].Quantity++;
-    else
+    if (index >= 0) {
+      order[index].Quantity += quantity;
+    } else
       order.push({
         ProductId: id,
-        Quantity: 1,
+        Quantity: quantity,
       });
-    count++;
-    console.log(order);
   };
   this.changeQuantityItem = function (id, operation) {
     if (this.isEmpty());
+    id = Number(id);
     let indx = order.findIndex((i) => i.ProductId == id);
     if (indx < 0) return;
     if (operation) {
@@ -74,7 +79,7 @@ function Cart() {
         cart = data[1];
       }
     }
-    if (cart) this.setData (JSON.parse(cart));
-    this.setData([])
+    // if (cart) this.setData(JSON.parse(cart));
+    // this.setData([]);
   };
 }

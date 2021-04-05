@@ -1,3 +1,10 @@
+// ====== helpful ====== //
+function toCurrency(number) {
+  return new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: "VND",
+  }).format(number);
+}
 // ====== event listener  ====== //
 function addListener(arrElms) {
   arrElms.forEach((item) => {
@@ -34,26 +41,15 @@ function toggleClass(elmOpenQuery, elmCloseQuery, elmTargetQuery, callBack) {
 }
 
 // ======  add cart product event  ====== //
-function handleAddToCart(productId) {
-  cartMng.addItem(productId);
+function updateCountInCart() {
   cartCounterElm.textContent = cartMng.getCount();
-}
-
-function attachProductEvent() {
-  let products = document.querySelectorAll(".product-item");
-  products.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      let itemid = item.getAttribute("data-itemid");
-      handleAddToCart(itemid);
-    });
-  });
 }
 
 // ====== view resize ====== //
 function checkViewClient() {
   let wScreen = window.screen.width;
   let classNameCouter = "#cart-counter";
-  if ( wScreen < 992) {
+  if (wScreen < 992) {
     viewModile();
     classNameCouter += "-mobile";
   } else {
@@ -93,7 +89,7 @@ function viewModile() {
       popup.close();
     }
   );
-  
+
   menuTrigger.addEventListener("click", function (e) {
     popup.open();
   });
@@ -104,7 +100,6 @@ var cartMng = new Cart();
 var cartCounterElm;
 
 checkViewClient();
-attachProductEvent();
 
 cartMng._getStorage();
 cartCounterElm.textContent = cartMng.getCount();
