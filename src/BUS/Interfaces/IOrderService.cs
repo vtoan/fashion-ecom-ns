@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
 using BUS.Domains;
+using Shared.ViewModels;
 
 namespace BUS.Interfaces
 {
     public interface IOrderService :
-        IGet<Order>,
-        IAdd<Order>,
-        IUpdate<Order>,
-        IDelete<Order>
+        IGet<OrderVM>,
+        IAdd<OrderVM>,
+        IUpdate<OrderVM>,
+        IDelete<OrderVM>
     {
-        Tuple<ICollection<Order>, int> GetList(string query, DateTime start, DateTime end);
+        Tuple<ICollection<OrderVM>, int> GetList(string query, DateTime start, DateTime end);
 
     }
 }
