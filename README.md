@@ -30,14 +30,14 @@ Build an ecommerce web site with minimum functionality below:
 - Line Awesome - https://icons8.com/line-awesome
 
 # Architecture 
-- BackEnd Project
+## - BackEnd Project
 ![BackEnd Project](https://github.com/vtoan/fashion-ecom-ns/blob/bus/docs/Project%20Architecture.png)
 
 # Diagram
-- ERD
+## - ERD
 ![Image Erd](https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/fashion_ns_ecom_db.png)
 
-- Service Class Diagram
+## - Service Class Diagram
 ![Image Service](https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/service%20diagram.png)
 
 # Use EF Migrations on different Assembly
