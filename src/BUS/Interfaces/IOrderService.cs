@@ -11,6 +11,6 @@ namespace BUS.Interfaces
         IDelete<Order>
     {
         Tuple<ICollection<Order>, int> GetList(string query, DateTime start, DateTime end);
-        bool UploadImage(int productId, string imgName);
+
     }
 }
