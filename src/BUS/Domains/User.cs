@@ -9,5 +9,8 @@ namespace BUS.Domains
         public string CustomerDistrict { get; set; }
         public string CustomerProvince { get; set; }
         public string CustomerAddress { get; set; }
+        //nav property
+        public virtual ICollection<Rating> Ratings { get; set; }
+
     }
 }

@@ -19,5 +19,6 @@ namespace BUS.Domains
         public virtual TypeProduct Type { get; set; }
         public virtual Category Category { get; set; }
         public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }
