@@ -8,11 +8,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAO.DAOs
 {
-    public class OrderDAO : IOrderDAO
+    public class OrderDAO :
+        BaseDAO<Order>,
+        IOrderDAO
     {
-        private readonly AppDbContext _context;
+        public OrderDAO(AppDbContext context) : base(context)
+        {
+        }
 
-        public Order AddItem(Order newObject)
+        public new Order AddItem(Order newObject)
         {
             if (newObject == null) return null;
             _context.Add<Order>(newObject);
@@ -20,7 +24,7 @@ namespace DAO.DAOs
             return newObject;
         }
 
-        public Order GetItem(int id)
+        public new Order GetItem(int id)
         {
             if (id <= 0) return null;
             return _context.Set<Order>()
@@ -29,7 +33,7 @@ namespace DAO.DAOs
                 .FirstOrDefault();
         }
 
-        public (ICollection<Order>, int) GetList(DateTime start, DateTime end, int provinceId, int limited, int offset)
+        public (ICollection<Order>, int) GetListItems(DateTime start, DateTime end, int provinceId, int limited, int offset)
         {
             var sqlQuery = _context.Orders.Where(item => item.DateCreated >= start && item.DateCreated <= end);
             var totalItem = sqlQuery.Count();
@@ -40,7 +44,7 @@ namespace DAO.DAOs
 
 
 
-        public (ICollection<Order>, int) GetListByPhone(string query, int provinceId, int limited, int offset)
+        public (ICollection<Order>, int) GetListItemsByPhone(string query, int provinceId, int limited, int offset)
         {
             var sqlQuery = _context.Orders.Where(item => item.CustomerPhone.Contains(query));
             var totalItem = sqlQuery.Count();
@@ -49,7 +53,7 @@ namespace DAO.DAOs
             return (result, totalItem);
         }
 
-        public (ICollection<Order>, int) GetListByUser(string userId, int provinceId, int limited, int offset)
+        public (ICollection<Order>, int) GetListItemsByUser(string userId, int provinceId, int limited, int offset)
         {
             var sqlQuery = _context.Orders.Where(item => item.UserId == userId);
             var totalItem = sqlQuery.Count();
