@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 using BUS.Domains;
-using BUS.Enums;
 using BUS.Interfaces.DAOs;
 using BUS.Interfaces.Services;
 using Shared.ViewModels;
@@ -22,19 +21,19 @@ namespace BUS.Services
 
         public (ICollection<OrderVM>, int) GetList(DateTime start, DateTime end, int provinceId, int limited, int offset)
         {
-            var result = _daoOrder.GetList(start, end, provinceId, limited, offset);
+            var result = _daoOrder.GetListItems(start, end, provinceId, limited, offset);
             return (this._mapList<OrderVM, Order>(result.Item1), result.Item2);
         }
 
         public (ICollection<OrderVM>, int) GetListByPhone(string query, int provinceId, int limited, int offset)
         {
-            var result = _daoOrder.GetListByPhone(query, provinceId, limited, offset);
+            var result = _daoOrder.GetListItemsByPhone(query, provinceId, limited, offset);
             return (this._mapList<OrderVM, Order>(result.Item1), result.Item2);
         }
 
         public (ICollection<OrderVM>, int) GetListByUser(string userId, int provinceId, int limited, int offset)
         {
-            var result = _daoOrder.GetListByUser(userId, provinceId, limited, offset);
+            var result = _daoOrder.GetListItemsByUser(userId, provinceId, limited, offset);
             return (this._mapList<OrderVM, Order>(result.Item1), result.Item2);
         }
 
