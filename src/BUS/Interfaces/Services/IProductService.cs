@@ -5,10 +5,10 @@ using Shared.ViewModels;
 namespace BUS.Interfaces.Services
 {
     public interface IProductService :
-        IGet<ProductVM>,
-        IAdd<ProductVM>,
-        IUpdate<ProductVM>,
-        IDelete<ProductVM>
+        IGet<ProductDetailVM>,
+        IAdd<ProductDetailVM>,
+        IUpdate<ProductDetailVM>,
+        IDelete<ProductDetailVM>
     {
         // Tuple <Products, Numbers>
         (ICollection<ProductVM>, int) GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort);

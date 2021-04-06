@@ -14,6 +14,7 @@ namespace Core.ServiceExtension
             services.AddScoped<IFeeService, FeeService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IProductDetailService, ProductDetailService>();
 
             return services;
         }

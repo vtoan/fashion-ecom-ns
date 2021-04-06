@@ -4,6 +4,7 @@ using System.Linq;
 using BUS.Domains;
 using BUS.Enums;
 using BUS.Interfaces.DAOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAO.DAOs
 {
@@ -14,7 +15,16 @@ namespace DAO.DAOs
         public ProductDAO(AppDbContext context) : base(context)
         { }
 
-        public (ICollection<Product>, int) GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
+        public new Product GetItem(int id)
+        {
+            if (id <= 0) return null;
+            var sqlQuery = _context.Products.Where(item => item.Id == id)
+                .Include(item => item.ProductDetails)
+                .Include(item => item.Ratings);
+            return sqlQuery.FirstOrDefault();
+        }
+
+        public (ICollection<Product>, int) GetListItems(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
             var sqlString = this._context.Products.AsQueryable();
             var totalItem = sqlString.Count();
@@ -48,7 +58,7 @@ namespace DAO.DAOs
                         break;
                 }
             }
-            var result = sqlString.ToList();
+            var result = sqlString.Include(item => item.Ratings).ToList();
             return (result, totalItem);
         }
     }

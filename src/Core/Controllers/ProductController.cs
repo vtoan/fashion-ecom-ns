@@ -17,7 +17,7 @@ namespace Core.Controllers
         }
 
         [HttpGet("{id}")]
-        public ProductVM Get(int id)
+        public ProductDetailVM Get(int id)
         {
             return _productSer.Get(id);
         }
