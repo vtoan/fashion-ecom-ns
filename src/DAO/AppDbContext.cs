@@ -15,6 +15,7 @@ namespace DAO
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductDetail> ProductDetails { get; set; }
         public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -50,9 +51,15 @@ namespace DAO
             modelBuilder.Entity<Product>().Property(p => p.Material).HasMaxLength(150);
             modelBuilder.Entity<Product>().Property(p => p.Origin).HasDefaultValue(150);
             modelBuilder.Entity<Product>().Property(p => p.ProductDescription).HasDefaultValue(250);
+            modelBuilder.Entity<Product>().Property(o => o.DateCreated).HasColumnType("smalldatetime");
+            modelBuilder.Entity<Product>().Property(o => o.DateModified).HasColumnType("smalldatetime");
             //ProductDetail
             modelBuilder.Entity<ProductDetail>().Property(p => p.Size).HasMaxLength(20);
             modelBuilder.Entity<ProductDetail>().Property(p => p.Color).HasMaxLength(20);
+            //Rating
+            modelBuilder.Entity<Rating>().HasKey(od => od.Id);
+            modelBuilder.Entity<Rating>().Property(p => p.Feedback).HasMaxLength(250);
+            modelBuilder.Entity<Rating>().Property(o => o.DateCreated).HasColumnType("smalldatetime");
             //Config Promotion
             modelBuilder.Entity<Promotion>().Property(p => p.ToDate).HasColumnType("smalldatetime");
             modelBuilder.Entity<Promotion>().Property(p => p.FromDate).HasColumnType("smalldatetime");

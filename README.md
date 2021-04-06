@@ -29,17 +29,27 @@ Build an ecommerce web site with minimum functionality below:
 - Bootstrap (Grid System) - https://github.com/twbs/bootstrap
 - Line Awesome - https://icons8.com/line-awesome
 
-# ERD
-![Image Erd](https://github.com/vtoan/fashion-ecom-ns/blob/doc/docs/fashion_ns_ecom_db.png)
+# Architecture 
+## * BackEnd Project
+![BackEnd Project](https://github.com/vtoan/fashion-ecom-ns/blob/bus/docs/Project%20Architecture.png)
 
-# Service Diagram
-![Image Service](https://github.com/vtoan/fashion-ecom-ns/blob/doc/docs/service%20diagram.png)
+# Diagram
+## * ERD
+![Image Erd](https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/fashion_ns_ecom_db.png)
+
+## * Service Class Diagram
+![Image Service](https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/service%20diagram.png)
 
 # Use EF Migrations on different Assembly
-## add migrations
-- On Assembly contain BbContext 
+- On Assembly contain BbContext, with "Core" is WebApi Project (Start-Up Project)
+### add migrations
 ```
     dotnet ef migrations add Init -s ../Core
 ```
-With "Core" is Project StartUp
+### database update
+```
+    dotnet ef database update -s ../Core
+```
+
+
 

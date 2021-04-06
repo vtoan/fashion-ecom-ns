@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BUS.Interfaces
+namespace BUS.Interfaces.Services
 {
 
     public interface IGet<T> { T Get(int id); }
