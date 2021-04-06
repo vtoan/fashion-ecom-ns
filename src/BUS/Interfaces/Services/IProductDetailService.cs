@@ -5,11 +5,13 @@ using Shared.ViewModels;
 namespace BUS.Interfaces.Services
 {
     public interface IProductDetailService :
-         IGet<ProductDetailVM>,
-         IAdd<ProductDetailVM>,
-         IUpdate<ProductDetailVM>,
-         IDelete<ProductDetailVM>
+         IGet<ProductAttributeVM>,
+         //  IAdd<ProductDetailVM>,
+         //  IUpdate<ProductDetailVM>,
+         IDelete<ProductAttributeVM>
     {
-        ICollection<ProductDetailVM> GetList(int productId, string size, string color);
+        ICollection<ProductAttributeVM> GetList(int productId, string size, string color);
+        ProductAttributeVM Add(int productId, ProductAttributeVM newObject);
+        bool Update(int productId, ProductAttributeVM modifiedObject);
     }
 }

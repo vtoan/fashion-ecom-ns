@@ -12,7 +12,7 @@ using Shared.ViewModels;
 namespace BUS.Services
 {
     public class ProductService :
-        BaseService<ProductVM, Product>,
+        BaseService<ProductDetailVM, Product>,
         IProductService
     {
 
