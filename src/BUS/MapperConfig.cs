@@ -21,6 +21,12 @@ namespace BUS
             //Product
             CreateMap<ProductVM, Product>();
             CreateMap<Product, ProductVM>();
+            //Order
+            CreateMap<Order, OrderVM>();
+            CreateMap<OrderItemVM, OrderDetail>();
+            CreateMap<OrderDetail, OrderItemVM>();
+            CreateMap<OrderDetailVM, Order>();
+
         }
     }
 }

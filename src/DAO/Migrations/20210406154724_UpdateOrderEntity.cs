@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAO.Migrations
 {
-    public partial class Init : Migration
+    public partial class UpdateOrderEntity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,7 +38,8 @@ namespace DAO.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DateCreated = table.Column<DateTime>(type: "smalldatetime", nullable: true),
                     CustomerName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     CustomerPhone = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
@@ -49,7 +50,7 @@ namespace DAO.Migrations
                     Note = table.Column<string>(type: "nvarchar(750)", maxLength: 750, nullable: true),
                     Promotions = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
                     Fees = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -168,7 +169,9 @@ namespace DAO.Migrations
                     Origin = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "150"),
                     ProductDescription = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "250"),
                     CategoryId = table.Column<int>(type: "int", nullable: true),
-                    TypeID = table.Column<int>(type: "int", nullable: true)
+                    TypeProductId = table.Column<int>(type: "int", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "smalldatetime", nullable: true),
+                    DateModified = table.Column<DateTime>(type: "smalldatetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -180,8 +183,8 @@ namespace DAO.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Products_TypeProducts_TypeID",
-                        column: x => x.TypeID,
+                        name: "FK_Products_TypeProducts_TypeProductId",
+                        column: x => x.TypeProductId,
                         principalTable: "TypeProducts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -276,7 +279,7 @@ namespace DAO.Migrations
                 name: "OrderDetails",
                 columns: table => new
                 {
-                    OrderId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: true),
                     Price = table.Column<int>(type: "int", nullable: true),
@@ -320,6 +323,34 @@ namespace DAO.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Ratings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DateCreated = table.Column<DateTime>(type: "smalldatetime", nullable: true),
+                    Feedback = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ratings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Ratings_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ratings_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_ProductId",
                 table: "OrderDetails",
@@ -336,9 +367,19 @@ namespace DAO.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_TypeID",
+                name: "IX_Products_TypeProductId",
                 table: "Products",
-                column: "TypeID");
+                column: "TypeProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ratings_ProductId",
+                table: "Ratings",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ratings_UserId",
+                table: "Ratings",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
@@ -393,6 +434,9 @@ namespace DAO.Migrations
 
             migrationBuilder.DropTable(
                 name: "Promotions");
+
+            migrationBuilder.DropTable(
+                name: "Ratings");
 
             migrationBuilder.DropTable(
                 name: "RoleClaims");

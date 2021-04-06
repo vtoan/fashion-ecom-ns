@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAO.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210406041318_UpdateProductDomai")]
-    partial class UpdateProductDomai
+    [Migration("20210406154724_UpdateOrderEntity")]
+    partial class UpdateOrderEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,8 +58,10 @@ namespace DAO.Migrations
 
             modelBuilder.Entity("BUS.Domains.Order", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("CustomerAddress")
                         .HasMaxLength(500)
@@ -100,8 +102,8 @@ namespace DAO.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -110,8 +112,8 @@ namespace DAO.Migrations
 
             modelBuilder.Entity("BUS.Domains.OrderDetail", b =>
                 {
-                    b.Property<string>("OrderId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
