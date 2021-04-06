@@ -8,7 +8,7 @@ namespace BUS.Services
 {
     public abstract class BaseService<T, V> : IBaseService<T>
     {
-        private IBaseDAO<V> _dao;
+        protected IBaseDAO<V> _dao;
         protected IMapper _mapper;
 
         public BaseService(IBaseDAO<V> dao, IMapper mapper)

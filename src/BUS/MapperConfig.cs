@@ -41,6 +41,9 @@ namespace BUS
             CreateMap<Order, OrderDetailVM>()
                 .ForMember(des => des.OrderItems, opt => opt.MapFrom(src => src.OrderDetails));
 
+            //Rating
+            CreateMap<Rating, RatingVM>();
+            CreateMap<RatingVM, Rating>();
 
         }
     }
