@@ -21,6 +21,17 @@ namespace BUS
             //Product
             CreateMap<ProductVM, Product>();
             CreateMap<Product, ProductVM>();
+            //Order
+            CreateMap<Order, OrderVM>();
+            CreateMap<OrderItemVM, OrderDetail>();
+            CreateMap<OrderDetail, OrderItemVM>();
+
+            CreateMap<OrderDetailVM, Order>()
+                .ForMember(des => des.OrderDetails, opt => opt.MapFrom(src => src.OrderItems));
+            CreateMap<Order, OrderDetailVM>()
+                .ForMember(des => des.OrderItems, opt => opt.MapFrom(src => src.OrderDetails));
+
+
         }
     }
 }
