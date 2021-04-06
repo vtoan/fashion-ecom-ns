@@ -16,16 +16,16 @@ namespace BUS.Services
         IProductService
     {
 
-        private readonly IProductDAO _dao;
+        private readonly IProductDAO _productDao;
 
         public ProductService(IProductDAO dao, IMapper mapper) : base(dao, mapper)
         {
-            _dao = dao;
+            _productDao = dao;
         }
 
         public (ICollection<ProductVM>, int) GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
-            var result = _dao.GetListItems(query, typeId, cateId, limited, offset, sort);
+            var result = _productDao.GetListItems(query, typeId, cateId, limited, offset, sort);
             var lsObject = new List<ProductVM>();
             if (result.Item1.Count > 0)
                 lsObject = _mapList<ProductVM, Product>(result.Item1);
