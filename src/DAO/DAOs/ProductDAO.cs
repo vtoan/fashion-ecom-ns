@@ -24,7 +24,7 @@ namespace DAO.DAOs
             return sqlQuery.FirstOrDefault();
         }
 
-        public (ICollection<Product>, int) GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
+        public (ICollection<Product>, int) GetListItems(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
             var sqlString = this._context.Products.AsQueryable();
             var totalItem = sqlString.Count();

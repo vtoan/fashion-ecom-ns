@@ -10,7 +10,7 @@ namespace BUS.Interfaces.Services
          //  IUpdate<ProductDetailVM>,
          IDelete<ProductAttributeVM>
     {
-        ICollection<ProductAttributeVM> GetList(int productId, string size, string color);
+        ICollection<ProductAttributeVM> GetList(int productId);
         ProductAttributeVM Add(int productId, ProductAttributeVM newObject);
         bool Update(int productId, ProductAttributeVM modifiedObject);
     }
