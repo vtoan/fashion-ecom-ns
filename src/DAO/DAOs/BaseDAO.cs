@@ -6,7 +6,7 @@ namespace DAO.DAOs
 {
     public class BaseDAO<V> : IBaseDAO<V> where V : class
     {
-        private AppDbContext _context;
+        protected AppDbContext _context;
 
         public BaseDAO(AppDbContext context)
         {

@@ -18,6 +18,9 @@ namespace BUS
             //Type Product
             CreateMap<TypeProductVM, TypeProduct>();
             CreateMap<TypeProduct, TypeProductVM>();
+            //Product
+            CreateMap<ProductVM, Product>();
+            CreateMap<Product, ProductVM>();
         }
     }
 }

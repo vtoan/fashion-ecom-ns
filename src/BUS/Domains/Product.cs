@@ -15,7 +15,7 @@ namespace BUS.Domains
         public string Origin { get; set; }
         public string ProductDescription { get; set; }
         public int? CategoryId { get; set; }
-        public int? TypeID { get; set; }
+        public int? TypeProductId { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? DateModified { get; set; }
         //Nav property
