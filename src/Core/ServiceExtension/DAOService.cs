@@ -15,6 +15,7 @@ namespace Core.ServiceExtension
             services.AddScoped<IProductDAO, ProductDAO>();
             services.AddScoped<IOrderDAO, OrderDAO>();
             services.AddScoped<IProductDetailDAO, ProductDetailDAO>();
+            services.AddScoped<IRatingDAO, RatingDAO>();
             return services;
         }
     }
