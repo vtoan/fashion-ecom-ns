@@ -11,11 +11,11 @@ namespace BUS.Services
         BaseService<ProductAttributeVM, ProductDetail>,
         IProductDetailService
     {
-        private readonly IProductDetailDAO _dao;
+        private readonly IProductDetailDAO _producDetailDao;
 
         public ProductDetailService(IProductDetailDAO dao, IMapper mapper) : base(dao, mapper)
         {
-            _dao = dao;
+            _producDetailDao = dao;
         }
 
         public ProductAttributeVM Add(int productId, ProductAttributeVM newObject)
@@ -23,13 +23,13 @@ namespace BUS.Services
             if (productId <= 0) return null;
             var productDetail = _mapper.Map<ProductDetail>(newObject);
             productDetail.ProductId = productId;
-            var result = _dao.AddItem(productDetail);
+            var result = _producDetailDao.AddItem(productDetail);
             return _mapper.Map<ProductAttributeVM>(result);
         }
 
         public ICollection<ProductAttributeVM> GetList(int productId)
         {
-            var result = _dao.GetListItems(productId);
+            var result = _producDetailDao.GetListItems(productId);
             return _mapList<ProductAttributeVM, ProductDetail>(result);
         }
     }

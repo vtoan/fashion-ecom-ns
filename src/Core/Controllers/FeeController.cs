@@ -7,20 +7,20 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FeeController : ControllerBase
+    public class CategoryController : ControllerBase
     {
-        private IFeeService _feeSer;
+        private ICategoryService _cateSer;
 
-        public FeeController(IFeeService feeService)
+        public CategoryController(ICategoryService cateService)
         {
-            _feeSer = feeService;
+            _cateSer = cateService;
         }
 
 
         [HttpGet]
-        public IEnumerable<FeeVM> GetFees()
+        public IEnumerable<CategoryVM> GetFees()
         {
-            return _feeSer.GetList();
+            return _cateSer.GetList();
         }
     }
 }
