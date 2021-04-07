@@ -8,6 +8,6 @@ namespace BUS.Domains
         public string Name { get; set; }
 
         //nav property
-        public virtual ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

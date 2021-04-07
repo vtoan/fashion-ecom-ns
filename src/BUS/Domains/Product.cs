@@ -19,9 +19,9 @@ namespace BUS.Domains
         public DateTime? DateCreated { get; set; }
         public DateTime? DateModified { get; set; }
         //Nav property
-        public virtual TypeProduct Type { get; set; }
-        public virtual Category Category { get; set; }
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
-        public virtual ICollection<Rating> Ratings { get; set; }
+        public TypeProduct Type { get; set; }
+        public Category Category { get; set; }
+        public ICollection<ProductDetail> ProductDetails { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
     }
 }
