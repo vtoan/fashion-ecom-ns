@@ -7,7 +7,7 @@ namespace BUS.Interfaces.Services
         // IAdd<RatingVM>,
         IDelete<RatingVM>
     {
-        RatingVM Add(int productId, string userId, RatingVM newObject);
+        RatingVM Add(int productId, RatingVM newObject);
         ICollection<RatingVM> GetByProduct(int productId);
         ICollection<RatingVM> GetByUser(string userId);
     }
