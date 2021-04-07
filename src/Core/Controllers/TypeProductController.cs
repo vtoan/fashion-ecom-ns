@@ -18,7 +18,7 @@ namespace Core.Controllers
 
 
         [HttpGet]
-        public IEnumerable<TypeProductVM> Get()
+        public IEnumerable<TypeProductVM> GetList()
         {
             return _typeSer.GetList();
         }
