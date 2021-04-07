@@ -9,18 +9,52 @@ namespace Core.Controllers
     [Route("[controller]")]
     public class CategoryController : ControllerBase
     {
-        private IFeeService _feeSer;
+        private ICategoryService _cateSer;
 
-        public CategoryController(IFeeService feeService)
+        public CategoryController(ICategoryService cateSer)
         {
-            _feeSer = feeService;
+            _cateSer = cateSer;
         }
 
-
         [HttpGet]
-        public IEnumerable<FeeVM> GetFees()
+        public IEnumerable<CategoryVM> GetList(int typeId)
         {
-            return _feeSer.GetList();
+            if (typeId == 0) return _cateSer.GetList();
+            return _cateSer.GetList(typeId);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<CategoryVM> Get(int id)
+        {
+            if (id <= 0) return BadRequest();
+            var result = _cateSer.Get(id);
+            if (result == null) return NotFound();
+            return result;
+        }
+
+        [HttpPost]
+        public ActionResult<CategoryVM> Create(CategoryVM categoryVM)
+        {
+            var result = _cateSer.Add(categoryVM);
+            if (result == null) return BadRequest();
+            return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, CategoryVM categoryVM)
+        {
+            if (id != categoryVM.Id) return BadRequest();
+            var result = _cateSer.Update(id, categoryVM);
+            if (!result) return NotFound();
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var result = _cateSer.Delete(id);
+            if (!result) return NotFound();
+            return NoContent();
         }
     }
 }
