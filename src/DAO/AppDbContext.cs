@@ -77,8 +77,29 @@ namespace DAO
                     entityType.SetTableName(tableName.Substring(6));
                 }
             }
+
+            SeedData(modelBuilder);
         }
 
+        private void SeedData(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TypeProduct>().HasData(
+                new TypeProduct { Id = 1, Name = "Shirts" },
+                new TypeProduct { Id = 2, Name = "Pants" }
+            );
 
+            modelBuilder.Entity<Category>().HasData(
+               new Category { Id = 1, Name = "T-Shirtss", TypeProductId = 1 },
+               new Category { Id = 2, Name = "Polos", TypeProductId = 1 },
+               new Category { Id = 3, Name = "Texedo Shirts", TypeProductId = 1 },
+               new Category { Id = 4, Name = "Tank Tops", TypeProductId = 1 },
+               new Category { Id = 5, Name = "Dress Shirts", TypeProductId = 1 },
+               new Category { Id = 6, Name = "Kakis", TypeProductId = 2 },
+               new Category { Id = 7, Name = "Jeans", TypeProductId = 2 },
+               new Category { Id = 8, Name = "Jogger", TypeProductId = 2 },
+               new Category { Id = 9, Name = "Slim fit", TypeProductId = 2 },
+               new Category { Id = 10, Name = "Dress Pants", TypeProductId = 2 }
+           );
+        }
     }
 }

@@ -4,14 +4,16 @@ using DAO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAO.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210407050652_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,68 +40,6 @@ namespace DAO.Migrations
                     b.HasIndex("TypeProductId");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "T-Shirtss",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Polos",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Texedo Shirts",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Tank Tops",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Dress Shirts",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Kakis",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Jeans",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Jogger",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Slim fit",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Dress Pants",
-                            TypeProductId = 2
-                        });
                 });
 
             modelBuilder.Entity("BUS.Domains.Fee", b =>
@@ -371,18 +311,6 @@ namespace DAO.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TypeProducts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Shirts"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Pants"
-                        });
                 });
 
             modelBuilder.Entity("BUS.Domains.User", b =>
