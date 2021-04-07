@@ -7,11 +7,11 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FeeController : ControllerBase
+    public class CategoryController : ControllerBase
     {
         private IFeeService _feeSer;
 
-        public FeeController(IFeeService feeService)
+        public CategoryController(IFeeService feeService)
         {
             _feeSer = feeService;
         }
