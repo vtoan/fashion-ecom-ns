@@ -34,6 +34,7 @@ namespace Core.Controllers
         [HttpPost]
         public ActionResult<FeeVM> Create(FeeVM feeVM)
         {
+            if (!ModelState.IsValid) return BadRequest();
             var result = _feeSer.Add(feeVM);
             if (result == null) return BadRequest();
             return CreatedAtAction(nameof(Get), new { id = result.Id }, result);

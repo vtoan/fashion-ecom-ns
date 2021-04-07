@@ -35,6 +35,7 @@ namespace Core.Controllers
         [HttpPost]
         public ActionResult<CategoryVM> Create(CategoryVM categoryVM)
         {
+            if (!ModelState.IsValid) return BadRequest();
             var result = _cateSer.Add(categoryVM);
             if (result == null) return BadRequest();
             return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
