@@ -61,6 +61,7 @@ namespace DAO
             modelBuilder.Entity<Rating>().HasKey(od => od.Id);
             modelBuilder.Entity<Rating>().Property(p => p.Feedback).HasMaxLength(250);
             modelBuilder.Entity<Rating>().Property(o => o.DateCreated).HasColumnType("smalldatetime");
+            modelBuilder.Entity<Rating>().Property(o => o.Rate).HasColumnType("tinyint");
             //Config Promotion
             modelBuilder.Entity<Promotion>().Property(p => p.ToDate).HasColumnType("smalldatetime");
             modelBuilder.Entity<Promotion>().Property(p => p.FromDate).HasColumnType("smalldatetime");
