@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Shared.ViewModels;
 
 namespace BUS.Interfaces.Services
@@ -8,5 +9,8 @@ namespace BUS.Interfaces.Services
         IAdd<CategoryVM>,
         IUpdate<CategoryVM>,
         IDelete<CategoryVM>
-    { }
+    {
+        CategoryVM Add(int typeProductId, CategoryVM newObject);
+        ICollection<CategoryVM> GetList(int typeProductId);
+    }
 }
