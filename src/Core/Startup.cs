@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using BUS;
 using BUS.Domains;
 using Core.ServiceExtension;
 using DAO;
@@ -37,7 +38,7 @@ namespace Core
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 
             //Reference Service;
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(MapperConfig).Assembly);
 
             //My Service
             services.AddBUS();

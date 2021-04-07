@@ -14,7 +14,7 @@ namespace BUS
             CreateMap<Category, CategoryVM>();
             //Fee
             CreateMap<FeeVM, Fee>();
-            CreateMap<Fee, Fee>();
+            CreateMap<Fee, FeeVM>();
             //Type Product
             CreateMap<TypeProductVM, TypeProduct>();
             CreateMap<TypeProduct, TypeProductVM>();

@@ -219,15 +219,15 @@ namespace DAO
                 });
             };
             modelBuilder.Entity<Product>().HasData(arrTemp);
-            var arrTempAttr = new List<ProductDetail>();
-            for (int i = 1; i < 60; i++)
-            {
-                arrTempAttr.Add(new ProductDetail { Id = DateTime.Now.Second, ProductId = i, Size = "L", Color = "Red" });
-                arrTempAttr.Add(new ProductDetail { Id = DateTime.Now.Second, ProductId = i, Size = "XL", Color = "Blue" });
+            // var arrTempAttr = new List<ProductDetail>();
+            // for (int i = 1; i < 60; i++)
+            // {
+            //     arrTempAttr.Add(new ProductDetail { Id = DateTime.Now.Second, ProductId = i, Size = "L", Color = "Red" });
+            //     arrTempAttr.Add(new ProductDetail { Id = DateTime.Now.Second, ProductId = i, Size = "XL", Color = "Blue" });
 
-                arrTempAttr.Add(new ProductDetail { Id = DateTime.Now.Second, ProductId = i, Size = "S", Color = "Pink" });
-            }
-            modelBuilder.Entity<ProductDetail>().HasData(arrTempAttr);
+            //     arrTempAttr.Add(new ProductDetail { Id = DateTime.Now.Second, ProductId = i, Size = "S", Color = "Pink" });
+            // }
+            // modelBuilder.Entity<ProductDetail>().HasData(arrTempAttr);
 
         }
     }
