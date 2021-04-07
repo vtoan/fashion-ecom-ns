@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using BUS.Domains;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -100,6 +101,134 @@ namespace DAO
                new Category { Id = 9, Name = "Slim fit", TypeProductId = 2 },
                new Category { Id = 10, Name = "Dress Pants", TypeProductId = 2 }
            );
+
+            modelBuilder.Entity<Fee>().HasData(
+                new Fee { Id = 1, Name = "Tax", Cost = 0.05 }
+            );
+
+            var productTemp = new Product
+            {
+                Id = 1,
+                Name = "Product 1",
+                Price = 98000,
+                Image = "product-1.png",
+                Material = "High quality water slide, with sun protection.",
+                Origin = "Viet nam",
+                ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
+                CategoryId = 1,
+                TypeProductId = 1
+            };
+
+            var arrTemp = new List<Product>();
+            //type product 1;
+            for (int i = 1; i < 10; i++)
+            {
+                arrTemp.Add(new Product
+                {
+                    Id = i,
+                    Name = "Product " + i,
+                    Price = 98000,
+                    Image = "product-1.png",
+                    Material = "High quality water slide, with sun protection.",
+                    Origin = "Viet nam",
+                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
+                    CategoryId = 1,
+                    TypeProductId = 1,
+                    DateCreated = DateTime.Now
+                });
+            };
+            for (int i = 10; i < 20; i++)
+            {
+                arrTemp.Add(new Product
+                {
+                    Id = i,
+                    Name = "Product " + i,
+                    Price = 98000,
+                    Image = "product-2.png",
+                    Material = "High quality water slide, with sun protection.",
+                    Origin = "Viet nam",
+                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
+                    CategoryId = 2,
+                    TypeProductId = 1,
+                    DateCreated = DateTime.Now
+                });
+            };
+            for (int i = 20; i < 30; i++)
+            {
+                arrTemp.Add(new Product
+                {
+                    Id = i,
+                    Name = "Product " + i,
+                    Price = 98000,
+                    Image = "product-2.png",
+                    Material = "High quality water slide, with sun protection.",
+                    Origin = "Viet nam",
+                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
+                    CategoryId = 3,
+                    TypeProductId = 1,
+                    DateCreated = DateTime.Now
+                });
+            };
+            //type product 2
+            for (int i = 30; i < 40; i++)
+            {
+                arrTemp.Add(new Product
+                {
+                    Id = i,
+                    Name = "Product " + i,
+                    Price = 98000,
+                    Image = "product-1.png",
+                    Material = "High quality water slide, with sun protection.",
+                    Origin = "Viet nam",
+                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
+                    CategoryId = 6,
+                    TypeProductId = 2,
+                    DateCreated = DateTime.Now
+                });
+            };
+            for (int i = 40; i < 50; i++)
+            {
+                arrTemp.Add(new Product
+                {
+                    Id = i,
+                    Name = "Product " + i,
+                    Price = 98000,
+                    Image = "product-2.png",
+                    Material = "High quality water slide, with sun protection.",
+                    Origin = "Viet nam",
+                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
+                    CategoryId = 7,
+                    TypeProductId = 2,
+                    DateCreated = DateTime.Now
+                });
+            };
+            for (int i = 50; i < 60; i++)
+            {
+                arrTemp.Add(new Product
+                {
+                    Id = i,
+                    Name = "Product " + i,
+                    Price = 98000,
+                    Image = "product-2.png",
+                    Material = "High quality water slide, with sun protection.",
+                    Origin = "Viet nam",
+                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
+                    CategoryId = 8,
+                    TypeProductId = 2,
+                    DateCreated = DateTime.Now
+                });
+            };
+            modelBuilder.Entity<Product>().HasData(arrTemp);
+            var arrTempAttr = new List<ProductDetail>();
+            for (int i = 1; i < 60; i++)
+            {
+                arrTempAttr.Add(new ProductDetail { Id = DateTime.Now.Second, ProductId = i, Size = "L", Color = "Red" });
+                arrTempAttr.Add(new ProductDetail { Id = DateTime.Now.Second, ProductId = i, Size = "XL", Color = "Blue" });
+
+                arrTempAttr.Add(new ProductDetail { Id = DateTime.Now.Second, ProductId = i, Size = "S", Color = "Pink" });
+            }
+            modelBuilder.Entity<ProductDetail>().HasData(arrTempAttr);
+
         }
     }
 }
