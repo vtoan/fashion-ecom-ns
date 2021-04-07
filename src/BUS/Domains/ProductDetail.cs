@@ -7,6 +7,6 @@ namespace BUS.Domains
         public string Size { get; set; }
         public int? ProductId { get; set; }
         //Nav property
-        public virtual Product Product { get; set; }
+        public Product Product { get; set; }
     }
 }

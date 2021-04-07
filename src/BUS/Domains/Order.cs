@@ -18,6 +18,6 @@ namespace BUS.Domains
         public string Fees { get; set; }
         public string UserId { get; set; }
         //Nav property
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
