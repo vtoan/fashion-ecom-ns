@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using BUS.Domains;
@@ -18,12 +19,12 @@ namespace BUS.Services
             _ratingDao = dao;
         }
 
-        public RatingVM Add(int productId, string userId, RatingVM newObject)
+        public RatingVM Add(int productId, RatingVM newObject)
         {
-            if (productId == 0 || userId == null || userId == "") return null;
+            if (productId == 0) return null;
             var ratingObj = _mapper.Map<Rating>(newObject);
             ratingObj.ProductId = productId;
-            ratingObj.UserId = userId;
+            ratingObj.DateCreated = DateTime.Now;
             return _mapper.Map<RatingVM>(this._ratingDao.AddItem(ratingObj));
         }
 

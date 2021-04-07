@@ -16,10 +16,33 @@ namespace Core.Controllers
             _ratingSer = ratingSer;
         }
 
-        [HttpGet("{id}")]
-        public IEnumerable<RatingVM> Get(int id)
+        [HttpGet("product/{id}")]
+        public IEnumerable<RatingVM> GetByProduct(int id)
         {
             return _ratingSer.GetByProduct(id);
+        }
+
+        [HttpGet("user/{id}")]
+        public IEnumerable<RatingVM> GetByUser(int id)
+        {
+            return _ratingSer.GetByProduct(id);
+        }
+
+        [HttpPost]
+        public ActionResult<FeeVM> Create(int productId, string userId, RatingVM ratingVM)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            var result = _ratingSer.Add(productId, ratingVM);
+            if (result == null) return Problem();
+            return CreatedAtAction(nameof(Create), result);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var result = _ratingSer.Delete(id);
+            if (!result) return NotFound();
+            return NoContent();
         }
     }
 }

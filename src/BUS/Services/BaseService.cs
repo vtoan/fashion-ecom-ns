@@ -75,7 +75,7 @@ namespace BUS.Services
                 //Check ignore prop
                 string propName = p.Name;
                 if (propName == "Id") continue;
-                if (ignore == null || ignore?.Length > 0 && ignore.Contains(propName)) continue;
+                if (ignore != null && ignore?.Length > 0 && ignore.Contains(propName)) continue;
                 //Add val
                 if (p.GetValue(target) != null)
                     modifiedProps.Add(p.Name, p.GetValue(target));
