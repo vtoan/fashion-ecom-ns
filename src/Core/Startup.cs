@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BUS;
 using BUS.Domains;
+using Core.Identity;
 using Core.Middlewares;
 using Core.ServiceInjection;
 using DAO;
@@ -31,14 +32,14 @@ namespace Core
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             //Db
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("default")));
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             //Reference Service;
+            services.AddIdentityServer4();
             services.AddAutoMapper(typeof(MapperConfig).Assembly);
 
             //My Service
@@ -50,7 +51,6 @@ namespace Core
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -66,11 +66,12 @@ namespace Core
 
             app.UseRouting();
 
+            app.UseIdentityServer();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
