@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BUS;
 using BUS.Domains;
-using Core.ServiceExtension;
+using Core.ServiceInjection;
 using DAO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +43,7 @@ namespace Core
             //My Service
             services.AddBUS();
             services.AddDAO();
+            services.AddHelpful();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
