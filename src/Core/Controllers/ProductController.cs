@@ -1,6 +1,7 @@
 using BUS.Enums;
 using BUS.Interfaces.Services;
 using Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize("Bearer")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productSer;

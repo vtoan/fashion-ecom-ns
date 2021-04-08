@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAO.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210408120248_AddKeyForDeital")]
-    partial class AddKeyForDeital
+    [Migration("20210408130400_UpdateRating")]
+    partial class UpdateRating
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -276,7 +276,7 @@ namespace DAO.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 960, DateTimeKind.Local).AddTicks(7931),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 121, DateTimeKind.Local).AddTicks(718),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 1",
@@ -289,7 +289,7 @@ namespace DAO.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1661),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3493),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 2",
@@ -302,7 +302,7 @@ namespace DAO.Migrations
                         {
                             Id = 3,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1695),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3525),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 3",
@@ -315,7 +315,7 @@ namespace DAO.Migrations
                         {
                             Id = 4,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1701),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3530),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 4",
@@ -328,7 +328,7 @@ namespace DAO.Migrations
                         {
                             Id = 5,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1705),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3534),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 5",
@@ -341,7 +341,7 @@ namespace DAO.Migrations
                         {
                             Id = 6,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1711),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3540),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 6",
@@ -354,7 +354,7 @@ namespace DAO.Migrations
                         {
                             Id = 7,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1715),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3544),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 7",
@@ -367,7 +367,7 @@ namespace DAO.Migrations
                         {
                             Id = 8,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1718),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3547),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 8",
@@ -380,7 +380,7 @@ namespace DAO.Migrations
                         {
                             Id = 9,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1722),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3551),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 9",
@@ -393,7 +393,7 @@ namespace DAO.Migrations
                         {
                             Id = 10,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1779),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3557),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 10",
@@ -406,7 +406,7 @@ namespace DAO.Migrations
                         {
                             Id = 11,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1784),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3561),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 11",
@@ -419,7 +419,7 @@ namespace DAO.Migrations
                         {
                             Id = 12,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1787),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3564),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 12",
@@ -432,7 +432,7 @@ namespace DAO.Migrations
                         {
                             Id = 13,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1791),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3611),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 13",
@@ -445,7 +445,7 @@ namespace DAO.Migrations
                         {
                             Id = 14,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1795),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3615),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 14",
@@ -458,7 +458,7 @@ namespace DAO.Migrations
                         {
                             Id = 15,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1798),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3618),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 15",
@@ -471,7 +471,7 @@ namespace DAO.Migrations
                         {
                             Id = 16,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1801),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3621),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 16",
@@ -484,7 +484,7 @@ namespace DAO.Migrations
                         {
                             Id = 17,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1805),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3625),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 17",
@@ -497,7 +497,7 @@ namespace DAO.Migrations
                         {
                             Id = 18,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1810),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3629),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 18",
@@ -510,7 +510,7 @@ namespace DAO.Migrations
                         {
                             Id = 19,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1814),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3632),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 19",
@@ -523,7 +523,7 @@ namespace DAO.Migrations
                         {
                             Id = 20,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1818),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3636),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 20",
@@ -536,7 +536,7 @@ namespace DAO.Migrations
                         {
                             Id = 21,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1821),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3640),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 21",
@@ -549,7 +549,7 @@ namespace DAO.Migrations
                         {
                             Id = 22,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1825),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3644),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 22",
@@ -562,7 +562,7 @@ namespace DAO.Migrations
                         {
                             Id = 23,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1828),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3647),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 23",
@@ -575,7 +575,7 @@ namespace DAO.Migrations
                         {
                             Id = 24,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1831),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3650),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 24",
@@ -588,7 +588,7 @@ namespace DAO.Migrations
                         {
                             Id = 25,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1835),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3653),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 25",
@@ -601,7 +601,7 @@ namespace DAO.Migrations
                         {
                             Id = 26,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1839),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3657),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 26",
@@ -614,7 +614,7 @@ namespace DAO.Migrations
                         {
                             Id = 27,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1842),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3660),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 27",
@@ -627,7 +627,7 @@ namespace DAO.Migrations
                         {
                             Id = 28,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1845),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3664),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 28",
@@ -640,7 +640,7 @@ namespace DAO.Migrations
                         {
                             Id = 29,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1849),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3667),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 29",
@@ -653,7 +653,7 @@ namespace DAO.Migrations
                         {
                             Id = 30,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1853),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3671),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 30",
@@ -666,7 +666,7 @@ namespace DAO.Migrations
                         {
                             Id = 31,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1856),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3675),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 31",
@@ -679,7 +679,7 @@ namespace DAO.Migrations
                         {
                             Id = 32,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1859),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3678),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 32",
@@ -692,7 +692,7 @@ namespace DAO.Migrations
                         {
                             Id = 33,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1862),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3681),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 33",
@@ -705,7 +705,7 @@ namespace DAO.Migrations
                         {
                             Id = 34,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1866),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3685),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 34",
@@ -718,7 +718,7 @@ namespace DAO.Migrations
                         {
                             Id = 35,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1870),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3689),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 35",
@@ -731,7 +731,7 @@ namespace DAO.Migrations
                         {
                             Id = 36,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1873),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3692),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 36",
@@ -744,7 +744,7 @@ namespace DAO.Migrations
                         {
                             Id = 37,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1876),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3695),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 37",
@@ -757,7 +757,7 @@ namespace DAO.Migrations
                         {
                             Id = 38,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1879),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3698),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 38",
@@ -770,7 +770,7 @@ namespace DAO.Migrations
                         {
                             Id = 39,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1917),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3702),
                             Image = "product-1.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 39",
@@ -783,7 +783,7 @@ namespace DAO.Migrations
                         {
                             Id = 40,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1921),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3706),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 40",
@@ -796,7 +796,7 @@ namespace DAO.Migrations
                         {
                             Id = 41,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1924),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3709),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 41",
@@ -809,7 +809,7 @@ namespace DAO.Migrations
                         {
                             Id = 42,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1927),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3765),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 42",
@@ -822,7 +822,7 @@ namespace DAO.Migrations
                         {
                             Id = 43,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1931),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3769),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 43",
@@ -835,7 +835,7 @@ namespace DAO.Migrations
                         {
                             Id = 44,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1934),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3773),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 44",
@@ -848,7 +848,7 @@ namespace DAO.Migrations
                         {
                             Id = 45,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1937),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3776),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 45",
@@ -861,7 +861,7 @@ namespace DAO.Migrations
                         {
                             Id = 46,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1940),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3779),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 46",
@@ -874,7 +874,7 @@ namespace DAO.Migrations
                         {
                             Id = 47,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1943),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3782),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 47",
@@ -887,7 +887,7 @@ namespace DAO.Migrations
                         {
                             Id = 48,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1946),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3785),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 48",
@@ -900,7 +900,7 @@ namespace DAO.Migrations
                         {
                             Id = 49,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1950),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3788),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 49",
@@ -913,7 +913,7 @@ namespace DAO.Migrations
                         {
                             Id = 50,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1953),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3792),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 50",
@@ -926,7 +926,7 @@ namespace DAO.Migrations
                         {
                             Id = 51,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1957),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3796),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 51",
@@ -939,7 +939,7 @@ namespace DAO.Migrations
                         {
                             Id = 52,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1960),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3799),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 52",
@@ -952,7 +952,7 @@ namespace DAO.Migrations
                         {
                             Id = 53,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1963),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3802),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 53",
@@ -965,7 +965,7 @@ namespace DAO.Migrations
                         {
                             Id = 54,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1966),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3805),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 54",
@@ -978,7 +978,7 @@ namespace DAO.Migrations
                         {
                             Id = 55,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1969),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3808),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 55",
@@ -991,7 +991,7 @@ namespace DAO.Migrations
                         {
                             Id = 56,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1973),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3812),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 56",
@@ -1004,7 +1004,7 @@ namespace DAO.Migrations
                         {
                             Id = 57,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1976),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3815),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 57",
@@ -1017,7 +1017,7 @@ namespace DAO.Migrations
                         {
                             Id = 58,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1979),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3818),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 58",
@@ -1030,7 +1030,7 @@ namespace DAO.Migrations
                         {
                             Id = 59,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 8, 5, 2, 47, 963, DateTimeKind.Local).AddTicks(1982),
+                            DateCreated = new DateTime(2021, 4, 8, 6, 4, 0, 123, DateTimeKind.Local).AddTicks(3821),
                             Image = "product-2.png",
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product 59",
@@ -1121,7 +1121,7 @@ namespace DAO.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<byte>("Rate")
@@ -1429,9 +1429,7 @@ namespace DAO.Migrations
                 {
                     b.HasOne("BUS.Domains.Product", "Product")
                         .WithMany("Ratings")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("BUS.Domains.User", "User")
                         .WithMany("Ratings")
