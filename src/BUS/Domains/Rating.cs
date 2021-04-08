@@ -9,7 +9,7 @@ namespace BUS.Domains
         public string Feedback { get; set; }
         public int Rate { get; set; }
         public string UserId { get; set; }
-        public int ProductId { get; set; }
+        public int? ProductId { get; set; }
         // nav property
         public User User { get; set; }
         public Product Product { get; set; }
