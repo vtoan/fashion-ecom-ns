@@ -43,14 +43,20 @@ namespace BUS.Services
         //     return listImage;
         // }
 
-        public bool RemoveImage(int productId, string imgName, string folderPath)
+        public bool RemoveImageDefault(int productId, string imgName)
         {
-            throw new NotImplementedException();
+            if (productId <= 0 || imgName == null || imgName == "") return false;
+            var modifiedProps = new Dictionary<string, object>();
+            modifiedProps.Add("Image", null);
+            return _productDao.UpdateItem(productId, modifiedProps);
         }
 
-        public bool UploadImage(int productId, string imgName, string folderPath)
+        public bool SetImageDefault(int productId, string imgName)
         {
-            throw new NotImplementedException();
+            if (productId <= 0 || imgName == null || imgName == "") return false;
+            var modifiedProps = new Dictionary<string, object>();
+            modifiedProps.Add("Image", imgName);
+            return _productDao.UpdateItem(productId, modifiedProps);
         }
     }
 }

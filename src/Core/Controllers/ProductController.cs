@@ -1,8 +1,11 @@
 using BUS.Enums;
 using BUS.Interfaces.Services;
+using Core.Interfaces;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -13,6 +16,8 @@ namespace Core.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productSer;
+
+        private readonly string _imageFolder = "product-img/";
 
         public ProductController(IProductService productSer)
         {
@@ -59,13 +64,28 @@ namespace Core.Controllers
             return NoContent();
         }
 
-        //Image
-        // [HttpGet("{id}/images")]
-        // public IEnumerable<string> GetListImage([FromServices] IWebHostEnvironment environment, int id)
-        // {
-        //     // var webRootPath = environment.WebRootPath;
-        //     // var folderPath = Path.Combine(webRootPath, "product-image/" + id);
-        //     // return _productSer.GetImages(id, folderPath);
-        // }
+        // Image
+        [HttpGet("{id}/images")]
+        public IEnumerable<string> GetListImage([FromServices] IFileService fileSer, int id)
+        {
+            return fileSer.GetFilesInFolder(_imageFolder + id);
+        }
+
+        [HttpPost("{id}/images")]
+        public IActionResult UploadImage([FromServices] IFileService fileSer, IFormFile image, int id)
+        {
+            var fileName = id + "_" + DateTime.Now.Millisecond;
+            fileSer.UploadFile(_imageFolder + id, image, fileName);
+            return NoContent();
+        }
+
+        [HttpPut("{id}/images")]
+        public IActionResult ChangeImageDefault([FromServices] IFileService fileSer, IFormFile image, int id)
+        {
+            var fileName = id + "_" + DateTime.Now.Millisecond;
+            fileSer.UploadFile(_imageFolder + id, image, fileName);
+            _productSer.SetImageDefault(id, fileName);
+            return NoContent();
+        }
     }
 }

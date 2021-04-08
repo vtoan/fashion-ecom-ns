@@ -31,12 +31,12 @@ namespace Core.Service
             return listImage;
         }
 
-        public bool RemoveFile(string filePath)
+        public void RemoveFile(string filePath)
         {
             throw new NotImplementedException();
         }
 
-        public bool UploadFile(string folderName, IFormFile file, string fileName)
+        public void UploadFile(string folderName, IFormFile file, string fileName)
         {
             try
             {
@@ -46,12 +46,11 @@ namespace Core.Service
                 string filePath = Path.Combine(dir, fileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                     file.CopyTo(fileStream);
-                return true;
             }
             catch (Exception ex)
             {
                 _logger.Log(LogLevel.Error, ex, "Upload file " + folderName);
-                return false;
+                throw new Exception("Can't upload image");
             }
         }
 

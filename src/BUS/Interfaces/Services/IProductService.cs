@@ -12,8 +12,8 @@ namespace BUS.Interfaces.Services
     {
         // Tuple <Products, Numbers>
         (ICollection<ProductVM>, int) GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort);
-        bool UploadImage(int productId, string imgName, string folderPath);
-        bool RemoveImage(int productId, string imgName, string folderPath);
-        // ICollection<string> GetImages(int productId, string folderPath);
+        bool SetImageDefault(int productId, string imgName);
+        bool RemoveImageDefault(int productId, string imgName);
+        // ICollection<string> GetImages(int productId);
     }
 }
