@@ -47,7 +47,7 @@ namespace Core
             services.AddDAO();
             services.AddHelpful();
 
-            services.AddControllers();
+            services.AddControllersWithViews();
 
         }
 
