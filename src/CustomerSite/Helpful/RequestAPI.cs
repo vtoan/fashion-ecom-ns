@@ -22,7 +22,8 @@ namespace CustomerSite.Helpful
         {
             var resp = await _host.GetAsync(route + routeParams);
             if (!resp.IsSuccessStatusCode)
-                throw new Exception(resp.StatusCode.ToString());
+                return default(T);
+            // throw new Exception(resp.StatusCode.ToString());
             return await resp.Content.ReadFromJsonAsync<T>();
         }
 
