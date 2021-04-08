@@ -60,15 +60,12 @@ namespace Core.Controllers
         }
 
         //Image
-        [HttpGet("{id}/images")]
-        public IEnumerable<string> GetListImage([FromServices] IWebHostEnvironment environment, int id)
-        {
-            var webRootPath = environment.WebRootPath;
-            var folderPath = Path.Combine(webRootPath, "product-image/" + id);
-            return _productSer.GetImages(id, folderPath);
-        }
-
-
-
+        // [HttpGet("{id}/images")]
+        // public IEnumerable<string> GetListImage([FromServices] IWebHostEnvironment environment, int id)
+        // {
+        //     // var webRootPath = environment.WebRootPath;
+        //     // var folderPath = Path.Combine(webRootPath, "product-image/" + id);
+        //     // return _productSer.GetImages(id, folderPath);
+        // }
     }
 }
