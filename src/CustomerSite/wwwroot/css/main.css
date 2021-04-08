@@ -31,6 +31,12 @@
 .rating {
   color: #faad14;
 }
+.data-empty {
+  padding: 10em 0;
+  text-align: center;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
 /*============== header =============*/
 .header {
   padding-top: 1.25em;

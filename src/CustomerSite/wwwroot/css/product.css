@@ -18,12 +18,6 @@ details {
 .order-by {
   margin-bottom: 1em;
 }
-.data-empty {
-  padding: 10em 0;
-  text-align: center;
-  opacity: 0.6;
-  text-transform: uppercase;
-}
 /*============== pagination =============*/
 .pagination {
   display: flex;
