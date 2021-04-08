@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BUS;
 using BUS.Domains;
+using Core.Middlewares;
 using Core.ServiceInjection;
 using DAO;
 using Microsoft.AspNetCore.Builder;
@@ -58,7 +59,8 @@ namespace Core
             }
 
             app.UseStaticFiles();
-            app.UseExceptionHandler();
+
+            app.UseGlobalHandlerException();
 
             app.UseHttpsRedirection();
 
