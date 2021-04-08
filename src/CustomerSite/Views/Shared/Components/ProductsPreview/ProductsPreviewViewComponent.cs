@@ -22,6 +22,7 @@ namespace CustomerSite.Views.Shared.Components.ProductsPreview
         {
             var item = HelpperPreview.ItemPreviews[(int)eItemPreview];
             var result = await _request.GetAsync<List<ProductVM>>(item.RequestUrl);
+            ViewBag.Title = item.Title;
             return View(result);
         }
     }
