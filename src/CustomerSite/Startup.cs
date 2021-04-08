@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CustomerSite.Interfaces;
+using CustomerSite.Helpful;
 
 namespace CustomerSite
 {
@@ -32,6 +34,9 @@ namespace CustomerSite
             {
                 configureClient.BaseAddress = new Uri(Startup.HostUri);
             });
+
+            //
+            services.AddScoped<IRequestAPI, RequestAPI>();
 
 
             services.AddControllersWithViews();
