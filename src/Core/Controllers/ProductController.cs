@@ -13,7 +13,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize("Bearer")]
+    // [Authorize("Bearer")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productSer;

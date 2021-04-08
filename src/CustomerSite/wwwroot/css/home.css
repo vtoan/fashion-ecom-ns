@@ -1,0 +1,119 @@
+/*============== 3.slider =============*/
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+/*============== 5. categoies =============*/
+.categories {
+  padding: 0;
+}
+@media only screen and (min-width: 62em) {
+  .categories {
+    padding: 0 15px;
+  }
+}
+.category-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1em;
+}
+.category-item img {
+  border-radius: 10px;
+}
+.category-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  background-color: black;
+  opacity: 0;
+  transition: all 0.5s;
+  border-radius: 10px;
+}
+.category-item:hover::before {
+  opacity: 0.1;
+}
+.category-title {
+  position: absolute;
+  text-align: center;
+  padding: 0.5em 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  transition: all 0.3s ease-out;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+@media only screen and (min-width: 62em) {
+  .category-title {
+    opacity: 0;
+    padding: 1em 0;
+  }
+}
+.category-item:hover .category-title {
+  opacity: 1;
+  bottom: 16px;
+}
+.category-link {
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  right: 25%;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  z-index: 99;
+}
+.category-item:hover .category-link {
+  opacity: 1;
+  top: 40%;
+}
+.category-link .btn:hover {
+  color: var(--impress);
+  background-color: white;
+}
+/*============== 6.about =============*/
+.about {
+  position: relative;
+}
+.about .img-warpper {
+  position: relative;
+}
+.about .img-warpper::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: black;
+  opacity: 0.4;
+}
+.about .btn:hover {
+  color: var(--impress);
+  background-color: white;
+}
+.more-product {
+  text-align: center;
+  display: block;
+  color: var(--primary);
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.more-product:hover {
+  color: var(--impress);
+}
+@media only screen and (min-width: 62em) {
+  .about .btn {
+    width: 25%;
+  }
+}

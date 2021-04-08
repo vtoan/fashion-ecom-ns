@@ -1,0 +1,41 @@
+details {
+  cursor: pointer;
+}
+#filter-form {
+  margin-bottom: 2em;
+}
+#filter-form input {
+  width: auto;
+  margin-right: 1em;
+}
+/*============== list product =============*/
+.list-wrapper {
+  padding: 0 15px;
+}
+.list-product-wrapper {
+  padding: 0 30px;
+}
+.order-by {
+  margin-bottom: 1em;
+}
+/*============== pagination =============*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.page-item {
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  margin-right: 1em;
+  margin-left: 1em;
+  color: var(--primary);
+}
+.page-item.active {
+  pointer-events: none;
+  color: var(--bg-primary);
+  background-color: var(--impress);
+}
+.page-item:hover {
+  background-color: var(--bg-secondary);
+}

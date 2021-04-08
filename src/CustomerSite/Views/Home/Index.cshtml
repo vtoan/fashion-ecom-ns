@@ -1,0 +1,126 @@
+﻿@using CustomerSite.Helpful;
+@section Css {
+    <link rel="stylesheet" href="~/css/home.css" />
+
+}
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/@@splidejs/splide@@latest/dist/js/splide.min.js"></script>
+    <script>
+      var splide = new Splide(".splide", {
+        type: "loop",
+        autoplay: true,
+      }).mount();
+    </script>
+}
+<!------ slider ----->
+<div class="slider section">
+    <div class="splide">
+    <div class="splide__track">
+        <ul class="splide__list">
+        <li class="splide__slide">
+            <div class="img slider-item">
+            <img src="./images/slide_01.jpg" alt="" srcset="" />
+            </div>
+        </li>
+        <li class="splide__slide">
+            <div class="img slider-item">
+            <img src="./images/slide_02.jpg" alt="" srcset="" />
+            </div>
+        </li>
+        <li class="splide__slide">
+            <div class="img slider-item">
+            <img src="./images/slide_03.jpg" alt="" srcset="" />
+            </div>
+        </li>
+        </ul>
+    </div>
+    <div class="splide__progress">
+        <div class="splide__progress__bar"></div>
+    </div>
+    </div>
+    <div class="title-float white">
+    <h4 class="heading impress text-3">Best offer</h4>
+    <p class="text-1 mb-none">new arrivals on sale</p>
+    </div>
+</div>
+<!------ categories preview----->
+<div class="container-fluid section">
+    <div class="categories">
+    <div class="row justify-content-around mb-padding">
+        <div class="col-6 col-lg-3">
+        <div class="category-item">
+            <div class="img"><img src="./images/product-1.png" /></div>
+            <div class="category-title">men</div>
+            <div class="category-link">
+            <a class="btn btn-sm btn-anim-no bold bg-impress white d-block"
+                >SHOP NOW</a
+            >
+            </div>
+        </div>
+        </div>
+        <div class="col-6 col-lg-3">
+        <div class="category-item">
+            <div class="img"><img src="./images/product-4.png" /></div>
+            <div class="category-title">woman</div>
+            <div class="category-link">
+            <a class="btn btn-sm btn-anim-no bold bg-impress white d-block"
+                >SHOP NOW</a
+            >
+            </div>
+        </div>
+        </div>
+        <div class="col-6 col-lg-3">
+        <div class="category-item">
+            <div class="img"><img src="./images/product-2.png" /></div>
+            <div class="category-title">men</div>
+            <div class="category-link">
+            <a class="btn btn-sm btn-anim-no bold bg-impress white d-block"
+                >SHOP NOW</a
+            >
+            </div>
+        </div>
+        </div>
+        <div class="col-6 col-lg-3">
+        <div class="category-item">
+            <div class="img"><img src="./images/product-3.png" /></div>
+            <div class="category-title">woman</div>
+            <div class="category-link">
+            <a class="btn btn-sm btn-anim-no bold bg-impress white d-block"
+                >SHOP NOW</a
+            >
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!------ list product----->
+<div class="container section">
+    @await Component.InvokeAsync("ProductsPreview",new {eItemPreview= EItemPreview.Shirts})
+    <a href="javascript:void(0)" class="more-product">more product</a>
+</div>
+<!------ list product sale----->
+<div class="container section">
+    @await Component.InvokeAsync("ProductsPreview",new {eItemPreview= EItemPreview.Pants})
+    <a href="javascript:void(0)" class="more-product">more product</a>
+</div>
+<!------ about-us ----->
+<div class="about section">
+    <div class="img-warpper">
+    <div class="img">
+        <img src="images/pic01.jpg" alt="" srcset="" />
+    </div>
+    </div>
+    <div class="title-float white">
+    <h4 class="heading normal white text-3">About us</h4>
+    <p class="d-none d-lg-block">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. A ad
+        obcaecati sit est.
+    </p>
+    <a
+        href="javascript:void(0)"
+        class="btn btn-sm btn-anim-no bold bg-impress white d-block m-auto"
+        >see more</a
+    >
+    </div>
+</div>
