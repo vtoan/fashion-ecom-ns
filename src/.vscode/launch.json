@@ -12,7 +12,7 @@
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Core/bin/Debug/net5.0/Core.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/CustomerSite",
+            "cwd": "${workspaceFolder}/Core",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
