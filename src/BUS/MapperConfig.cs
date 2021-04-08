@@ -29,12 +29,10 @@ namespace BUS
                 .ForMember(des => des.ProductDetails, opt => opt.MapFrom(src => src.ProductAttributes));
             CreateMap<Product, ProductDetailVM>()
                 .ForMember(des => des.ProductAttributes, opt => opt.MapFrom(src => src.ProductDetails));
-
             //Order
             CreateMap<Order, OrderVM>();
             CreateMap<OrderItemVM, OrderDetail>();
             CreateMap<OrderDetail, OrderItemVM>();
-
 
             CreateMap<OrderDetailVM, Order>()
                 .ForMember(des => des.OrderDetails, opt => opt.MapFrom(src => src.OrderItems));
