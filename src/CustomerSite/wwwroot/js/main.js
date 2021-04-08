@@ -72,7 +72,6 @@ function viewModile() {
     <div class="nav-mobile d-flex">
       <a id="search-trigger-mobile"  href="#" class="nav-item">search</a>
       <a href="#" class="nav-item">login</a>
-      <a href="#" class="nav-item">sale</a>
       <a href="#" class="nav-item">features</a>
       <a href="#" class="nav-item">men</a>
       <a href="#" class="nav-item">women</a>

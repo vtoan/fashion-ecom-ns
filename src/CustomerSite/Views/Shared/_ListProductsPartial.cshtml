@@ -1,0 +1,39 @@
+@model IEnumerable<Shared.ViewModels.ProductVM>
+<div id="list-product">
+    @if (Model == null)
+    {
+        <p class="data-empty">No data</p>
+    }
+    else
+    {
+        <div class="row mb-padding">
+            @foreach (var item in Model)
+            {
+                <div class="col-6 col-lg-3">
+                    <div class="product-item">
+                        <span class="product-sale">- 30%</span>
+                        <a product-link href="/">
+                            <div class="product-img">
+                                <div class="img">
+                                    <img src="./images/product-3.png" alt="" srcset="" />
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <p product-name class="mb-none bold">Product 1</p>
+                                <p>This is a description of product 1</p>
+                                <div class="rating">
+                                    <i class="las la-star"></i>
+                                    <i class="las la-star"></i>
+                                    <i class="las la-star"></i>
+                                    <i class="las la-star"></i>
+                                    <i class="lar la-star"></i>
+                                </div>
+                                <p class="price">300.000 VND</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

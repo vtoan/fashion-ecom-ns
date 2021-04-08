@@ -18,9 +18,9 @@ namespace CustomerSite.Helpful
     {
         public static ItemPreview[] ItemPreviews =
         {
-            new ItemPreview{ Title ="Featured", RequestUrl ="/product"},
-            new ItemPreview{ Title ="Shirts", RequestUrl ="/"},
-            new ItemPreview{ Title ="Pants", RequestUrl ="/"},
+            new ItemPreview{ Title ="Featured", RequestUrl ="product?cateId=1&&limited=4"},
+            new ItemPreview{ Title ="Shirts", RequestUrl ="product?cateId=1&&limited=4"},
+            new ItemPreview{ Title ="Pants", RequestUrl ="product?cateId=2&&limited=4"},
         };
     }
 }
