@@ -190,6 +190,7 @@
 
 .product-item .product-content .price {
   font-weight: 500;
+  color: var(--impress);
 }
 
 .product-item .product-content p[product-name]:hover {
