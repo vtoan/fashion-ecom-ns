@@ -31,7 +31,7 @@ Build an ecommerce web site with minimum functionality below:
 
 # Architecture 
 ## * BackEnd Project
-![BackEnd Project](https://github.com/vtoan/fashion-ecom-ns/blob/bus/docs/Project%20Architecture.png)
+![BackEnd Project](https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/Project%20Architecture.png)
 
 # Diagram
 ## * ERD
