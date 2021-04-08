@@ -1,0 +1,31 @@
+#cart .title-table {
+  padding-bottom: 1em;
+}
+a[prom-submit] {
+  padding: 0.6em 1.5em;
+}
+.btn-submit {
+  padding: 0.6em 1.5em;
+  font-weight: 500;
+  background-color: var(--impress);
+  color: var(--bg-primary);
+}
+.btn-submit:hover {
+  background-color: var(--bg-primary);
+  color: var(--primary);
+}
+.table tr td:last-child {
+  text-align: right;
+}
+.control-input {
+  margin-bottom: 1em;
+}
+.dropdown {
+  padding-left: 0;
+}
+.dropdown .select {
+  font-weight: 300;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  padding: 0.75em 1em;
+}
