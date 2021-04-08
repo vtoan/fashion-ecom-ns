@@ -32,16 +32,16 @@ namespace BUS.Services
             return (lsObject, lsObject.Count);
         }
 
-        public ICollection<string> GetImages(int productId, string folderPath)
-        {
-            var listImage = new List<string>();
-            // string folderPath = Path.Combine(webRootPath, "products/" + productId);
-            if (!Directory.Exists(folderPath)) return listImage;
-            var re = Directory.GetFiles(folderPath);
-            foreach (var item in re)
-                listImage.Add(item.Split("/").Last());
-            return listImage;
-        }
+        // public ICollection<string> GetImages(int productId, string folderPath)
+        // {
+        //     var listImage = new List<string>();
+        //     // string folderPath = Path.Combine(webRootPath, "products/" + productId);
+        //     if (!Directory.Exists(folderPath)) return listImage;
+        //     var re = Directory.GetFiles(folderPath);
+        //     foreach (var item in re)
+        //         listImage.Add(item.Split("/").Last());
+        //     return listImage;
+        // }
 
         public bool RemoveImage(int productId, string imgName, string folderPath)
         {
