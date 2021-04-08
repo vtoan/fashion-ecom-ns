@@ -73,18 +73,23 @@ namespace Core.Controllers
         [HttpPost("{id}/images")]
         public IActionResult UploadImage([FromServices] IFileService fileSer, IFormFile image, int id)
         {
-            var fileName = id + "_" + DateTime.Now.Millisecond;
-            fileSer.UploadFile(_imageFolder + id, image, fileName);
+            var fileName = _updateImage(fileSer, image, id);
             return NoContent();
         }
 
         [HttpPut("{id}/images")]
         public IActionResult ChangeImageDefault([FromServices] IFileService fileSer, IFormFile image, int id)
         {
-            var fileName = id + "_" + DateTime.Now.Millisecond;
-            fileSer.UploadFile(_imageFolder + id, image, fileName);
+            var fileName = _updateImage(fileSer, image, id);
             _productSer.SetImageDefault(id, fileName);
             return NoContent();
+        }
+
+        private string _updateImage(IFileService fileSer, IFormFile image, int id)
+        {
+            var fileName = id + "_" + DateTime.Now.Millisecond;
+            fileSer.UploadFile(_imageFolder + id, image, fileName);
+            return fileName;
         }
     }
 }
