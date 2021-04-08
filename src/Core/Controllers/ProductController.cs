@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace Core.Controllers
 {
