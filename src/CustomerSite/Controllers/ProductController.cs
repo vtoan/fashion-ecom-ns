@@ -9,12 +9,12 @@ using CustomerSite.Models;
 
 namespace CustomerSite.Controllers
 {
-    public class HomeController : Controller
+    public class ProductController : Controller
     {
 
-        public HomeController() { }
+        public ProductController() { }
 
-        public IActionResult Index()
+        public IActionResult ListProduct()
         {
             return View();
         }
