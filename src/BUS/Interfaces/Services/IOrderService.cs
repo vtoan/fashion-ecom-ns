@@ -9,7 +9,7 @@ namespace BUS.Interfaces.Services
         IGet<OrderDetailVM>,
         IAdd<OrderDetailVM>
     {
-        (ICollection<OrderVM>, int) GetList(DateTime start, DateTime end, int provinceId, int limited, int offset);
+        (ICollection<OrderVM>, int) GetList(string start, string end, int provinceId, int limited, int offset);
         (ICollection<OrderVM>, int) GetListByPhone(string query, int provinceId, int limited, int offset);
         (ICollection<OrderVM>, int) GetListByUser(string userId, int provinceId, int limited, int offset);
         // bool UpdateStatus(int orderId, OrderStatus status);

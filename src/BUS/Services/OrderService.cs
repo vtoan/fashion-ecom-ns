@@ -19,9 +19,13 @@ namespace BUS.Services
             _daoOrder = dao;
         }
 
-        public (ICollection<OrderVM>, int) GetList(DateTime start, DateTime end, int provinceId, int limited, int offset)
+        public (ICollection<OrderVM>, int) GetList(string start, string end, int provinceId, int limited, int offset)
         {
-            var result = _daoOrder.GetListItems(start, end, provinceId, limited, offset);
+            DateTime dateStart;
+            DateTime dateEnd;
+            DateTime.TryParse(start, out dateStart);
+            DateTime.TryParse(end, out dateEnd);
+            var result = _daoOrder.GetListItems(dateStart, dateEnd, provinceId, limited, offset);
             return (this._mapList<OrderVM, Order>(result.Item1), result.Item2);
         }
 
