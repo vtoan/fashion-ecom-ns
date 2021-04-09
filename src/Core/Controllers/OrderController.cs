@@ -23,10 +23,13 @@ namespace Core.Controllers
             return _orderSer.Get(id);
         }
 
-        [HttpPost("{id}")]
-        public OrderDetailVM Create(int id)
+        [HttpPost]
+        public ActionResult<OrderDetailVM> Create(OrderDetailVM orderDetailVM)
         {
-            return _orderSer.Get(id);
+            if (!ModelState.IsValid) return BadRequest();
+            var result = _orderSer.Add(orderDetailVM);
+            if (result == null) return Problem("Can't add new order");
+            return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
         }
 
         [HttpGet]

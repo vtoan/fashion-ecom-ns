@@ -33,7 +33,7 @@ namespace Core.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
             var result = _ratingSer.Add(productId, ratingVM);
-            if (result == null) return Problem();
+            if (result == null) return Problem("Can't add rating");
             return CreatedAtAction(nameof(Create), result);
         }
 
