@@ -1,5 +1,6 @@
 using BUS.Enums;
 using BUS.Interfaces.Services;
+using Core.Helper;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -35,7 +36,8 @@ namespace Core.Controllers
         public IEnumerable<ProductVM> GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
             var result = _productSer.GetList(query, typeId, cateId, limited, offset, sort);
-            HttpContext.Response.Headers.Add("total-item", result.Item2.ToString());
+            RespHelper.AddTotalPage(HttpContext, result.Item2);
+            // HttpContext.Response.Headers.Add("total-item", result.Item2.ToString());
             return result.Item1;
         }
 
@@ -44,7 +46,7 @@ namespace Core.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
             var result = _productSer.Add(productDetailVM);
-            if (result == null) return BadRequest();
+            if (result == null) return Problem("Can't add new product");
             return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
         }
 

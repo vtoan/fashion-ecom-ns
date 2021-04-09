@@ -27,7 +27,7 @@ namespace Core.Controllers
         {
             if (!ModelState.IsValid || productId <= 0) return BadRequest();
             var result = _productDetailSer.Add(productId, attributeVM);
-            if (result == null) return Problem();
+            if (result == null) return Problem("Can't add new product attribute");
             return CreatedAtAction(nameof(GeList), result);
         }
 

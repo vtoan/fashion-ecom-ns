@@ -37,7 +37,7 @@ namespace Core.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
             var result = _cateSer.Add(categoryVM);
-            if (result == null) return BadRequest();
+            if (result == null) return Problem("Can't add new category");
             return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
         }
 

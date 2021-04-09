@@ -36,7 +36,7 @@ namespace Core.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
             var result = _feeSer.Add(feeVM);
-            if (result == null) return BadRequest();
+            if (result == null) return Problem("Can't add new fee");
             return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
         }
 
