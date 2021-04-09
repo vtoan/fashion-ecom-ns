@@ -47,8 +47,8 @@ namespace Core
             services.AddDAO();
             services.AddHelpful();
 
-            services.AddControllersWithViews();
-
+            services.AddControllersWithViews()
+                    .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
