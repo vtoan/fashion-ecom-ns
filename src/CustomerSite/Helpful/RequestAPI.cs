@@ -3,6 +3,7 @@ using CustomerSite.Interfaces;
 using System.Threading.Tasks;
 using System.Net.Http.Json;
 using System;
+using CustomerSite.Exceptions;
 
 namespace CustomerSite.Helpful
 {
@@ -20,40 +21,73 @@ namespace CustomerSite.Helpful
 
         public async Task<T> GetAsync<T>(string route, string routeParams = "")
         {
-            var resp = await _host.GetAsync(route + routeParams);
-            if (!resp.IsSuccessStatusCode)
-                return default(T);
-            // throw new Exception(resp.StatusCode.ToString());
-            return await resp.Content.ReadFromJsonAsync<T>();
+
+            try
+            {
+                var resp = await _host.GetAsync(route + routeParams);
+                if (!resp.IsSuccessStatusCode)
+                    return default(T);
+                // throw new Exception(resp.StatusCode.ToString());
+                return await resp.Content.ReadFromJsonAsync<T>();
+            }
+            catch (Exception)
+            {
+                throw new ServeNotAvaiableException();
+            }
+
         }
 
         public async Task<T> PostAsync<T>(string route, object bodyContent, string routeParams = "")
         {
-            var resp = await _host.PostAsJsonAsync(route + routeParams, bodyContent);
-            if (!resp.IsSuccessStatusCode)
-                throw new Exception(resp.StatusCode.ToString());
-            return await resp.Content.ReadFromJsonAsync<T>();
+            try
+            {
+                var resp = await _host.PostAsJsonAsync(route + routeParams, bodyContent);
+                if (!resp.IsSuccessStatusCode)
+                    throw new Exception(resp.StatusCode.ToString());
+                return await resp.Content.ReadFromJsonAsync<T>();
+            }
+            catch (Exception)
+            {
+                throw new ServeNotAvaiableException();
+            }
+
         }
 
         public async Task<bool> PutAsync(string route, object bodyContent, string routeParams = "")
         {
-            var resp = await _host.PutAsJsonAsync(route + routeParams, bodyContent);
-            if (!resp.IsSuccessStatusCode)
-                throw new Exception(resp.StatusCode.ToString());
-            return true;
+            try
+            {
+                var resp = await _host.PutAsJsonAsync(route + routeParams, bodyContent);
+                if (!resp.IsSuccessStatusCode)
+                    throw new Exception(resp.StatusCode.ToString());
+                return true;
+            }
+            catch (Exception)
+            {
+                throw new ServeNotAvaiableException();
+            }
         }
 
         public async Task<bool> DeleteAsync(string route, string routeParams = "")
         {
-            HttpRequestMessage request = new HttpRequestMessage
+            try
             {
-                Method = HttpMethod.Delete,
-                RequestUri = new Uri(Startup.HostUri + route + routeParams)
-            };
-            var resp = await _host.SendAsync(request);
-            if (!resp.IsSuccessStatusCode)
-                throw new Exception(resp.StatusCode.ToString());
-            return true;
+                HttpRequestMessage request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Delete,
+                    RequestUri = new Uri(Startup.HostUri + route + routeParams)
+                };
+                var resp = await _host.SendAsync(request);
+                if (!resp.IsSuccessStatusCode)
+                    throw new Exception(resp.StatusCode.ToString());
+                return true;
+            }
+            catch (Exception)
+            {
+                throw new ServeNotAvaiableException();
+            }
+
+
         }
     }
 }
