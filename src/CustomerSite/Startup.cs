@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CustomerSite.Interfaces;
 using CustomerSite.Helpful;
+using System.Net.Http;
 
 namespace CustomerSite
 {
@@ -33,6 +34,13 @@ namespace CustomerSite
             services.AddHttpClient("host", (configureClient) =>
             {
                 configureClient.BaseAddress = new Uri(Startup.HostUri);
+            }).ConfigurePrimaryHttpMessageHandler(serProvider =>
+            {
+                var clientHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+                };
+                return clientHandler;
             });
 
             //
