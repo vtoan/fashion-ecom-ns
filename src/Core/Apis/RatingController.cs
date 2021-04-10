@@ -29,7 +29,7 @@ namespace Core.Controllers
         }
 
         [HttpPost]
-        public ActionResult<FeeVM> Create(int productId, string userId, RatingVM ratingVM)
+        public ActionResult<RatingVM> Create(int productId, string userId, RatingVM ratingVM)
         {
             if (!ModelState.IsValid) return BadRequest();
             var result = _ratingSer.Add(productId, ratingVM);
