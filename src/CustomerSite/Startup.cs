@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using CustomerSite.Interfaces;
 using CustomerSite.Services;
 using System.Net.Http;
+using CustomerSite.ServiceInjection;
 
 namespace CustomerSite
 {
@@ -28,24 +29,11 @@ namespace CustomerSite
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // url
-            Startup.HostUri = Configuration.GetValue<string>("HostUri");
+            services.AddConfigHttpClient(Configuration);
 
-            services.AddHttpClient("host", (configureClient) =>
-            {
-                configureClient.BaseAddress = new Uri(Startup.HostUri);
-            }).ConfigurePrimaryHttpMessageHandler(serProvider =>
-            {
-                var clientHandler = new HttpClientHandler
-                {
-                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
-                };
-                return clientHandler;
-            });
-
-            //
             services.AddScoped<IRequestAPI, RequestAPI>();
 
+            services.AddApiClient();
 
             services.AddControllersWithViews();
         }
