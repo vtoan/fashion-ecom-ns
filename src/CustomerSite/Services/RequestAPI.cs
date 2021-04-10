@@ -5,7 +5,7 @@ using System.Net.Http.Json;
 using System;
 using CustomerSite.Exceptions;
 
-namespace CustomerSite.Helpful
+namespace CustomerSite.Services
 {
     public class RequestAPI : IRequestAPI
     {

@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CustomerSite.Interfaces;
-using CustomerSite.Helpful;
+using CustomerSite.Services;
 using System.Net.Http;
 
 namespace CustomerSite
