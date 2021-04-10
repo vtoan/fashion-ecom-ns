@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BUS.Domains;
-using BUS.Enums;
+using Shared.Enums;
 using BUS.Interfaces.DAOs;
 using Microsoft.EntityFrameworkCore;
 

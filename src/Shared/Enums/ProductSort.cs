@@ -1,4 +1,4 @@
-namespace BUS.Enums
+namespace Shared.Enums
 {
     public enum ProductSort
     {

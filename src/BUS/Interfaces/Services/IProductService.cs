@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using BUS.Enums;
+using Shared.Enums;
 using Shared.ViewModels;
 
 namespace BUS.Interfaces.Services

@@ -1,4 +1,4 @@
-using BUS.Enums;
+using Shared.Enums;
 using BUS.Interfaces.Services;
 using Core.Helper;
 using Core.Interfaces;

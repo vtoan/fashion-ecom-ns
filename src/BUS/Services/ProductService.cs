@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using AutoMapper;
 using BUS.Domains;
-using BUS.Enums;
+using Shared.Enums;
 using BUS.Interfaces.DAOs;
 using BUS.Interfaces.Services;
 using Shared.ViewModels;
