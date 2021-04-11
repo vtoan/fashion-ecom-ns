@@ -9,6 +9,7 @@ namespace CustomerSite.ServiceInjection
         public static IServiceCollection AddApiClient(this IServiceCollection services)
         {
 
+            services.AddScoped<IRequestAPI, RequestAPI>();
             services.AddScoped<ICategoryApiClient, CategoryApiClient>();
             services.AddScoped<IOrderApiClient, OrderApiClient>();
             services.AddScoped<IProductApiClient, ProductApiClient>();

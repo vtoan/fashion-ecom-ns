@@ -1,5 +1,4 @@
 @using CustomerSite.Helpful;
-@using Shared.Enums
 
 @section Css {
 <link rel="stylesheet" href="~/css/product.css" />
@@ -28,29 +27,7 @@
             <!------ product----->
             <div class="col-12 col-lg-9">
                 <!------ order ----->
-                <div class="order-by">
-                    <div class="row align-items-top justify-content-between">
-                        <div style="padding-left: 15px">@ViewBag.Total products</div>
-                        <div class="dropdown">
-                            <div class="select" style="padding-top: 0">
-                                <span style="font-weight: 500">Order by</span>
-                                <i class="las la-angle-down"></i>
-                            </div>
-                            <input id="filter" type="hidden" name="filter" />
-                            <ul class="dropdown-menu">
-                                <li value="0"><a
-                                        href="/product/@typeId@PageHelper.CreateURI(cateId,ProductSort.LowPrice)">Low</a>
-                                </li>
-                                <li value="1"><a
-                                        href="/product/@typeId@PageHelper.CreateURI(cateId,ProductSort.HighPrice)">High</a>
-                                </li>
-                                <li value="2"><a
-                                        href="/product/@typeId@PageHelper.CreateURI(cateId,ProductSort.Popular)">Popular</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @await Component.InvokeAsync("SortProduct", new {typeId=typeId, cateId=cateId, sortCurrent=sort})
                 <!------ list ----->
                 <partial name="_ListProductsPartial" model="@Model" />
                 <!------ paginaton ----->
@@ -59,8 +36,7 @@
                     {
                         var className = "";
                         if (i == ViewBag.PageCurrent) className = "active";
-                        <a class='page-item @className'
-                        href="/product/@typeId@PageHelper.CreateURI(ViewBag.CateId,ViewBag.Sort,i)">@i</a>
+                        <a class='page-item @className' href="/type/@typeId@PageHelper.CreateURI(cateId,sort,i)">@i</a>
                     }
                 </div>
             </div>

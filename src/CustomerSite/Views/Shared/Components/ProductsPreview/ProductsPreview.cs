@@ -10,11 +10,11 @@ using Shared.ViewModels;
 namespace CustomerSite.Views.Shared.Components.ProductsPreview
 {
     [ViewComponent]
-    public class ProductsPreviewViewComponent : ViewComponent
+    public class ProductsPreview : ViewComponent
     {
 
         private readonly IProductApiClient _request;
-        public ProductsPreviewViewComponent(IProductApiClient request)
+        public ProductsPreview(IProductApiClient request)
         {
             _request = request;
         }

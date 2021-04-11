@@ -31,8 +31,6 @@ namespace CustomerSite
         {
             services.AddConfigHttpClient(Configuration);
 
-            services.AddScoped<IRequestAPI, RequestAPI>();
-
             services.AddApiClient();
 
             services.AddControllersWithViews();

@@ -36,6 +36,7 @@ namespace CustomerSite.Services
                 throw new ServeNotAvaiableException();
             }
         }
+
         public async Task<(T Data, HttpResponseHeaders Header)> GetWithRespAsync<T>(string route, string routeParams = "")
         {
             try
@@ -101,8 +102,6 @@ namespace CustomerSite.Services
             {
                 throw new ServeNotAvaiableException();
             }
-
-
         }
     }
 }
