@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BUS.Domains;
 using BUS.Interfaces.DAOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAO.DAOs
 {
@@ -14,7 +15,7 @@ namespace DAO.DAOs
 
         public ICollection<Rating> GetByProduct(int productId)
         {
-            return _context.Ratings.Where(item => item.ProductId == productId).ToList();
+            return _context.Ratings.Where(item => item.ProductId == productId).Include(item => item.User).ToList();
         }
 
         public ICollection<Rating> GetByUser(string userId)

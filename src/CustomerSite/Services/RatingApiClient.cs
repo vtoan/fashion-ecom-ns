@@ -23,7 +23,7 @@ namespace CustomerSite.Services
 
         public async Task<IEnumerable<RatingVM>> GetByProductAsync(int id)
         {
-            return await _request.GetAsync<IEnumerable<RatingVM>>(routeName + "/" + id);
+            return await _request.GetAsync<IEnumerable<RatingVM>>(routeName + "/product/" + id);
         }
     }
 }

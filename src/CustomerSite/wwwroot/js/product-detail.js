@@ -1,5 +1,7 @@
 let totalQuanlity = 1;
-let itemid = 1;
+let itemid = Number(
+  document.querySelector(".product-detail").getAttribute("itemid")
+);
 function attachEventItem(element) {
   element
     .querySelector("a[quantity-add]")

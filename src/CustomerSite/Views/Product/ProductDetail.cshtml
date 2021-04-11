@@ -1,0 +1,90 @@
+@model Shared.ViewModels.ProductDetailVM;
+
+@section Css {
+<link rel="stylesheet" href="~/css/gallery.css" />
+<link rel="stylesheet" href="~/css/product-detail.css" />
+}
+@section Scripts {
+<script src="~/js/gallary.js"></script>
+<script src="~/js/product-detail.js"></script>
+<script>
+    Gallery();
+</script>
+}
+<!------ breadcrum ----->
+<div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
+<!------ content ----->
+<div class="product-detail" itemid="@Model.Id">
+    <div class="container section pt-5">
+        <div class="row list-wrapper">
+            <div class="col-12 col-md-6 col-lg-7">
+                <vc:gallery product-id="@Model.Id" image-default="@Model.Image" />
+            </div>
+            <div class="col-12 col-md-6 col-lg-5">
+                <h1 class="normal text-2">@Model.Name</h1>
+                <div class="product-info rating">
+                    <partial name="_RatingPartial" model="@Model.Rate" />
+                </div>
+                <div class="text-4 product-info">
+                    <p class="bold mb-3">
+                        <span class="underline">Price :</span>
+                        <span class="text-4 impress bold d-lg-inline-block mb-1 px-2">
+                            <currency>@Model.Price</currency>
+                        </span>
+                    </p>
+                    @* <p>
+                        <span>Giá gốc :</span>
+                        <del class="normal">1000</del>
+                        <span class="impress"> 2000</span>
+                        </p> *@
+                </div>
+                <vc:product-attribute product-attributes="@Model.ProductAttributes" />
+                <div class="product-info">
+                    <div class="d-flex align-items-center">
+                        <span class="semi-bold" style="margin-right: 1em">Quantity</span>
+                        <div quantity class="d-flex align-items-center">
+                            <a quantity-add class="btn btn-sm"><i class="las la-angle-up"></i></a>
+                            <span item-count class="px-3">1</span>
+                            <a quantity-subtract class="btn btn-sm"><i class="las la-angle-down"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="group-btns text-center">
+                    <a style="margin-bottom: 0.5em"
+                        class="d-block add-cart btn btn-sm border-impress upper-case bold">Add to cart</a>
+                    <span class="float-clear text-center d-block">Or contact us with Facebook
+                        <a class="link blue" href="https://fb.com"> here </a></span>
+                </div>
+                <div class="product-info">
+                    <span class="label">Product info</span>
+                    <table class="table table-color">
+                        <tbody>
+                            <tr>
+                                <td scope="row">Material</td>
+                                <td item-related>@Model.Material</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Origin</td>
+                                <td>@Model.Origin</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="product-info">
+                    <span class="label">Description</span>
+                    <p style="margin-top: 0">
+                        @{
+                            var contents = @Model.ProductDescription.Split("/");
+                            foreach (var item in contents)
+                            {
+                                <text>- @item.</text><br />
+                            }
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!------ feedback ----->
+<vc:feedback product-id="@Model.Id" />

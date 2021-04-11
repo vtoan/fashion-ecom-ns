@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using BUS.Domains;
 using Shared.ViewModels;
@@ -23,12 +26,17 @@ namespace BUS
             CreateMap<ProductAttributeVM, ProductDetail>();
             //
             CreateMap<ProductVM, Product>();
-            CreateMap<Product, ProductVM>();
+
+            CreateMap<Product, ProductVM>()
+                .ForMember(des => des.Rate, opt => opt.MapFrom(src => _calAverageRate(src.Ratings)));
+
             //
             CreateMap<ProductDetailVM, Product>()
                 .ForMember(des => des.ProductDetails, opt => opt.MapFrom(src => src.ProductAttributes));
             CreateMap<Product, ProductDetailVM>()
-                .ForMember(des => des.ProductAttributes, opt => opt.MapFrom(src => src.ProductDetails));
+                .ForMember(des => des.ProductAttributes, opt => opt.MapFrom(src => src.ProductDetails))
+                .ForMember(des => des.Rate, opt => opt.MapFrom(src => _calAverageRate(src.Ratings)));
+
             //Order
             CreateMap<Order, OrderVM>();
             CreateMap<OrderItemVM, OrderDetail>();
@@ -40,8 +48,17 @@ namespace BUS
                 .ForMember(des => des.OrderItems, opt => opt.MapFrom(src => src.OrderDetails));
 
             //Rating
-            CreateMap<Rating, RatingVM>();
+            CreateMap<Rating, RatingVM>()
+                .ForMember(des => des.CustomerName, otp => otp.MapFrom(src => src.User.CustomerName));
             CreateMap<RatingVM, Rating>();
+
+        }
+
+        private double _calAverageRate(ICollection<Rating> ratings)
+        {
+            if (ratings == null || ratings.Count == 0) return 0;
+            var avg = ratings.Select(item => item.Rate).Average();
+            return Math.Ceiling(avg);
 
         }
     }

@@ -1,0 +1,60 @@
+@model (IEnumerable<Shared.ViewModels.RatingVM> RatingVMs, int prodId);
+
+<div class="container section" style="padding: 0 15px">
+    <h3 class="semi-bold">User's Feedbacks</h3>
+    <div class="line"></div>
+    <div class="row">
+        <div class="col-12 col-lg-7" style="margin-bottom: 1.5em">
+            @if (Model.RatingVMs == null || Model.RatingVMs.Count() == 0)
+            {
+                <p class="data-empty">NO FEEDBACK</p>
+            }
+            else
+            {
+                foreach (var item in Model.RatingVMs)
+                {
+                    <div class="feedback-item">
+                        <div class="d-flex align-items-center">
+                            <span class="user-name">
+                                @{
+                                    var nam = item.CustomerName ?? "Unknown";
+                                    <text>@nam</text>
+                                }
+                            </span>
+                            <span class="rating">
+                                @{
+                                    var leng = @item.Rate;
+                                }
+                                @for (int i = 0; i < leng; i++)
+                                {
+                                    <i class="las la-star"></i>
+                                }
+                            </span>
+                        </div>
+                        <p>
+                            - @item.Feedback
+                        </p>
+                    </div>
+                }
+            }
+        </div>
+        <div class="col-12 col-lg-5">
+            <p class="semi-bold upper-case">send feedback</p>
+            <form id="feedbackForm" action="/rating/@Model.prodId" method="POST">
+                <div class="rating-form d-flex justify-content-start">
+                    <input type="radio" name="rate" value="1" />
+                    <input type="radio" name="rate" value="2" />
+                    <input type="radio" name="rate" value="3" />
+                    <input type="radio" name="rate" value="4" />
+                    <input type="radio" name="rate" value="5" />
+                </div>
+                <p style="padding-top: 1em">
+                    <textarea class="mb-3 d-block w-100" name="Feedback" rows="3"
+                        placeholder="enter something .."></textarea>
+                </p>
+                <button type="submit" style="margin-bottom: 0.5em"
+                    class="btn btn-sm border-impress upper-case bold">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

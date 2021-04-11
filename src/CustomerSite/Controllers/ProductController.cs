@@ -17,7 +17,7 @@ namespace CustomerSite.Controllers
             _request = request;
         }
 
-        [HttpGet("/product/{typeId}")]
+        [HttpGet("/type/{typeId}")]
         public async Task<IActionResult> ListProductAsync(string query = null, int typeId = 0, int cateId = 0, int page = 1, ProductSort? sort = null)
         {
             var resp = await _request.GetListAsync(query, typeId, cateId, _pageSize, page - 1, sort);
@@ -25,9 +25,17 @@ namespace CustomerSite.Controllers
             ViewBag.Sort = sort;
             ViewBag.CateId = cateId;
             ViewBag.Total = resp.TotalItem;
-            ViewBag.Page = Math.Ceiling(resp.Item2 / (_pageSize + 0.0));
+            //
+            ViewBag.Page = Math.Ceiling(resp.TotalItem / (_pageSize + 0.0));
             ViewBag.PageCurrent = page;
             return View(resp.Products);
+        }
+
+        [HttpGet("product/{productId}")]
+        public async Task<IActionResult> ProductDetailAsync(int productId)
+        {
+            var resp = await _request.GetAsync(productId);
+            return View(resp);
         }
     }
 }

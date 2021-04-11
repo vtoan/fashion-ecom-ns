@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 
 namespace Shared.ViewModels
 {
@@ -11,7 +10,7 @@ namespace Shared.ViewModels
         public string ProductDescription { get; set; }
         public int? CategoryId { get; set; }
         public int? TypeProductId { get; set; }
-        public ICollection<RatingVM> Ratings { get; set; }
+        public double Rate { get; set; }
 
     }
 }
