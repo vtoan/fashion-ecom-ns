@@ -42,7 +42,7 @@ namespace DAO
             modelBuilder.Entity<Order>().Property(o => o.Promotions).HasMaxLength(150);
             modelBuilder.Entity<Order>().Property(o => o.Fees).HasMaxLength(150);
             //OrderDetail
-            modelBuilder.Entity<OrderDetail>().HasKey(od => new { od.OrderId, od.ProductId });
+            modelBuilder.Entity<OrderDetail>().HasKey(od => new { od.OrderId, od.ProductDetailId });
             modelBuilder.Entity<OrderDetail>().Property(p => p.Discount).HasColumnType("decimal(2,2)");
             //Product
             modelBuilder.Entity<Product>().Property(p => p.Name).HasMaxLength(250);
