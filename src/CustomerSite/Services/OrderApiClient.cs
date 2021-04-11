@@ -16,17 +16,17 @@ namespace CustomerSite.Services
             _request = request;
         }
 
-        public async Task<OrderDetailVM> Create(OrderDetailVM orderDetailVM, List<OrderItemVM> listItem)
+        public async Task<OrderDetailVM> CreateAsync(OrderDetailVM orderDetailVM, List<OrderItemVM> listItem)
         {
             return await _request.PostAsync<OrderDetailVM>(routeName, orderDetailVM);
         }
 
-        public async Task<OrderDetailVM> Get(int id)
+        public async Task<OrderDetailVM> GetAsync(int id)
         {
             return await _request.GetAsync<OrderDetailVM>(routeName + "/" + id);
         }
 
-        public async Task<IEnumerable<FeeVM>> GetList()
+        public async Task<IEnumerable<FeeVM>> GetListAsync()
         {
             return await _request.GetAsync<IEnumerable<FeeVM>>(routeFee);
         }

@@ -7,9 +7,9 @@ namespace CustomerSite.Interfaces
 {
     public interface IOrderApiClient
     {
-        Task<OrderDetailVM> Create(OrderDetailVM orderDetailVM, List<OrderItemVM> listItem);
-        Task<OrderDetailVM> Get(int id);
-        Task<IEnumerable<FeeVM>> GetList();
+        Task<OrderDetailVM> CreateAsync(OrderDetailVM orderDetailVM, List<OrderItemVM> listItem);
+        Task<OrderDetailVM> GetAsync(int id);
+        Task<IEnumerable<FeeVM>> GetListAsync();
 
     }
 }

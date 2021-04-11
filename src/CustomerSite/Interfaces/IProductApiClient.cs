@@ -7,9 +7,9 @@ namespace CustomerSite.Interfaces
 {
     public interface IProductApiClient
     {
-        Task<(IEnumerable<ProductVM>, int)> GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort);
-        Task<IEnumerable<string>> GetListImage(int id);
-        Task<ProductDetailVM> Get(int id);
-        Task<IEnumerable<ProductAttributeVM>> GetAttributes(int productId);
+        Task<(IEnumerable<ProductVM> Products, int TotalItem)> GetListAsync(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort);
+        Task<IEnumerable<string>> GetListImageAsync(int id);
+        Task<ProductDetailVM> GetAsync(int id);
+        Task<IEnumerable<ProductAttributeVM>> GetAttributesAsync(int productId);
     }
 }

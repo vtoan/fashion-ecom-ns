@@ -16,7 +16,7 @@ namespace CustomerSite.Services
         }
         public async Task<IEnumerable<CategoryVM>> GetListAsync(int typeId)
         {
-            return await _request.GetAsync<IEnumerable<CategoryVM>>(routeName + "/" + typeId);
+            return await _request.GetAsync<IEnumerable<CategoryVM>>(routeName + "?typeId=" + typeId);
         }
     }
 }

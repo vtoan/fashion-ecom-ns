@@ -15,13 +15,13 @@ namespace CustomerSite.Services
             _request = request;
         }
 
-        public async Task<RatingVM> Create(int productId, string userId, RatingVM ratingVM)
+        public async Task<RatingVM> CreateAsync(int productId, string userId, RatingVM ratingVM)
         {
             var router = routeName + "?productId=" + productId + "&&userId" + userId;
             return await _request.PostAsync<RatingVM>(router, ratingVM);
         }
 
-        public async Task<IEnumerable<RatingVM>> GetByProduct(int id)
+        public async Task<IEnumerable<RatingVM>> GetByProductAsync(int id)
         {
             return await _request.GetAsync<IEnumerable<RatingVM>>(routeName + "/" + id);
         }

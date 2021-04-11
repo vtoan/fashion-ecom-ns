@@ -9,6 +9,6 @@ namespace CustomerSite.Interfaces
         Task<T> PostAsync<T>(string route, object bodyContent, string routeParams = "");
         Task<bool> PutAsync(string route, object bodyContent, string routeParams = "");
         Task<bool> DeleteAsync(string route, string routeParams = "");
-        Task<(T, HttpResponseHeaders)> GetWithRespAsync<T>(string route, string routeParams = "");
+        Task<(T Data, HttpResponseHeaders Header)> GetWithRespAsync<T>(string route, string routeParams = "");
     }
 }
