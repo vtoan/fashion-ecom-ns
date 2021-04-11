@@ -7,8 +7,13 @@
 }
 @section Scripts {
 <script src="~/js/dropdown.js"></script>
-
 <script src="~/js/products.js"></script>
+}
+@{
+    var cateId = ViewBag.CateId;
+    var typeId = ViewBag.TypeId;
+    var pageCurrent = ViewBag.PageCurrent;
+    var sort = ViewBag.Sort;
 }
 <!------ breadcrum ----->
 <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
@@ -18,29 +23,7 @@
         <div class="row">
             <!------ filter ----->
             <div class="col-12 col-lg-3">
-                <details>
-                    <summary class="bold text-4 upper-case" style="margin-bottom: 1em">
-                        Filter products
-                    </summary>
-                    <form id="filter-form" action="/product/@ViewBag.TypeId" method="GET">
-                        <input type="radio" id="vehicle1" name="cateId" value="1" />
-                        <label for="vehicle1">Jackets & Coast</label><br />
-                        <input type="radio" id="vehicle2" name="cateId" value="2" />
-                        <label for="vehicle2">T-Shirts</label><br />
-                        <input type="radio" id="vehicle3" name="cateId" value="3" />
-                        <label for="vehicle2">Shirts</label><br />
-                        <input type="radio" id="vehicle4" name="cateId" value="3" />
-                        <label for="vehicle2">Hoodies</label><br />
-                        <!------  ----->
-                        <hr style="margin-bottom: 1.5em; width: 60%; margin-left: 0" />
-                        <button class="btn btn-sm bg-black white" type="submit" style="margin-right: 1em">
-                            Apply
-                        </button>
-                        <button class="btn btn-sm bg-seconday black" type="reset">
-                            Reset
-                        </button>
-                    </form>
-                </details>
+                @await Component.InvokeAsync("FilterCategory",new {typeId=typeId, cateIdCurrent=cateId})
             </div>
             <!------ product----->
             <div class="col-12 col-lg-9">
@@ -56,13 +39,13 @@
                             <input id="filter" type="hidden" name="filter" />
                             <ul class="dropdown-menu">
                                 <li value="0"><a
-                                        href="/product/@ViewBag.TypeId@PageHelper.createUrl(null,0,ViewBag.CateId,ProductSort.LowPrice)">Low</a>
+                                        href="/product/@typeId@PageHelper.CreateURI(cateId,ProductSort.LowPrice)">Low</a>
                                 </li>
                                 <li value="1"><a
-                                        href="/product/@ViewBag.TypeId@PageHelper.createUrl(null,0,ViewBag.CateId,ProductSort.HighPrice)">High</a>
+                                        href="/product/@typeId@PageHelper.CreateURI(cateId,ProductSort.HighPrice)">High</a>
                                 </li>
                                 <li value="2"><a
-                                        href="/product/@ViewBag.TypeId@PageHelper.createUrl(null,0,ViewBag.CateId,ProductSort.Popular)">Popular</a>
+                                        href="/product/@typeId@PageHelper.CreateURI(cateId,ProductSort.Popular)">Popular</a>
                                 </li>
                             </ul>
                         </div>
@@ -77,7 +60,7 @@
                         var className = "";
                         if (i == ViewBag.PageCurrent) className = "active";
                         <a class='page-item @className'
-                        href="/product/@ViewBag.TypeId@PageHelper.createUrl(null,0,ViewBag.CateId,ViewBag.Sort,i)">@i</a>
+                        href="/product/@typeId@PageHelper.CreateURI(ViewBag.CateId,ViewBag.Sort,i)">@i</a>
                     }
                 </div>
             </div>

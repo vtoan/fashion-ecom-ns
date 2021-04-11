@@ -3,7 +3,7 @@
     var hostUrl = Startup.HostUri;
 }
 <div id="list-product">
-    @if (Model == null)
+    @if (Model == null || Model.Count() == 0)
     {
         <p class="data-empty">No data</p>
     }

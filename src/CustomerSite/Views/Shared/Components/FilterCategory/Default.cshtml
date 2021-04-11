@@ -1,23 +1,15 @@
+@using CustomerSite.Helpful;
+@{
+    var cateCurrent = ViewBag.CateCurrent;
+    var typeId = ViewBag.TypeId;
+}
 <details>
     <summary class="bold text-4 upper-case" style="margin-bottom: 1em">
         Filter products
     </summary>
-    <form id="filter-form" action="/product/@ViewBag.TypeId" method="GET">
-        <input type="radio" id="vehicle1" name="cateId" value="1" />
-        <label for="vehicle1">Jackets & Coast</label><br />
-        <input type="radio" id="vehicle2" name="cateId" value="2" />
-        <label for="vehicle2">T-Shirts</label><br />
-        <input type="radio" id="vehicle3" name="cateId" value="3" />
-        <label for="vehicle2">Shirts</label><br />
-        <input type="radio" id="vehicle4" name="cateId" value="3" />
-        <label for="vehicle2">Hoodies</label><br />
-        <!------  ----->
-        <hr style="margin-bottom: 1.5em; width: 60%; margin-left: 0" />
-        <button class="btn btn-sm bg-black white" type="submit" style="margin-right: 1em">
-            Apply
-        </button>
-        <button class="btn btn-sm bg-seconday black" type="reset">
-            Reset
-        </button>
-    </form>
+    @foreach (var item in Model)
+    {
+        <a class="d-block btn btn-sm border-primary black" style="margin-bottom: 1em"
+        href="/product/@typeId@PageHelper.CreateURI(item.Id)">@item.Name</a>
+    }
 </details>

@@ -17,6 +17,7 @@ namespace CustomerSite.Views.Shared.Components.FilterCategory
         {
             var result = await _request.GetListAsync(typeId);
             ViewBag.CateCurrent = cateIdCurrent;
+            ViewBag.TypeId = typeId;
             return View(result);
         }
     }

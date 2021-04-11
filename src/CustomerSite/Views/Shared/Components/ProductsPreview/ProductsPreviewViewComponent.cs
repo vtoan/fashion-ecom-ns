@@ -22,7 +22,7 @@ namespace CustomerSite.Views.Shared.Components.ProductsPreview
         public async Task<IViewComponentResult> InvokeAsync(EItemPreview eItemPreview)
         {
             var item = HelpperPreview.ItemPreviews[(int)eItemPreview];
-            var result = await _request.GetList(null, item.TypeId, 0, item.Limited, 0, ProductSort.Popular);
+            var result = await _request.GetListAsync(null, item.TypeId, 0, item.Limited, 0, ProductSort.Popular);
             ViewBag.Title = item.Title;
             return View(result.Item1);
         }
