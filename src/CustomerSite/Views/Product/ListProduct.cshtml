@@ -1,12 +1,14 @@
-@section Css {
-    <link rel="stylesheet" href="~/css/product.css" />
-    <link rel="stylesheet" href="~/css/dropdown.css" />
+@using CustomerSite.Helpful;
+@using Shared.Enums
 
+@section Css {
+<link rel="stylesheet" href="~/css/product.css" />
+<link rel="stylesheet" href="~/css/dropdown.css" />
 }
 @section Scripts {
-    <script src="~/js/dropdown.js"></script>
+<script src="~/js/dropdown.js"></script>
 
-    <script src="~/js/products.js"></script>
+<script src="~/js/products.js"></script>
 }
 <!------ breadcrum ----->
 <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
@@ -20,14 +22,14 @@
                     <summary class="bold text-4 upper-case" style="margin-bottom: 1em">
                         Filter products
                     </summary>
-                    <form id="filter-form">
-                        <input type="checkbox" id="vehicle1" name="jacket" value="1" />
+                    <form id="filter-form" action="/product/@ViewBag.TypeId" method="GET">
+                        <input type="radio" id="vehicle1" name="cateId" value="1" />
                         <label for="vehicle1">Jackets & Coast</label><br />
-                        <input type="checkbox" id="vehicle2" name="t-short" value="2" />
+                        <input type="radio" id="vehicle2" name="cateId" value="2" />
                         <label for="vehicle2">T-Shirts</label><br />
-                        <input type="checkbox" id="vehicle3" name="t-short" value="3" />
+                        <input type="radio" id="vehicle3" name="cateId" value="3" />
                         <label for="vehicle2">Shirts</label><br />
-                        <input type="checkbox" id="vehicle4" name="t-short" value="3" />
+                        <input type="radio" id="vehicle4" name="cateId" value="3" />
                         <label for="vehicle2">Hoodies</label><br />
                         <!------  ----->
                         <hr style="margin-bottom: 1.5em; width: 60%; margin-left: 0" />
@@ -45,7 +47,7 @@
                 <!------ order ----->
                 <div class="order-by">
                     <div class="row align-items-top justify-content-between">
-                        <div style="padding-left: 15px">12 products</div>
+                        <div style="padding-left: 15px">@ViewBag.Total products</div>
                         <div class="dropdown">
                             <div class="select" style="padding-top: 0">
                                 <span style="font-weight: 500">Order by</span>
@@ -53,122 +55,30 @@
                             </div>
                             <input id="filter" type="hidden" name="filter" />
                             <ul class="dropdown-menu">
-                                <li value="0"><a href="">High</a></li>
-                                <li value="0"><a href="">Low</a></li>
-                                <li value="0"><a href="">Popular</a></li>
-                                <li value="0"><a href="">Popular</a></li>
+                                <li value="0"><a
+                                        href="/product/@ViewBag.TypeId@PageHelper.createUrl(null,0,ViewBag.CateId,ProductSort.LowPrice)">Low</a>
+                                </li>
+                                <li value="1"><a
+                                        href="/product/@ViewBag.TypeId@PageHelper.createUrl(null,0,ViewBag.CateId,ProductSort.HighPrice)">High</a>
+                                </li>
+                                <li value="2"><a
+                                        href="/product/@ViewBag.TypeId@PageHelper.createUrl(null,0,ViewBag.CateId,ProductSort.Popular)">Popular</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!------ list ----->
-                <div id="list-product">
-                    <!-- <p class="data-empty">no matched data!</p> -->
-                    <div class="row">
-                        <div class="col-6 col-lg-3">
-                            <div class="product-item" data-itemid="1">
-                                <span class="product-sale">- 30%</span>
-                                <a product-link href="/">
-                                    <div class="product-img">
-                                        <div class="img">
-                                            <img src="./images/-3.png" alt="" srcset="" />
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <p product-name class="mb-none bold">Product 1</p>
-                                        <p>This is a description of product 1</p>
-                                        <div class="rating">
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="lar la-star"></i>
-                                        </div>
-                                        <p class="price">300.000 VND</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3">
-                            <div class="product-item" data-itemid="1">
-                                <span class="product-sale">- 30%</span>
-                                <a product-link href="/">
-                                    <div class="product-img">
-                                        <div class="img">
-                                            <img src="./images/product-3.png" alt="" srcset="" />
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <p product-name class="mb-none bold">Product 1</p>
-                                        <p>This is a description of product 1</p>
-                                        <div class="rating">
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="lar la-star"></i>
-                                        </div>
-                                        <p class="price">300.000 VND</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3">
-                            <div class="product-item" data-itemid="1">
-                                <span class="product-sale">- 30%</span>
-                                <a product-link href="/">
-                                    <div class="product-img">
-                                        <div class="img">
-                                            <img src="./images/product-3.png" alt="" srcset="" />
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <p product-name class="mb-none bold">Product 1</p>
-                                        <p>This is a description of product 1</p>
-                                        <div class="rating">
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="lar la-star"></i>
-                                        </div>
-                                        <p class="price">300.000 VND</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3">
-                            <div class="product-item" data-itemid="1">
-                                <span class="product-sale">- 30%</span>
-                                <a product-link href="/">
-                                    <div class="product-img">
-                                        <div class="img">
-                                            <img src="./images/product-3.png" alt="" srcset="" />
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <p product-name class="mb-none bold">Product 1</p>
-                                        <p>This is a description of product 1</p>
-                                        <div class="rating">
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="las la-star"></i>
-                                            <i class="lar la-star"></i>
-                                        </div>
-                                        <p class="price">300.000 VND</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <partial name="_ListProductsPartial" model="@Model" />
                 <!------ paginaton ----->
                 <div class="pagination">
-                    <a class="page-item active" href="">1</a>
-                    <a class="page-item" href="">2</a>
-                    <a class="page-item" href="">3</a>
-                    <a class="page-item" href="">4</a>
+                    @for (int i = 1; i <= ViewBag.Page; i++)
+                    {
+                        var className = "";
+                        if (i == ViewBag.PageCurrent) className = "active";
+                        <a class='page-item @className'
+                        href="/product/@ViewBag.TypeId@PageHelper.createUrl(null,0,ViewBag.CateId,ViewBag.Sort,i)">@i</a>
+                    }
                 </div>
             </div>
         </div>

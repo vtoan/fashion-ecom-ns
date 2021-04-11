@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Net.Http.Json;
 using System;
 using CustomerSite.Exceptions;
+using System.Net.Http.Headers;
 
 namespace CustomerSite.Services
 {
@@ -34,7 +35,21 @@ namespace CustomerSite.Services
             {
                 throw new ServeNotAvaiableException();
             }
-
+        }
+        public async Task<(T, HttpResponseHeaders)> GetWithRespAsync<T>(string route, string routeParams = "")
+        {
+            try
+            {
+                var resp = await _host.GetAsync(route + routeParams);
+                if (!resp.IsSuccessStatusCode)
+                    return (default(T), null);
+                // throw new Exception(resp.StatusCode.ToString());
+                return (await resp.Content.ReadFromJsonAsync<T>(), resp.Headers);
+            }
+            catch (Exception)
+            {
+                throw new ServeNotAvaiableException();
+            }
         }
 
         public async Task<T> PostAsync<T>(string route, object bodyContent, string routeParams = "")

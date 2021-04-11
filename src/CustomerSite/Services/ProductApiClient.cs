@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CustomerSite.Interfaces;
 using Shared.Enums;
@@ -25,17 +27,20 @@ namespace CustomerSite.Services
             return await _request.GetAsync<IEnumerable<ProductAttributeVM>>(routeName + "/" + productId + "attrs");
         }
 
-        public async Task<IEnumerable<ProductVM>> GetList(string query = null, int typeId = 0, int cateId = 0, int limited = 0, int offset = 0, ProductSort? sort = null)
+        public async Task<(IEnumerable<ProductVM>, int)> GetList(string query = null, int typeId = 0, int cateId = 0, int limited = 0, int offset = 0, ProductSort? sort = null)
         {
             var queryStr = "";
             if (query != null) queryStr += "query=" + query;
-            if (typeId > 0) queryStr += "typeId=" + typeId;
-            if (cateId > 0) queryStr += "cateId=" + cateId;
-            if (limited > 0) queryStr += "limited=" + limited;
-            if (offset > 0) queryStr += "offset=" + offset;
-            if (sort != null) queryStr += "sort=" + sort.ToString();
+            if (typeId > 0) queryStr += (query == "" ? "" : "&&") + "typeId=" + typeId;
+            if (cateId > 0) queryStr += (query == "" ? "" : "&&") + "cateId=" + cateId;
+            if (limited > 0) queryStr += (query == "" ? "" : "&&") + "limited=" + limited;
+            if (offset > 0) queryStr += (query == "" ? "" : "&&") + "offset=" + offset;
+            if (sort != null) queryStr += (query == "" ? "" : "&&") + "sort=" + sort;
             var par = (query == "" ? "" : "?" + queryStr);
-            return await _request.GetAsync<IEnumerable<ProductVM>>(routeName, par);
+            var resp = await _request.GetWithRespAsync<IEnumerable<ProductVM>>(routeName, par);
+            var totalItem = 0;
+            if (resp.Item2.Contains("total-item")) totalItem = Int32.Parse(resp.Item2.GetValues("total-item").First());
+            return (resp.Item1, totalItem);
         }
 
         public async Task<IEnumerable<string>> GetListImage(int id)

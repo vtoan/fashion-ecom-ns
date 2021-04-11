@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using CustomerSite.Helpful;
 using CustomerSite.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Enums;
 using Shared.ViewModels;
 
 namespace CustomerSite.Views.Shared.Components.ProductsPreview
@@ -12,8 +13,8 @@ namespace CustomerSite.Views.Shared.Components.ProductsPreview
     public class ProductsPreviewViewComponent : ViewComponent
     {
 
-        private readonly IRequestAPI _request;
-        public ProductsPreviewViewComponent(IRequestAPI request)
+        private readonly IProductApiClient _request;
+        public ProductsPreviewViewComponent(IProductApiClient request)
         {
             _request = request;
         }
@@ -21,9 +22,9 @@ namespace CustomerSite.Views.Shared.Components.ProductsPreview
         public async Task<IViewComponentResult> InvokeAsync(EItemPreview eItemPreview)
         {
             var item = HelpperPreview.ItemPreviews[(int)eItemPreview];
-            var result = await _request.GetAsync<List<ProductVM>>(item.RequestUrl);
+            var result = await _request.GetList(null, item.TypeId, 0, item.Limited, 0, ProductSort.Popular);
             ViewBag.Title = item.Title;
-            return View(result);
+            return View(result.Item1);
         }
     }
 }

@@ -27,15 +27,15 @@ namespace DAO.DAOs
         public (ICollection<Product>, int) GetListItems(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
             var sqlString = this._context.Products.AsQueryable();
-            var totalItem = sqlString.Count();
             //filter
             if (query != null) sqlString = sqlString.Where(item => item.Name.Contains(query));
             if (typeId > 0) sqlString = sqlString.Where(item => item.TypeProductId == typeId);
             if (cateId > 0) sqlString = sqlString.Where(item => item.CategoryId == cateId);
+            var totalItem = sqlString.Count();
             if (offset > 0)
             {
-                if (offset > totalItem) throw new Exception("Offset is outbound");
-                sqlString = sqlString.Skip(offset);
+                if (offset * limited > totalItem) throw new Exception("Offset is outbound");
+                sqlString = sqlString.Skip(offset * limited);
             }
             if (limited > 0)
             {

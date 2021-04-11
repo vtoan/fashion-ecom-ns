@@ -29,7 +29,7 @@ namespace BUS.Services
             var lsObject = new List<ProductVM>();
             if (result.Item1.Count > 0)
                 lsObject = _mapList<ProductVM, Product>(result.Item1);
-            return (lsObject, lsObject.Count);
+            return (lsObject, result.Item2);
         }
 
         // public ICollection<string> GetImages(int productId, string folderPath)
