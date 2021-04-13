@@ -40,18 +40,8 @@ namespace CustomerSite.Controllers
             var items = HttpContext.Session.GetString(PageHelper.KEY_CART_SESSION);
             var fees = HttpContext.Session.GetString(PageHelper.KEY_FEE_SESSION);
             //  =======get user id;
-            var listCartItem = JsonSerializer.Deserialize<List<CartItemVM>>(items);
+            var listOrderItem = JsonSerializer.Deserialize<List<OrderItemVM>>(items);
             orderDetailVM.Fees = fees;
-            var listOrderItem = new List<OrderItemVM>();
-            foreach (var item in listCartItem)
-            {
-                listOrderItem.Add(new OrderItemVM
-                {
-                    ProductId = item.ProductId,
-                    Price = item.Price,
-                    Quantity = item.Quantity
-                });
-            }
             var result = await _requestOrder.CreateAsync(orderDetailVM, listOrderItem);
             // listCartItem 
             if (result == null) Redirect("/Error");

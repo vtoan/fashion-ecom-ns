@@ -42,9 +42,9 @@ namespace CustomerSite.Services
             return await _request.GetAsync<IEnumerable<string>>(routeName + "/" + id + "/images");
         }
 
-        public async Task<IEnumerable<CartItemVM>> GetListCartItemsAsync(string productAttrIds)
+        public async Task<IEnumerable<OrderItemVM>> GetListCartItemsAsync(string productAttrIds)
         {
-            return await _request.GetAsync<IEnumerable<CartItemVM>>(routeName + "/attrs?attrIds=" + productAttrIds);
+            return await _request.GetAsync<IEnumerable<OrderItemVM>>(routeName + "/attrs?attrIds=" + productAttrIds);
         }
 
 

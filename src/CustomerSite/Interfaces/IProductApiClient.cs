@@ -11,7 +11,7 @@ namespace CustomerSite.Interfaces
         Task<IEnumerable<string>> GetListImageAsync(int id);
         Task<ProductDetailVM> GetAsync(int id);
         Task<IEnumerable<ProductAttributeVM>> GetAttributesAsync(int productId);
-        Task<IEnumerable<CartItemVM>> GetListCartItemsAsync(string productAttrIds);
+        Task<IEnumerable<OrderItemVM>> GetListCartItemsAsync(string productAttrIds);
 
 
     }

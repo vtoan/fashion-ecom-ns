@@ -59,13 +59,13 @@ namespace CustomerSite.Controllers
         //     return View();
         // }
 
-        private async Task<IEnumerable<CartItemVM>> _findListCartItemAsync(string attrIds)
+        private async Task<IEnumerable<OrderItemVM>> _findListCartItemAsync(string attrIds)
         {
             if (
                 String.IsNullOrWhiteSpace(attrIds)
                 || attrIds == "") throw new Exception();
             //
-            var cartItems = JsonSerializer.Deserialize<List<CartItemVM>>(attrIds);
+            var cartItems = JsonSerializer.Deserialize<List<OrderItemVM>>(attrIds);
             var arrAttrIds = cartItems.Select(item => item.AttributeId);
             var json = JsonSerializer.Serialize(arrAttrIds);
             var listCartItem = await _requestProd.GetListCartItemsAsync(json);
