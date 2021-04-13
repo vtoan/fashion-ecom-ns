@@ -24,7 +24,7 @@ namespace CustomerSite.Controllers
         {
             var items = HttpContext.Session.GetString(PageHelper.KEY_CART_SESSION);
             if (items == null || items == "") return Redirect("/Order");
-            var listCartItem = JsonSerializer.Deserialize<IEnumerable<CartItemVM>>(items);
+            var listCartItem = JsonSerializer.Deserialize<IEnumerable<OrderItemVM>>(items);
             if (listCartItem == null || listCartItem.Count() <= 0) return Redirect("/Order");
             var fees = await _requestOrder.GetListFeeAsync();
             //

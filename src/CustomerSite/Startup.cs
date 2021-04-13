@@ -33,6 +33,8 @@ namespace CustomerSite
 
             services.AddApiClient();
 
+            services.AddConfigOauth2();
+
             services.AddControllersWithViews();
 
             services.AddSession();
@@ -56,6 +58,7 @@ namespace CustomerSite
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
