@@ -41,6 +41,7 @@ namespace Core
 
             services.AddControllersWithViews()
                     .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+            services.AddRazorPages();
 
             services.AddSwaggerGen();
         }
@@ -86,6 +87,8 @@ namespace Core
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
+
             });
         }
     }

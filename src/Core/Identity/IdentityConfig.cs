@@ -15,7 +15,7 @@ namespace Core.Identity
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("scope1"),
+                new ApiScope("customer"),
             };
 
         public static IEnumerable<Client> Clients =>
@@ -33,7 +33,7 @@ namespace Core.Identity
                     PostLogoutRedirectUris = { "https://localhost:6001/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "scope1" }
+                    AllowedScopes = { "openid", "profile", "customer" }
                 },
             };
     }

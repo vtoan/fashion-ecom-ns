@@ -28,7 +28,9 @@ namespace Core.Identity
                 // User settings.
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-                options.User.RequireUniqueEmail = false;
+                options.User.RequireUniqueEmail = true;
+
+                options.SignIn.RequireConfirmedEmail = false;
             });
 
             var builder = services.AddIdentityServer(options =>
@@ -51,7 +53,7 @@ namespace Core.Identity
                 .AddAuthentication()
                 .AddLocalApi("Bearer", options =>
                 {
-                    options.ExpectedScope = "scope1";
+                    options.ExpectedScope = "scope2";
                 });
 
             //author
