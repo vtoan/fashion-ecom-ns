@@ -34,6 +34,8 @@ namespace CustomerSite
             services.AddApiClient();
 
             services.AddControllersWithViews();
+
+            services.AddSession();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,6 +49,8 @@ namespace CustomerSite
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

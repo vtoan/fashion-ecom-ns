@@ -7,5 +7,7 @@ namespace BUS.Interfaces.DAOs
         IBaseDAO<ProductDetail>
     {
         ICollection<ProductDetail> GetListItems(int productId);
+
+        ICollection<ProductDetail> GetListCartItem(int[] productAttrIds);
     }
 }

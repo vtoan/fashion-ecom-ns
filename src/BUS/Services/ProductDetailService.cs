@@ -17,7 +17,6 @@ namespace BUS.Services
         {
             _producDetailDao = dao;
         }
-
         public ProductAttributeVM Add(int productId, ProductAttributeVM newObject)
         {
             if (productId <= 0) return null;
@@ -31,6 +30,12 @@ namespace BUS.Services
         {
             var result = _producDetailDao.GetListItems(productId);
             return _mapList<ProductAttributeVM, ProductDetail>(result);
+        }
+
+        public ICollection<CartItemVM> GetListCartItem(int[] productAttrIds)
+        {
+            var result = _producDetailDao.GetListCartItem(productAttrIds);
+            return _mapList<CartItemVM, ProductDetail>(result);
         }
     }
 }

@@ -32,17 +32,6 @@ namespace BUS.Services
             return (lsObject, result.Item2);
         }
 
-        // public ICollection<string> GetImages(int productId, string folderPath)
-        // {
-        //     var listImage = new List<string>();
-        //     // string folderPath = Path.Combine(webRootPath, "products/" + productId);
-        //     if (!Directory.Exists(folderPath)) return listImage;
-        //     var re = Directory.GetFiles(folderPath);
-        //     foreach (var item in re)
-        //         listImage.Add(item.Split("/").Last());
-        //     return listImage;
-        // }
-
         public bool RemoveImageDefault(int productId, string imgName)
         {
             if (productId <= 0 || imgName == null || imgName == "") return false;

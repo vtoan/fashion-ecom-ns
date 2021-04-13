@@ -1,0 +1,54 @@
+@model IEnumerable<Shared.ViewModels.CartItemVM>;
+
+
+@if (Model == null || Model.Count() == 0)
+{
+    <p class="data-empty">NO CART ITEM</p>
+
+}
+else
+{
+    @foreach (var cart in Model)
+    {
+        var total = cart.Price * cart.Quantity;
+
+        <div class="cart-item mb-3" item-id="1">
+    <div class="row row-contents align-items-lg-center">
+        <div class="col-3 col-lg-2">
+            <div class="img">
+                <img width="100" class="border" src="./images/product-1.png" />
+            </div>
+        </div>
+        <div class="col-7 col-lg-9">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-4">
+                    <p class="text-4">@cart.Name</p>
+                    <span class="text-4 impress bold">
+                        <currency>@cart.Price</currency>
+                    </span>
+                    @* <del class="normal text-sub">3000</del> *@
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="d-flex align-items-center">
+                        <a quantity-add class="btn btn-sm"><i class="las la-angle-up"></i></a>
+                        <span item-count item-price="@cart.Price" class="px-3">@cart.Quantity</span>
+                        <a quantity-subtract class="btn btn-sm"><i class="las la-angle-down"></i></a>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <span class="d-block">Tổng: </span>
+                    <span item-total="@total" class="text-4 semi-bold">
+                        <currency> @total </currency>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 col-lg-1 text-right">
+            <a quantity-remove class="btn btn-no impress remove" href="javascript:void(0)"><i
+                    class="icon las la-times"></i></a>
+        </div>
+        <hr class="mx-3 white w-100" />
+    </div>
+</div>
+    }
+}

@@ -2,6 +2,7 @@ using BUS.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace Core.Controllers
 {
@@ -20,6 +21,13 @@ namespace Core.Controllers
         public IEnumerable<ProductAttributeVM> GeList(int productId)
         {
             return _productDetailSer.GetList(productId);
+        }
+
+        [HttpGet("attrs")]
+        public IEnumerable<CartItemVM> GeListCartItem(string attrIds)
+        {
+            var arrAttribute = JsonSerializer.Deserialize<int[]>(attrIds);
+            return _productDetailSer.GetListCartItem(arrAttribute);
         }
 
         [HttpPost("{productId}/attrs")]

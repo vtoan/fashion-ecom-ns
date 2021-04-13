@@ -10,6 +10,5 @@ namespace CustomerSite.Interfaces
         Task<OrderDetailVM> CreateAsync(OrderDetailVM orderDetailVM, List<OrderItemVM> listItem);
         Task<OrderDetailVM> GetAsync(int id);
         Task<IEnumerable<FeeVM>> GetListAsync();
-
     }
 }

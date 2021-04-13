@@ -12,5 +12,9 @@ namespace BUS.Interfaces.Services
     {
         ICollection<ProductAttributeVM> GetList(int productId);
         ProductAttributeVM Add(int productId, ProductAttributeVM newObject);
+
+        ICollection<CartItemVM> GetListCartItem(int[] productAttrIds);
+
+
     }
 }
