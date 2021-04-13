@@ -1,0 +1,170 @@
+@model IEnumerable<Shared.ViewModels.OrderItemVM>
+@using CustomerSite.Helpful;
+@using Shared.ViewModels
+
+@section Css {
+<link rel="stylesheet" href="~/css/product.css" />
+<link rel="stylesheet" href="~/css/dropdown.css" />
+<link rel="stylesheet" href="~/css/cart.css" />
+}
+@section Scripts {
+<script src="~/js/dropdown.js"></script>
+<script src="~/js/checkout.js"></script>
+}
+@{
+    var total = 0.0;
+    var totalFee = 0.0;
+    var fees = (ICollection<FeeVM>)ViewBag.Fees;
+}
+<!------ breadcrum ----->
+<div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
+<!------ cart ----->
+<div class="container section">
+    <div id="checkout" class="row section">
+        <div class="col-12 col-lg-7 mb-4">
+            <!------ form ----->
+            <div class="title-table">
+                <h4 class="d-inline-block semi-bold">Customer Info</h4>
+                <div class="line"></div>
+            </div>
+            <div>
+                <form id="formOrder" class="row-contents" style="margin-bottom: 3em" id="form-confirm" method="POST"
+                    action="">
+                    <div class="control-input">
+                        <label>Họ tên người nhận <span class="impress">*</span></label>
+                        <input class="mb-3" name="CustomerName" type="text" required />
+                    </div>
+                    <div class="control-input">
+                        <label>Số điện thoại <span class="impress">*</span></label>
+                        <input class="mb-3" name="CustomerPhone" type="tel" pattern="^0\d+" minlength="9" maxlength="10"
+                            required />
+                    </div>
+                    <div class="control-input">
+                        <label>Email</label>
+                        <input class="mb-3" name="CustomerEmail" type="email" pattern="[\w+|\W+]*[@@]\w+[.]\w+" />
+                    </div>
+                    <div class="control-input local">
+                        <label>Địa chỉ giao hàng <span class="impress">*</span></label>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div local-province class="dropdown">
+                                    <div class="select">
+                                        <span>Order by</span>
+                                        <i class="las la-angle-down"></i>
+                                    </div>
+                                    <input name="CustomerProvince" type="hidden" required />
+                                    <ul class="dropdown-menu"></ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div local-district class="dropdown">
+                                    <div class="select">
+                                        <span>Order by</span>
+                                        <i class="las la-angle-down"></i>
+                                    </div>
+                                    <input type="hidden" name="CustomerDistrict" required />
+                                    <ul class="dropdown-menu"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <span><span class="error text-sub"></span></span>
+                    </div>
+                    <div class="control-input">
+                        <label>Số nhà, tên đường (hoặc địa chỉ cụ thể)
+                            <span class="impress">*</span></label>
+                        <input class="mb-3" name="CustomerAddress" type="text" required />
+                    </div>
+                    <div>
+                        <label>Ghi chú</label>
+                        <textarea class="mb-3 d-block w-100" name="Note" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="d-none"></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-lg-5">
+            <div style="margin-bottom: 2.5em">
+                <div class="title-table">
+                    <div>
+                        <h4 class="d-inline-block semi-bold">Products</h4>
+                        <p class="m-none float-right">
+                            <span id="count-items">@Model.Count()</span> items
+                        </p>
+                    </div>
+                    <div class="line"></div>
+                    <div class="px-1 mx-2 section">
+                        <table class="table table-color">
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td class="bold">x @item.Quantity</td>
+                                        <td>
+                                            <currency>@item.Price</currency>
+                                        </td>
+                                    </tr>
+                                    total += ((double)item.Quantity * (double)item.Price);
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--Cart - Header List-->
+            </div>
+            <div style="margin-bottom: 2.5em">
+                <div class="title-table">
+                    <div>
+                        <h4 class="d-inline-block semi-bold">Totals</h4>
+                        <p class="m-none float-right">
+                            <span id="count-items"> @Model.Count() </span> items
+                        </p>
+                    </div>
+                    <div class="line"></div>
+                    <div class="px-1 mx-2 section">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Total</td>
+                                    <td>
+                                        <currency>@total</currency>
+                                    </td>
+                                </tr>
+                                @if (fees != null)
+                                {
+                                    @foreach (var fee in fees)
+                                    {
+                                        totalFee += PageHelper.CalFee(total, (double)@fee.Cost);
+                                        <tr>
+                                            <td>@fee.Name</td>
+                                            <td>
+                                                @{
+                                                    var feeCost = fee.Cost * 100;
+                                                }
+                                                @feeCost %
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                <tr class="semi-bold">
+                                    <td>Payment</td>
+                                    <td class="impress">
+                                        @{
+                                            var finalTotal = (total + totalFee);
+                                        }
+                                        <currency>@finalTotal</currency>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--Cart - Header List-->
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <a id="send-order" class="d-inline-block btn btn-sm w-50 border-impress btn-anim" style="max-width: 250px">Đặt
+            hàng</a>
+    </div>
+</div>

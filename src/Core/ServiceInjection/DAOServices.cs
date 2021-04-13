@@ -14,7 +14,7 @@ namespace Core.ServiceInjection
             services.AddScoped<IBaseDAO<Fee>, BaseDAO<Fee>>();
             services.AddScoped<IProductDAO, ProductDAO>();
             services.AddScoped<IOrderDAO, OrderDAO>();
-            services.AddScoped<IProductDetailDAO, ProductDetailDAO>();
+            services.AddScoped<IProductAttrDAO, ProductAttrDAO>();
             services.AddScoped<IRatingDAO, RatingDAO>();
             return services;
         }

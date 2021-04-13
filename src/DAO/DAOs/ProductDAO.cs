@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BUS.Domains;
-using BUS.Enums;
+using Shared.Enums;
 using BUS.Interfaces.DAOs;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +19,7 @@ namespace DAO.DAOs
         {
             if (id <= 0) return null;
             var sqlQuery = _context.Products.Where(item => item.Id == id)
-                .Include(item => item.ProductDetails)
+                .Include(item => item.ProductAttrs)
                 .Include(item => item.Ratings);
             return sqlQuery.FirstOrDefault();
         }
@@ -27,15 +27,15 @@ namespace DAO.DAOs
         public (ICollection<Product>, int) GetListItems(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
             var sqlString = this._context.Products.AsQueryable();
-            var totalItem = sqlString.Count();
             //filter
             if (query != null) sqlString = sqlString.Where(item => item.Name.Contains(query));
             if (typeId > 0) sqlString = sqlString.Where(item => item.TypeProductId == typeId);
             if (cateId > 0) sqlString = sqlString.Where(item => item.CategoryId == cateId);
+            var totalItem = sqlString.Count();
             if (offset > 0)
             {
-                if (offset > totalItem) throw new Exception("Offset is outbound");
-                sqlString = sqlString.Skip(offset);
+                if (offset * limited > totalItem) throw new Exception("Offset is outbound");
+                sqlString = sqlString.Skip(offset * limited);
             }
             if (limited > 0)
             {

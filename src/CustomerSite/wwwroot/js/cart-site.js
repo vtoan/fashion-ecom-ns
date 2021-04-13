@@ -57,12 +57,14 @@ function cartSite(config) {
     // promInput.value = promo?.code;
     // promInput.name = "promCode";
     // promInput.type = "hidden";
-    this.appendChild(promInput);
+
+    // this.appendChild(promInput);
     let listItem = document.createElement("input");
     listItem.value = JSON.stringify(cart.getData());
-    listItem.name = "listItem";
+    listItem.name = "attrIds";
     listItem.type = "hidden";
     this.appendChild(listItem);
+
     return true;
   });
   // ========== define event ==========
@@ -178,8 +180,8 @@ function cartSite(config) {
 let container = document.querySelector("#cart-container");
 
 function renderCartItem(data) {
-  //   container.innerHTML = "";
-  // container.innerHTML = data;
+  container.innerHTML = "";
+  container.innerHTML = data;
   let act = cartSite({
     cart: cartMng,
     quantityChanged: updateCountInCart,
@@ -188,13 +190,15 @@ function renderCartItem(data) {
     checkOutUri: "/gio-hang",
   });
 }
-renderCartItem();
-// window.addEventListener("load", function () {
-//   let val = JSON.stringify(cartMng.getData());
-//   let path = location.href.replaceAll(/[#!]/g, "");
-//   let url = path + "?handler=cartitem&&ids=" + val;
-//   fetch(url).then((response) => {
-//     if (response.ok) response.text().then(renderCartItem);
-//     return null;
-//   });
-// });
+
+// renderCartItem();
+window.addEventListener("load", function () {
+  let val = JSON.stringify(cartMng.getData());
+  // let path = location.href.replaceAll(/[#!]/g, "");
+  let path = "/OrderItem";
+  let url = path + "?attrIds=" + val;
+  fetch(url).then((response) => {
+    if (response.ok) response.text().then(renderCartItem);
+    return null;
+  });
+});

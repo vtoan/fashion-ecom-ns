@@ -1,0 +1,45 @@
+@using CustomerSite.Helpful;
+
+@section Css {
+<link rel="stylesheet" href="~/css/product.css" />
+<link rel="stylesheet" href="~/css/dropdown.css" />
+}
+@section Scripts {
+<script src="~/js/dropdown.js"></script>
+<script src="~/js/products.js"></script>
+}
+@{
+    var cateId = ViewBag.CateId;
+    var typeId = ViewBag.TypeId;
+    var pageCurrent = ViewBag.PageCurrent;
+    var sort = ViewBag.Sort;
+}
+<!------ breadcrum ----->
+<div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
+<!------ list product----->
+<div class="list-product-wrapper section">
+    <div class="container-fluid">
+        <div class="row">
+            <!------ filter ----->
+            <div class="col-12 col-lg-3">
+                @await Component.InvokeAsync("FilterCategory",new {typeId=typeId, cateIdCurrent=cateId})
+            </div>
+            <!------ product----->
+            <div class="col-12 col-lg-9">
+                <!------ order ----->
+                @await Component.InvokeAsync("SortProduct", new {typeId=typeId, cateId=cateId, sortCurrent=sort})
+                <!------ list ----->
+                <partial name="_ListProductsPartial" model="@Model" />
+                <!------ paginaton ----->
+                <div class="pagination">
+                    @for (int i = 1; i <= ViewBag.Page; i++)
+                    {
+                        var className = "";
+                        if (i == ViewBag.PageCurrent) className = "active";
+                        <a class='page-item @className' href="/type/@typeId@PageHelper.CreateURI(cateId,sort,i)">@i</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

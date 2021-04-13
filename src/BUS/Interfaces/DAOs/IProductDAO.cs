@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BUS.Domains;
-using BUS.Enums;
+using Shared.Enums;
 
 namespace BUS.Interfaces.DAOs
 {

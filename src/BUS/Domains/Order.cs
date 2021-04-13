@@ -14,7 +14,6 @@ namespace BUS.Domains
         public int CustomerProvince { get; set; }
         public string CustomerAddress { get; set; }
         public string Note { get; set; }
-        public string Promotions { get; set; }
         public string Fees { get; set; }
         public string UserId { get; set; }
         //Nav property

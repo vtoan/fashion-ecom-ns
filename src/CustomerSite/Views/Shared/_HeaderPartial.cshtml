@@ -3,13 +3,13 @@
     <div class="row align-items-center">
         <div class="col-9 col-lg-3">
             <div class="img logo">
-                <img src="./images/rstore-icon.png" alt="" srcset="" />
+                <img src="~/images/rstore-icon.png" alt="" srcset="" />
             </div>
         </div>
         <div class="d-none d-lg-block col-lg-6">
             <div class="nav d-flex">
                 @* <a href="#" class="nav-item">sale</a> *@
-                <a href="#" class="nav-item">features</a>
+                <a href="/product?typeId=1" class="nav-item">features</a>
                 <a href="#" class="nav-item">men</a>
                 <a href="#" class="nav-item">women</a>
                 <a href="#" class="nav-item">contacts</a>
@@ -20,11 +20,11 @@
                 <a id="search-trigger" href="#" class="nav-item">
                     <i class="las la-search"></i></a>
                 <!-- <a class="nav-item" href="#">Login</a> -->
-                <a href="#" class="nav-item"> <i class="las la-user"></i> </a>
+                <a href="/Account/SignIn" class="nav-item"> <i class="las la-user"></i> </a>
                 <!-- <a href="#" class="nav-item">
               <i class="las la-sign-out-alt"></i>
             </a> -->
-                <a href="#" class="nav-item">
+                <a href="/Order" class="nav-item">
                     <i class="las la-shopping-bag"></i></a>
                 <span id="cart-counter" class="impress bold">0</span>
             </div>

@@ -3,7 +3,7 @@
     var hostUrl = Startup.HostUri;
 }
 <div id="list-product">
-    @if (Model == null)
+    @if (Model == null || Model.Count() == 0)
     {
         <p class="data-empty">No data</p>
     }
@@ -15,10 +15,10 @@
                 <div class="col-6 col-lg-3">
                     <div class="product-item">
                         <span class="product-sale"> Hot</span>
-                        <a product-link href="/">
+                        <a product-link href="product/@item.Id">
                             <div class="product-img">
                                 <div class="img">
-                                    <img src="./images/product-3.png" alt="" srcset="" />
+                                    <img src="~/images/product-3.png" alt="" srcset="" />
                                 </div>
                             </div>
                             <div class="product-content">
@@ -27,16 +27,12 @@
                                     var des = @item.ProductDescription.Split("/");
                                     <p>@des[0]</p>
                                 }
+                                <p class="price">
+                                    <currency> @item.Price</currency>
+                                </p>
                                 <div class="rating">
-                                    @{
-                                        var maxRate = item.Ratings.Count;
-                                        for (int i = 0; i < maxRate; i++)
-                                        {
-                                            <i class="las la-star"></i>
-                                        }
-                                    }
+                                    <partial name="_RatingPartial" model="@item.Rate" />
                                 </div>
-                                <p class="price"> <currency> @item.Price</currency></p>
                             </div>
                         </a>
                     </div>

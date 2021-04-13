@@ -14,8 +14,7 @@ namespace DAO
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductDetail> ProductDetails { get; set; }
-        public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<ProductAttr> ProductAttrs { get; set; }
         public DbSet<Rating> Ratings { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -39,11 +38,9 @@ namespace DAO
             modelBuilder.Entity<Order>().Property(o => o.CustomerProvince).HasMaxLength(10);
             modelBuilder.Entity<Order>().Property(o => o.CustomerAddress).HasMaxLength(500);
             modelBuilder.Entity<Order>().Property(o => o.Note).HasMaxLength(750);
-            modelBuilder.Entity<Order>().Property(o => o.Promotions).HasMaxLength(150);
             modelBuilder.Entity<Order>().Property(o => o.Fees).HasMaxLength(150);
             //OrderDetail
-            modelBuilder.Entity<OrderDetail>().HasKey(od => new { od.OrderId, od.ProductId });
-            modelBuilder.Entity<OrderDetail>().Property(p => p.Discount).HasColumnType("decimal(2,2)");
+            modelBuilder.Entity<OrderDetail>().HasKey(od => new { od.OrderId, od.ProductAttrId });
             //Product
             modelBuilder.Entity<Product>().Property(p => p.Name).HasMaxLength(250);
             modelBuilder.Entity<Product>().Property(p => p.Image).HasMaxLength(150);
@@ -55,22 +52,13 @@ namespace DAO
             modelBuilder.Entity<Product>().Property(o => o.DateCreated).HasColumnType("smalldatetime");
             modelBuilder.Entity<Product>().Property(o => o.DateModified).HasColumnType("smalldatetime");
             //ProductDetail
-            modelBuilder.Entity<ProductDetail>().HasKey(p => p.Id);
-            modelBuilder.Entity<ProductDetail>().Property(p => p.Size).HasMaxLength(20);
-            modelBuilder.Entity<ProductDetail>().Property(p => p.Color).HasMaxLength(20);
+            modelBuilder.Entity<ProductAttr>().HasKey(p => p.Id);
+            modelBuilder.Entity<ProductAttr>().Property(p => p.Size).HasMaxLength(20);
             //Rating
             modelBuilder.Entity<Rating>().HasKey(od => od.Id);
             modelBuilder.Entity<Rating>().Property(p => p.Feedback).HasMaxLength(250);
             modelBuilder.Entity<Rating>().Property(o => o.DateCreated).HasColumnType("smalldatetime");
             modelBuilder.Entity<Rating>().Property(o => o.Rate).HasColumnType("tinyint");
-            //Config Promotion
-            modelBuilder.Entity<Promotion>().Property(p => p.ToDate).HasColumnType("smalldatetime");
-            modelBuilder.Entity<Promotion>().Property(p => p.FromDate).HasColumnType("smalldatetime");
-            modelBuilder.Entity<Promotion>().Property(p => p.isAll).HasDefaultValue(false);
-            modelBuilder.Entity<Promotion>().Property(p => p.Discount).HasColumnType("decimal(2,2)");
-            modelBuilder.Entity<Promotion>().Property(p => p.TypeIds).HasMaxLength(20);
-            modelBuilder.Entity<Promotion>().Property(p => p.CateIds).HasMaxLength(30);
-            modelBuilder.Entity<Promotion>().Property(p => p.ProductIds).HasMaxLength(250);
             //Identity
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {

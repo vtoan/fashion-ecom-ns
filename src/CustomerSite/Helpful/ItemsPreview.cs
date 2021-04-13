@@ -3,24 +3,23 @@ namespace CustomerSite.Helpful
 
     public enum EItemPreview
     {
-        Featured = 0,
-        Shirts = 1,
-        Pants = 2,
+        Shirts = 0,
+        Pants = 1,
     }
 
     public class ItemPreview
     {
         public string Title { get; set; }
-        public string RequestUrl { get; set; }
+        public int TypeId { get; set; }
+        public int Limited { get; set; }
     }
 
     public static class HelpperPreview
     {
         public static ItemPreview[] ItemPreviews =
         {
-            new ItemPreview{ Title ="Featured", RequestUrl ="product?cateId=1&&limited=4"},
-            new ItemPreview{ Title ="Shirts", RequestUrl ="product?cateId=1&&limited=4"},
-            new ItemPreview{ Title ="Pants", RequestUrl ="product?cateId=2&&limited=4"},
+            new ItemPreview{ Title ="Shirts", TypeId =1,Limited =4},
+            new ItemPreview{ Title ="Pants", TypeId =2 ,Limited =4},
         };
     }
 }

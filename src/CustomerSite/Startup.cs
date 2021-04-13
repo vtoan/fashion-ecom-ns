@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CustomerSite.Interfaces;
-using CustomerSite.Helpful;
+using CustomerSite.Services;
+using System.Net.Http;
+using CustomerSite.ServiceInjection;
 
 namespace CustomerSite
 {
@@ -27,19 +29,15 @@ namespace CustomerSite
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // url
-            Startup.HostUri = Configuration.GetValue<string>("HostUri");
+            services.AddConfigHttpClient(Configuration);
 
-            services.AddHttpClient("host", (configureClient) =>
-            {
-                configureClient.BaseAddress = new Uri(Startup.HostUri);
-            });
+            services.AddApiClient();
 
-            //
-            services.AddScoped<IRequestAPI, RequestAPI>();
-
+            services.AddConfigOauth2();
 
             services.AddControllersWithViews();
+
+            services.AddSession();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -53,11 +51,14 @@ namespace CustomerSite
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

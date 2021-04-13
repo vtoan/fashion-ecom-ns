@@ -19,26 +19,26 @@ namespace BUS.Services
             _daoOrder = dao;
         }
 
-        public (ICollection<OrderVM>, int) GetList(string start, string end, int provinceId, int limited, int offset)
+        public (ICollection<OrderVM> Orders, int TotalItem) GetList(string start, string end, int provinceId, int limited, int offset)
         {
             DateTime dateStart;
             DateTime dateEnd;
             DateTime.TryParse(start, out dateStart);
             DateTime.TryParse(end, out dateEnd);
             var result = _daoOrder.GetListItems(dateStart, dateEnd, provinceId, limited, offset);
-            return (this._mapList<OrderVM, Order>(result.Item1), result.Item2);
+            return (this._mapList<OrderVM, Order>(result.Orders), result.TotalItem);
         }
 
-        public (ICollection<OrderVM>, int) GetListByPhone(string query, int provinceId, int limited, int offset)
+        public (ICollection<OrderVM> Orders, int TotalItem) GetListByPhone(string query, int provinceId, int limited, int offset)
         {
             var result = _daoOrder.GetListItemsByPhone(query, provinceId, limited, offset);
-            return (this._mapList<OrderVM, Order>(result.Item1), result.Item2);
+            return (this._mapList<OrderVM, Order>(result.Orders), result.TotalItem);
         }
 
-        public (ICollection<OrderVM>, int) GetListByUser(string userId, int provinceId, int limited, int offset)
+        public (ICollection<OrderVM> Orders, int TotalItem) GetListByUser(string userId, int provinceId, int limited, int offset)
         {
             var result = _daoOrder.GetListItemsByUser(userId, provinceId, limited, offset);
-            return (this._mapList<OrderVM, Order>(result.Item1), result.Item2);
+            return (this._mapList<OrderVM, Order>(result.Orders), result.TotalItem);
         }
 
         public new OrderDetailVM Get(int id)

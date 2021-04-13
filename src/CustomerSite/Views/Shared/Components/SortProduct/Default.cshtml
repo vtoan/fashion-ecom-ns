@@ -1,0 +1,27 @@
+@using CustomerSite.Helpful;
+@using Shared.Enums
+@{
+    var cateId = ViewBag.CateId;
+    var typeId = ViewBag.TypeId;
+    var sortCurrent = ViewBag.SortCurrent;
+}
+<div class="order-by">
+    <div class="row align-items-top justify-content-between">
+        <div style="padding-left: 15px">@ViewBag.Total products</div>
+        <div class="dropdown">
+            <div class="select" style="padding-top: 0">
+                <span style="font-weight: 500">Order by</span>
+                <i class="las la-angle-down"></i>
+            </div>
+            <input id="filter" type="hidden" name="filter" />
+            <ul class="dropdown-menu">
+                <li value="0"><a href="/type/@typeId@PageHelper.CreateURI(cateId,ProductSort.LowPrice)">Low</a>
+                </li>
+                <li value="1"><a href="/type/@typeId@PageHelper.CreateURI(cateId,ProductSort.HighPrice)">High</a>
+                </li>
+                <li value="2"><a href="/type/@typeId@PageHelper.CreateURI(cateId,ProductSort.Popular)">Popular</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

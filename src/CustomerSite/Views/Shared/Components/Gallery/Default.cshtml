@@ -1,0 +1,21 @@
+@model (IEnumerable<string> ImageRes, int prodId )
+@using CustomerSite;
+@{
+    var HostUri = Startup.HostUri;
+}
+
+<div class="gallery">
+    <div class="img-anim">
+        <div class="img" style="background-image: url('@HostUri/product-images/@ViewBag.ImageDefault')"></div>
+    </div>
+    <a class="arrow-prev black"><i class="las la-angle-left icon-big"></i></a>
+    <a class="arrow-next black"><i class="las la-angle-right icon-big"></i></a>
+</div>
+<div class="gallery-nav">
+    @foreach (var item in Model.ImageRes)
+    {
+        <div class="img">
+            <img src="@HostUri/product-images/product-2.png" loading="lazy" />
+        </div>
+    }
+</div>

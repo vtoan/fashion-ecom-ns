@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using AutoMapper;
 using BUS.Domains;
-using BUS.Enums;
+using Shared.Enums;
 using BUS.Interfaces.DAOs;
 using BUS.Interfaces.Services;
 using Shared.ViewModels;
@@ -29,19 +29,16 @@ namespace BUS.Services
             var lsObject = new List<ProductVM>();
             if (result.Item1.Count > 0)
                 lsObject = _mapList<ProductVM, Product>(result.Item1);
-            return (lsObject, lsObject.Count);
+            return (lsObject, result.Item2);
         }
 
-        // public ICollection<string> GetImages(int productId, string folderPath)
-        // {
-        //     var listImage = new List<string>();
-        //     // string folderPath = Path.Combine(webRootPath, "products/" + productId);
-        //     if (!Directory.Exists(folderPath)) return listImage;
-        //     var re = Directory.GetFiles(folderPath);
-        //     foreach (var item in re)
-        //         listImage.Add(item.Split("/").Last());
-        //     return listImage;
-        // }
+        public new bool Delete(int productId)
+        {
+            if (productId <= 0) return false;
+            var modifiedProps = new Dictionary<string, object>();
+            modifiedProps.Add("isDel", true);
+            return _productDao.UpdateItem(productId, modifiedProps);
+        }
 
         public bool RemoveImageDefault(int productId, string imgName)
         {
