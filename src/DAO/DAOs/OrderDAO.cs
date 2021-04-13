@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BUS.Domains;
-using BUS.Enums;
 using BUS.Interfaces.DAOs;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,6 +29,8 @@ namespace DAO.DAOs
             return _context.Set<Order>()
                 .Where(item => item.Id == id)
                 .Include(item => item.OrderDetails)
+                .ThenInclude(item => item.ProductAttr)
+                .ThenInclude(item => item.Product)
                 .FirstOrDefault();
         }
 

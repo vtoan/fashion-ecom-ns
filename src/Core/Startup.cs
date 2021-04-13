@@ -17,8 +17,6 @@ namespace Core
 {
     public class Startup
     {
-        public readonly string SpecificOrigins = "_specificOrigins";
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -43,10 +41,23 @@ namespace Core
 
             services.AddControllersWithViews()
                     .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger(c =>
+            {
+                c.SerializeAsV2 = true;
+            });
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

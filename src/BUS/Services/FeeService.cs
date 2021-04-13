@@ -11,7 +11,6 @@ namespace BUS.Services
         IFeeService
     {
         public FeeService(IBaseDAO<Fee> dao, IMapper mapper) : base(dao, mapper)
-        {
-        }
+        { }
     }
 }

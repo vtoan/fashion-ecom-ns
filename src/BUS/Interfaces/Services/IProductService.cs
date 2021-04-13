@@ -10,10 +10,8 @@ namespace BUS.Interfaces.Services
         IUpdate<ProductDetailVM>,
         IDelete<ProductDetailVM>
     {
-        // Tuple <Products, Numbers>
-        (ICollection<ProductVM>, int) GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort);
+        (ICollection<ProductVM> Products, int Total) GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort);
         bool SetImageDefault(int productId, string imgName);
         bool RemoveImageDefault(int productId, string imgName);
-        // ICollection<string> GetImages(int productId);
     }
 }

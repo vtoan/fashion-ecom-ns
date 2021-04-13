@@ -32,6 +32,14 @@ namespace BUS.Services
             return (lsObject, result.Item2);
         }
 
+        public new bool Delete(int productId)
+        {
+            if (productId <= 0) return false;
+            var modifiedProps = new Dictionary<string, object>();
+            modifiedProps.Add("isDel", true);
+            return _productDao.UpdateItem(productId, modifiedProps);
+        }
+
         public bool RemoveImageDefault(int productId, string imgName)
         {
             if (productId <= 0 || imgName == null || imgName == "") return false;

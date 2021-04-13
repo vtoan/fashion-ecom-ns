@@ -2,8 +2,6 @@ using Shared.Enums;
 using BUS.Interfaces.Services;
 using Core.Helper;
 using Core.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
@@ -36,9 +34,8 @@ namespace Core.Controllers
         public IEnumerable<ProductVM> GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
             var result = _productSer.GetList(query, typeId, cateId, limited, offset, sort);
-            RespHelper.AddTotalPage(HttpContext, result.Item2);
-            // HttpContext.Response.Headers.Add("total-item", result.Item2.ToString());
-            return result.Item1;
+            RespHelper.AddTotalPage(HttpContext, result.Total);
+            return result.Products;
         }
 
         [HttpPost]

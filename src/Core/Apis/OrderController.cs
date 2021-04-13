@@ -37,24 +37,24 @@ namespace Core.Controllers
         {
             if (start == null || end == null) return BadRequest();
             var result = _orderSer.GetList(start, end, provinceId, limited, offset);
-            RespHelper.AddTotalPage(HttpContext, result.Item2);
-            return Ok(result.Item1);
+            RespHelper.AddTotalPage(HttpContext, result.TotalItem);
+            return Ok(result.Orders);
         }
 
         [HttpGet("phone")]
-        public IEnumerable<OrderVM> GetListByPhone(string query, int provinceId, int limited, int offset)
+        public IEnumerable<OrderVM> GetListByPhone(string phone, int provinceId, int limited, int offset)
         {
-            var result = _orderSer.GetListByPhone(query, provinceId, limited, offset);
-            RespHelper.AddTotalPage(HttpContext, result.Item2);
-            return result.Item1;
+            var result = _orderSer.GetListByPhone(phone, provinceId, limited, offset);
+            RespHelper.AddTotalPage(HttpContext, result.TotalItem);
+            return result.Orders;
         }
 
         [HttpGet("user")]
         public IEnumerable<OrderVM> GetListByUser(string userId, int provinceId, int limited, int offset)
         {
             var result = _orderSer.GetListByUser(userId, provinceId, limited, offset);
-            RespHelper.AddTotalPage(HttpContext, result.Item2);
-            return result.Item1;
+            RespHelper.AddTotalPage(HttpContext, result.TotalItem);
+            return result.Orders;
         }
     }
 }

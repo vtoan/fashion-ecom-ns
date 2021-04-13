@@ -4,16 +4,14 @@ using Shared.ViewModels;
 
 namespace BUS.Interfaces.Services
 {
-    public interface IProductDetailService :
+    public interface IProductAttrService :
         IGet<ProductAttributeVM>,
-        //  IAdd<ProductDetailVM>,
         IUpdate<ProductAttributeVM>,
         IDelete<ProductAttributeVM>
     {
         ICollection<ProductAttributeVM> GetList(int productId);
         ProductAttributeVM Add(int productId, ProductAttributeVM newObject);
-
-        ICollection<CartItemVM> GetListCartItem(int[] productAttrIds);
+        ICollection<OrderItemVM> GetListCartItem(int[] productAttrIds);
 
 
     }

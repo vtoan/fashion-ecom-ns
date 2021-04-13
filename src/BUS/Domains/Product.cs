@@ -21,7 +21,7 @@ namespace BUS.Domains
         //Nav property
         public TypeProduct Type { get; set; }
         public Category Category { get; set; }
-        public ICollection<ProductDetail> ProductDetails { get; set; }
+        public ICollection<ProductAttr> ProductAttrs { get; set; }
         public ICollection<Rating> Ratings { get; set; }
     }
 }

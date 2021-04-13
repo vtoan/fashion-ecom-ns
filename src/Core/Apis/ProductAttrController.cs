@@ -8,33 +8,33 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("product")]
-    public class ProductDetailController : ControllerBase
+    public class ProductAttrController : ControllerBase
     {
-        private readonly IProductDetailService _productDetailSer;
+        private readonly IProductAttrService _productAttrSer;
 
-        public ProductDetailController(IProductDetailService productDetailSer)
+        public ProductAttrController(IProductAttrService productAttrSer)
         {
-            _productDetailSer = productDetailSer;
+            _productAttrSer = productAttrSer;
         }
 
         [HttpGet("{productId}/attrs")]
         public IEnumerable<ProductAttributeVM> GeList(int productId)
         {
-            return _productDetailSer.GetList(productId);
+            return _productAttrSer.GetList(productId);
         }
 
         [HttpGet("attrs")]
-        public IEnumerable<CartItemVM> GeListCartItem(string attrIds)
+        public IEnumerable<OrderItemVM> GeListCartItem(string attrIds)
         {
             var arrAttribute = JsonSerializer.Deserialize<int[]>(attrIds);
-            return _productDetailSer.GetListCartItem(arrAttribute);
+            return _productAttrSer.GetListCartItem(arrAttribute);
         }
 
         [HttpPost("{productId}/attrs")]
         public IActionResult Create(int productId, ProductAttributeVM attributeVM)
         {
             if (!ModelState.IsValid || productId <= 0) return BadRequest();
-            var result = _productDetailSer.Add(productId, attributeVM);
+            var result = _productAttrSer.Add(productId, attributeVM);
             if (result == null) return Problem("Can't add new product attribute");
             return CreatedAtAction(nameof(GeList), result);
         }
@@ -43,15 +43,15 @@ namespace Core.Controllers
         public IActionResult Update(int id, ProductAttributeVM attributeVM)
         {
             if (id != attributeVM.Id) return BadRequest();
-            var result = _productDetailSer.Update(id, attributeVM);
+            var result = _productAttrSer.Update(id, attributeVM);
             if (!result) return NotFound();
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{productId}/attrs")]
+        public IActionResult Delete(int productId)
         {
-            var result = _productDetailSer.Delete(id);
+            var result = _productAttrSer.Delete(productId);
             if (!result) return NotFound();
             return NoContent();
         }

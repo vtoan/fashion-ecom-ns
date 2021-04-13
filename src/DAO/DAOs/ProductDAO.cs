@@ -19,7 +19,7 @@ namespace DAO.DAOs
         {
             if (id <= 0) return null;
             var sqlQuery = _context.Products.Where(item => item.Id == id)
-                .Include(item => item.ProductDetails)
+                .Include(item => item.ProductAttrs)
                 .Include(item => item.Ratings);
             return sqlQuery.FirstOrDefault();
         }

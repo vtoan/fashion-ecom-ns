@@ -22,9 +22,9 @@ namespace BUS
             CreateMap<TypeProductVM, TypeProduct>();
             CreateMap<TypeProduct, TypeProductVM>();
             //Product
-            CreateMap<ProductDetail, ProductAttributeVM>();
-            CreateMap<ProductAttributeVM, ProductDetail>();
-            CreateMap<ProductDetail, CartItemVM>()
+            CreateMap<ProductAttr, ProductAttributeVM>();
+            CreateMap<ProductAttributeVM, ProductAttr>();
+            CreateMap<ProductAttr, OrderItemVM>()
                 .ForMember(item => item.AttributeId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(item => item.ProductId, opt => opt.MapFrom(src => src.ProductId))
                 .ForMember(item => item.Name, opt => opt.MapFrom(src => src.Product.Name))
@@ -39,21 +39,28 @@ namespace BUS
 
             //
             CreateMap<ProductDetailVM, Product>()
-                .ForMember(des => des.ProductDetails, opt => opt.MapFrom(src => src.ProductAttributes));
+                .ForMember(des => des.ProductAttrs, opt => opt.MapFrom(src => src.ProductAttributes));
             CreateMap<Product, ProductDetailVM>()
-                .ForMember(des => des.ProductAttributes, opt => opt.MapFrom(src => src.ProductDetails))
+                .ForMember(des => des.ProductAttributes, opt => opt.MapFrom(src => src.ProductAttrs))
                 .ForMember(des => des.Rate, opt => opt.MapFrom(src => _calAverageRate(src.Ratings)));
 
             //Order
             CreateMap<Order, OrderVM>();
-            CreateMap<OrderItemVM, OrderDetail>();
-            CreateMap<OrderDetail, OrderItemVM>();
 
             CreateMap<OrderDetailVM, Order>()
                 .ForMember(des => des.OrderDetails, opt => opt.MapFrom(src => src.OrderItems));
             CreateMap<Order, OrderDetailVM>()
                 .ForMember(des => des.OrderItems, opt => opt.MapFrom(src => src.OrderDetails));
 
+            CreateMap<OrderDetail, OrderItemVM>()
+                .ForMember(des => des.AttributeId, opt => opt.MapFrom(src => src.ProductAttrId))
+                .ForMember(des => des.ProductId, opt => opt.MapFrom(src => src.ProductAttr.ProductId))
+                .ForMember(des => des.Name, opt => opt.MapFrom(src => src.ProductAttr.Product.Name))
+                .ForMember(des => des.Image, opt => opt.MapFrom(src => src.ProductAttr.Product.Image))
+                .ForMember(des => des.Size, opt => opt.MapFrom(src => src.ProductAttr.Size));
+
+            CreateMap<OrderItemVM, OrderDetail>()
+                .ForMember(des => des.ProductAttrId, opt => opt.MapFrom(src => src.AttributeId));
             //Rating
             CreateMap<Rating, RatingVM>()
                 .ForMember(des => des.CustomerName, otp => otp.MapFrom(src => src.User.CustomerName));
