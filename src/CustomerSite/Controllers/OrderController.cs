@@ -33,16 +33,19 @@ namespace CustomerSite.Controllers
             return PartialView("_ListCartItemPartial", cartItems);
         }
 
+        public class OrderVM
+        {
+            public string attrIds { get; set; }
+        }
 
         [HttpPost("/Order")]
-        public async Task<IActionResult> OrderSubmitAsync([FromForm] string attrIds)
+        public async Task<IActionResult> OrderSubmitAsync(string attrIds)
         {
             var cartItems = await _findListCartItemAsync(attrIds);
             HttpContext.Session.SetString(KEY_CART_SESSION, JsonSerializer.Serialize(cartItems));
             return RedirectToAction("Checkout");
         }
 
-        [HttpGet]
         public IActionResult Checkout()
         {
             var items = HttpContext.Session.GetString(KEY_CART_SESSION);

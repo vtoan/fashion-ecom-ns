@@ -57,12 +57,14 @@ function cartSite(config) {
     // promInput.value = promo?.code;
     // promInput.name = "promCode";
     // promInput.type = "hidden";
-    this.appendChild(promInput);
+
+    // this.appendChild(promInput);
     let listItem = document.createElement("input");
     listItem.value = JSON.stringify(cart.getData());
     listItem.name = "attrIds";
     listItem.type = "hidden";
     this.appendChild(listItem);
+
     return true;
   });
   // ========== define event ==========
