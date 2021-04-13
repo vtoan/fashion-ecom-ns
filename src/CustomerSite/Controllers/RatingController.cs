@@ -4,6 +4,7 @@ using CustomerSite.Models;
 using CustomerSite.Interfaces;
 using Shared.ViewModels;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CustomerSite.Controllers
 {
@@ -20,7 +21,7 @@ namespace CustomerSite.Controllers
         public IActionResult Submit(int productId, RatingVM ratingVM)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "unknown";
-            // _request.CreateAsync(productcdId, userId, ratingVM);
+            // _request.CreateAsync(productId, userId, ratingVM);
             ViewBag.ProductId = productId;
             return View("Index");
         }
