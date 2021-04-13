@@ -5,6 +5,7 @@ let province = "";
 let district = "";
 let dropProvince = null;
 let dropDistrict = null;
+let resUrl = "https://localhost:5001";
 
 document.querySelector("#send-order").addEventListener("click", function (e) {
   document.querySelector("#formOrder [type=submit]").click();
@@ -24,8 +25,9 @@ form.addEventListener("submit", function (e) {
     e.preventDefault();
     return;
   }
-  console.log(form);
-  e.preventDefault();
+  // console.log(form);
+  return true;
+  // e.preventDefault();
 });
 function createInputElm(name, data) {
   return `<input type="hidden" name="${name}" value="${data}">`;
@@ -56,14 +58,14 @@ function showDistrict(data) {
   }, "div[local-district]");
 }
 function getProvince() {
-  fetch(location.origin + "/asset/province.json").then((response) => {
+  fetch(resUrl + "/asset/province.json").then((response) => {
     if (response.ok) {
       response.json().then(showProvince);
     }
   });
 }
 function getDistrict(id) {
-  fetch(location.origin + `/asset/district/${id}.json`).then((response) => {
+  fetch(resUrl + `/asset/district/${id}.json`).then((response) => {
     if (response.ok) {
       response.json().then(showDistrict);
     }

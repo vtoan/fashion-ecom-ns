@@ -1,3 +1,7 @@
+@model IEnumerable<Shared.ViewModels.CartItemVM>
+@using CustomerSite.Helpful;
+@using Shared.ViewModels
+
 @section Css {
 <link rel="stylesheet" href="~/css/product.css" />
 <link rel="stylesheet" href="~/css/dropdown.css" />
@@ -6,6 +10,11 @@
 @section Scripts {
 <script src="~/js/dropdown.js"></script>
 <script src="~/js/checkout.js"></script>
+}
+@{
+    var total = 0.0;
+    var totalFee = 0.0;
+    var fees = (ICollection<FeeVM>)ViewBag.Fees;
 }
 <!------ breadcrum ----->
 <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
@@ -79,23 +88,24 @@
                     <div>
                         <h4 class="d-inline-block semi-bold">Products</h4>
                         <p class="m-none float-right">
-                            <span id="count-items">0</span> items
+                            <span id="count-items">@Model.Count()</span> items
                         </p>
                     </div>
                     <div class="line"></div>
                     <div class="px-1 mx-2 section">
                         <table class="table table-color">
                             <tbody>
-                                <tr>
-                                    <td>Name</td>
-                                    <td class="bold">x2</td>
-                                    <td>1000</td>
-                                </tr>
-                                <tr>
-                                    <td>Name</td>
-                                    <td class="bold">x2</td>
-                                    <td>1000</td>
-                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td class="bold">x @item.Quantity</td>
+                                        <td>
+                                            <currency>@item.Price</currency>
+                                        </td>
+                                    </tr>
+                                    total += (item.Quantity * item.Price);
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -107,7 +117,7 @@
                     <div>
                         <h4 class="d-inline-block semi-bold">Totals</h4>
                         <p class="m-none float-right">
-                            <span id="count-items">0</span> items
+                            <span id="count-items"> @Model.Count() </span> items
                         </p>
                     </div>
                     <div class="line"></div>
@@ -116,19 +126,34 @@
                             <tbody>
                                 <tr>
                                     <td>Total</td>
-                                    <td>0 đ</td>
+                                    <td>
+                                        <currency>@total</currency>
+                                    </td>
                                 </tr>
-                                <!-- <tr class="d-none">
-                      <td>Discount</td>
-                      <td>0 đ</td>
-                    </tr> -->
-                                <tr>
-                                    <td>Fees</td>
-                                    <td>0 đ</td>
-                                </tr>
+                                @if (fees != null)
+                                {
+                                    @foreach (var fee in fees)
+                                    {
+                                        totalFee += PageHelper.CalFee(total, (double)@fee.Cost);
+                                        <tr>
+                                            <td>@fee.Name</td>
+                                            <td>
+                                                @{
+                                                    var feeCost = fee.Cost * 100;
+                                                }
+                                                @feeCost %
+                                            </td>
+                                        </tr>
+                                    }
+                                }
                                 <tr class="semi-bold">
                                     <td>Payment</td>
-                                    <td class="impress">0 đ</td>
+                                    <td class="impress">
+                                        @{
+                                            var finalTotal = (total + totalFee);
+                                        }
+                                        <currency>@finalTotal</currency>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

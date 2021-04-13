@@ -1,4 +1,5 @@
-﻿using CustomerSite.Interfaces;
+﻿using CustomerSite.Helpful;
+using CustomerSite.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
@@ -42,22 +43,21 @@ namespace CustomerSite.Controllers
         public async Task<IActionResult> OrderSubmitAsync(string attrIds)
         {
             var cartItems = await _findListCartItemAsync(attrIds);
-            HttpContext.Session.SetString(KEY_CART_SESSION, JsonSerializer.Serialize(cartItems));
-            return RedirectToAction("Checkout");
+            HttpContext.Session.SetString(PageHelper.KEY_CART_SESSION, JsonSerializer.Serialize(cartItems));
+            return Redirect("/Checkout");
         }
 
-        public IActionResult Checkout()
-        {
-            var items = HttpContext.Session.GetString(KEY_CART_SESSION);
-            return View();
-        }
+        // public IActionResult Checkout(OrderDetailVM orderDetailVM)
+        // {
+        //     var items = HttpContext.Session.GetString(PageHelper.KEY_CART_SESSION);
+        //     return View(items);
+        // }
 
-        [HttpPost]
-        public IActionResult CheckoutSubmit()
-        {
-            return View();
-        }
-
+        // [HttpPost]
+        // public IActionResult CheckoutSubmit()
+        // {
+        //     return View();
+        // }
 
         private async Task<IEnumerable<CartItemVM>> _findListCartItemAsync(string attrIds)
         {

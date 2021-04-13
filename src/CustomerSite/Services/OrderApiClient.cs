@@ -26,7 +26,7 @@ namespace CustomerSite.Services
             return await _request.GetAsync<OrderDetailVM>(routeName + "/" + id);
         }
 
-        public async Task<IEnumerable<FeeVM>> GetListAsync()
+        public async Task<IEnumerable<FeeVM>> GetListFeeAsync()
         {
             return await _request.GetAsync<IEnumerable<FeeVM>>(routeFee);
         }

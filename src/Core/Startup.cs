@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using BUS;
 using BUS.Domains;
@@ -11,20 +7,18 @@ using Core.ServiceInjection;
 using DAO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 
 namespace Core
 {
     public class Startup
     {
+        public readonly string SpecificOrigins = "_specificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -58,13 +52,22 @@ namespace Core
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyHeader();
+                builder.AllowAnyOrigin();
+                builder.AllowAnyMethod();
+            });
+
             app.UseStaticFiles();
+
 
             app.UseGlobalHandlerException();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
 
             app.UseIdentityServer();
             app.UseAuthorization();
