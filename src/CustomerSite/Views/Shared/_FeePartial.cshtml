@@ -1,4 +1,14 @@
-<tr>
-    <td>Fees</td>
-    <td order-fees fee-cost="1000">0 đ</td>
-</tr>
+@model IEnumerable<Shared.ViewModels.FeeVM>;
+
+@if (Model != null || Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td order-fees fee-cost="@item.Cost">
+                <cost-value>@item.Cost</cost-value>
+            </td>
+        </tr>
+    }
+}

@@ -1,18 +1,16 @@
 @using CustomerSite.Helpful;
 
 @section Css {
-<link rel="stylesheet" href="~/css/product.css" />
-<link rel="stylesheet" href="~/css/dropdown.css" />
+<link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/dropdown.css" asp-append-version="true" />
 }
 @section Scripts {
-<script src="~/js/dropdown.js"></script>
-<script src="~/js/products.js"></script>
+<script src="~/js/dropdown.js" asp-append-version="true"></script>
+<script src="~/js/products.js" asp-append-version="true"></script>
 }
 @{
-    var cateId = ViewBag.CateId;
-    var typeId = ViewBag.TypeId;
-    var pageCurrent = ViewBag.PageCurrent;
-    var sort = ViewBag.Sort;
+    var _request = ViewBag.ProdPageParam;
+
 }
 <!------ breadcrum ----->
 <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
@@ -22,12 +20,12 @@
         <div class="row">
             <!------ filter ----->
             <div class="col-12 col-lg-3">
-                @await Component.InvokeAsync("FilterCategory",new {typeId=typeId, cateIdCurrent=cateId})
+                @await Component.InvokeAsync("FilterCategory",_request)
             </div>
             <!------ product----->
             <div class="col-12 col-lg-9">
                 <!------ order ----->
-                @await Component.InvokeAsync("SortProduct", new {typeId=typeId, cateId=cateId, sortCurrent=sort})
+                @await Component.InvokeAsync("SortProduct", _request)
                 <!------ list ----->
                 <partial name="_ListProductsPartial" model="@Model" />
                 <!------ paginaton ----->
@@ -35,8 +33,9 @@
                     @for (int i = 1; i <= ViewBag.Page; i++)
                     {
                         var className = "";
-                        if (i == ViewBag.PageCurrent) className = "active";
-                        <a class='page-item @className' href="/type/@typeId@PageHelper.CreateURI(cateId,sort,i)">@i</a>
+                        if (i == _request.page) className = "active";
+                        <a class='page-item @className'
+                        href="@PageHelper.CreateURI(@_request.typeId,@_request.cateId,@_request.sort,i,@_request.query)">@i</a>
                     }
                 </div>
             </div>

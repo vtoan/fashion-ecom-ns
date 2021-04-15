@@ -1,4 +1,5 @@
 function Cart() {
+  let keySave = "basketshopping";
   let order = [
     {
       AttributeId: 1,
@@ -63,23 +64,11 @@ function Cart() {
   };
 
   this._saveStorage = function () {
-    let dt = new Date(Date.now() + 30 * 86400000);
-    document.cookie = `basketshopping=${JSON.stringify(
-      this.getData()
-    )};expires=${dt.toString()};path=/;`;
+    window.localStorage.setItem(keySave, JSON.stringify(this.getData()));
   };
   this._getStorage = function () {
-    let cookie = document.cookie;
-    let stringUtf = decodeURIComponent(cookie);
-    let asset = stringUtf.split(";");
-    let cart;
-    for (let i = 0; i < asset.length; i++) {
-      let data = asset[i].split("=");
-      if (data[0].trimStart() == "basketshopping") {
-        cart = data[1];
-      }
-    }
-    // if (cart) this.setData(JSON.parse(cart));
-    // this.setData([]);
+    let cart = window.localStorage.getItem(keySave);
+    if (cart) this.setData(JSON.parse(cart));
+    else this.setData([]);
   };
 }

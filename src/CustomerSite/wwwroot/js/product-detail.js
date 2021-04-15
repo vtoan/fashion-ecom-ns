@@ -1,7 +1,9 @@
 let totalQuanlity = 1;
-let itemid = Number(
+let itemAttrid = 0;
+let itemProductId = Number(
   document.querySelector(".product-detail").getAttribute("itemid")
 );
+
 function attachEventItem(element) {
   element
     .querySelector("a[quantity-add]")
@@ -29,10 +31,25 @@ function updateQuantityItem(countElm, operation) {
 // ====== execx ====== //
 let quantityElm = document.querySelector("div[quantity]");
 let addCartElm = document.querySelector(".add-cart");
+let attrsElm = document.querySelectorAll(".attr-item");
+
+let firstElm = attrsElm[0];
+firstElm.classList.add("active");
+itemAttrid = Number(firstElm.getAttribute("itemid"));
+attrsElm.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    attrsElm.forEach((item) => {
+      if (item.classList.contains("active")) item.classList.remove("active");
+    });
+    let elmTarget = e.target;
+    itemAttrid = elmTarget.getAttribute("itemid");
+    elmTarget.classList.add("active");
+  });
+});
 
 attachEventItem(quantityElm);
 
 addCartElm.addEventListener("click", (e) => {
-  cartMng.addItem(itemid, totalQuanlity);
+  cartMng.addItem(itemAttrid, totalQuanlity);
   updateCountInCart();
 });

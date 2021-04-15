@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
@@ -18,7 +19,7 @@ namespace Core.Middlewares
                         context.Features.Get<IExceptionHandlerFeature>();
                     await context.Response.WriteAsync(exception.Error.Message);
                 });
-            });    
+            });
         }
     }
 }

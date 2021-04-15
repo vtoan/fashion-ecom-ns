@@ -17,21 +17,36 @@ namespace CustomerSite.Controllers
             _request = request;
         }
 
-        [HttpGet("/type/{typeId}")]
-        public async Task<IActionResult> ListProductAsync(string query = null, int typeId = 0, int cateId = 0, int page = 1, ProductSort? sort = null)
+        public class ProdPageParam
         {
-            var resp = await _request.GetListAsync(query, typeId, cateId, _pageSize, page - 1, sort);
-            ViewBag.TypeId = typeId;
-            ViewBag.Sort = sort;
-            ViewBag.CateId = cateId;
-            ViewBag.Total = resp.TotalItem;
+            [FromRoute]
+            public int typeId { get; set; }
+
+            [FromQuery]
+            public string query { get; set; }
+            [FromQuery]
+
+            public int cateId { get; set; }
+            [FromQuery]
+
+            public int page { get; set; } = 1;
+            [FromQuery]
+
+            public ProductSort? sort { get; set; }
+        }
+
+        [HttpGet("/type/{typeId}")]
+        public async Task<IActionResult> ListProductAsync(ProdPageParam prodPageParam)
+        {
+            var resp = await _request.GetListAsync(prodPageParam.query, prodPageParam.typeId, prodPageParam.cateId, _pageSize, prodPageParam.page - 1, prodPageParam.sort);
+            ViewBag.ProdPageParam = prodPageParam;
             //
+            ViewBag.Total = resp.TotalItem;
             ViewBag.Page = Math.Ceiling(resp.TotalItem / (_pageSize + 0.0));
-            ViewBag.PageCurrent = page;
             return View(resp.Products);
         }
 
-        [HttpGet("product/{productId}")]
+        [HttpGet("/product/{productId}")]
         public async Task<IActionResult> ProductDetailAsync(int productId)
         {
             var resp = await _request.GetAsync(productId);

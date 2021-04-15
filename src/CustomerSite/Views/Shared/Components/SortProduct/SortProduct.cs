@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Enums;
+using static CustomerSite.Controllers.ProductController;
 
 namespace CustomerSite.Views.Shared.Components.SortProduct
 {
@@ -8,11 +8,9 @@ namespace CustomerSite.Views.Shared.Components.SortProduct
     public class SortProduct : ViewComponent
     {
 
-        public IViewComponentResult Invoke(int typeId, int cateId, ProductSort? sortCurrent)
+        public IViewComponentResult Invoke(ProdPageParam prodPageParam)
         {
-            ViewBag.CateId = cateId;
-            ViewBag.TypeId = typeId;
-            ViewBag.SortCurrent = sortCurrent;
+            ViewBag.ProdPageParam = prodPageParam;
             return View();
         }
     }

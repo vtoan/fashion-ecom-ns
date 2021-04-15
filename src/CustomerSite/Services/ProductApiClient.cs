@@ -47,7 +47,6 @@ namespace CustomerSite.Services
             return await _request.GetAsync<IEnumerable<OrderItemVM>>(routeName + "/attrs?attrIds=" + productAttrIds);
         }
 
-
         private string _createQueryRequest(string query = null, int typeId = 0, int cateId = 0, int limited = 0, int offset = 0, ProductSort? sort = null)
         {
             var queryStr = "";

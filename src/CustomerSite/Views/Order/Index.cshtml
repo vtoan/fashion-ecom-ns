@@ -1,12 +1,11 @@
 @section Css {
-<link rel="stylesheet" href="~/css/product.css" />
-<link rel="stylesheet" href="~/css/dropdown.css" />
-<link rel="stylesheet" href="~/css/cart.css" />
+<link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/dropdown.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
 
 }
 @section Scripts {
-<script src="~/js/cart.js"></script>
-<script src="~/js/cart-site.js"></script>
+<script src="~/js/cart-site.js" asp-append-version="true"></script>
 }
 <!------ breadcrum ----->
 <div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
@@ -43,7 +42,7 @@
                             <td>Total</td>
                             <td order-total="">0 đ</td>
                         </tr>
-                        <partial name="_FeePartial" />
+                        <partial name="_FeePartial" model=@ViewBag.Fees />
                         <tr class="semi-bold">
                             <td>Payment</td>
                             <td class="impress" order-pay>0 đ</td>

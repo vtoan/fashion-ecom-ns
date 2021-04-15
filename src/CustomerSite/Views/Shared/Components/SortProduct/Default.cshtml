@@ -1,25 +1,33 @@
 @using CustomerSite.Helpful;
 @using Shared.Enums
 @{
-    var cateId = ViewBag.CateId;
-    var typeId = ViewBag.TypeId;
-    var sortCurrent = ViewBag.SortCurrent;
+    var _pageParma = ViewBag.ProdPageParam;
 }
 <div class="order-by">
     <div class="row align-items-top justify-content-between">
         <div style="padding-left: 15px">@ViewBag.Total products</div>
         <div class="dropdown">
             <div class="select" style="padding-top: 0">
-                <span style="font-weight: 500">Order by</span>
+                <span style="font-weight: 500">
+                    @{
+                        var placeholder = _pageParma.sort != null ? _pageParma.sort : "Order by";
+                    }
+                    @placeholder
+                </span>
                 <i class="las la-angle-down"></i>
             </div>
             <input id="filter" type="hidden" name="filter" />
             <ul class="dropdown-menu">
-                <li value="0"><a href="/type/@typeId@PageHelper.CreateURI(cateId,ProductSort.LowPrice)">Low</a>
+                <li value="0"><a
+                        href="@PageHelper.CreateURI(@_pageParma.typeId,@_pageParma.cateId,ProductSort.LowPrice,1,@_pageParma.query)">Low
+                        Price</a>
                 </li>
-                <li value="1"><a href="/type/@typeId@PageHelper.CreateURI(cateId,ProductSort.HighPrice)">High</a>
+                <li value="1"><a
+                        href="@PageHelper.CreateURI(@_pageParma.typeId,@_pageParma.cateId,ProductSort.HighPrice,1,@_pageParma.query)">High
+                        Price</a>
                 </li>
-                <li value="2"><a href="/type/@typeId@PageHelper.CreateURI(cateId,ProductSort.Popular)">Popular</a>
+                <li value="2"><a
+                        href="@PageHelper.CreateURI(@_pageParma.typeId,@_pageParma.cateId,ProductSort.Popular,1,@_pageParma.query)">Popular</a>
                 </li>
             </ul>
         </div>
