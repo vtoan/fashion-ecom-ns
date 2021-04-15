@@ -3,13 +3,13 @@
 @using Shared.ViewModels
 
 @section Css {
-<link rel="stylesheet" href="~/css/product.css" />
-<link rel="stylesheet" href="~/css/dropdown.css" />
-<link rel="stylesheet" href="~/css/cart.css" />
+@* <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" /> *@
+<link rel="stylesheet" href="~/css/dropdown.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
 }
 @section Scripts {
-<script src="~/js/dropdown.js"></script>
-<script src="~/js/checkout.js"></script>
+<script src="~/js/dropdown.js" asp-append-version="true"></script>
+<script src="~/js/checkout.js" asp-append-version="true"></script>
 }
 @{
     var total = 0.0;
@@ -138,10 +138,7 @@
                                         <tr>
                                             <td>@fee.Name</td>
                                             <td>
-                                                @{
-                                                    var feeCost = fee.Cost * 100;
-                                                }
-                                                @feeCost %
+                                                <cost-value>@fee.Cost</cost-value>
                                             </td>
                                         </tr>
                                     }

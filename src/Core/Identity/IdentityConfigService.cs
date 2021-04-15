@@ -44,6 +44,7 @@ namespace Core.Identity
                .AddInMemoryIdentityResources(IdentityConfig.IdentityResources)
                .AddInMemoryApiScopes(IdentityConfig.ApiScopes)
                .AddInMemoryClients(IdentityConfig.Clients)
+               .AddProfileService<CustomProfileService>()
                .AddAspNetIdentity<User>();
 
             builder.AddDeveloperSigningCredential();
@@ -53,7 +54,7 @@ namespace Core.Identity
                 .AddAuthentication()
                 .AddLocalApi("Bearer", options =>
                 {
-                    options.ExpectedScope = "scope2";
+                    options.ExpectedScope = "customer";
                 });
 
             //author

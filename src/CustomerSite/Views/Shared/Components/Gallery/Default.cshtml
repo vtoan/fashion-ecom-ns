@@ -12,10 +12,19 @@
     <a class="arrow-next black"><i class="las la-angle-right icon-big"></i></a>
 </div>
 <div class="gallery-nav">
-    @foreach (var item in Model.ImageRes)
-    {
+    <div class="img">
+        <img product-src="product-1.png" loading="lazy" />
+    </div>
+    <div class="img">
+        <img product-src="product-2.png" loading="lazy" />
+    </div>
+    <div class="img">
+        <img product-src="product-3.png" loading="lazy" />
+    </div>
+    @* @foreach (var item in Model.ImageRes)
+        {
         <div class="img">
-            <img src="@HostUri/product-images/product-2.png" loading="lazy" />
+        <img src="@HostUri/product-images/product-2.png" loading="lazy" />
         </div>
-    }
+        } *@
 </div>

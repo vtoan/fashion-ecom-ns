@@ -1,3 +1,4 @@
+@using CustomerSite.Helpful
 <!------ header ----->
 <header class="container header">
     <div class="row align-items-center">
@@ -8,22 +9,25 @@
         </div>
         <div class="d-none d-lg-block col-lg-6">
             <div class="nav d-flex">
-                @* <a href="#" class="nav-item">sale</a> *@
-                <a href="/product?typeId=1" class="nav-item">features</a>
-                <a href="#" class="nav-item">men</a>
-                <a href="#" class="nav-item">women</a>
-                <a href="#" class="nav-item">contacts</a>
+                <a href="/" class="nav-item">home</a>
+                <a href="/type/1" class="nav-item">shirts</a>
+                <a href="/type/2" class="nav-item">pants</a>
+                <a href="/type/3" class="nav-item">jackets</a>
             </div>
         </div>
         <div class="d-none d-lg-block col-lg-3">
             <div class="actions d-flex">
                 <a id="search-trigger" href="#" class="nav-item">
                     <i class="las la-search"></i></a>
-                <!-- <a class="nav-item" href="#">Login</a> -->
-                <a href="/Account/SignIn" class="nav-item"> <i class="las la-user"></i> </a>
-                <!-- <a href="#" class="nav-item">
-              <i class="las la-sign-out-alt"></i>
-            </a> -->
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <span>@PageHelper.GetUserName(User)</span>
+                    <a href="/Account/SignOut" class="nav-item"><i class="las la-sign-out-alt"></i></a>
+                }
+                else
+                {
+                    <a href="/Account/SignIn" class="nav-item"> <i class="las la-user"></i> </a>
+                }
                 <a href="/Order" class="nav-item">
                     <i class="las la-shopping-bag"></i></a>
                 <span id="cart-counter" class="impress bold">0</span>

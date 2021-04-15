@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CustomerSite.Models;
+using System.Linq;
+using System.Security.Claims;
 
 namespace CustomerSite.Controllers
 {

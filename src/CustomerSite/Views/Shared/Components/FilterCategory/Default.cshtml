@@ -1,7 +1,6 @@
 @using CustomerSite.Helpful;
 @{
-    var cateCurrent = ViewBag.CateCurrent;
-    var typeId = ViewBag.TypeId;
+    var _pageParma = ViewBag.ProdPageParam;
 }
 <details>
     <summary class="bold text-4 upper-case" style="margin-bottom: 1em">
@@ -9,7 +8,9 @@
     </summary>
     @foreach (var item in Model)
     {
-        <a class="d-block btn btn-sm border-primary black" style="margin-bottom: 1em"
-        href="/type/@typeId@PageHelper.CreateURI(item.Id)">@item.Name</a>
+        var className = "";
+        if (item.Id == _pageParma.cateId) className = "active";
+        <a class="d-block btn btn-sm border-secondary black filter-item @className" style="margin-bottom: 1em"
+        href="@PageHelper.CreateURI(@_pageParma.typeId, item.Id,@_pageParma.sort, 1,@_pageParma.query)">@item.Name</a>
     }
 </details>

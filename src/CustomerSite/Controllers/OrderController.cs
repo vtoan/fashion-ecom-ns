@@ -1,5 +1,6 @@
 ﻿using CustomerSite.Helpful;
 using CustomerSite.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
@@ -14,7 +15,6 @@ namespace CustomerSite.Controllers
     public class OrderController : Controller
     {
         private readonly IProductApiClient _requestProd;
-        public static readonly string KEY_CART_SESSION = "cart";
 
         public OrderController(IProductApiClient resquestProd)
         {
@@ -22,8 +22,10 @@ namespace CustomerSite.Controllers
         }
 
         [HttpGet("/Order")]
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync([FromServices] IOrderApiClient requestOrder)
         {
+            var fees = await requestOrder.GetListFeeAsync();
+            ViewBag.Fees = fees;
             return View();
         }
 
@@ -34,30 +36,14 @@ namespace CustomerSite.Controllers
             return PartialView("_ListCartItemPartial", cartItems);
         }
 
-        public class OrderVM
-        {
-            public string attrIds { get; set; }
-        }
-
         [HttpPost("/Order")]
+        [Authorize]
         public async Task<IActionResult> OrderSubmitAsync(string attrIds)
         {
             var cartItems = await _findListCartItemAsync(attrIds);
             HttpContext.Session.SetString(PageHelper.KEY_CART_SESSION, JsonSerializer.Serialize(cartItems));
             return Redirect("/Checkout");
         }
-
-        // public IActionResult Checkout(OrderDetailVM orderDetailVM)
-        // {
-        //     var items = HttpContext.Session.GetString(PageHelper.KEY_CART_SESSION);
-        //     return View(items);
-        // }
-
-        // [HttpPost]
-        // public IActionResult CheckoutSubmit()
-        // {
-        //     return View();
-        // }
 
         private async Task<IEnumerable<OrderItemVM>> _findListCartItemAsync(string attrIds)
         {

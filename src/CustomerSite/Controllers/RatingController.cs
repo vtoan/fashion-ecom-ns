@@ -18,10 +18,12 @@ namespace CustomerSite.Controllers
         }
 
         [HttpPost("/rating/{productId}")]
+        [Authorize]
         public IActionResult Submit(int productId, RatingVM ratingVM)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "unknown";
-            // _request.CreateAsync(productId, userId, ratingVM);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ratingVM.UserId = userId;
+            _request.CreateAsync(productId, userId, ratingVM);
             ViewBag.ProductId = productId;
             return View("Index");
         }

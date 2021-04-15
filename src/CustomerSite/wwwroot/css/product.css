@@ -39,3 +39,22 @@ details {
 .page-item:hover {
   background-color: var(--bg-secondary);
 }
+
+/*============== filter =============*/
+
+.filter-item.active {
+  background-color: var(--primary);
+  color: var(--bg-primary);
+  border-color: none;
+}
+
+/*============== dropdown =============*/
+.dropdown .dropdown-menu li {
+  padding: 0 !important;
+}
+
+.dropdown .dropdown-menu li a {
+  padding: 1em;
+  width: 100%;
+  display: inline-block;
+}

@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CustomerSite.ServiceInjection
 {
@@ -19,11 +20,11 @@ namespace CustomerSite.ServiceInjection
                  .AddOpenIdConnect("oidc", options =>
                  {
                      options.Authority = "https://localhost:5001";
-                     // options.RequireHttpsMetadata = false;
-                     // options.GetClaimsFromUserInfoEndpoint = true;
+                     //  options.RequireHttpsMetadata = false;
+                     options.GetClaimsFromUserInfoEndpoint = true;
 
                      options.ClientId = "mvc";
-                     options.ClientSecret = "serect";
+                     options.ClientSecret = "secret";
                      options.ResponseType = "code";
 
                      options.SaveTokens = true;
@@ -32,11 +33,11 @@ namespace CustomerSite.ServiceInjection
                      options.Scope.Add("profile");
                      options.Scope.Add("customer");
 
-                     // options.TokenValidationParameters = new TokenValidationParameters
-                     // {
-                     //     NameClaimType = "name",
-                     //     RoleClaimType = "role"
-                     // };
+                     options.TokenValidationParameters = new TokenValidationParameters
+                     {
+                         NameClaimType = "name",
+                         RoleClaimType = "role"
+                     };
                  });
             return services;
         }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace CustomerSite.TagHelpers
 {
+    [HtmlTargetElement("currency")]
     public class CurrencyTagHelper : TagHelper
     {
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
