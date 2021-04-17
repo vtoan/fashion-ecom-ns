@@ -32,6 +32,7 @@ namespace Core.Identity
                     FrontChannelLogoutUri = "https://localhost:6001/signout-oidc",
                     PostLogoutRedirectUris = { "https://localhost:6001/signout-callback-oidc" },
 
+
                     AllowOfflineAccess = true,
                     AllowedScopes = { "openid", "profile", "customer" }
                 },

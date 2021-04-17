@@ -28,7 +28,10 @@ namespace Core
         {
             //Db
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("default")));
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+            services.AddDefaultIdentity<User>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
 
             //Reference Service;
             services.AddIdentityServer4();
@@ -39,10 +42,10 @@ namespace Core
             services.AddDAO();
             services.AddHelpful();
 
+            //View
             services.AddControllersWithViews()
                     .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddRazorPages();
-
             services.AddSwaggerGen();
         }
 
@@ -72,7 +75,6 @@ namespace Core
             });
 
             app.UseStaticFiles();
-
 
             app.UseGlobalHandlerException();
 
