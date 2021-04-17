@@ -22,8 +22,7 @@ namespace Core.Areas.Identity.Pages.Account
         public RegisterModel(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            ILogger<RegisterModel> logger
-            )
+            ILogger<RegisterModel> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -40,8 +39,10 @@ namespace Core.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [EmailAddress]
             [Display(Name = "Name")]
             public string Name { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -67,7 +68,7 @@ namespace Core.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/Account/Login");
+            returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
@@ -75,6 +76,7 @@ namespace Core.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    _logger.LogInformation("User created a new account with password.");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
@@ -83,6 +85,7 @@ namespace Core.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
+
             // If we got this far, something failed, redisplay form
             return Page();
         }
