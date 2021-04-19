@@ -7,20 +7,6 @@ export default function Navigate() {
       <Nav vertical>
         <NavItem>
           <NavLink>
-            <Link className="text-decoration-none" to="/">
-              Dashboard
-            </Link>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink>
-            <Link className="text-decoration-none" to="/orders">
-              Orders
-            </Link>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink>
             <Link className="text-decoration-none" to="/products">
               Products
             </Link>
@@ -30,13 +16,6 @@ export default function Navigate() {
           <NavLink>
             <Link className="text-decoration-none" to="/categories">
               Categories
-            </Link>
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink>
-            <Link className="text-decoration-none" to="/fees">
-              Fees
             </Link>
           </NavLink>
         </NavItem>

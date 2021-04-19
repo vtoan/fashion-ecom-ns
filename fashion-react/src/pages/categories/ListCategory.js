@@ -10,13 +10,16 @@ export default function ListCategory({
 }) {
   return (
     <>
-      <SelectTypeProduct initalValue={1} onChange={onChangeType} />
-      {!datas && (
-        <p className="pt-5 text-center text-uppercase text-secondary">
+      <SelectTypeProduct
+        initalValue={1}
+        onChange={(val) => onChangeType && onChangeType(val)}
+      />
+      {(!datas || datas.length < 1) && (
+        <p className="py-5 text-center text-uppercase text-secondary">
           No data
         </p>
       )}
-      {datas && (
+      {datas.length > 0 && (
         <Table>
           <thead>
             <tr>
@@ -33,11 +36,11 @@ export default function ListCategory({
                 <td>{item.Name}</td>
                 <td>{item.TypeProductId}</td>
                 <td className="text-right">
-                  <Button onClick={() => onEdit(item)} color="link">
+                  <Button onClick={() => onEdit && onEdit(item)} color="link">
                     Edit
                   </Button>
                   <Button
-                    onClick={() => onDelete(item.Id)}
+                    onClick={() => onDelete && onDelete(item.Id)}
                     color="link"
                     className="text-danger"
                   >

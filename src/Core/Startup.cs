@@ -69,9 +69,13 @@ namespace Core
 
             app.UseCors(builder =>
             {
-                builder.AllowAnyHeader();
-                builder.AllowAnyOrigin();
-                builder.AllowAnyMethod();
+                builder.WithOrigins("http://localhost:3000")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .WithHeaders("total-item");
+                // builder.AllowAnyHeader();
+                // builder.AllowAnyOrigin("https://");
+                // builder.AllowAnyMethod();
             });
 
             app.UseStaticFiles();

@@ -16,6 +16,7 @@ namespace Core.Identity
             new ApiScope[]
             {
                 new ApiScope("customer"),
+                new ApiScope("admin"),
             };
 
         public static IEnumerable<Client> Clients =>
@@ -36,6 +37,32 @@ namespace Core.Identity
                     AllowOfflineAccess = true,
                     AllowedScopes = { "openid", "profile", "customer" }
                 },
+                new Client
+                {
+                    // unique ID for this client
+                    ClientId = "spa", 
+                    // human-friendly name displayed in IS
+                    ClientName = "Reac app", 
+                    // URL of client
+                    ClientUri = "http://localhost:3000", 
+                    // how client will interact with our identity server (Implicit is basic flow for web apps)
+                    AllowedGrantTypes = GrantTypes.Implicit, 
+                    // don't require client to send secret to token endpoint
+                    RequireClientSecret = false,
+                    RedirectUris =
+                    {             
+                        // can redirect here after login                     
+                        "http://localhost:3000/signin-oidc",
+                    },
+                    // can redirect here after logout
+                    PostLogoutRedirectUris = { "http://localhost:3000/signout-oidc" }, 
+                    // builds CORS policy for javascript clients
+                    AllowedCorsOrigins = { "http://localhost:3000" }, 
+                    // what resources this client can access
+                    AllowedScopes = { "openid", "profile", "customer" }, 
+                    // client is allowed to receive tokens via browser
+                    AllowAccessTokensViaBrowser = true
+                }
             };
     }
 }

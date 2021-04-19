@@ -38,11 +38,11 @@ export default function Product() {
     let result = window.confirm("Save the changed items?");
     if (result) {
       if (!data.Id) {
-        _cateSer.create(data).then((reps) => {
+        _cateSer.create(data).then((resp) => {
           handleChangeType(1);
         });
       } else {
-        _cateSer.edit(data.Id, data).then((reps) => {
+        _cateSer.edit(data.Id, data).then((resp) => {
           setCategory(_updateViewItem(listCategory, data));
         });
       }
@@ -63,7 +63,6 @@ export default function Product() {
       actions={
         <Button
           color="primary"
-          className="float-right"
           children="New Category"
           onClick={() => handleCreate()}
         />
