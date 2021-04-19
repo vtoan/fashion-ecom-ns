@@ -1,4 +1,5 @@
 using BUS.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize("Bearer")]
     public class CategoryController : ControllerBase
     {
         private ICategoryService _cateSer;
