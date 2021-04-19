@@ -18,7 +18,8 @@ export default function EditCategory({ itemEdit, onSave, onCancel }) {
   //
   const handleSubmit = () => {
     if (inputName && inputType)
-      onSave({ Id: itemId, Name: inputName, TypeProductId: inputType });
+      onSave &&
+        onSave({ Id: itemId, Name: inputName, TypeProductId: inputType });
     else window.alert("Please fill the form below");
   };
   //
@@ -54,7 +55,7 @@ export default function EditCategory({ itemEdit, onSave, onCancel }) {
             <Button color="primary" className="mr-3" onClick={handleSubmit}>
               Save
             </Button>
-            <Button color="danger" onClick={() => onCancel()}>
+            <Button color="danger" onClick={() => onCancel && onCancel()}>
               Cancel
             </Button>
           </div>
