@@ -17,6 +17,7 @@ export default function ListUser({ datas, onDelete }) {
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
