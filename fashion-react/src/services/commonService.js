@@ -7,9 +7,9 @@ export default class commonService {
     this.aliasName = aliasName;
   }
 
-  getList(queryString = "") {
+  getList(params = null) {
     return axios({
-      url: host + "/" + this.pathSer + queryString,
+      url: host + "/" + this.pathSer + this._createQuery(params),
       method: "get",
       actionName: `Get list ${this.aliasName}`,
     });
@@ -40,12 +40,22 @@ export default class commonService {
     });
   }
 
-  create(object, queryString = "") {
+  create(object, params = null) {
     return axios({
-      url: host + "/" + this.pathSer + queryString,
+      url: host + "/" + this.pathSer + this._createQuery(params),
       method: "post",
       data: object,
       actionName: `Create new ${this.aliasName}`,
     });
+  }
+
+  _createQuery(params) {
+    if (!params) return "";
+    let queryStr = "?";
+    for (const key in params) {
+      if (!params[key]) continue;
+      queryStr += key + "=" + params[key];
+    }
+    return queryStr;
   }
 }
