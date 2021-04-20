@@ -21,19 +21,20 @@ export default function User(props) {
     _userSer
       .getList({ limited: _pageSize, offset: pageNumber - 1 })
       .then((resp) => {
+        let total = resp.headers["total-item"] ?? 0;
+        setTotalUser(total);
         setUser(resp.data);
-
-        console.log(resp);
       });
   };
 
+  const _calPage = () => Math.ceil(totalUser / _pageSize);
   return (
     <SingleLayout
       title="List User"
       content={
         <div>
           <ListUser datas={listUser} />
-          <Paging totalPage={totalUser} onChangePage={handlePage} />
+          <Paging totalPage={_calPage()} onChangePage={handlePage} />
         </div>
       }
     />

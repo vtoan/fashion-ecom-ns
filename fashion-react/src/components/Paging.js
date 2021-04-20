@@ -13,7 +13,7 @@ export default function Paging({ totalPage, initalPage = 1, onChangePage }) {
 
   for (let page = 1; page <= totalPage; page++) {
     arrayUris.push(
-      <PaginationItem active={page === pageSelected}>
+      <PaginationItem key={+page} active={page === pageSelected}>
         <PaginationLink onClick={() => handleClickPage(page)}>
           {page}
         </PaginationLink>

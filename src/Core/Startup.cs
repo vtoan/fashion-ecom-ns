@@ -72,6 +72,7 @@ namespace Core
                 builder.WithOrigins("http://localhost:3000")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
+                    .WithExposedHeaders("total-item")
                     .WithHeaders("total-item");
                 // builder.AllowAnyHeader();
                 // builder.AllowAnyOrigin("https://");
