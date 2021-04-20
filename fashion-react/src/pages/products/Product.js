@@ -1,52 +1,107 @@
-import { Button, Table } from "reactstrap";
 import React from "react";
+import { Button } from "reactstrap";
+import ListProduct from "./ListProduct";
+import SingleLayout from "../../containers/SingleLayout";
+import Paging from "../../components/Paging";
+import SearchBar from "../../components/SearchBar";
+
+import _prodSer from "../../services/productService";
+
+//props
+let totalProduct = 0;
+const _pageSize = 6;
+const _parmas = {
+  query: "",
+  typeId: 0,
+  cateId: 0,
+  limited: _pageSize,
+  offset: 0,
+  sort: null,
+};
 
 export default function Product(props) {
-  const [products, setProducts] = React.useState([]);
+  const [listProducts, setProducts] = React.useState([]);
+
+  React.useEffect(() => {
+    _getProduct(1);
+  }, []);
+
+  //handle
+  const _getProduct = (pageNumber) => {
+    _parmas.offset = pageNumber - 1;
+    _prodSer.getList(_parmas).then((resp) => {
+      console.log(resp.config.url);
+      totalProduct = resp.headers["total-item"] ?? 0;
+      setProducts(resp.data);
+    });
+  };
 
   const handleEdit = (itemId) => {};
 
+  const handleChangeCate = (val) => {
+    _parmas.cateId = val;
+    _getProduct(1);
+  };
+
+  const handleChangeType = (val) => {
+    _parmas.typeId = val;
+    _parmas.cateId = 0;
+    _getProduct(1);
+  };
+
+  const handleChangeSort = (val) => {
+    if (val < 0) _parmas.sort = null;
+    else _parmas.sort = val;
+    _getProduct(1);
+  };
+
+  const handleSearch = (query) => {
+    _parmas.query = query;
+    _getProduct(1);
+  };
+
+  const handlePage = (pageSelected) => {
+    _getProduct(pageSelected);
+  };
+
+  const handleRefressh = () => {
+    _parmas.cateId = 0;
+    _parmas.typeId = 0;
+    _parmas.sort = null;
+    _parmas.query = "";
+    _getProduct(1);
+  };
+
   return (
-    <>
-      {(!products || products.length < 1) && (
-        <p className="py-5 text-center text-uppercase text-secondary">
-          No data
-        </p>
-      )}
-      {products.length > 0 && (
-        <Table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Type</th>
-              <th>Price</th>
-              <th>Rate</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((item, index) => (
-              <tr key={+index}>
-                <th scope="row">{index + 1}</th>
-                <td>{item.Image}</td>
-                <td>{item.Name}</td>
-                <td>{item.CategoryId}</td>
-                <td>{item.TypeProductId}</td>
-                <td>{item.Price}</td>
-                <td>{item.Rate}</td>
-                <td className="text-right">
-                  <Button onClick={() => handleEdit(item.Id)} color="link">
-                    Edit
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
-    </>
+    <SingleLayout
+      title="List Product"
+      actions={
+        <div className="d-flex">
+          <Button onClick={handleRefressh} color="link">
+            Refresh
+          </Button>
+          <SearchBar
+            placeholder="Product name ..."
+            onSearchSubmit={handleSearch}
+          />
+        </div>
+      }
+      content={
+        <>
+          <ListProduct
+            datas={listProducts}
+            onEdit={handleEdit}
+            onChangeCate={handleChangeCate}
+            onChangeType={handleChangeType}
+            onChangeSort={handleChangeSort}
+          />
+          <Paging
+            totalItem={totalProduct}
+            pageSize={_pageSize}
+            onChangePage={handlePage}
+          />
+        </>
+      }
+    />
   );
 }

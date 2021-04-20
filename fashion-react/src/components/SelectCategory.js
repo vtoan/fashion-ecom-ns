@@ -1,29 +1,33 @@
 import React from "react";
 import { Input } from "reactstrap";
-import _typeSer from "../services/typeService";
+import _cateSer from "../services/cateService";
 
-export default function SelectTypeProduct({
+export default function SelectCategory({
   initalValue,
+  typeId,
   onChange,
   placeholder = null,
   novalid = false,
   ...other
 }) {
-  const [inputType, setInputType] = React.useState(0);
-  const [listTypes, setTypes] = React.useState([]);
+  const [inputCate, setInputCate] = React.useState(0);
+  const [listCates, setCates] = React.useState([]);
 
   React.useEffect(() => {
-    _typeSer.getList().then((resp) => setTypes(resp.data));
-  }, []);
+    _cateSer.getList(typeId).then((resp) => {
+      setCates(resp.data);
+      setInputCate(0);
+    });
+  }, [typeId]);
 
   React.useEffect(() => {
-    setInputType(initalValue);
+    setInputCate(initalValue);
   }, [initalValue]);
 
   //handle
-  const handleChangeType = (e) => {
+  const handleChangeCate = (e) => {
     let val = e.target.value;
-    setInputType(val);
+    setInputCate(val);
     onChange && onChange(val);
   };
 
@@ -31,16 +35,16 @@ export default function SelectTypeProduct({
     <Input
       {...other}
       type="select"
-      invalid={!novalid && !inputType}
-      onChange={handleChangeType}
-      value={inputType}
+      invalid={!novalid && !inputCate}
+      onChange={handleChangeCate}
+      value={inputCate}
     >
       {placeholder && (
         <option className="text-secondary" value={0}>
           {placeholder}
         </option>
       )}
-      {listTypes.map((item) => (
+      {listCates.map((item) => (
         <option key={+item.Id} value={item.Id}>
           {item.Name}
         </option>
