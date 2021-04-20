@@ -46,7 +46,7 @@ export default function EditCategory({ itemEdit, onSave, onCancel }) {
           <FormGroup>
             <Label for="Type">Select Type</Label>
             <SelectTypeProduct
-              placeholder
+              placeholder="Choose type"
               initalValue={inputType}
               onChange={handleChangeType}
             />
