@@ -4,10 +4,10 @@ import SelectTypeProduct from "../../components/SelectTypeProduct";
 import SelectCategory from "../../components/SelectCategory";
 import SelectSort from "../../components/SelectSort";
 import ProductImage from "../../components/ProductImage";
+import { Link } from "react-router-dom";
 
 export default function ListProduct({
   datas,
-  onEdit,
   onChangeType,
   onChangeCate,
   onChangeSort,
@@ -85,8 +85,8 @@ export default function ListProduct({
               <td>{item.TypeProductId}</td>
               <td>{item.Price}</td>
               <td className="text-right">
-                <Button onClick={() => onEdit && onEdit(item.Id)} color="link">
-                  Edit
+                <Button color="link">
+                  <Link to={"/product/" + item.Id}>Edit</Link>
                 </Button>
               </td>
             </tr>

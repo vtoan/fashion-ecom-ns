@@ -16,13 +16,9 @@ export default function SelectCategory({
   React.useEffect(() => {
     _cateSer.getList(typeId).then((resp) => {
       setCates(resp.data);
-      setInputCate(0);
+      setInputCate(initalValue);
     });
-  }, [typeId]);
-
-  React.useEffect(() => {
-    setInputCate(initalValue);
-  }, [initalValue]);
+  }, [typeId, initalValue]);
 
   //handle
   const handleChangeCate = (e) => {

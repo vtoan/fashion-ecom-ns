@@ -6,6 +6,7 @@ import Paging from "../../components/Paging";
 import SearchBar from "../../components/SearchBar";
 
 import _prodSer from "../../services/productService";
+import { useHistory } from "react-router";
 
 //props
 let totalProduct = 0;
@@ -21,7 +22,7 @@ const _parmas = {
 
 export default function Product(props) {
   const [listProducts, setProducts] = React.useState([]);
-
+  const history = useHistory();
   React.useEffect(() => {
     _getProduct(1);
   }, []);
@@ -35,8 +36,6 @@ export default function Product(props) {
       setProducts(resp.data);
     });
   };
-
-  const handleEdit = (itemId) => {};
 
   const handleChangeCate = (val) => {
     _parmas.cateId = val;
@@ -58,6 +57,10 @@ export default function Product(props) {
   const handleSearch = (query) => {
     _parmas.query = query;
     _getProduct(1);
+  };
+
+  const handleCreate = () => {
+    history.push("/product/0");
   };
 
   const handlePage = (pageSelected) => {
@@ -84,13 +87,18 @@ export default function Product(props) {
             placeholder="Product name ..."
             onSearchSubmit={handleSearch}
           />
+          <Button
+            className="ml-3"
+            color="primary"
+            children="New"
+            onClick={() => handleCreate()}
+          />
         </div>
       }
       content={
         <>
           <ListProduct
             datas={listProducts}
-            onEdit={handleEdit}
             onChangeCate={handleChangeCate}
             onChangeType={handleChangeType}
             onChangeSort={handleChangeSort}
