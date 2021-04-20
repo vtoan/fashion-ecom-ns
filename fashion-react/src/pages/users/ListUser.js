@@ -13,7 +13,7 @@ export default function ListUser({ datas }) {
         <Table>
           <thead>
             <tr>
-              <th>#</th>
+              <th>Id</th>
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
@@ -23,7 +23,7 @@ export default function ListUser({ datas }) {
           <tbody>
             {datas.map((item, index) => (
               <tr key={+index}>
-                <th scope="row">{index + 1}</th>
+                <th>{item.Id}</th>
                 <td>{item.CustomerName ?? "unknown"}</td>
                 <td>{item.Email}</td>
                 <td>{item.Phone ?? "no"}</td>

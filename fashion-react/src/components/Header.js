@@ -15,7 +15,7 @@ export default function Header(props) {
         <img width="40" src="./logo192.png" alt="" />
       </div>
       <div className="float-right ">
-        <span>Hello,{user?.profile.name}</span>
+        <span>Hello, {user?.profile.name}</span>
         <Button
           color="link"
           onClick={signOut}
