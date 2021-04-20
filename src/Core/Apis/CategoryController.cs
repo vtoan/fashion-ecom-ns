@@ -8,7 +8,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize("Bearer")]
+    // [Authorize("Bearer")]
     public class CategoryController : ControllerBase
     {
         private ICategoryService _cateSer;
