@@ -2,11 +2,11 @@ import React from "react";
 import SingleLayout from "../../containers/SingleLayout";
 import ListUser from "./ListUser";
 import Paging from "../../components/Paging";
-
-import _userSer from "../../services/userService";
 import SearchBar from "../../components/SearchBar";
 
-const _pageSize = 3;
+import _userSer from "../../services/userService";
+
+const _pageSize = 6;
 let _queryValue = "";
 
 export default function User(props) {
@@ -15,7 +15,7 @@ export default function User(props) {
 
   React.useEffect(() => {
     handlePage(1);
-  }, [1]);
+  }, []);
 
   //handle
   const handlePage = (pageNumber) => {
