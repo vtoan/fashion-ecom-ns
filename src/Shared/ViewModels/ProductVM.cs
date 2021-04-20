@@ -10,7 +10,7 @@ namespace Shared.ViewModels
         public string ProductDescription { get; set; }
         public int? CategoryId { get; set; }
         public int? TypeProductId { get; set; }
-        public double Rate { get; set; }
+        public double? Rate { get; set; }
 
     }
 }

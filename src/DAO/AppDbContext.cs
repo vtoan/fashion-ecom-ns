@@ -47,8 +47,8 @@ namespace DAO
             modelBuilder.Entity<Product>().Property(p => p.isDel).HasDefaultValue(false);
             modelBuilder.Entity<Product>().Property(p => p.SaleCount).HasDefaultValue(0);
             modelBuilder.Entity<Product>().Property(p => p.Material).HasMaxLength(150);
-            modelBuilder.Entity<Product>().Property(p => p.Origin).HasDefaultValue(150);
-            modelBuilder.Entity<Product>().Property(p => p.ProductDescription).HasDefaultValue(250);
+            modelBuilder.Entity<Product>().Property(p => p.Origin).HasMaxLength(150);
+            modelBuilder.Entity<Product>().Property(p => p.ProductDescription).HasMaxLength(250);
             modelBuilder.Entity<Product>().Property(o => o.DateCreated).HasColumnType("smalldatetime");
             modelBuilder.Entity<Product>().Property(o => o.DateModified).HasColumnType("smalldatetime");
             //ProductDetail

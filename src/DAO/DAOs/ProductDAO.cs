@@ -26,7 +26,7 @@ namespace DAO.DAOs
 
         public (ICollection<Product>, int) GetListItems(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
-            var sqlString = this._context.Products.AsQueryable();
+            var sqlString = this._context.Products.Where(item => item.isDel != true);
             //filter
             if (query != null) sqlString = sqlString.Where(item => item.Name.Contains(query));
             if (typeId > 0) sqlString = sqlString.Where(item => item.TypeProductId == typeId);
