@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, Table } from "reactstrap";
+import { Table } from "reactstrap";
 
-export default function ListUser({ datas, onDelete }) {
+export default function ListUser({ datas }) {
   return (
     <>
       {(!datas || datas.length < 1) && (
@@ -17,25 +17,17 @@ export default function ListUser({ datas, onDelete }) {
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
-              <th></th>
+              <th>Province</th>
             </tr>
           </thead>
           <tbody>
             {datas.map((item, index) => (
               <tr key={+index}>
                 <th scope="row">{index + 1}</th>
-                <td>{item.CustomerName}</td>
+                <td>{item.CustomerName ?? "unknown"}</td>
                 <td>{item.Email}</td>
-                <td>{item.Phone}</td>
-                <td className="text-right">
-                  <Button
-                    onClick={() => onDelete(item.Id)}
-                    color="link"
-                    className="text-danger"
-                  >
-                    Remove
-                  </Button>
-                </td>
+                <td>{item.Phone ?? "no"}</td>
+                <td>{item.CustomerProvince ?? "no"}</td>
               </tr>
             ))}
           </tbody>
