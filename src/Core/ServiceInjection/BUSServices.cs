@@ -16,6 +16,7 @@ namespace Core.ServiceInjection
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IProductAttrService, ProductAttrService>();
             services.AddScoped<IRatingService, RatingService>();
+            services.AddScoped<IUserService, UserService>();
 
             return services;
         }

@@ -65,6 +65,9 @@ namespace BUS
             CreateMap<Rating, RatingVM>()
                 .ForMember(des => des.CustomerName, otp => otp.MapFrom(src => src.User.CustomerName));
             CreateMap<RatingVM, Rating>();
+            //User
+            CreateMap<User, UserVM>()
+                .ForMember(des => des.Phone, opt => opt.MapFrom(src => src.PhoneNumber));
 
         }
 

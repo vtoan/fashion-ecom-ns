@@ -16,6 +16,7 @@ namespace Core.ServiceInjection
             services.AddScoped<IOrderDAO, OrderDAO>();
             services.AddScoped<IProductAttrDAO, ProductAttrDAO>();
             services.AddScoped<IRatingDAO, RatingDAO>();
+            services.AddScoped<IUserDAO, UserDAO>();
             return services;
         }
     }
