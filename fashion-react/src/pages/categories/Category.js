@@ -4,11 +4,14 @@ import SplitLayout from "../../containers/SplitLayout";
 import EditCategory from "./EditCategory";
 import ListCategory from "./ListCategory";
 import _cateSer from "../../services/cateService";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory } from "../../actions/fetchDataAction";
 
 //comp
 export default function Product() {
-  const [listCategory, setCategory] = React.useState([]);
+  const [listCates, setCates] = React.useState([]);
   const [itemSelected, setSelected] = React.useState(null);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     handleChangeType(1);
@@ -16,8 +19,9 @@ export default function Product() {
 
   //handle
   const handleChangeType = (val) => {
-    _cateSer.getList(val).then((resp) => {
-      setCategory(resp.data);
+    _cateSer.getList(0).then(({ data }) => {
+      dispatch(setCategory(data));
+      setCates(data.filter((item) => item.TypeProductId === Number(val)));
     });
   };
 
@@ -28,8 +32,8 @@ export default function Product() {
   const handleDelete = (itemId) => {
     let result = window.confirm("Delete this item?");
     if (result) {
-      _cateSer.delete(itemId).then((resp) => {
-        setCategory(_removeViewItem(listCategory, itemId));
+      _cateSer.delete(itemId).then(() => {
+        setCategory(_removeViewItem(listCates, itemId));
       });
     }
   };
@@ -38,12 +42,12 @@ export default function Product() {
     let result = window.confirm("Save the changed items?");
     if (result) {
       if (!data.Id) {
-        _cateSer.create(data).then((resp) => {
+        _cateSer.create(data).then(() => {
           handleChangeType(1);
         });
       } else {
-        _cateSer.edit(data.Id, data).then((resp) => {
-          setCategory(_updateViewItem(listCategory, data));
+        _cateSer.edit(data.Id, data).then(() => {
+          setCategory(_updateViewItem(listCates, data));
         });
       }
       setSelected(null);
@@ -69,7 +73,7 @@ export default function Product() {
       }
       right={
         <ListCategory
-          datas={listCategory}
+          datas={listCates}
           onEdit={handleEdit}
           onDelete={handleDelete}
           onChangeType={handleChangeType}
