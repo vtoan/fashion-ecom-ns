@@ -1,6 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Input } from "reactstrap";
-import _cateSer from "../services/cateService";
 
 export default function SelectCategory({
   initalValue,
@@ -12,13 +12,14 @@ export default function SelectCategory({
 }) {
   const [inputCate, setInputCate] = React.useState(0);
   const [listCates, setCates] = React.useState([]);
+  const listCateDatas = useSelector(({ fetchData }) => fetchData.listCates);
 
   React.useEffect(() => {
-    _cateSer.getList(typeId).then((resp) => {
-      setCates(resp.data);
-      setInputCate(initalValue);
-    });
-  }, [typeId, initalValue]);
+    setCates(
+      listCateDatas.filter((item) => item.TypeProductId === Number(typeId))
+    );
+    setInputCate(initalValue);
+  }, [listCateDatas, typeId, initalValue]);
 
   //handle
   const handleChangeCate = (e) => {

@@ -5,6 +5,7 @@ import SelectCategory from "../../components/SelectCategory";
 import SelectSort from "../../components/SelectSort";
 import ProductImage from "../../components/ProductImage";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function ListProduct({
   datas,
@@ -13,11 +14,21 @@ export default function ListProduct({
   onChangeSort,
 }) {
   const [typeCurrent, setType] = React.useState(1);
+  const _listTypes = useSelector(({ fetchData }) => fetchData.listTypes);
+  const _listCates = useSelector(({ fetchData }) => fetchData.listCates);
 
   const handleChangeType = (val) => {
     onChangeType && onChangeType(val);
     setType(val);
   };
+
+  const _getTypeName = (id) =>
+    (_listTypes && _listTypes.find((item) => item.Id === id)?.Name) ??
+    "unknown";
+
+  const _getCateName = (id) =>
+    (_listCates && _listCates.find((item) => item.Id === id)?.Name) ??
+    "unknown";
 
   return (
     <Table className="my-table">
@@ -81,8 +92,8 @@ export default function ListProduct({
                 <ProductImage src={item.Image} />
               </td>
               <td>{item.Name}</td>
-              <td>{item.CategoryId}</td>
-              <td>{item.TypeProductId}</td>
+              <td>{_getCateName(item.CategoryId)}</td>
+              <td>{_getTypeName(item.TypeProductId)}</td>
               <td>{item.Price}</td>
               <td className="text-right">
                 <Button color="link">

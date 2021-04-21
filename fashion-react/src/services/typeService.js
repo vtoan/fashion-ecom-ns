@@ -1,5 +1,6 @@
 import axios from "axios";
 import { host } from "../config";
+import { setTypeProduct } from "../actions/fetchDataAction";
 
 class typeService {
   constructor(pathSer, aliasName) {
@@ -16,4 +17,9 @@ class typeService {
   }
 }
 
-export default new typeService("typeproduct", "Type Product");
+let _typeSer = new typeService("typeproduct", "Type Product");
+export default _typeSer;
+
+export function fetchTypeProduct(store) {
+  _typeSer.getList().then(({ data }) => store.dispatch(setTypeProduct(data)));
+}
