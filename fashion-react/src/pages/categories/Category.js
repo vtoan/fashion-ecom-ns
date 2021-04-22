@@ -3,13 +3,15 @@ import { Button } from "reactstrap";
 import SplitLayout from "../../containers/SplitLayout";
 import EditCategory from "./EditCategory";
 import ListCategory from "./ListCategory";
-import _cateSer from "../../services/cateService";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCategory } from "../../actions/fetchDataAction";
+
+import _cateSer from "../../services/cateService";
 
 //comp
 export default function Product() {
   const [listCates, setCates] = React.useState([]);
+  const [typeSelected, setTypeSelected] = React.useState(1);
   const [itemSelected, setSelected] = React.useState(null);
   const dispatch = useDispatch();
 
@@ -19,6 +21,7 @@ export default function Product() {
 
   //handle
   const handleChangeType = (val) => {
+    setTypeSelected(val);
     _cateSer.getList(0).then(({ data }) => {
       dispatch(setCategory(data));
       setCates(data.filter((item) => item.TypeProductId === Number(val)));
@@ -33,7 +36,7 @@ export default function Product() {
     let result = window.confirm("Delete this item?");
     if (result) {
       _cateSer.delete(itemId).then(() => {
-        setCategory(_removeViewItem(listCates, itemId));
+        setCates(_removeViewItem(listCates, itemId));
       });
     }
   };
@@ -47,7 +50,8 @@ export default function Product() {
         });
       } else {
         _cateSer.edit(data.Id, data).then(() => {
-          setCategory(_updateViewItem(listCates, data));
+          handleChangeType(data.TypeProductId);
+          setTypeSelected(data.TypeProductId);
         });
       }
       setSelected(null);
@@ -55,11 +59,8 @@ export default function Product() {
   };
 
   //update view
-  const _removeViewItem = (lists, itemDel) =>
-    lists.filter((item) => item.Id !== itemDel);
-
-  const _updateViewItem = (lists, itemEdit) =>
-    lists.map((item) => (item.Id === itemEdit.Id ? itemEdit : item));
+  const _removeViewItem = (lists, itemIdDel) =>
+    lists.filter((item) => item.Id !== Number(itemIdDel));
   //
   return (
     <SplitLayout
@@ -73,6 +74,7 @@ export default function Product() {
       }
       right={
         <ListCategory
+          initalType={typeSelected}
           datas={listCates}
           onEdit={handleEdit}
           onDelete={handleDelete}

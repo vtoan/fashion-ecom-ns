@@ -15,9 +15,10 @@ export default function SelectCategory({
   const listCateDatas = useSelector(({ fetchData }) => fetchData.listCates);
 
   React.useEffect(() => {
-    setCates(
-      listCateDatas.filter((item) => item.TypeProductId === Number(typeId))
-    );
+    if (listCateDatas)
+      setCates(
+        listCateDatas.filter((item) => item.TypeProductId === Number(typeId))
+      );
     setInputCate(initalValue);
   }, [listCateDatas, typeId, initalValue]);
 

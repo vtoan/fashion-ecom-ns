@@ -8,6 +8,7 @@ export default function ListCategory({
   onEdit,
   onDelete,
   onChangeType,
+  initalType,
 }) {
   const _listTypes = useSelector(({ fetchData }) => fetchData.listTypes);
 
@@ -17,7 +18,7 @@ export default function ListCategory({
   return (
     <>
       <SelectTypeProduct
-        initalValue={1}
+        initalValue={initalType}
         onChange={(val) => onChangeType && onChangeType(val)}
       />
       {(!datas || datas.length < 1) && (
