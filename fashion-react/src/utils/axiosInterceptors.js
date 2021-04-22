@@ -13,7 +13,7 @@ export default function Interceptor() {
       return response;
     },
     function (error) {
-      let msg = error.config["actionName"];
+      let msg = error.config["actionName"] + "-" + error;
       if (msg) _message(msg, false);
       return Promise.reject(error);
     }
