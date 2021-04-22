@@ -61,5 +61,16 @@ namespace DAO.DAOs
             var result = sqlString.Include(item => item.Ratings).ToList();
             return (result, totalItem);
         }
+
+        public new bool DeleteItem(int id)
+        {
+            if (id <= 0) return false;
+            var productInOrder = _context.OrderDetails.Include(item => item.ProductAttr).Where(item => item.ProductAttr.ProductId == id).FirstOrDefault();
+            var obj = _context.Products.Find(id);
+            if (productInOrder == null) _context.Remove(obj);
+            else obj.isDel = true;
+            _context.SaveChangesAsync().Wait();
+            return true;
+        }
     }
 }
