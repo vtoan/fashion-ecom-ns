@@ -48,10 +48,10 @@ namespace Core.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{productId}/attrs")]
-        public IActionResult Delete(int productId)
+        [HttpDelete("{productId}/attrs/{id}")]
+        public IActionResult Delete(int id)
         {
-            var result = _productAttrSer.Delete(productId);
+            var result = _productAttrSer.Delete(id);
             if (!result) return NotFound();
             return NoContent();
         }

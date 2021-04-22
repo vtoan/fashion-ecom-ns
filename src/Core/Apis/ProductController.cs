@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Core.Controllers
 {
@@ -17,7 +18,7 @@ namespace Core.Controllers
     {
         private readonly IProductService _productSer;
 
-        private readonly string _imageFolder = "product-img/";
+        private readonly string _imageFolder = "product-images/";
 
         public ProductController(IProductService productSer)
         {
@@ -72,24 +73,23 @@ namespace Core.Controllers
         }
 
         [HttpPost("{id}/images")]
-        public IActionResult UploadImage([FromServices] IFileService fileSer, IFormFile image, int id)
+        public ActionResult<string> UploadImage([FromServices] IFileService fileSer, IFormFile image, int id)
         {
-            var fileName = _updateImage(fileSer, image, id);
-            return NoContent();
+            return _updateImage(fileSer, image, id);
         }
 
-        [HttpPut("{id}/images")]
-        public IActionResult ChangeImageDefault([FromServices] IFileService fileSer, IFormFile image, int id)
+        [HttpDelete("{id}/images")]
+        public IActionResult ChangeImageDefault([FromServices] IFileService fileSer, string imageName, int id)
         {
-            var fileName = _updateImage(fileSer, image, id);
-            _productSer.SetImageDefault(id, fileName);
+            if (imageName == null) return BadRequest();
+            fileSer.RemoveFile(_imageFolder + id, imageName);
             return NoContent();
         }
 
         private string _updateImage(IFileService fileSer, IFormFile image, int id)
         {
-            var fileName = id + "_" + DateTime.Now.Millisecond;
-            fileSer.UploadFile(_imageFolder + id, image, fileName);
+            var fileName = id + "_" + DateTime.Now.Millisecond + "_" + image.FileName;
+            fileSer.UploadFileAsync(_imageFolder + id, image, fileName);
             return fileName;
         }
     }

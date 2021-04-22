@@ -7,6 +7,7 @@ using Core.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace Core.Service
 {
@@ -31,25 +32,36 @@ namespace Core.Service
             return listImage;
         }
 
-        public void RemoveFile(string filePath)
+        public void RemoveFile(string folderPath, string fileNameDel)
         {
-            throw new NotImplementedException();
+            string dir = Path.Combine(webRootPath, folderPath);
+            var re = Directory.GetFiles(dir);
+            if (re == null) return;
+            for (int i = 0; i < re.Length; i++)
+            {
+                var fileName = re[i].Split("/").Last();
+                if (fileName == fileNameDel)
+                {
+                    File.Delete(re[i]);
+                    break;
+                }
+            }
         }
 
-        public void UploadFile(string folderName, IFormFile file, string fileName)
+        public async Task UploadFileAsync(string folderPath, IFormFile file, string fileName)
         {
             try
             {
                 //Check folder
-                string dir = _checkExsistOrCreate(folderName);
+                string dir = _checkExsistOrCreate(folderPath);
                 //Save file
                 string filePath = Path.Combine(dir, fileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
-                    file.CopyTo(fileStream);
+                    await file.CopyToAsync(fileStream);
             }
             catch (Exception ex)
             {
-                _logger.Log(LogLevel.Error, ex, "Upload file " + folderName);
+                _logger.Log(LogLevel.Error, ex, "Upload file " + folderPath);
                 throw new Exception("Can't upload image");
             }
         }

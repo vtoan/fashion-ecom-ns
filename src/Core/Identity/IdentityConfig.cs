@@ -54,6 +54,7 @@ namespace Core.Identity
                         // can redirect here after login                     
                         "http://localhost:3000/signin-oidc",
                     },
+                    FrontChannelLogoutUri = "http://localhost:3000/signout-oidc",
                     // can redirect here after logout
                     PostLogoutRedirectUris = { "http://localhost:3000/signout-oidc" }, 
                     // builds CORS policy for javascript clients
