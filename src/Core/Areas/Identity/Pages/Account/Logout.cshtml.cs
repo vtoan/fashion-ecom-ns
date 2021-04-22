@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using IdentityServer4.Services;
+using Core.Identity;
+using System.Linq;
 
 namespace Core.Areas.Identity.Pages.Account
 {
@@ -51,6 +53,9 @@ namespace Core.Areas.Identity.Pages.Account
                 }
                 else
                 {
+                    var clientIdtemp = logoutContext.ClientIds.ToArray()[0];
+                    var referer = IdentityConfig.Clients.Where(item => item.ClientId == clientIdtemp).First();
+                    if (referer != null) return this.Redirect(referer.FrontChannelLogoutUri);
                     return Page();
                 }
             }
