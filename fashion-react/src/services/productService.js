@@ -67,7 +67,7 @@ class productService extends commonService {
         this.pathSer +
         "/" +
         productId +
-        "/images?name=" +
+        "/images?imageName=" +
         imageName,
       method: "delete",
       actionName: `Delete Product Attribute ${productId}`,

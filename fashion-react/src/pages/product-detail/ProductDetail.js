@@ -5,6 +5,8 @@ import EditProduct from "./EditProduct";
 import { useHistory, useParams } from "react-router";
 
 import _proSer from "../../services/productService";
+import AttrProduct from "./AttrProduct";
+import Images from "./Images";
 
 export default function ProductDetail() {
   let { id } = useParams();
@@ -17,7 +19,6 @@ export default function ProductDetail() {
         console.log(resp);
         setEdit(resp.data);
       });
-    console.log(id);
   }, [id]);
 
   const handleDelelte = () => {
@@ -46,12 +47,19 @@ export default function ProductDetail() {
 
   return (
     <SplitLayout
-      title="Category"
+      title="Product Detail"
       actions={
         <Button color="danger" children="Delete" onClick={handleDelelte} />
       }
       right={<EditProduct itemEdit={itemEdit} onSave={handleSave} />}
-      left={<p>left</p>}
+      left={
+        <>
+          <AttrProduct productId={id} datas={itemEdit?.ProductAttributes} />
+          <div className="pt-5">
+            <Images productId={id} productImage={itemEdit?.Image} />
+          </div>
+        </>
+      }
     ></SplitLayout>
   );
 }
