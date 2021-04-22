@@ -1,13 +1,14 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { signinRedirect } from "../services/authService";
+import Login from "../pages/auth/Login";
+import { toast } from "react-toastify";
 
 function ProtectedRoute({ children, component: Component, ...rest }) {
   const user = useSelector((state) => state.auth.user);
-  if (!user) signinRedirect();
+  if (!user) toast.error("You need to login before continuing.");
 
-  return user && <Route {...rest} component={Component} />;
+  return user ? <Route {...rest} component={Component} /> : <Login />;
 }
 
 export default ProtectedRoute;

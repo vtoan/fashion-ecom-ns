@@ -39,7 +39,6 @@ namespace Core.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
             [Display(Name = "Name")]
             public string Name { get; set; }
 

@@ -32,7 +32,7 @@ namespace Core.Identity
 
                     RedirectUris = { ReadConfig.clientUrls["mvc"] +"/signin-oidc" },
                     FrontChannelLogoutUri = ReadConfig.clientUrls["mvc"] +"/signout-oidc",
-                    PostLogoutRedirectUris = { ReadConfig.clientUrls["mvc"] +"/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { ReadConfig.clientUrls["mvc"] +"/signout-oidc" },
 
 
                     AllowOfflineAccess = true,
@@ -57,7 +57,7 @@ namespace Core.Identity
                     },
                     FrontChannelLogoutUri = ReadConfig.clientUrls["react"]+ "/signout-oidc",
                     // can redirect here after logout
-                    PostLogoutRedirectUris = { ReadConfig.clientUrls["react"]+"/signout-oidc" }, 
+                    PostLogoutRedirectUris = { ReadConfig.clientUrls["react"]+"/signout-callback-oidc" }, 
                     // builds CORS policy for javascript clients
                     AllowedCorsOrigins = { ReadConfig.clientUrls["react"] }, 
                     // what resources this client can access

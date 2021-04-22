@@ -14,17 +14,19 @@ export default function Header() {
       <div className="float-left">
         <img width="40" src="./logo192.png" alt="" />
       </div>
-      <div className="float-right ">
-        <span>Hello, {user?.profile.name}</span>
-        <Button
-          color="link"
-          onClick={signOut}
-          className="pl-3 text-danger"
-          size="sm"
-        >
-          Sign Out
-        </Button>
-      </div>
+      {user && (
+        <div className="float-right ">
+          <span>Hello, {user?.profile.name}</span>
+          <Button
+            color="link"
+            onClick={signOut}
+            className="pl-3 text-danger"
+            size="sm"
+          >
+            Sign Out
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
