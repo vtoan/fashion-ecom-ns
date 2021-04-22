@@ -4,9 +4,9 @@ import ListProduct from "./ListProduct";
 import SingleLayout from "../../containers/SingleLayout";
 import Paging from "../../components/Paging";
 import SearchBar from "../../components/SearchBar";
+import { useHistory } from "react-router";
 
 import _prodSer from "../../services/productService";
-import { useHistory } from "react-router";
 
 //props
 let totalProduct = 0;
@@ -22,6 +22,7 @@ const _parmas = {
 
 export default function Product(props) {
   const [listProducts, setProducts] = React.useState([]);
+  const [pageCurrent, setPage] = React.useState(1);
   const history = useHistory();
   React.useEffect(() => {
     _getProduct(1);
@@ -29,6 +30,7 @@ export default function Product(props) {
 
   //handle
   const _getProduct = (pageNumber) => {
+    setPage(pageNumber);
     _parmas.offset = pageNumber - 1;
     _prodSer.getList(_parmas).then((resp) => {
       console.log(resp.config.url);
@@ -104,6 +106,7 @@ export default function Product(props) {
             onChangeSort={handleChangeSort}
           />
           <Paging
+            selectPage={pageCurrent}
             totalItem={totalProduct}
             pageSize={_pageSize}
             onChangePage={handlePage}
