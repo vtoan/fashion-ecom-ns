@@ -7,11 +7,18 @@ import React from "react";
 //auth
 import { Provider } from "react-redux";
 import store from "./store";
-import userManager, { loadUserFromStorage } from "./services/authService";
 import AuthProvider from "./utils/authProvider.js";
+//
+import userManager, { loadUserFromStorage } from "./services/authService";
+import { fetchTypeProduct } from "./services/typeService";
+import { fetchCategory } from "./services/cateService";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   React.useEffect(() => {
+    fetchTypeProduct(store);
+    fetchCategory(store);
     // fetch current user from cookies
     loadUserFromStorage(store);
   }, []);

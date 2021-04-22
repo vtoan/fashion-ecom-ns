@@ -17,10 +17,17 @@ namespace CustomerSite.Controllers
             _request = request;
         }
 
+        [HttpGet("/rating/{productId}")]
+        public IActionResult Index(int productId)
+        {
+            return Redirect("/product/" + productId);
+        }
+
         [HttpPost("/rating/{productId}")]
         [Authorize]
         public IActionResult Submit(int productId, RatingVM ratingVM)
         {
+            if (!ModelState.IsValid) return Redirect("/product/" + productId);
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ratingVM.UserId = userId;
             _request.CreateAsync(productId, userId, ratingVM);

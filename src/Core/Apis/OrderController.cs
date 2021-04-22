@@ -1,5 +1,6 @@
 using BUS.Interfaces.Services;
 using Core.Helper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize("Bearer")]
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderSer;
@@ -18,12 +20,14 @@ namespace Core.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public OrderDetailVM Get(int id)
         {
             return _orderSer.Get(id);
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult<OrderDetailVM> Create(OrderDetailVM orderDetailVM)
         {
             if (!ModelState.IsValid) return BadRequest();
@@ -33,6 +37,7 @@ namespace Core.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult<ICollection<OrderVM>> GetList(string start, string end, int provinceId, int limited, int offset)
         {
             if (start == null || end == null) return BadRequest();
@@ -42,6 +47,7 @@ namespace Core.Controllers
         }
 
         [HttpGet("phone")]
+        [AllowAnonymous]
         public IEnumerable<OrderVM> GetListByPhone(string phone, int provinceId, int limited, int offset)
         {
             var result = _orderSer.GetListByPhone(phone, provinceId, limited, offset);
@@ -50,6 +56,7 @@ namespace Core.Controllers
         }
 
         [HttpGet("user")]
+        [AllowAnonymous]
         public IEnumerable<OrderVM> GetListByUser(string userId, int provinceId, int limited, int offset)
         {
             var result = _orderSer.GetListByUser(userId, provinceId, limited, offset);

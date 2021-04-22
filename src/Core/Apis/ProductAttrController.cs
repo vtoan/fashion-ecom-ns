@@ -1,4 +1,5 @@
 using BUS.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("product")]
+    [Authorize("Bearer")]
     public class ProductAttrController : ControllerBase
     {
         private readonly IProductAttrService _productAttrSer;
@@ -18,12 +20,14 @@ namespace Core.Controllers
         }
 
         [HttpGet("{productId}/attrs")]
+        [AllowAnonymous]
         public IEnumerable<ProductAttributeVM> GeList(int productId)
         {
             return _productAttrSer.GetList(productId);
         }
 
         [HttpGet("attrs")]
+        [AllowAnonymous]
         public IEnumerable<OrderItemVM> GeListCartItem(string attrIds)
         {
             var arrAttribute = JsonSerializer.Deserialize<int[]>(attrIds);
@@ -31,6 +35,7 @@ namespace Core.Controllers
         }
 
         [HttpPost("{productId}/attrs")]
+        [Authorize(Roles = "admin")]
         public IActionResult Create(int productId, ProductAttributeVM attributeVM)
         {
             if (!ModelState.IsValid || productId <= 0) return BadRequest();
@@ -40,6 +45,7 @@ namespace Core.Controllers
         }
 
         [HttpPut("{productId}/attrs/{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult Update(int id, ProductAttributeVM attributeVM)
         {
             if (id != attributeVM.Id) return BadRequest();
@@ -48,10 +54,11 @@ namespace Core.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{productId}/attrs")]
-        public IActionResult Delete(int productId)
+        [HttpDelete("{productId}/attrs/{id}")]
+        [Authorize(Roles = "admin")]
+        public IActionResult Delete(int id)
         {
-            var result = _productAttrSer.Delete(productId);
+            var result = _productAttrSer.Delete(id);
             if (!result) return NotFound();
             return NoContent();
         }

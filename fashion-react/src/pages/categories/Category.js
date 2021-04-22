@@ -3,33 +3,48 @@ import { Button } from "reactstrap";
 import SplitLayout from "../../containers/SplitLayout";
 import EditCategory from "./EditCategory";
 import ListCategory from "./ListCategory";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory } from "../../actions/fetchDataAction";
+
 import _cateSer from "../../services/cateService";
 
 //comp
 export default function Product() {
-  const [listCategory, setCategory] = React.useState([]);
+  const [listCates, setCates] = React.useState([]);
+  const [typeSelected, setTypeSelected] = React.useState(1);
   const [itemSelected, setSelected] = React.useState(null);
+  const dispatch = useDispatch();
+  const listCateDatas = useSelector(({ fetchData }) => fetchData.listCates);
 
   React.useEffect(() => {
-    handleChangeType(1);
+    if (listCateDatas != null) {
+      setCates(
+        listCateDatas.filter((item) => item.TypeProductId === Number(1))
+      );
+    } else {
+      _fetchCateDataWithType(1);
+    }
   }, []);
 
   //handle
-  const handleChangeType = (val) => {
-    _cateSer.getList(val).then((resp) => {
-      setCategory(resp.data);
+  const _fetchCateDataWithType = (val) => {
+    setTypeSelected(val);
+    _cateSer.getList(0).then(({ data }) => {
+      dispatch(setCategory(data));
+      setCates(data.filter((item) => item.TypeProductId === Number(val)));
     });
   };
 
   const handleCreate = () => setSelected({ Name: "", TypeProductId: 0 });
   const handleEdit = (item) => setSelected(item);
   const handleCancel = () => setSelected(null);
+  const handleChangeType = (typeId) => _fetchCateDataWithType(typeId);
 
   const handleDelete = (itemId) => {
     let result = window.confirm("Delete this item?");
     if (result) {
-      _cateSer.delete(itemId).then((resp) => {
-        setCategory(_removeViewItem(listCategory, itemId));
+      _cateSer.delete(itemId).then(() => {
+        setCates(_removeViewItem(listCates, itemId));
       });
     }
   };
@@ -38,12 +53,13 @@ export default function Product() {
     let result = window.confirm("Save the changed items?");
     if (result) {
       if (!data.Id) {
-        _cateSer.create(data).then((resp) => {
-          handleChangeType(1);
+        _cateSer.create(data).then(() => {
+          _fetchCateDataWithType(1);
         });
       } else {
-        _cateSer.edit(data.Id, data).then((resp) => {
-          setCategory(_updateViewItem(listCategory, data));
+        _cateSer.edit(data.Id, data).then(() => {
+          _fetchCateDataWithType(data.TypeProductId);
+          setTypeSelected(data.TypeProductId);
         });
       }
       setSelected(null);
@@ -51,11 +67,8 @@ export default function Product() {
   };
 
   //update view
-  const _removeViewItem = (lists, itemDel) =>
-    lists.filter((item) => item.Id !== itemDel);
-
-  const _updateViewItem = (lists, itemEdit) =>
-    lists.map((item) => (item.Id === itemEdit.Id ? itemEdit : item));
+  const _removeViewItem = (lists, itemIdDel) =>
+    lists.filter((item) => item.Id !== Number(itemIdDel));
   //
   return (
     <SplitLayout
@@ -69,7 +82,8 @@ export default function Product() {
       }
       right={
         <ListCategory
-          datas={listCategory}
+          initalType={typeSelected}
+          datas={listCates}
           onEdit={handleEdit}
           onDelete={handleDelete}
           onChangeType={handleChangeType}

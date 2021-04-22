@@ -1,18 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Input } from "reactstrap";
-import _typeSer from "../services/typeService";
 
 export default function SelectTypeProduct({
   initalValue,
   onChange,
-  placeholder = false,
+  placeholder = null,
+  novalid = false,
+  ...other
 }) {
   const [inputType, setInputType] = React.useState(0);
-  const [listTypes, setTypes] = React.useState([]);
-
-  React.useEffect(() => {
-    _typeSer.getList().then((resp) => setTypes(resp.data));
-  }, []);
+  const listTypes = useSelector(({ fetchData }) => fetchData.listTypes);
 
   React.useEffect(() => {
     setInputType(initalValue);
@@ -27,24 +25,23 @@ export default function SelectTypeProduct({
 
   return (
     <Input
+      {...other}
       type="select"
-      name="Type"
-      id="Type"
-      placeholder="Select type product"
-      invalid={!inputType}
+      invalid={!novalid && !inputType}
       onChange={handleChangeType}
       value={inputType}
     >
       {placeholder && (
         <option className="text-secondary" value={0}>
-          Choose Type
+          {placeholder}
         </option>
       )}
-      {listTypes.map((item) => (
-        <option key={+item.Id} value={item.Id}>
-          {item.Name}
-        </option>
-      ))}
+      {listTypes &&
+        listTypes.map((item) => (
+          <option key={+item.Id} value={item.Id}>
+            {item.Name}
+          </option>
+        ))}
     </Input>
   );
 }

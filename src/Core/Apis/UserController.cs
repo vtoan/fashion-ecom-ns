@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    // [Authorize("Bearer")]
+    [Authorize("Bearer")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userSer;

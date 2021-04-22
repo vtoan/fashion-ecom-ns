@@ -1,4 +1,5 @@
 using BUS.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize("Bearer")]
     public class RatingController : ControllerBase
     {
         private IRatingService _ratingSer;
@@ -17,12 +19,14 @@ namespace Core.Controllers
         }
 
         [HttpGet("product/{id}")]
+        [AllowAnonymous]
         public IEnumerable<RatingVM> GetByProduct(int id)
         {
             return _ratingSer.GetByProduct(id);
         }
 
         [HttpGet("user/{id}")]
+        [AllowAnonymous]
         public IEnumerable<RatingVM> GetByUser(int id)
         {
             return _ratingSer.GetByProduct(id);
@@ -38,6 +42,7 @@ namespace Core.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
             var result = _ratingSer.Delete(id);

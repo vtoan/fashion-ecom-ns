@@ -26,7 +26,7 @@ namespace DAO.DAOs
 
         public (ICollection<Product>, int) GetListItems(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
-            var sqlString = this._context.Products.AsQueryable();
+            var sqlString = this._context.Products.Where(item => item.isDel != true);
             //filter
             if (query != null) sqlString = sqlString.Where(item => item.Name.Contains(query));
             if (typeId > 0) sqlString = sqlString.Where(item => item.TypeProductId == typeId);
@@ -60,6 +60,17 @@ namespace DAO.DAOs
             }
             var result = sqlString.Include(item => item.Ratings).ToList();
             return (result, totalItem);
+        }
+
+        public new bool DeleteItem(int id)
+        {
+            if (id <= 0) return false;
+            var productInOrder = _context.OrderDetails.Include(item => item.ProductAttr).Where(item => item.ProductAttr.ProductId == id).FirstOrDefault();
+            var obj = _context.Products.Find(id);
+            if (productInOrder == null) _context.Remove(obj);
+            else obj.isDel = true;
+            _context.SaveChangesAsync().Wait();
+            return true;
         }
     }
 }

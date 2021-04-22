@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 //page comp
 import Product from "./pages/products/Product";
+import ProductDetail from "./pages/product-detail/ProductDetail";
 import Category from "./pages/categories/Category";
 import User from "./pages/users/User";
 import NotMatch from "./pages/errors/NotMatch";
@@ -19,6 +20,7 @@ export default function Routes(props) {
       <Redirect exact from="/" to="/products" />
 
       <PrivateRoute path="/products" component={Product} />
+      <PrivateRoute path="/product/:id" component={ProductDetail} />
       <PrivateRoute path="/categories" component={Category} />
       <PrivateRoute path="/users" component={User} />
 

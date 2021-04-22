@@ -9,6 +9,10 @@
 <script src="~/js/product-detail.js" asp-append-version="true"></script>
 <script>
     Gallery();
+    let form = document.querySelector("#feedbackForm");
+    form.addEventListener("submit", (e) => {
+
+    })
 </script>
 }
 <!------ breadcrum ----->
@@ -73,8 +77,9 @@
                 <div class="product-info">
                     <span class="label">Description</span>
                     <p style="margin-top: 0">
-                        @{
-                            var contents = @Model.ProductDescription.Split("/");
+                        @if (Model.ProductDescription != null)
+                        {
+                            var contents = @Model.ProductDescription?.Split("/");
                             foreach (var item in contents)
                             {
                                 <text>- @item.</text><br />

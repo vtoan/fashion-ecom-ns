@@ -1,6 +1,7 @@
 import axios from "axios";
 import { host } from "../config";
 import commonService from "./commonService";
+import { setCategory } from "../actions/fetchDataAction";
 
 class cateService extends commonService {
   getList(typeId) {
@@ -11,5 +12,9 @@ class cateService extends commonService {
     });
   }
 }
+let _cateType = new cateService("category", "Category");
+export default _cateType;
 
-export default new cateService("category", "Category");
+export function fetchCategory(store) {
+  _cateType.getList(0).then(({ data }) => store.dispatch(setCategory(data)));
+}

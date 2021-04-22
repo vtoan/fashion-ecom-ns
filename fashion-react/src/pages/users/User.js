@@ -2,10 +2,12 @@ import React from "react";
 import SingleLayout from "../../containers/SingleLayout";
 import ListUser from "./ListUser";
 import Paging from "../../components/Paging";
+import SearchBar from "../../components/SearchBar";
 
 import _userSer from "../../services/userService";
 
-const _pageSize = 3;
+const _pageSize = 6;
+let _queryValue = "";
 
 export default function User(props) {
   const [listUser, setUser] = React.useState([]);
@@ -16,24 +18,39 @@ export default function User(props) {
   }, []);
 
   //handle
-
   const handlePage = (pageNumber) => {
     _userSer
-      .getList({ limited: _pageSize, offset: pageNumber - 1 })
+      .getList({
+        query: _queryValue,
+        limited: _pageSize,
+        offset: pageNumber - 1,
+      })
       .then((resp) => {
+        let total = resp.headers["total-item"] ?? 0;
+        setTotalUser(total);
         setUser(resp.data);
-
-        console.log(resp);
       });
+  };
+
+  const handleSearch = (query) => {
+    _queryValue = query;
+    handlePage(1);
   };
 
   return (
     <SingleLayout
       title="List User"
+      actions={
+        <SearchBar placeholder="User email ..." onSearchSubmit={handleSearch} />
+      }
       content={
         <div>
           <ListUser datas={listUser} />
-          <Paging totalPage={totalUser} onChangePage={handlePage} />
+          <Paging
+            totalItem={totalUser}
+            pageSize={_pageSize}
+            onChangePage={handlePage}
+          />
         </div>
       }
     />

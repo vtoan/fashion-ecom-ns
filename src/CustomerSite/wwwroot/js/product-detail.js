@@ -51,5 +51,6 @@ attachEventItem(quantityElm);
 
 addCartElm.addEventListener("click", (e) => {
   cartMng.addItem(itemAttrid, totalQuanlity);
+  alert("Add product to cart success!");
   updateCountInCart();
 });

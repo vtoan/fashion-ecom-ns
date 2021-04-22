@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Button, Table } from "reactstrap";
 import SelectTypeProduct from "../../components/SelectTypeProduct";
 
@@ -7,11 +8,17 @@ export default function ListCategory({
   onEdit,
   onDelete,
   onChangeType,
+  initalType,
 }) {
+  const _listTypes = useSelector(({ fetchData }) => fetchData.listTypes);
+
+  const _getTypeName = (id) =>
+    (_listTypes && _listTypes.find((item) => item.Id === id)?.Name) ??
+    "unknown";
   return (
     <>
       <SelectTypeProduct
-        initalValue={1}
+        initalValue={initalType}
         onChange={(val) => onChangeType && onChangeType(val)}
       />
       {(!datas || datas.length < 1) && (
@@ -34,7 +41,7 @@ export default function ListCategory({
               <tr key={+index}>
                 <th scope="row">{index + 1}</th>
                 <td>{item.Name}</td>
-                <td>{item.TypeProductId}</td>
+                <td> {_getTypeName(item.TypeProductId)}</td>
                 <td className="text-right">
                   <Button onClick={() => onEdit && onEdit(item)} color="link">
                     Edit

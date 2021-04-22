@@ -7,17 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    // [Authorize("Bearer")]
+    [Authorize("Bearer")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productSer;
 
-        private readonly string _imageFolder = "product-img/";
+        private readonly string _imageFolder = "product-images/";
 
         public ProductController(IProductService productSer)
         {
@@ -25,12 +27,14 @@ namespace Core.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public ActionResult<ProductDetailVM> Get(int id)
         {
             return _productSer.Get(id);
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<ProductVM> GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
             var result = _productSer.GetList(query, typeId, cateId, limited, offset, sort);
@@ -39,15 +43,21 @@ namespace Core.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult<ProductDetailVM> Create(ProductDetailVM productDetailVM)
         {
             if (!ModelState.IsValid) return BadRequest();
+            if (productDetailVM.ProductAttributes.Count == 0)
+            {
+                productDetailVM.ProductAttributes.Add(new ProductAttributeVM { Size = "FreeSiae" });
+            }
             var result = _productSer.Add(productDetailVM);
             if (result == null) return Problem("Can't add new product");
             return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult Update(int id, ProductDetailVM productDetailVM)
         {
             if (id != productDetailVM.Id) return BadRequest();
@@ -57,6 +67,7 @@ namespace Core.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
             var result = _productSer.Delete(id);
@@ -66,30 +77,32 @@ namespace Core.Controllers
 
         // Image
         [HttpGet("{id}/images")]
+        [AllowAnonymous]
         public IEnumerable<string> GetListImage([FromServices] IFileService fileSer, int id)
         {
             return fileSer.GetFilesInFolder(_imageFolder + id);
         }
 
         [HttpPost("{id}/images")]
-        public IActionResult UploadImage([FromServices] IFileService fileSer, IFormFile image, int id)
+        [Authorize(Roles = "admin")]
+        public ActionResult<string> UploadImage([FromServices] IFileService fileSer, IFormFile image, int id)
         {
-            var fileName = _updateImage(fileSer, image, id);
-            return NoContent();
+            return _updateImage(fileSer, image, id);
         }
 
-        [HttpPut("{id}/images")]
-        public IActionResult ChangeImageDefault([FromServices] IFileService fileSer, IFormFile image, int id)
+        [HttpDelete("{id}/images")]
+        [Authorize(Roles = "admin")]
+        public IActionResult ChangeImageDefault([FromServices] IFileService fileSer, string imageName, int id)
         {
-            var fileName = _updateImage(fileSer, image, id);
-            _productSer.SetImageDefault(id, fileName);
+            if (imageName == null) return BadRequest();
+            fileSer.RemoveFile(_imageFolder + id, imageName);
             return NoContent();
         }
 
         private string _updateImage(IFileService fileSer, IFormFile image, int id)
         {
-            var fileName = id + "_" + DateTime.Now.Millisecond;
-            fileSer.UploadFile(_imageFolder + id, image, fileName);
+            var fileName = id + "_" + DateTime.Now.Millisecond + "_" + image.FileName;
+            fileSer.UploadFileAsync(_imageFolder + id, image, fileName);
             return fileName;
         }
     }

@@ -1,11 +1,6 @@
 function Cart() {
   let keySave = "basketshopping";
-  let order = [
-    {
-      AttributeId: 1,
-      Quantity: 1,
-    },
-  ];
+  let order = [];
   let count = 1;
   this.setData = function (asset) {
     if (!asset) return;
@@ -30,7 +25,7 @@ function Cart() {
   };
   this.addItem = function (id, quantity = 1) {
     id = Number(id);
-    let index = order.findIndex((item) => item.AttributeId == id);
+    let index = order.findIndex((item) => item.AttributeId == Number(id));
     if (index >= 0) {
       order[index].Quantity += quantity;
     } else
@@ -42,7 +37,7 @@ function Cart() {
   this.changeQuantityItem = function (id, operation) {
     if (this.isEmpty());
     id = Number(id);
-    let indx = order.findIndex((i) => i.AttributeId == id);
+    let indx = order.findIndex((i) => i.AttributeId == Number(id));
     if (indx < 0) return;
     if (operation) {
       order[indx].Quantity++;
@@ -53,8 +48,9 @@ function Cart() {
     }
   };
   this.removeItem = function (id) {
+    console.log(id);
     if (this.isEmpty()) return;
-    let idx = order.findIndex((i) => i.AttributeId == id);
+    let idx = order.findIndex((i) => i.AttributeId == Number(id));
     if (idx < 0) return;
     count = count - order[idx].Quantity;
     order.splice(idx, 1);

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.ServiceInjection;
 using IdentityServer4.Models;
 
 namespace Core.Identity
@@ -29,9 +30,9 @@ namespace Core.Identity
 
                     AllowedGrantTypes = GrantTypes.Code,
 
-                    RedirectUris = { "https://localhost:6001/signin-oidc" },
-                    FrontChannelLogoutUri = "https://localhost:6001/signout-oidc",
-                    PostLogoutRedirectUris = { "https://localhost:6001/signout-callback-oidc" },
+                    RedirectUris = { ReadConfig.clientUrls["mvc"] +"/signin-oidc" },
+                    FrontChannelLogoutUri = ReadConfig.clientUrls["mvc"] +"/signout-oidc",
+                    PostLogoutRedirectUris = { ReadConfig.clientUrls["mvc"] +"/signout-oidc" },
 
 
                     AllowOfflineAccess = true,
@@ -44,7 +45,7 @@ namespace Core.Identity
                     // human-friendly name displayed in IS
                     ClientName = "Reac app", 
                     // URL of client
-                    ClientUri = "http://localhost:3000", 
+                    ClientUri = ReadConfig.clientUrls["react"], 
                     // how client will interact with our identity server (Implicit is basic flow for web apps)
                     AllowedGrantTypes = GrantTypes.Implicit, 
                     // don't require client to send secret to token endpoint
@@ -54,10 +55,11 @@ namespace Core.Identity
                         // can redirect here after login                     
                         "http://localhost:3000/signin-oidc",
                     },
+                    FrontChannelLogoutUri = ReadConfig.clientUrls["react"]+ "/signout-oidc",
                     // can redirect here after logout
-                    PostLogoutRedirectUris = { "http://localhost:3000/signout-oidc" }, 
+                    PostLogoutRedirectUris = { ReadConfig.clientUrls["react"]+"/signout-callback-oidc" }, 
                     // builds CORS policy for javascript clients
-                    AllowedCorsOrigins = { "http://localhost:3000" }, 
+                    AllowedCorsOrigins = { ReadConfig.clientUrls["react"] }, 
                     // what resources this client can access
                     AllowedScopes = { "openid", "profile", "customer" }, 
                     // client is allowed to receive tokens via browser
