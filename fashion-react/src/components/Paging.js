@@ -4,12 +4,16 @@ import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 export default function Paging({
   totalItem = 0,
   pageSize = 0,
-  initalPage = 1,
+  selectPage = 1,
   onChangePage,
 }) {
-  const [pageSelected, setPage] = React.useState(initalPage);
+  const [pageSelected, setPage] = React.useState(selectPage);
   let arrayUris = [];
   const totalPage = Math.ceil(totalItem / pageSize);
+
+  React.useEffect(() => {
+    setPage(selectPage);
+  }, [selectPage]);
 
   //handle
   const handleClickPage = (page) => {
