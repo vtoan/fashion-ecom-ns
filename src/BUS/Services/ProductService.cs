@@ -35,9 +35,7 @@ namespace BUS.Services
         public new bool Delete(int productId)
         {
             if (productId <= 0) return false;
-            var modifiedProps = new Dictionary<string, object>();
-            modifiedProps.Add("isDel", true);
-            return _productDao.UpdateItem(productId, modifiedProps);
+            return _productDao.DeleteItem(productId);
         }
 
         public bool RemoveImageDefault(int productId, string imgName)
