@@ -4,7 +4,7 @@ import { Button } from "reactstrap";
 import { useSelector } from "react-redux";
 import { signoutRedirect } from "../services/authService";
 
-export default function Header(props) {
+export default function Header() {
   const user = useSelector((state) => state.auth.user);
 
   const signOut = () => signoutRedirect();

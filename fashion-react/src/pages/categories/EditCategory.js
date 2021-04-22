@@ -10,7 +10,6 @@ export default function EditCategory({ itemEdit, onSave, onCancel }) {
   React.useEffect(() => {
     setInputName(itemEdit?.Name);
     setInputType(itemEdit?.TypeProductId);
-    console.log("Set initial value");
   }, [itemEdit]);
 
   const handleChangeName = (e) => setInputName(e.target.value);

@@ -3,7 +3,7 @@ import { Button } from "reactstrap";
 import SplitLayout from "../../containers/SplitLayout";
 import EditCategory from "./EditCategory";
 import ListCategory from "./ListCategory";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../actions/fetchDataAction";
 
 import _cateSer from "../../services/cateService";
@@ -14,13 +14,20 @@ export default function Product() {
   const [typeSelected, setTypeSelected] = React.useState(1);
   const [itemSelected, setSelected] = React.useState(null);
   const dispatch = useDispatch();
+  const listCateDatas = useSelector(({ fetchData }) => fetchData.listCates);
 
   React.useEffect(() => {
-    handleChangeType(1);
+    if (listCateDatas != null) {
+      setCates(
+        listCateDatas.filter((item) => item.TypeProductId === Number(1))
+      );
+    } else {
+      _fetchCateDataWithType(1);
+    }
   }, []);
 
   //handle
-  const handleChangeType = (val) => {
+  const _fetchCateDataWithType = (val) => {
     setTypeSelected(val);
     _cateSer.getList(0).then(({ data }) => {
       dispatch(setCategory(data));
@@ -31,6 +38,7 @@ export default function Product() {
   const handleCreate = () => setSelected({ Name: "", TypeProductId: 0 });
   const handleEdit = (item) => setSelected(item);
   const handleCancel = () => setSelected(null);
+  const handleChangeType = (typeId) => _fetchCateDataWithType(typeId);
 
   const handleDelete = (itemId) => {
     let result = window.confirm("Delete this item?");
@@ -46,11 +54,11 @@ export default function Product() {
     if (result) {
       if (!data.Id) {
         _cateSer.create(data).then(() => {
-          handleChangeType(1);
+          _fetchCateDataWithType(1);
         });
       } else {
         _cateSer.edit(data.Id, data).then(() => {
-          handleChangeType(data.TypeProductId);
+          _fetchCateDataWithType(data.TypeProductId);
           setTypeSelected(data.TypeProductId);
         });
       }

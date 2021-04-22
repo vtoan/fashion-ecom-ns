@@ -72,7 +72,7 @@ export default function EditProduct({ itemEdit, onSave, onCancel }) {
         <Label for="Price">Product Price</Label>
         <Input
           invalid={!inputPrice}
-          type="text"
+          type="number"
           name="Price"
           id="Price"
           onChange={handleChangePrice}

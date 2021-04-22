@@ -5,8 +5,11 @@ export default function Interceptor() {
   // Add a response interceptor
   axios.interceptors.response.use(
     function (response) {
-      let msg = response.config["actionName"];
-      if (msg) _message(msg, true);
+      let method = response.config.method;
+      if (method !== "get") {
+        let msg = response.config["actionName"];
+        _message(msg, true);
+      }
       return response;
     },
     function (error) {
