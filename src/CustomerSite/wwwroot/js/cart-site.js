@@ -95,6 +95,8 @@ function cartSite(config) {
   // handler remove item
   function removeItem(element) {
     let index = listCartItem.findIndex((obj) => obj.elm.contains(element));
+    console.log(index);
+    console.log(listCartItem[index].id);
     //remove
     cart.removeItem(listCartItem[index].id);
     listCartItem[index].elm.remove();
@@ -109,6 +111,7 @@ function cartSite(config) {
     //update change
     options.quantityChanged();
     countItem.textContent = cart.getCount();
+    console.log(cart.getCount());
     updateSummaryOrder();
   }
 
@@ -178,8 +181,10 @@ function cartSite(config) {
 }
 // ====== exe ====== //
 let container = document.querySelector("#cart-container");
+let btnCheckout = document.querySelector("[checkout]");
 
 function renderCartItem(data) {
+  if (cartMng.getCount() === 0) btnCheckout.classList.add("d-none");
   container.innerHTML = "";
   container.innerHTML = data;
   let act = cartSite({
