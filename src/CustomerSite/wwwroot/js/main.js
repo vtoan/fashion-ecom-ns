@@ -93,6 +93,12 @@ function viewModile() {
     popup.open();
   });
 }
+let searchBar = document.querySelector(".search-bar input");
+searchBar.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13) {
+    location.href = "/search?query=" + e.target.value;
+  }
+});
 
 // ====== exce ====== //
 var cartMng = new Cart();

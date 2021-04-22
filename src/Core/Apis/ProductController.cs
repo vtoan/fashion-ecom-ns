@@ -43,6 +43,10 @@ namespace Core.Controllers
         public ActionResult<ProductDetailVM> Create(ProductDetailVM productDetailVM)
         {
             if (!ModelState.IsValid) return BadRequest();
+            if (productDetailVM.ProductAttributes.Count == 0)
+            {
+                productDetailVM.ProductAttributes.Add(new ProductAttributeVM { Size = "FreeSiae" });
+            }
             var result = _productSer.Add(productDetailVM);
             if (result == null) return Problem("Can't add new product");
             return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
