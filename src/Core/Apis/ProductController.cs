@@ -8,12 +8,13 @@ using Shared.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    // [Authorize("Bearer")]
+    [Authorize("Bearer")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productSer;
@@ -26,12 +27,14 @@ namespace Core.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public ActionResult<ProductDetailVM> Get(int id)
         {
             return _productSer.Get(id);
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<ProductVM> GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
             var result = _productSer.GetList(query, typeId, cateId, limited, offset, sort);
@@ -40,6 +43,7 @@ namespace Core.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult<ProductDetailVM> Create(ProductDetailVM productDetailVM)
         {
             if (!ModelState.IsValid) return BadRequest();
@@ -53,6 +57,7 @@ namespace Core.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult Update(int id, ProductDetailVM productDetailVM)
         {
             if (id != productDetailVM.Id) return BadRequest();
@@ -62,6 +67,7 @@ namespace Core.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
             var result = _productSer.Delete(id);
@@ -71,18 +77,21 @@ namespace Core.Controllers
 
         // Image
         [HttpGet("{id}/images")]
+        [AllowAnonymous]
         public IEnumerable<string> GetListImage([FromServices] IFileService fileSer, int id)
         {
             return fileSer.GetFilesInFolder(_imageFolder + id);
         }
 
         [HttpPost("{id}/images")]
+        [Authorize(Roles = "admin")]
         public ActionResult<string> UploadImage([FromServices] IFileService fileSer, IFormFile image, int id)
         {
             return _updateImage(fileSer, image, id);
         }
 
         [HttpDelete("{id}/images")]
+        [Authorize(Roles = "admin")]
         public IActionResult ChangeImageDefault([FromServices] IFileService fileSer, string imageName, int id)
         {
             if (imageName == null) return BadRequest();

@@ -1,4 +1,5 @@
 using BUS.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ namespace Core.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize("Bearer")]
     public class FeeController : ControllerBase
     {
         private IFeeService _feeSer;
@@ -17,12 +19,14 @@ namespace Core.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<FeeVM> GetList()
         {
             return _feeSer.GetList();
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public ActionResult<FeeVM> Get(int id)
         {
             if (id <= 0) return BadRequest();
@@ -32,6 +36,7 @@ namespace Core.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult<FeeVM> Create(FeeVM feeVM)
         {
             if (!ModelState.IsValid) return BadRequest();
@@ -41,6 +46,7 @@ namespace Core.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult Update(int id, FeeVM feeVM)
         {
             if (id != feeVM.Id) return BadRequest();
@@ -50,6 +56,7 @@ namespace Core.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
             var result = _feeSer.Delete(id);

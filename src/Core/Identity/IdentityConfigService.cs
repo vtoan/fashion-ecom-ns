@@ -1,5 +1,7 @@
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using BUS.Domains;
+using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -44,8 +46,9 @@ namespace Core.Identity
                .AddInMemoryIdentityResources(IdentityConfig.IdentityResources)
                .AddInMemoryApiScopes(IdentityConfig.ApiScopes)
                .AddInMemoryClients(IdentityConfig.Clients)
-               .AddProfileService<CustomProfileService>()
-               .AddAspNetIdentity<User>();
+               .AddAspNetIdentity<User>()
+                .AddProfileService<CustomProfileService>();
+
 
             builder.AddDeveloperSigningCredential();
 
@@ -55,6 +58,7 @@ namespace Core.Identity
                 .AddLocalApi("Bearer", options =>
                 {
                     options.ExpectedScope = "customer";
+                    // options.ExpectedScope = "admin";
                 });
 
             //author
@@ -65,6 +69,7 @@ namespace Core.Identity
                     policy.AddAuthenticationSchemes("Bearer");
                     policy.RequireAuthenticatedUser();
                 });
+
             });
             return services;
         }

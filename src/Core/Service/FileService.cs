@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -73,41 +72,5 @@ namespace Core.Service
                 Directory.CreateDirectory(folderPath);
             return folderPath;
         }
-
-        // public void CreateFile(string dir, string name, string content)
-        // {
-        //     try
-        //     {
-        //         string folderPath = _checkPath(dir);
-        //         string filePath = Path.Combine(folderPath, name);
-        //         using (FileStream fs = File.Create(filePath))
-        //         {
-        //             byte[] info = new UTF8Encoding(true).GetBytes(content);
-        //             // Add some information to the file.
-        //             fs.Write(info, 0, info.Length);
-        //         }
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         _logger.Log(LogLevel.Error, ex, "Create file " + dir);
-        //     }
-        // }
-
-        // public string ReadFile(string path)
-        // {
-        //     try
-        //     {
-        //         var task = System.IO.File.ReadAllTextAsync(path);
-        //         task.Start();
-        //         task.Wait();
-        //         return task.Result;
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         _logger.Log(LogLevel.Error, ex, "Red file " + path);
-        //         return null;
-        //     }
-        // }
-
     }
 }

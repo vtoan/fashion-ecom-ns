@@ -26,13 +26,13 @@ namespace Core
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddReadConfig(Configuration);
             //Db
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("default")));
             services.AddDefaultIdentity<User>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
-
             //Reference Service;
             services.AddIdentityServer4();
             services.AddAutoMapper(typeof(MapperConfig).Assembly);
@@ -66,17 +66,18 @@ namespace Core
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
 
             app.UseCors(builder =>
             {
-                builder.WithOrigins("http://localhost:3000")
+                builder.WithOrigins(ReadConfig.clientUrls["react"])
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .WithExposedHeaders("total-item")
                     .WithHeaders("total-item");
-                // builder.AllowAnyHeader();
-                // builder.AllowAnyOrigin("https://");
-                // builder.AllowAnyMethod();
             });
 
             app.UseStaticFiles();
@@ -87,7 +88,6 @@ namespace Core
 
             app.UseRouting();
 
-
             app.UseIdentityServer();
             app.UseAuthorization();
 
@@ -95,7 +95,6 @@ namespace Core
             {
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
-
             });
         }
     }

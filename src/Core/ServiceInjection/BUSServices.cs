@@ -8,7 +8,6 @@ namespace Core.ServiceInjection
     {
         public static IServiceCollection AddBUS(this IServiceCollection services)
         {
-
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ITypeProductService, TypeProductService>();
             services.AddScoped<IFeeService, FeeService>();
