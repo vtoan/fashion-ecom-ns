@@ -46,7 +46,19 @@ namespace CustomerSite.Controllers
             return View(resp.Products);
         }
 
+        [HttpGet("/search")]
+        public async Task<IActionResult> ListProductSearchAsync(ProdPageParam prodPageParam)
+        {
+            var resp = await _request.GetListAsync(prodPageParam.query, prodPageParam.typeId, prodPageParam.cateId, _pageSize, prodPageParam.page - 1, prodPageParam.sort);
+            ViewBag.ProdPageParam = prodPageParam;
+            //
+            ViewBag.Total = resp.TotalItem;
+            ViewBag.Page = Math.Ceiling(resp.TotalItem / (_pageSize + 0.0));
+            return View(resp.Products);
+        }
+
         [HttpGet("/product/{productId}")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> ProductDetailAsync(int productId)
         {
             var resp = await _request.GetAsync(productId);
