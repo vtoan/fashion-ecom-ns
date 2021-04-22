@@ -13,6 +13,8 @@ import userManager, { loadUserFromStorage } from "./services/authService";
 import { fetchTypeProduct } from "./services/typeService";
 import { fetchCategory } from "./services/cateService";
 
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   React.useEffect(() => {
     fetchTypeProduct(store);

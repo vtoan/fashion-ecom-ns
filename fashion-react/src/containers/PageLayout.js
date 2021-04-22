@@ -1,4 +1,5 @@
 import { Col, Container, Row } from "reactstrap";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function PageLayout({ header, nav, content }) {
   return (
@@ -12,6 +13,7 @@ export default function PageLayout({ header, nav, content }) {
           <div className="bg-white h-100 rounded p-3">{content}</div>
         </Col>
       </Row>
+      <ToastContainer />
     </Container>
   );
 }
