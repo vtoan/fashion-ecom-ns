@@ -73,8 +73,9 @@
                 <div class="product-info">
                     <span class="label">Description</span>
                     <p style="margin-top: 0">
-                        @{
-                            var contents = @Model.ProductDescription.Split("/");
+                        @if (Model.ProductDescription != null)
+                        {
+                            var contents = @Model.ProductDescription?.Split("/");
                             foreach (var item in contents)
                             {
                                 <text>- @item.</text><br />

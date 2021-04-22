@@ -23,7 +23,9 @@
                             </div>
                             <div class="product-content">
                                 <p product-name class="mb-none bold">@item.Name</p>
-                                @{
+                                @if (item.ProductDescription != null)
+                                {
+
                                     var des = @item.ProductDescription.Split("/");
                                     <p>@des[0]</p>
                                 }
