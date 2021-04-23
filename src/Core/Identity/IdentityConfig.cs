@@ -16,8 +16,7 @@ namespace Core.Identity
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("customer"),
-                new ApiScope("admin"),
+                new ApiScope("fashion.client"),
             };
 
         public static IEnumerable<Client> Clients =>
@@ -31,38 +30,27 @@ namespace Core.Identity
                     AllowedGrantTypes = GrantTypes.Code,
 
                     RedirectUris = { ReadConfig.clientUrls["mvc"] +"/signin-oidc" },
-                    FrontChannelLogoutUri = ReadConfig.clientUrls["mvc"] +"/signout-oidc",
-                    PostLogoutRedirectUris = { ReadConfig.clientUrls["mvc"] +"/signout-oidc" },
-
+                    FrontChannelLogoutUri = ReadConfig.clientUrls["mvc"] +"/signout-callback-oidc",
+                    PostLogoutRedirectUris = { ReadConfig.clientUrls["mvc"] +"/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "customer" }
+                    AllowedScopes = { "openid", "profile", "fashion.client" }
                 },
                 new Client
                 {
-                    // unique ID for this client
-                    ClientId = "spa", 
-                    // human-friendly name displayed in IS
-                    ClientName = "Reac app", 
-                    // URL of client
-                    ClientUri = ReadConfig.clientUrls["react"], 
-                    // how client will interact with our identity server (Implicit is basic flow for web apps)
-                    AllowedGrantTypes = GrantTypes.Implicit, 
-                    // don't require client to send secret to token endpoint
+                    ClientId = "spa",
+                    ClientName = "Reac app",
+                    ClientUri = ReadConfig.clientUrls["react"],
+                    AllowedGrantTypes = GrantTypes.Implicit,
                     RequireClientSecret = false,
                     RedirectUris =
-                    {             
-                        // can redirect here after login                     
+                    {
                         "http://localhost:3000/signin-oidc",
                     },
                     FrontChannelLogoutUri = ReadConfig.clientUrls["react"]+ "/signout-oidc",
-                    // can redirect here after logout
-                    PostLogoutRedirectUris = { ReadConfig.clientUrls["react"]+"/signout-callback-oidc" }, 
-                    // builds CORS policy for javascript clients
-                    AllowedCorsOrigins = { ReadConfig.clientUrls["react"] }, 
-                    // what resources this client can access
-                    AllowedScopes = { "openid", "profile", "customer" }, 
-                    // client is allowed to receive tokens via browser
+                    PostLogoutRedirectUris = { ReadConfig.clientUrls["react"]+"/signout-callback-oidc" },
+                    AllowedCorsOrigins = { ReadConfig.clientUrls["react"] },
+                    AllowedScopes = { "openid", "profile", "fashion.client" },
                     AllowAccessTokensViaBrowser = true
                 }
             };

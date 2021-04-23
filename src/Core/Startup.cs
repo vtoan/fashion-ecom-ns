@@ -73,7 +73,7 @@ namespace Core
 
             app.UseCors(builder =>
             {
-                builder.WithOrigins(ReadConfig.clientUrls["react"])
+                builder.WithOrigins(ReadConfig.clientUrls["react"], ReadConfig.clientUrls["mvc"])
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .WithExposedHeaders("total-item")

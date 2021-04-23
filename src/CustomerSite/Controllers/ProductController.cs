@@ -54,7 +54,7 @@ namespace CustomerSite.Controllers
             //
             ViewBag.Total = resp.TotalItem;
             ViewBag.Page = Math.Ceiling(resp.TotalItem / (_pageSize + 0.0));
-            return View(resp.Products);
+            return View("ListProduct", resp.Products);
         }
 
         [HttpGet("/product/{productId}")]

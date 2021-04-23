@@ -1,21 +1,15 @@
-using System;
-using System.Globalization;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System.Threading.Tasks;
 
 namespace CustomerSite.TagHelpers
 {
-    [HtmlTargetElement("cost-value")]
-    public class CostTagHelper : TagHelper
+    [HtmlTargetElement(Attributes = "product-src")]
+    public class HostImageTagHelper : TagHelper
     {
-        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+        public string ProductSrc { get; set; }
+        public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            var textContent = await output.GetChildContentAsync();
-            double val = Double.Parse(textContent.GetContent());
-            string result = "";
-            if (val % 1 == 0) result = val.ToString("C", CultureInfo.GetCultureInfo("vi-VN"));
-            else result = val * 100 + " %";
-            output.Content.SetContent(result);
+            var srcImg = Startup.HostUri + Startup.HostProductRes + ProductSrc;
+            output.Attributes.SetAttribute("src", srcImg);
         }
     }
 }

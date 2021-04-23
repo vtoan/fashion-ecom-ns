@@ -31,7 +31,7 @@ namespace CustomerSite.ServiceInjection
 
                      options.Scope.Add("openid");
                      options.Scope.Add("profile");
-                     options.Scope.Add("customer");
+                     options.Scope.Add("fashion.client");
 
                      options.TokenValidationParameters = new TokenValidationParameters
                      {

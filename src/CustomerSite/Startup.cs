@@ -1,17 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using CustomerSite.Interfaces;
-using CustomerSite.Services;
-using System.Net.Http;
 using CustomerSite.ServiceInjection;
 
 namespace CustomerSite
@@ -26,6 +17,7 @@ namespace CustomerSite
         public IConfiguration Configuration { get; }
 
         public static string HostUri;
+        public static string HostProductRes;
 
         public void ConfigureServices(IServiceCollection services)
         {

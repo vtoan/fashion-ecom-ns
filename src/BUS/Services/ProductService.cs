@@ -23,6 +23,15 @@ namespace BUS.Services
             _productDao = dao;
         }
 
+        public new ProductDetailVM Add(ProductDetailVM newObject)
+        {
+            if (newObject.ProductAttributes.Count == 0)
+            {
+                newObject.ProductAttributes.Add(new ProductAttributeVM { Size = "FreeSize" });
+            }
+            return base.Add(newObject);
+        }
+
         public (ICollection<ProductVM>, int) GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort)
         {
             var result = _productDao.GetListItems(query, typeId, cateId, limited, offset, sort);
@@ -36,22 +45,6 @@ namespace BUS.Services
         {
             if (productId <= 0) return false;
             return _productDao.DeleteItem(productId);
-        }
-
-        public bool RemoveImageDefault(int productId, string imgName)
-        {
-            if (productId <= 0 || imgName == null || imgName == "") return false;
-            var modifiedProps = new Dictionary<string, object>();
-            modifiedProps.Add("Image", null);
-            return _productDao.UpdateItem(productId, modifiedProps);
-        }
-
-        public bool SetImageDefault(int productId, string imgName)
-        {
-            if (productId <= 0 || imgName == null || imgName == "") return false;
-            var modifiedProps = new Dictionary<string, object>();
-            modifiedProps.Add("Image", imgName);
-            return _productDao.UpdateItem(productId, modifiedProps);
         }
     }
 }

@@ -51,7 +51,13 @@ export default function ProductDetail() {
       actions={
         <Button color="danger" children="Delete" onClick={handleDelelte} />
       }
-      right={<EditProduct itemEdit={itemEdit} onSave={handleSave} />}
+      right={
+        <EditProduct
+          itemEdit={itemEdit}
+          onSave={handleSave}
+          onCancel={() => history.goBack()}
+        />
+      }
       left={
         <>
           <AttrProduct productId={id} datas={itemEdit?.ProductAttributes} />

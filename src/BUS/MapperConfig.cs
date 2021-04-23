@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
@@ -30,7 +29,6 @@ namespace BUS
                 .ForMember(item => item.Name, opt => opt.MapFrom(src => src.Product.Name))
                 .ForMember(item => item.Price, opt => opt.MapFrom(src => src.Product.Price))
                 .ForMember(item => item.Image, opt => opt.MapFrom(src => src.Product.Image));
-
             //
             CreateMap<ProductVM, Product>();
 
@@ -76,7 +74,6 @@ namespace BUS
             if (ratings == null || ratings.Count == 0) return 0;
             var avg = ratings.Select(item => item.Rate).Average();
             return Math.Ceiling(avg);
-
         }
     }
 }

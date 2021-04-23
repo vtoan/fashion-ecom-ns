@@ -57,8 +57,7 @@ namespace Core.Identity
                 .AddAuthentication()
                 .AddLocalApi("Bearer", options =>
                 {
-                    options.ExpectedScope = "customer";
-                    // options.ExpectedScope = "admin";
+                    options.ExpectedScope = "fashion.client";
                 });
 
             //author

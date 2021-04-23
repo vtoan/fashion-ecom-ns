@@ -89,12 +89,13 @@
 <!------ list product----->
 <div class="container section">
     @await Component.InvokeAsync("ProductsPreview",new {eItemPreview= EItemPreview.Shirts})
-    <a href="javascript:void(0)" class="more-product">more product</a>
+    <a href="/type/@HelpperPreview.ItemPreviews[(int)EItemPreview.Shirts].TypeId" class="more-product">more
+        product</a>
 </div>
 <!------ list product sale----->
 <div class="container section">
     @await Component.InvokeAsync("ProductsPreview",new {eItemPreview= EItemPreview.Pants})
-    <a href="javascript:void(0)" class="more-product">more product</a>
+    <a href="/type/@HelpperPreview.ItemPreviews[(int)EItemPreview.Pants].TypeId" class="more-product">more product</a>
 </div>
 <!------ about-us ----->
 <div class="about section">

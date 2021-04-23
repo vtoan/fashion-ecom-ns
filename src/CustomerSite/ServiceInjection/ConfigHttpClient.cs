@@ -16,6 +16,7 @@ namespace CustomerSite.ServiceInjection
 
             // url
             Startup.HostUri = configuration.GetValue<string>("HostUri");
+            Startup.HostProductRes = configuration.GetValue<string>("HostProductRes");
 
             services.AddHttpContextAccessor();
 
