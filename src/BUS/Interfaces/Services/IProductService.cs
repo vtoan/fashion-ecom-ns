@@ -11,7 +11,5 @@ namespace BUS.Interfaces.Services
         IDelete<ProductDetailVM>
     {
         (ICollection<ProductVM> Products, int Total) GetList(string query, int typeId, int cateId, int limited, int offset, ProductSort? sort);
-        bool SetImageDefault(int productId, string imgName);
-        bool RemoveImageDefault(int productId, string imgName);
     }
 }

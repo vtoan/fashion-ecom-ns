@@ -15,6 +15,18 @@ namespace DAO.DAOs
         public ProductDAO(AppDbContext context) : base(context)
         { }
 
+        public new Product AddItem(Product newObject)
+        {
+            newObject.DateCreated = DateTime.Now;
+            return base.AddItem(newObject);
+        }
+
+        public new bool UpdateItem(int id, Dictionary<string, object> newObject)
+        {
+            newObject.Add("DateModified", DateTime.Now);
+            return base.UpdateItem(id, newObject);
+        }
+
         public new Product GetItem(int id)
         {
             if (id <= 0) return null;

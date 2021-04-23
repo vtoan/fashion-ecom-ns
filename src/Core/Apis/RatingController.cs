@@ -33,6 +33,7 @@ namespace Core.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult<RatingVM> Create(int productId, string userId, RatingVM ratingVM)
         {
             if (!ModelState.IsValid) return BadRequest();

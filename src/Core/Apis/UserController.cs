@@ -25,6 +25,7 @@ namespace Core.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<UserVM> GetList(int limited, int offset, string query = null)
         {
             var result = _userSer.GetList(query, limited, offset);

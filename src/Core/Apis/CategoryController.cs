@@ -2,6 +2,7 @@ using BUS.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
+using System;
 using System.Collections.Generic;
 
 namespace Core.Controllers
@@ -60,9 +61,17 @@ namespace Core.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
-            var result = _cateSer.Delete(id);
-            if (!result) return NotFound();
-            return NoContent();
+            try
+            {
+                var result = _cateSer.Delete(id);
+                if (!result) return NotFound();
+                return NoContent();
+            }
+            catch (Exception)
+            {
+                return Problem("You need remove product of this category");
+            }
+
         }
     }
 }

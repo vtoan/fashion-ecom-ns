@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Core.Controllers
@@ -47,10 +46,6 @@ namespace Core.Controllers
         public ActionResult<ProductDetailVM> Create(ProductDetailVM productDetailVM)
         {
             if (!ModelState.IsValid) return BadRequest();
-            if (productDetailVM.ProductAttributes.Count == 0)
-            {
-                productDetailVM.ProductAttributes.Add(new ProductAttributeVM { Size = "FreeSiae" });
-            }
             var result = _productSer.Add(productDetailVM);
             if (result == null) return Problem("Can't add new product");
             return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
@@ -92,7 +87,7 @@ namespace Core.Controllers
 
         [HttpDelete("{id}/images")]
         [Authorize(Roles = "admin")]
-        public IActionResult ChangeImageDefault([FromServices] IFileService fileSer, string imageName, int id)
+        public IActionResult DeleteImage([FromServices] IFileService fileSer, string imageName, int id)
         {
             if (imageName == null) return BadRequest();
             fileSer.RemoveFile(_imageFolder + id, imageName);
