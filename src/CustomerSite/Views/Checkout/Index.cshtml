@@ -3,7 +3,6 @@
 @using Shared.ViewModels
 
 @section Css {
-@* <link rel="stylesheet" href="~/css/product.css" asp-append-version="true" /> *@
 <link rel="stylesheet" href="~/css/dropdown.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
 }
@@ -17,7 +16,7 @@
     var fees = (ICollection<FeeVM>)ViewBag.Fees;
 }
 <!------ breadcrum ----->
-<div class="breadcrumb section"><a>home</a> / <a>asd</a></div>
+<div class="breadcrumb section"><a href="/">home</a> / <a>Checkout</a></div>
 <!------ cart ----->
 <div class="container section">
     <div id="checkout" class="row section">
@@ -38,6 +37,9 @@
                         <label>Số điện thoại <span class="impress">*</span></label>
                         <input class="mb-3" name="CustomerPhone" type="tel" pattern="^0\d+" minlength="9" maxlength="10"
                             required />
+                        <span style="font-size:0.75em; color:#111">
+                            Number phone with min 9 or 10 number and start with 0.
+                        </span>
                     </div>
                     <div class="control-input">
                         <label>Email</label>
@@ -49,7 +51,7 @@
                             <div class="col-lg-6">
                                 <div local-province class="dropdown">
                                     <div class="select">
-                                        <span>Order by</span>
+                                        <span>Select province</span>
                                         <i class="las la-angle-down"></i>
                                     </div>
                                     <input name="CustomerProvince" type="hidden" required />
@@ -59,7 +61,7 @@
                             <div class="col-lg-6">
                                 <div local-district class="dropdown">
                                     <div class="select">
-                                        <span>Order by</span>
+                                        <span>Select district</span>
                                         <i class="las la-angle-down"></i>
                                     </div>
                                     <input type="hidden" name="CustomerDistrict" required />
@@ -161,7 +163,7 @@
         </div>
     </div>
     <div class="text-center">
-        <a id="send-order" class="d-inline-block btn btn-sm w-50 border-impress btn-anim" style="max-width: 250px">Đặt
+        <a id="send-order" class="d-inline-block btn btn-sm w-50 border-impress btn-submit" style="max-width: 250px">Đặt
             hàng</a>
     </div>
 </div>

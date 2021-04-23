@@ -48,6 +48,7 @@
         </div>
         <div class="col-12 col-lg-5">
             <p class="semi-bold upper-case">send feedback</p>
+            <div asp-validation-summary="All" class="text-danger"></div>
             <form id="feedbackForm" action="/rating/@Model.prodId" method="POST">
                 <div class="rating-form d-flex justify-content-start">
                     <input type="radio" name="rate" value="1" required />

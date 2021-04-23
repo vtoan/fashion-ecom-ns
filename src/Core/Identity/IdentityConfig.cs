@@ -30,8 +30,8 @@ namespace Core.Identity
                     AllowedGrantTypes = GrantTypes.Code,
 
                     RedirectUris = { ReadConfig.clientUrls["mvc"] +"/signin-oidc" },
-                    FrontChannelLogoutUri = ReadConfig.clientUrls["mvc"] +"/signout-oidc",
-                    PostLogoutRedirectUris = { ReadConfig.clientUrls["mvc"] +"/signout-oidc" },
+                    FrontChannelLogoutUri = ReadConfig.clientUrls["mvc"] +"/signout-callback-oidc",
+                    PostLogoutRedirectUris = { ReadConfig.clientUrls["mvc"] +"/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
                     AllowedScopes = { "openid", "profile", "fashion.client" }

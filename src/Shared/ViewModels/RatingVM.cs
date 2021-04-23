@@ -10,7 +10,6 @@ namespace Shared.ViewModels
         public string Feedback { get; set; }
         [Required(ErrorMessage = "Rate is required")]
         public int? Rate { get; set; }
-        [Required(ErrorMessage = "User Id is required")]
         public string UserId { get; set; }
         public string CustomerName { get; set; }
     }
