@@ -68,7 +68,7 @@ namespace Core
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                // app.UseExceptionHandler("/Error");
             }
 
             app.UseCors(builder =>
@@ -81,6 +81,8 @@ namespace Core
             });
 
             app.UseStaticFiles();
+
+            app.UseStatusCodePages();
 
             app.UseGlobalHandlerException();
 
