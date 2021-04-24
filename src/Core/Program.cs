@@ -21,7 +21,6 @@ namespace Core
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
-                    //Seed Default Users
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     await InitializerUser.Initialize(userManager, roleManager);
