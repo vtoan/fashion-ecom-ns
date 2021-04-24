@@ -1,5 +1,4 @@
 import axios from "axios";
-import { host } from "../config";
 import { setTypeProduct } from "../actions/fetchDataAction";
 
 class typeService {
@@ -10,7 +9,7 @@ class typeService {
 
   getList() {
     return axios({
-      url: host + "/" + this.pathSer,
+      url: this.pathSer,
       method: "get",
       actionName: `Get list ${this.aliasName}`,
     });

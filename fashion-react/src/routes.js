@@ -16,7 +16,6 @@ export default function Routes(props) {
     <Switch>
       <Route path="/signout-oidc" component={SignoutOidc} />
       <Route path="/signin-oidc" component={SigninOidc} />
-
       <Redirect exact from="/" to="/products" />
 
       <PrivateRoute path="/products" component={Product} />

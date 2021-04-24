@@ -3,9 +3,7 @@ import { Button } from "reactstrap";
 import { signinRedirect } from "../../services/authService";
 
 export default function Login() {
-  const handleClick = () => {
-    signinRedirect();
-  };
+  const handleClick = () => signinRedirect();
   return (
     <>
       <p>You need to login before continuing.</p>

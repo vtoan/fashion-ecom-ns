@@ -24,6 +24,7 @@ export default function Product() {
     } else {
       _fetchCateDataWithType(1);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //handle

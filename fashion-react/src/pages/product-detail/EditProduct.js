@@ -17,7 +17,6 @@ export default function EditProduct({ itemEdit, onSave, onCancel }) {
   React.useEffect(() => {
     setInputName(itemEdit?.Name);
     setInputCate(itemEdit?.CategoryId);
-
     setInputType(itemEdit?.TypeProductId);
     setInputPrice(itemEdit?.Price);
     setInputDescription(itemEdit?.ProductDescription);
@@ -79,7 +78,6 @@ export default function EditProduct({ itemEdit, onSave, onCancel }) {
           value={inputPrice}
         />
       </FormGroup>
-
       <FormGroup>
         <Label for="Type">Select Type</Label>
         <SelectTypeProduct
@@ -97,7 +95,6 @@ export default function EditProduct({ itemEdit, onSave, onCancel }) {
           onChange={handleChangeCate}
         />
       </FormGroup>
-
       <FormGroup>
         <Label for="Material">Material</Label>
         <Input
@@ -128,7 +125,6 @@ export default function EditProduct({ itemEdit, onSave, onCancel }) {
           value={inputDescription}
         />
       </FormGroup>
-
       <div className="pt-3">
         <Button color="primary" className="mr-3" onClick={handleSubmit}>
           Save

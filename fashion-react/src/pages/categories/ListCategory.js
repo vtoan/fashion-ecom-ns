@@ -15,6 +15,7 @@ export default function ListCategory({
   const _getTypeName = (id) =>
     (_listTypes && _listTypes.find((item) => item.Id === id)?.Name) ??
     "unknown";
+  //
   return (
     <>
       <SelectTypeProduct

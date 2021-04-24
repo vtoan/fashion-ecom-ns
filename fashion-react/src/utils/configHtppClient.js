@@ -1,7 +1,9 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { host } from "../config";
 
-export default function Interceptor() {
+export default function httpClient() {
+  axios.defaults.baseURL = host;
   // Add a response interceptor
   axios.interceptors.response.use(
     function (response) {
