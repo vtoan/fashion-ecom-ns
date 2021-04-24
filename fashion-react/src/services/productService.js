@@ -1,12 +1,11 @@
 import axios from "axios";
-import { host } from "../config";
 import commonService from "./commonService";
 
 class productService extends commonService {
   //attributes
   createAttr(productId, newAttr) {
     return axios({
-      url: host + "/" + this.pathSer + "/" + productId + "/attrs",
+      url: this.pathSer + "/" + productId + "/attrs",
       method: "post",
       data: { Size: newAttr },
       actionName: `Create new Product Attribute`,
@@ -14,7 +13,7 @@ class productService extends commonService {
   }
   getListAttr(productId) {
     return axios({
-      url: host + "/" + this.pathSer + "/" + productId + "/attrs",
+      url: this.pathSer + "/" + productId + "/attrs",
       method: "get",
       actionName: `Get list Product Attribute of ${productId}`,
     });
@@ -22,7 +21,7 @@ class productService extends commonService {
 
   deleteAttr(productId, itemId) {
     return axios({
-      url: host + "/" + this.pathSer + "/" + productId + "/attrs/" + itemId,
+      url: this.pathSer + "/" + productId + "/attrs/" + itemId,
       method: "delete",
       actionName: `Delete Product Attribute ${itemId}`,
     });
@@ -30,7 +29,7 @@ class productService extends commonService {
   //image
   changeImageDefault(productId, newImage) {
     return axios({
-      url: host + "/" + this.pathSer + "/" + productId,
+      url: this.pathSer + "/" + productId,
       method: "put",
       data: { Id: productId, Image: newImage },
       actionName: `Change Image for ${productId}`,
@@ -39,7 +38,7 @@ class productService extends commonService {
 
   getListImages(productId) {
     return axios({
-      url: host + "/" + this.pathSer + "/" + productId + "/images",
+      url: this.pathSer + "/" + productId + "/images",
       method: "get",
       actionName: `Get List Image Product`,
     });
@@ -49,7 +48,7 @@ class productService extends commonService {
     let formData = new FormData();
     formData.append("image", newImage);
     return axios({
-      url: host + "/" + this.pathSer + "/" + productId + "/images",
+      url: this.pathSer + "/" + productId + "/images",
       method: "post",
       headers: {
         "Content-Type": "multipart/form-data",
@@ -61,14 +60,7 @@ class productService extends commonService {
 
   removeImage(productId, imageName) {
     return axios({
-      url:
-        host +
-        "/" +
-        this.pathSer +
-        "/" +
-        productId +
-        "/images?imageName=" +
-        imageName,
+      url: this.pathSer + "/" + productId + "/images?imageName=" + imageName,
       method: "delete",
       actionName: `Delete Product Attribute ${productId}`,
     });

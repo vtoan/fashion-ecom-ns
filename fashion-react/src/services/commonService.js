@@ -1,5 +1,4 @@
 import axios from "axios";
-import { host } from "../config";
 
 export default class commonService {
   constructor(pathSer, aliasName) {
@@ -9,7 +8,7 @@ export default class commonService {
 
   getList(params = null) {
     return axios({
-      url: host + "/" + this.pathSer + this._createQuery(params),
+      url: this.pathSer + this._createQuery(params),
       method: "get",
       actionName: `Get list ${this.aliasName}`,
     });
@@ -17,7 +16,7 @@ export default class commonService {
 
   get(id) {
     return axios({
-      url: host + "/" + this.pathSer + "/" + id,
+      url: this.pathSer + "/" + id,
       method: "get",
       actionName: `Get ${this.aliasName} with ID: ${id}`,
     });
@@ -25,7 +24,7 @@ export default class commonService {
 
   edit(id, object) {
     return axios({
-      url: host + "/" + this.pathSer + "/" + id,
+      url: this.pathSer + "/" + id,
       method: "put",
       data: object,
       actionName: `Edit ${this.aliasName} with ID: ${id}`,
@@ -34,7 +33,7 @@ export default class commonService {
 
   delete(id) {
     return axios({
-      url: host + "/" + this.pathSer + "/" + id,
+      url: this.pathSer + "/" + id,
       method: "delete",
       actionName: `Delete ${this.aliasName} with ID: ${id}`,
     });
@@ -42,7 +41,7 @@ export default class commonService {
 
   create(object, params = null) {
     return axios({
-      url: host + "/" + this.pathSer + this._createQuery(params),
+      url: this.pathSer + this._createQuery(params),
       method: "post",
       data: object,
       actionName: `Create new ${this.aliasName}`,

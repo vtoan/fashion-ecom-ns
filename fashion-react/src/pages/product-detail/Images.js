@@ -7,7 +7,6 @@ import _proSer from "../../services/productService";
 export default function Images({ productId, productImage }) {
   const [imageDefault, setDefault] = React.useState(productImage);
   const [imageUpload, setImageUpload] = React.useState(null);
-
   const [listImages, setImages] = React.useState([]);
 
   React.useEffect(() => {

@@ -71,30 +71,30 @@ namespace Core.Controllers
         }
 
         // Image
-        [HttpGet("{id}/images")]
+        [HttpGet("{productId}/images")]
         [AllowAnonymous]
-        public IEnumerable<string> GetListImage([FromServices] IFileService fileSer, int id)
+        public IEnumerable<string> GetListImage([FromServices] IFileService fileSer, int productId)
         {
-            return fileSer.GetFilesInFolder(_imageFolder + id);
+            return fileSer.GetFilesInFolder(_imageFolder + productId);
         }
 
-        [HttpPost("{id}/images")]
+        [HttpPost("{productId}/images")]
         [Authorize(Roles = "admin")]
-        public ActionResult<string> UploadImage([FromServices] IFileService fileSer, IFormFile image, int id)
+        public ActionResult<string> UploadImage([FromServices] IFileService fileSer, IFormFile image, int productId)
         {
-            return _updateImage(fileSer, image, id);
+            return _uploadImage(fileSer, image, productId);
         }
 
-        [HttpDelete("{id}/images")]
+        [HttpDelete("{productId}/images")]
         [Authorize(Roles = "admin")]
-        public IActionResult DeleteImage([FromServices] IFileService fileSer, string imageName, int id)
+        public IActionResult DeleteImage([FromServices] IFileService fileSer, string imageName, int productId)
         {
             if (imageName == null) return BadRequest();
-            fileSer.RemoveFile(_imageFolder + id, imageName);
+            fileSer.RemoveFile(_imageFolder + productId, imageName);
             return NoContent();
         }
 
-        private string _updateImage(IFileService fileSer, IFormFile image, int id)
+        private string _uploadImage(IFileService fileSer, IFormFile image, int id)
         {
             var fileName = id + "_" + DateTime.Now.Millisecond + "_" + image.FileName;
             fileSer.UploadFileAsync(_imageFolder + id, image, fileName);

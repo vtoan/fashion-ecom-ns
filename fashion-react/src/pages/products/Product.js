@@ -20,10 +20,11 @@ const _parmas = {
   sort: null,
 };
 
-export default function Product(props) {
+export default function Product() {
   const [listProducts, setProducts] = React.useState([]);
   const [pageCurrent, setPage] = React.useState(1);
   const history = useHistory();
+
   React.useEffect(() => {
     _getProduct(1);
   }, []);

@@ -3,10 +3,10 @@ import { Button } from "reactstrap";
 import SplitLayout from "../../containers/SplitLayout";
 import EditProduct from "./EditProduct";
 import { useHistory, useParams } from "react-router";
-
-import _proSer from "../../services/productService";
 import AttrProduct from "./AttrProduct";
 import Images from "./Images";
+
+import _proSer from "../../services/productService";
 
 export default function ProductDetail() {
   let { id } = useParams();
@@ -14,7 +14,7 @@ export default function ProductDetail() {
   const [itemEdit, setEdit] = React.useState(null);
 
   React.useEffect(() => {
-    if (id > 0)
+    if (Number(id) > 0)
       _proSer.get(id).then((resp) => {
         console.log(resp);
         setEdit(resp.data);
@@ -24,7 +24,7 @@ export default function ProductDetail() {
   const handleDelelte = () => {
     let result = window.confirm("Delete this item?");
     if (result) {
-      _proSer.delete(id).then((resp) => {
+      _proSer.delete(id).then(() => {
         history.goBack();
       });
     }
@@ -34,11 +34,11 @@ export default function ProductDetail() {
     let result = window.confirm("Save the changed items?");
     if (result) {
       if (!data.Id) {
-        _proSer.create(data).then((resp) => {
+        _proSer.create(data).then(() => {
           history.goBack();
         });
       } else {
-        _proSer.edit(data.Id, data).then((resp) => {
+        _proSer.edit(data.Id, data).then(() => {
           history.goBack();
         });
       }
