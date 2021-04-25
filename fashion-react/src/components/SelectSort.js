@@ -9,7 +9,7 @@ export default function SelectSort({
   placeholder = null,
   ...other
 }) {
-  const [inputItem, setInputItem] = React.useState(0);
+  const [inputItem, setInputItem] = React.useState(-1);
 
   React.useEffect(() => {
     setInputItem(initalValue);
