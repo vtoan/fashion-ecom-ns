@@ -52,7 +52,7 @@ namespace Core.Service
             try
             {
                 //Check folder
-                string dir = _checkExsistOrCreate(folderPath);
+                string dir = _checkFolderExsistOrCreate(folderPath);
                 //Save file
                 string filePath = Path.Combine(dir, fileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -65,7 +65,14 @@ namespace Core.Service
             }
         }
 
-        private string _checkExsistOrCreate(string dir)
+        public bool CheckFileExsist(string folderPath, string fileName)
+        {
+            string dir = _checkFolderExsistOrCreate(folderPath);
+            string filePath = Path.Combine(dir, fileName);
+            return File.Exists(filePath);
+        }
+
+        private string _checkFolderExsistOrCreate(string dir)
         {
             string folderPath = Path.Combine(webRootPath, dir);
             if (!Directory.Exists(folderPath))
