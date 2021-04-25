@@ -1,13 +1,10 @@
 @model (IEnumerable<string> ImageRes, int prodId )
-@using CustomerSite;
-@{
-    var HostUri = Startup.HostUri;
-}
 <cache enabled="false">
     <div class="gallery">
         <div class="img-anim">
-            <div class="img"
-                style="background-image: url('@HostUri/product-images/@Model.prodId/@ViewBag.ImageDefault')">
+
+            <div class="img">
+                <img product-src="@ViewBag.ImageDefault" />
             </div>
         </div>
         <a class="arrow-prev black"><i class="las la-angle-left icon-big"></i></a>
@@ -26,7 +23,7 @@
         @foreach (var item in Model.ImageRes)
         {
             <div class="img">
-                <img src="@HostUri/product-images/product-2.png" loading="lazy" />
+                <img product-src="@item" loading="lazy" />
             </div>
         }
     </div>
