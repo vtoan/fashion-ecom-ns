@@ -25,9 +25,10 @@ namespace BUS.Services
 
         public new ProductDetailVM Add(ProductDetailVM newObject)
         {
-            if (newObject.ProductAttributes.Count == 0)
+            if (newObject.ProductAttributes == null || newObject.ProductAttributes.Count == 0)
             {
-                newObject.ProductAttributes.Add(new ProductAttributeVM { Size = "FreeSize" });
+                var attrsDefault = new List<ProductAttributeVM>() { new ProductAttributeVM { Size = "FreeSize" } };
+                newObject.ProductAttributes = attrsDefault;
             }
             return base.Add(newObject);
         }
