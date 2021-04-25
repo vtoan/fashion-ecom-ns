@@ -3,28 +3,31 @@
 @{
     var HostUri = Startup.HostUri;
 }
-
-<div class="gallery">
-    <div class="img-anim">
-        <div class="img" style="background-image: url('@HostUri/product-images/@ViewBag.ImageDefault')"></div>
-    </div>
-    <a class="arrow-prev black"><i class="las la-angle-left icon-big"></i></a>
-    <a class="arrow-next black"><i class="las la-angle-right icon-big"></i></a>
-</div>
-<div class="gallery-nav">
-    <div class="img">
-        <img product-src="product-1.png" loading="lazy" />
-    </div>
-    <div class="img">
-        <img product-src="product-2.png" loading="lazy" />
-    </div>
-    <div class="img">
-        <img product-src="product-3.png" loading="lazy" />
-    </div>
-    @* @foreach (var item in Model.ImageRes)
-        {
-        <div class="img">
-        <img src="@HostUri/product-images/product-2.png" loading="lazy" />
+<cache enabled="false">
+    <div class="gallery">
+        <div class="img-anim">
+            <div class="img"
+                style="background-image: url('@HostUri/product-images/@Model.prodId/@ViewBag.ImageDefault')">
+            </div>
         </div>
-        } *@
-</div>
+        <a class="arrow-prev black"><i class="las la-angle-left icon-big"></i></a>
+        <a class="arrow-next black"><i class="las la-angle-right icon-big"></i></a>
+    </div>
+    <div class="gallery-nav">
+        @* <div class="img">
+            <img product-src="product-1.png" loading="lazy" />
+            </div>
+            <div class="img">
+            <img product-src="product-2.png" loading="lazy" />
+            </div>
+            <div class="img">
+            <img product-src="product-3.png" loading="lazy" />
+            </div> *@
+        @foreach (var item in Model.ImageRes)
+        {
+            <div class="img">
+                <img src="@HostUri/product-images/product-2.png" loading="lazy" />
+            </div>
+        }
+    </div>
+</cache>

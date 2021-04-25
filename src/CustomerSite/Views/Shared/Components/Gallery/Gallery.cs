@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CustomerSite.Views.Shared.Components.Gallery
 {
     [ViewComponent]
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class Gallery : ViewComponent
     {
         private readonly IProductApiClient _request;
