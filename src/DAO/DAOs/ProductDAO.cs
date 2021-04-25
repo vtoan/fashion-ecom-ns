@@ -44,16 +44,6 @@ namespace DAO.DAOs
             if (typeId > 0) sqlString = sqlString.Where(item => item.TypeProductId == typeId);
             if (cateId > 0) sqlString = sqlString.Where(item => item.CategoryId == cateId);
             var totalItem = sqlString.Count();
-            if (offset > 0)
-            {
-                if (offset * limited > totalItem) throw new Exception("Offset is outbound");
-                sqlString = sqlString.Skip(offset * limited);
-            }
-            if (limited > 0)
-            {
-                if (offset * limited <= totalItem)
-                    sqlString = sqlString.Take(limited);
-            }
             //sort
             if (sort != null)
             {
@@ -69,6 +59,17 @@ namespace DAO.DAOs
                         sqlString = sqlString.OrderByDescending(item => item.SaleCount);
                         break;
                 }
+            }
+            //paging
+            if (offset > 0)
+            {
+                if (offset * limited > totalItem) throw new Exception("Offset is outbound");
+                sqlString = sqlString.Skip(offset * limited);
+            }
+            if (limited > 0)
+            {
+                if (offset * limited <= totalItem)
+                    sqlString = sqlString.Take(limited);
             }
             var result = sqlString.Include(item => item.Ratings).ToList();
             return (result, totalItem);

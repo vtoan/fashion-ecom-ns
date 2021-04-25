@@ -9,6 +9,7 @@ namespace Core.Interfaces
         Task UploadFileAsync(string folderName, IFormFile file, string fileName);
         void RemoveFile(string folderPath, string fileNameDel);
         ICollection<string> GetFilesInFolder(string folderPath);
+        bool CheckFileExsist(string folderPath, string fileName);
 
     }
 }

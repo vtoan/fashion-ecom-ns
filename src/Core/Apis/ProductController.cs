@@ -8,6 +8,7 @@ using Shared.ViewModels;
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using Core.Models;
 
 namespace Core.Controllers
 {
@@ -83,6 +84,17 @@ namespace Core.Controllers
         public ActionResult<string> UploadImage([FromServices] IFileService fileSer, IFormFile image, int productId)
         {
             return _uploadImage(fileSer, image, productId);
+        }
+
+        [HttpPut("{productId}/images")]
+        [Authorize(Roles = "admin")]
+        public ActionResult<string> ChangeDefaultImage([FromServices] IFileService fileSer, int productId, ProductImageModel imageModel)
+        {
+            var fileExsist = fileSer.CheckFileExsist(_imageFolder, imageModel.Image);
+            if (!fileExsist) return NotFound();
+            var result = _productSer.Update(imageModel.Id, new ProductDetailVM() { Id = imageModel.Id, Image = imageModel.Image });
+            if (!result) return NotFound();
+            return NoContent();
         }
 
         [HttpDelete("{productId}/images")]

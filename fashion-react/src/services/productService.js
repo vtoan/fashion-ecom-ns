@@ -29,7 +29,7 @@ class productService extends commonService {
   //image
   changeImageDefault(productId, newImage) {
     return axios({
-      url: this.pathSer + "/" + productId,
+      url: this.pathSer + "/" + productId + "/images",
       method: "put",
       data: { Id: productId, Image: newImage },
       actionName: `Change Image for ${productId}`,
