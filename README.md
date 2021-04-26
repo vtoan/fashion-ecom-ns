@@ -100,6 +100,25 @@ dotnet ef database update -s ../Core
 <hr/>
 
 # III. Admin Site (ReactJS)
+### 1. Using
+- React 17.0.2
+- Intergate IdentityServer 4
+- Redux
+### 2. Resource reference
+- Axios - https://github.com/axios/axios
+- Reactstrap - https://reactstrap.github.io/components/pagination/#
+- React-Toastify - https://github.com/fkhadra/react-toastify
+- redux-Thunk - https://github.com/reduxjs/redux-thunk
+- Oidc-Client - https://github.com/IdentityModel/oidc-client-js
+- React-router-dom - https://reactrouter.com/web/guides/quick-start
+### 3. Set up
+1. Install packages in project with Bash: 
+ ```cmd 
+ npm install 
+ ```
+2. Change Backend URLs and Image Res in path `../config.js` (if run it on diffrent host/domain)
+3. Change Client Config in path `../services/authService.js`.
+
 
 
 
