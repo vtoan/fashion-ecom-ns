@@ -1,8 +1,9 @@
 import { UserManager } from "oidc-client";
 import { storeUserError, storeUser } from "../actions/authAction";
+import { host } from "../config";
 
 const config = {
-  authority: "https://localhost:5001",
+  authority: host,
   client_id: "spa",
   redirect_uri: "http://localhost:3000/signin-oidc",
   response_type: "id_token token",
