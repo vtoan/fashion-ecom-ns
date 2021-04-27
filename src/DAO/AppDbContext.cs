@@ -45,7 +45,6 @@ namespace DAO
             modelBuilder.Entity<Product>().Property(p => p.Name).HasMaxLength(250);
             modelBuilder.Entity<Product>().Property(p => p.Image).HasMaxLength(150);
             modelBuilder.Entity<Product>().Property(p => p.isDel).HasDefaultValue(false);
-            modelBuilder.Entity<Product>().Property(p => p.SaleCount).HasDefaultValue(0);
             modelBuilder.Entity<Product>().Property(p => p.Material).HasMaxLength(150);
             modelBuilder.Entity<Product>().Property(p => p.Origin).HasMaxLength(150);
             modelBuilder.Entity<Product>().Property(p => p.ProductDescription).HasMaxLength(250);
@@ -54,6 +53,7 @@ namespace DAO
             //ProductDetail
             modelBuilder.Entity<ProductAttr>().HasKey(p => p.Id);
             modelBuilder.Entity<ProductAttr>().Property(p => p.Size).HasMaxLength(20);
+            modelBuilder.Entity<ProductAttr>().Property(p => p.SaleCount).HasDefaultValue(0);
             //Rating
             modelBuilder.Entity<Rating>().HasKey(od => od.Id);
             modelBuilder.Entity<Rating>().Property(p => p.Feedback).HasMaxLength(250);
@@ -69,133 +69,73 @@ namespace DAO
                 }
             }
 
-            SeedData(modelBuilder);
+            _seedData(modelBuilder);
         }
 
-        private void SeedData(ModelBuilder modelBuilder)
+        private void _seedData(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TypeProduct>().HasData(
+            var SeedTypeProducts = new List<TypeProduct>(){
                 new TypeProduct { Id = 1, Name = "Shirts" },
-                new TypeProduct { Id = 2, Name = "Pants" }
-            );
+                new TypeProduct { Id = 2, Name = "Pants" },
+                new TypeProduct { Id = 3, Name = "Jackets" }
+            };
 
-            modelBuilder.Entity<Category>().HasData(
-               new Category { Id = 1, Name = "T-Shirtss", TypeProductId = 1 },
-               new Category { Id = 2, Name = "Polos", TypeProductId = 1 },
-               new Category { Id = 3, Name = "Texedo Shirts", TypeProductId = 1 },
-               new Category { Id = 4, Name = "Tank Tops", TypeProductId = 1 },
-               new Category { Id = 5, Name = "Dress Shirts", TypeProductId = 1 },
-               new Category { Id = 6, Name = "Kakis", TypeProductId = 2 },
-               new Category { Id = 7, Name = "Jeans", TypeProductId = 2 },
-               new Category { Id = 8, Name = "Jogger", TypeProductId = 2 },
-               new Category { Id = 9, Name = "Slim fit", TypeProductId = 2 },
-               new Category { Id = 10, Name = "Dress Pants", TypeProductId = 2 }
-           );
+            var SeedCategorys = new List<Category>(){
+                new Category { Id = 1, Name = "T-Shirts", TypeProductId = 1 },
+                new Category { Id = 2, Name = "Polos", TypeProductId = 1 },
+                new Category { Id = 3, Name = "Texedo Shirts", TypeProductId = 1 },
+                new Category { Id = 4, Name = "Kakis", TypeProductId = 2 },
+                new Category { Id = 5, Name = "Jeans", TypeProductId = 2 },
+                new Category { Id = 6, Name = "Jogger", TypeProductId = 2 },
+                new Category { Id = 7, Name = "Hoodies", TypeProductId = 3 },
+                new Category { Id = 8, Name = "Coats", TypeProductId = 3 }
+            };
+
+            var SeedPrice = new double[] { 159000, 230000, 199000, 300000, 450000, 250000, 350000, 500000 };
+            var SeedProducts = new List<Product>();
+            //product;
+            int productPerCate = 10;
+            int idInitProduct = 1;
+            var rd = new Random();
+            for (int i = 0; i < SeedCategorys.Count; i++)
+            {
+                for (int j = 0; j < productPerCate; j++)
+                {
+                    var priceIndex = rd.Next(0, 7);
+                    SeedProducts.Add(new Product
+                    {
+                        Id = idInitProduct,
+                        Name = "Product Name",
+                        Price = SeedPrice[priceIndex],
+                        Material = "High quality water slide, with sun protection.",
+                        Origin = "Viet nam",
+                        ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                        CategoryId = SeedCategorys[i].Id,
+                        TypeProductId = SeedCategorys[i].TypeProductId,
+                        DateCreated = DateTime.Now,
+                    });
+                    idInitProduct++;
+                }
+            }
+
+            //
+            var SeedAttributes = new List<ProductAttr>();
+            int idInitAttr = 1;
+            for (int i = 0; i < SeedProducts.Count; i++)
+            {
+                SeedAttributes.Add(new ProductAttr() { Id = idInitAttr, Size = "S", ProductId = SeedProducts[i].Id, SaleCount = 0 });
+                idInitAttr++;
+                SeedAttributes.Add(new ProductAttr() { Id = idInitAttr, Size = "L", ProductId = SeedProducts[i].Id, SaleCount = 0 });
+                idInitAttr++;
+            }
 
             modelBuilder.Entity<Fee>().HasData(
-                new Fee { Id = 1, Name = "Tax", Cost = 0.05 }
-            );
-
-            var arrTemp = new List<Product>();
-            //type product 1;
-            for (int i = 1; i < 10; i++)
-            {
-                arrTemp.Add(new Product
-                {
-                    Id = i,
-                    Name = "Product " + i,
-                    Price = 98000,
-                    Image = "product-1.png",
-                    Material = "High quality water slide, with sun protection.",
-                    Origin = "Viet nam",
-                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
-                    CategoryId = 1,
-                    TypeProductId = 1,
-                    DateCreated = DateTime.Now
-                });
-            };
-            for (int i = 10; i < 20; i++)
-            {
-                arrTemp.Add(new Product
-                {
-                    Id = i,
-                    Name = "Product " + i,
-                    Price = 98000,
-                    Image = "product-2.png",
-                    Material = "High quality water slide, with sun protection.",
-                    Origin = "Viet nam",
-                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
-                    CategoryId = 2,
-                    TypeProductId = 1,
-                    DateCreated = DateTime.Now
-                });
-            };
-            for (int i = 20; i < 30; i++)
-            {
-                arrTemp.Add(new Product
-                {
-                    Id = i,
-                    Name = "Product " + i,
-                    Price = 98000,
-                    Image = "product-2.png",
-                    Material = "High quality water slide, with sun protection.",
-                    Origin = "Viet nam",
-                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
-                    CategoryId = 3,
-                    TypeProductId = 1,
-                    DateCreated = DateTime.Now
-                });
-            };
-            //type product 2
-            for (int i = 30; i < 40; i++)
-            {
-                arrTemp.Add(new Product
-                {
-                    Id = i,
-                    Name = "Product " + i,
-                    Price = 98000,
-                    Image = "product-1.png",
-                    Material = "High quality water slide, with sun protection.",
-                    Origin = "Viet nam",
-                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
-                    CategoryId = 6,
-                    TypeProductId = 2,
-                    DateCreated = DateTime.Now
-                });
-            };
-            for (int i = 40; i < 50; i++)
-            {
-                arrTemp.Add(new Product
-                {
-                    Id = i,
-                    Name = "Product " + i,
-                    Price = 98000,
-                    Image = "product-2.png",
-                    Material = "High quality water slide, with sun protection.",
-                    Origin = "Viet nam",
-                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
-                    CategoryId = 7,
-                    TypeProductId = 2,
-                    DateCreated = DateTime.Now
-                });
-            };
-            for (int i = 50; i < 60; i++)
-            {
-                arrTemp.Add(new Product
-                {
-                    Id = i,
-                    Name = "Product " + i,
-                    Price = 98000,
-                    Image = "product-2.png",
-                    Material = "High quality water slide, with sun protection.",
-                    Origin = "Viet nam",
-                    ProductDescription = "Thiết kế, lên form chuẩn, tạo cảm giác thoải mái cho người mặc/Đường may tỉ mỉ/Thích hợp cho các bạn nam dạo phố, đi chơi, đi làm, tôn lên được sự trẻ trung, năng động",
-                    CategoryId = 8,
-                    TypeProductId = 2,
-                    DateCreated = DateTime.Now
-                });
-            };
-            modelBuilder.Entity<Product>().HasData(arrTemp);
+                          new Fee { Id = 1, Name = "Tax", Cost = 0.05 }
+                      );
+            modelBuilder.Entity<TypeProduct>().HasData(SeedTypeProducts);
+            modelBuilder.Entity<Category>().HasData(SeedCategorys);
+            modelBuilder.Entity<Product>().HasData(SeedProducts);
+            modelBuilder.Entity<ProductAttr>().HasData(SeedAttributes);
             //
         }
     }
