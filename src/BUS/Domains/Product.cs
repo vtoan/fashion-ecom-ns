@@ -9,7 +9,6 @@ namespace BUS.Domains
         public string Name { get; set; }
         public bool? isDel { get; set; }
         public double? Price { get; set; }
-        public int? SaleCount { get; set; }
         public string Image { get; set; }
         public string Material { get; set; }
         public string Origin { get; set; }

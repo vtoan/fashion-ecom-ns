@@ -56,7 +56,7 @@ namespace DAO.DAOs
                         sqlString = sqlString.OrderBy(item => item.Price);
                         break;
                     case ProductSort.Popular:
-                        sqlString = sqlString.OrderByDescending(item => item.SaleCount);
+                        sqlString = sqlString.OrderByDescending(item => item.ProductAttrs.Sum(i => i.SaleCount));
                         break;
                 }
             }
