@@ -46,6 +46,7 @@ namespace CustomerSite.Controllers
             var fees = HttpContext.Session.GetString(PageHelper.KEY_FEE_SESSION);
             orderDetailVM.Fees = fees;
             orderDetailVM.UserId = userId;
+            orderDetailVM.OrderItems = listOrderItem;
             var result = await _requestOrder.CreateAsync(orderDetailVM, listOrderItem);
             // listCartItem 
             if (result == null) Redirect("/Error");

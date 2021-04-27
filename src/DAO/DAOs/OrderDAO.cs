@@ -19,6 +19,14 @@ namespace DAO.DAOs
         {
             if (newObject == null) return null;
             _context.Add<Order>(newObject);
+            if (newObject.OrderDetails.Count > 0)
+            {
+                foreach (var od in newObject.OrderDetails)
+                {
+                    var product = _context.ProductAttrs.Find(od.ProductAttrId);
+                    if (product != null) product.SaleCount += od.Quantity;
+                }
+            }
             _context.SaveChangesAsync().Wait();
             return newObject;
         }
