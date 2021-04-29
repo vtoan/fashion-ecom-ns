@@ -45,6 +45,7 @@ export default function Product() {
     let result = window.confirm("Delete this item?");
     if (result) {
       _cateSer.delete(itemId).then(() => {
+        _fetchCateDataWithType(1);
         setCates(_removeViewItem(listCates, itemId));
       });
     }

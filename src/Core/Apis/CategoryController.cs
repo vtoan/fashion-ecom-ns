@@ -61,6 +61,7 @@ namespace Core.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
+            if (id <= 0) return BadRequest();
             try
             {
                 var result = _cateSer.Delete(id);

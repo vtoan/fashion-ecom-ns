@@ -4,14 +4,16 @@ using DAO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAO.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210429233439_UpdateDeleteRating")]
+    partial class UpdateDeleteRating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,11 +250,11 @@ namespace DAO.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 845, DateTimeKind.Local).AddTicks(308),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 228, DateTimeKind.Local).AddTicks(5099),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 199000.0,
+                            Price = 300000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -260,11 +262,11 @@ namespace DAO.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2210),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7464),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 250000.0,
+                            Price = 450000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -272,7 +274,19 @@ namespace DAO.Migrations
                         {
                             Id = 3,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2242),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7500),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 300000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 1,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7557),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -282,25 +296,13 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 5,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2247),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7561),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
                             Price = 250000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2251),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 199000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -308,11 +310,11 @@ namespace DAO.Migrations
                         {
                             Id = 6,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2258),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7567),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 250000.0,
+                            Price = 450000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -320,7 +322,19 @@ namespace DAO.Migrations
                         {
                             Id = 7,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2261),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7571),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 159000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 1,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7574),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -330,25 +344,13 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 8,
-                            CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2264),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 230000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
                             Id = 9,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2268),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7577),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 230000.0,
+                            Price = 159000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -356,7 +358,7 @@ namespace DAO.Migrations
                         {
                             Id = 10,
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2272),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7581),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -368,7 +370,19 @@ namespace DAO.Migrations
                         {
                             Id = 11,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2276),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7584),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 250000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoryId = 2,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7587),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -378,81 +392,9 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 12,
-                            CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2280),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 230000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
                             Id = 13,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2283),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 250000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 14,
-                            CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2286),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 450000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2290),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 230000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2293),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 250000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2296),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 250000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2300),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7590),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -462,13 +404,73 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 19,
+                            Id = 14,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2304),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7593),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 350000.0,
+                            Price = 199000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CategoryId = 2,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7597),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 159000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CategoryId = 2,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7600),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 300000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 1
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CategoryId = 2,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7603),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 199000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CategoryId = 2,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7607),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 230000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 1
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CategoryId = 2,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7610),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 300000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -476,7 +478,7 @@ namespace DAO.Migrations
                         {
                             Id = 20,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2307),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7613),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -488,31 +490,7 @@ namespace DAO.Migrations
                         {
                             Id = 21,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2310),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 250000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 22,
-                            CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2313),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 450000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 1
-                        },
-                        new
-                        {
-                            Id = 23,
-                            CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2316),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7617),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -522,9 +500,9 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 24,
+                            Id = 22,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2319),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7619),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -534,13 +512,37 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 25,
+                            Id = 23,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2323),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7622),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 159000.0,
+                            Price = 250000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 1
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CategoryId = 3,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7625),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 230000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 1
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CategoryId = 3,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7628),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 350000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -548,7 +550,7 @@ namespace DAO.Migrations
                         {
                             Id = 26,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2326),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7631),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -560,11 +562,11 @@ namespace DAO.Migrations
                         {
                             Id = 27,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2329),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7634),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 199000.0,
+                            Price = 230000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -572,11 +574,11 @@ namespace DAO.Migrations
                         {
                             Id = 28,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2332),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7637),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 199000.0,
+                            Price = 300000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -584,11 +586,11 @@ namespace DAO.Migrations
                         {
                             Id = 29,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2335),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7640),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 300000.0,
+                            Price = 199000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -596,11 +598,11 @@ namespace DAO.Migrations
                         {
                             Id = 30,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2338),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7643),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 250000.0,
+                            Price = 159000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 1
                         },
@@ -608,11 +610,11 @@ namespace DAO.Migrations
                         {
                             Id = 31,
                             CategoryId = 4,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2342),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7647),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 199000.0,
+                            Price = 350000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -620,11 +622,11 @@ namespace DAO.Migrations
                         {
                             Id = 32,
                             CategoryId = 4,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2353),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7650),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 300000.0,
+                            Price = 450000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -632,7 +634,7 @@ namespace DAO.Migrations
                         {
                             Id = 33,
                             CategoryId = 4,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2356),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7653),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -644,11 +646,11 @@ namespace DAO.Migrations
                         {
                             Id = 34,
                             CategoryId = 4,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2361),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7657),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 350000.0,
+                            Price = 250000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -656,7 +658,7 @@ namespace DAO.Migrations
                         {
                             Id = 35,
                             CategoryId = 4,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2364),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7660),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -668,11 +670,11 @@ namespace DAO.Migrations
                         {
                             Id = 36,
                             CategoryId = 4,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2367),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7663),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 300000.0,
+                            Price = 450000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -680,11 +682,11 @@ namespace DAO.Migrations
                         {
                             Id = 37,
                             CategoryId = 4,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2370),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7666),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 199000.0,
+                            Price = 350000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -692,11 +694,11 @@ namespace DAO.Migrations
                         {
                             Id = 38,
                             CategoryId = 4,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2373),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7668),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 230000.0,
+                            Price = 350000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -704,11 +706,11 @@ namespace DAO.Migrations
                         {
                             Id = 39,
                             CategoryId = 4,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2376),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7671),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 450000.0,
+                            Price = 350000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -716,79 +718,7 @@ namespace DAO.Migrations
                         {
                             Id = 40,
                             CategoryId = 4,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2379),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 450000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 41,
-                            CategoryId = 5,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2382),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 159000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 42,
-                            CategoryId = 5,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2385),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 199000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 43,
-                            CategoryId = 5,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2389),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 159000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 44,
-                            CategoryId = 5,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2392),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 450000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 45,
-                            CategoryId = 5,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2395),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 300000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 46,
-                            CategoryId = 5,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2398),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7674),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -798,9 +728,21 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 47,
+                            Id = 41,
                             CategoryId = 5,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2401),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7677),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 350000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 2
+                        },
+                        new
+                        {
+                            Id = 42,
+                            CategoryId = 5,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7680),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -810,9 +752,69 @@ namespace DAO.Migrations
                         },
                         new
                         {
+                            Id = 43,
+                            CategoryId = 5,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7683),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 250000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 2
+                        },
+                        new
+                        {
+                            Id = 44,
+                            CategoryId = 5,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7686),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 159000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 2
+                        },
+                        new
+                        {
+                            Id = 45,
+                            CategoryId = 5,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7689),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 230000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 2
+                        },
+                        new
+                        {
+                            Id = 46,
+                            CategoryId = 5,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7726),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 159000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 2
+                        },
+                        new
+                        {
+                            Id = 47,
+                            CategoryId = 5,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7729),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 450000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 2
+                        },
+                        new
+                        {
                             Id = 48,
                             CategoryId = 5,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2404),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7732),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -824,7 +826,7 @@ namespace DAO.Migrations
                         {
                             Id = 49,
                             CategoryId = 5,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2407),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7736),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -836,7 +838,7 @@ namespace DAO.Migrations
                         {
                             Id = 50,
                             CategoryId = 5,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2411),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7739),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -848,11 +850,11 @@ namespace DAO.Migrations
                         {
                             Id = 51,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2414),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7742),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 450000.0,
+                            Price = 199000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -860,11 +862,11 @@ namespace DAO.Migrations
                         {
                             Id = 52,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2417),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7745),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 450000.0,
+                            Price = 250000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -872,11 +874,11 @@ namespace DAO.Migrations
                         {
                             Id = 53,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2420),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7748),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 350000.0,
+                            Price = 230000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -884,11 +886,11 @@ namespace DAO.Migrations
                         {
                             Id = 54,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2423),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7751),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 300000.0,
+                            Price = 199000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -896,7 +898,31 @@ namespace DAO.Migrations
                         {
                             Id = 55,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2426),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7754),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 199000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 2
+                        },
+                        new
+                        {
+                            Id = 56,
+                            CategoryId = 6,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7757),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 159000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 2
+                        },
+                        new
+                        {
+                            Id = 57,
+                            CategoryId = 6,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7760),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -906,37 +932,13 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 56,
-                            CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2429),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 450000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
-                            Id = 57,
-                            CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2432),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 199000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 2
-                        },
-                        new
-                        {
                             Id = 58,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2435),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7763),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 199000.0,
+                            Price = 230000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -944,11 +946,11 @@ namespace DAO.Migrations
                         {
                             Id = 59,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2438),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7766),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 450000.0,
+                            Price = 350000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -956,11 +958,11 @@ namespace DAO.Migrations
                         {
                             Id = 60,
                             CategoryId = 6,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2441),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7769),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 250000.0,
+                            Price = 199000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 2
                         },
@@ -968,7 +970,31 @@ namespace DAO.Migrations
                         {
                             Id = 61,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2445),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7772),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 199000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 3
+                        },
+                        new
+                        {
+                            Id = 62,
+                            CategoryId = 7,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7775),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 450000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 3
+                        },
+                        new
+                        {
+                            Id = 63,
+                            CategoryId = 7,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7778),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -978,81 +1004,9 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 62,
-                            CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2448),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 199000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 3
-                        },
-                        new
-                        {
-                            Id = 63,
-                            CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2451),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 450000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 3
-                        },
-                        new
-                        {
                             Id = 64,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2454),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 199000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 3
-                        },
-                        new
-                        {
-                            Id = 65,
-                            CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2457),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 159000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 3
-                        },
-                        new
-                        {
-                            Id = 66,
-                            CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2461),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 250000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 3
-                        },
-                        new
-                        {
-                            Id = 67,
-                            CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2464),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 250000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 3
-                        },
-                        new
-                        {
-                            Id = 68,
-                            CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2466),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7781),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -1062,9 +1016,21 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 69,
+                            Id = 65,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2469),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7784),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 450000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 3
+                        },
+                        new
+                        {
+                            Id = 66,
+                            CategoryId = 7,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7788),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -1074,33 +1040,21 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 70,
+                            Id = 67,
                             CategoryId = 7,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2473),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7791),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 250000.0,
+                            Price = 350000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 3
                         },
                         new
                         {
-                            Id = 71,
-                            CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2480),
-                            Material = "High quality water slide, with sun protection.",
-                            Name = "Product Name",
-                            Origin = "Viet nam",
-                            Price = 199000.0,
-                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
-                            TypeProductId = 3
-                        },
-                        new
-                        {
-                            Id = 72,
-                            CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2484),
+                            Id = 68,
+                            CategoryId = 7,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7794),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -1110,13 +1064,61 @@ namespace DAO.Migrations
                         },
                         new
                         {
-                            Id = 73,
-                            CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2487),
+                            Id = 69,
+                            CategoryId = 7,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7797),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 250000.0,
+                            Price = 350000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 3
+                        },
+                        new
+                        {
+                            Id = 70,
+                            CategoryId = 7,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7800),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 300000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 3
+                        },
+                        new
+                        {
+                            Id = 71,
+                            CategoryId = 8,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7803),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 450000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 3
+                        },
+                        new
+                        {
+                            Id = 72,
+                            CategoryId = 8,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7806),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 199000.0,
+                            ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
+                            TypeProductId = 3
+                        },
+                        new
+                        {
+                            Id = 73,
+                            CategoryId = 8,
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7809),
+                            Material = "High quality water slide, with sun protection.",
+                            Name = "Product Name",
+                            Origin = "Viet nam",
+                            Price = 230000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 3
                         },
@@ -1124,7 +1126,7 @@ namespace DAO.Migrations
                         {
                             Id = 74,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2490),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7812),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -1136,11 +1138,11 @@ namespace DAO.Migrations
                         {
                             Id = 75,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2493),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7815),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 250000.0,
+                            Price = 350000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 3
                         },
@@ -1148,11 +1150,11 @@ namespace DAO.Migrations
                         {
                             Id = 76,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2496),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7819),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 300000.0,
+                            Price = 230000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 3
                         },
@@ -1160,11 +1162,11 @@ namespace DAO.Migrations
                         {
                             Id = 77,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2499),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7821),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 300000.0,
+                            Price = 450000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 3
                         },
@@ -1172,7 +1174,7 @@ namespace DAO.Migrations
                         {
                             Id = 78,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2502),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7825),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -1184,11 +1186,11 @@ namespace DAO.Migrations
                         {
                             Id = 79,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2505),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7828),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
-                            Price = 350000.0,
+                            Price = 159000.0,
                             ProductDescription = "The ultimate summer staplt./Just dont call them./These shorts are Real Good: made in a factory that meets our standards for water recycling and reduction./High stretch level that keeps its shape.",
                             TypeProductId = 3
                         },
@@ -1196,7 +1198,7 @@ namespace DAO.Migrations
                         {
                             Id = 80,
                             CategoryId = 8,
-                            DateCreated = new DateTime(2021, 4, 29, 16, 38, 10, 847, DateTimeKind.Local).AddTicks(2508),
+                            DateCreated = new DateTime(2021, 4, 29, 16, 34, 39, 230, DateTimeKind.Local).AddTicks(7831),
                             Material = "High quality water slide, with sun protection.",
                             Name = "Product Name",
                             Origin = "Viet nam",
@@ -2677,8 +2679,7 @@ namespace DAO.Migrations
                 {
                     b.HasOne("BUS.Domains.Product", "Product")
                         .WithMany("ProductAttrs")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Product");
                 });

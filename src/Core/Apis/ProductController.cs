@@ -30,7 +30,9 @@ namespace Core.Controllers
         [AllowAnonymous]
         public ActionResult<ProductDetailVM> Get(int id)
         {
-            return _productSer.Get(id);
+            var result = _productSer.Get(id);
+            if (result == null) return NotFound();
+            return result;
         }
 
         [HttpGet]
@@ -66,6 +68,7 @@ namespace Core.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
+            if (id <= 0) return BadRequest();
             var result = _productSer.Delete(id);
             if (!result) return NotFound();
             return NoContent();
@@ -74,15 +77,17 @@ namespace Core.Controllers
         // Image
         [HttpGet("{productId}/images")]
         [AllowAnonymous]
-        public IEnumerable<string> GetListImage([FromServices] IFileService fileSer, int productId)
+        public ActionResult<IEnumerable<string>> GetListImage([FromServices] IFileService fileSer, int productId)
         {
-            return fileSer.GetFilesInFolder(_imageFolder + productId);
+            if (productId <= 0) return BadRequest();
+            return Ok(fileSer.GetFilesInFolder(_imageFolder + productId));
         }
 
         [HttpPost("{productId}/images")]
         [Authorize(Roles = "admin")]
         public ActionResult<string> UploadImage([FromServices] IFileService fileSer, IFormFile image, int productId)
         {
+            if (image == null || productId <= 0) return BadRequest();
             return _uploadImage(fileSer, image, productId);
         }
 
@@ -90,8 +95,9 @@ namespace Core.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult<string> ChangeDefaultImage([FromServices] IFileService fileSer, int productId, ProductImageModel imageModel)
         {
-            var fileExsist = fileSer.CheckFileExsist(_imageFolder, imageModel.Image);
-            if (!fileExsist) return NotFound();
+            if (!ModelState.IsValid || productId <= 0) return BadRequest();
+            // var fileExsist = fileSer.CheckFileExsist(_imageFolder, imageModel.Image);
+            // if (!fileExsist) return NotFound();
             var result = _productSer.Update(imageModel.Id, new ProductDetailVM() { Id = imageModel.Id, Image = imageModel.Image });
             if (!result) return NotFound();
             return NoContent();
@@ -101,8 +107,8 @@ namespace Core.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult DeleteImage([FromServices] IFileService fileSer, string imageName, int productId)
         {
-            if (imageName == null) return BadRequest();
-            fileSer.RemoveFile(_imageFolder + productId, imageName);
+            if (imageName == null || productId <= 0) return BadRequest();
+            fileSer.RemoveFile(_imageFolder, imageName);
             return NoContent();
         }
 

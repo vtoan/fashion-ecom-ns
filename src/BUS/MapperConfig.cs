@@ -12,14 +12,11 @@ namespace BUS
         public MapperConfig()
         {
             //Category
-            CreateMap<CategoryVM, Category>();
-            CreateMap<Category, CategoryVM>();
+            CreateMap<CategoryVM, Category>().ReverseMap();
             //Fee
-            CreateMap<FeeVM, Fee>();
-            CreateMap<Fee, FeeVM>();
+            CreateMap<FeeVM, Fee>().ReverseMap();
             //Type Product
-            CreateMap<TypeProductVM, TypeProduct>();
-            CreateMap<TypeProduct, TypeProductVM>();
+            CreateMap<TypeProductVM, TypeProduct>().ReverseMap();
             //Product
             CreateMap<ProductAttr, ProductAttributeVM>();
             CreateMap<ProductAttributeVM, ProductAttr>();

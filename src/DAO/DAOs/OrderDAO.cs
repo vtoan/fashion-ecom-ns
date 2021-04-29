@@ -79,11 +79,8 @@ namespace DAO.DAOs
                 if (offset > total) throw new Exception("Offset is outbound");
                 src = src.Skip(offset);
             }
-            if (limited > 0)
-            {
-                if (offset * limited <= total)
-                    src = src.Take(limited);
-            }
+            if (limited > 0) src = src.Take(limited);
+
             src.OrderByDescending(item => item.DateCreated);
         }
     }

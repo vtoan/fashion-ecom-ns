@@ -18,7 +18,6 @@ namespace Core.Controllers
             _typeSer = typeSer;
         }
 
-
         [HttpGet]
         [AllowAnonymous]
         public IEnumerable<TypeProductVM> GetList()

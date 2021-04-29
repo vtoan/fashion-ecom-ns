@@ -33,17 +33,10 @@ namespace Core.Service
 
         public void RemoveFile(string folderPath, string fileNameDel)
         {
-            string dir = Path.Combine(webRootPath, folderPath);
-            var re = Directory.GetFiles(dir);
-            if (re == null) return;
-            for (int i = 0; i < re.Length; i++)
+            string filePath = Path.Combine(webRootPath, folderPath, fileNameDel);
+            if (File.Exists(filePath))
             {
-                var fileName = re[i].Split("/").Last();
-                if (fileName == fileNameDel)
-                {
-                    File.Delete(re[i]);
-                    break;
-                }
+                File.Delete(filePath);
             }
         }
 

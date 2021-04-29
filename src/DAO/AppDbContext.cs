@@ -26,6 +26,10 @@ namespace DAO
             modelBuilder.Entity<TypeProduct>().Property(p => p.Name).HasMaxLength(50);
             //Category
             modelBuilder.Entity<Category>().Property(p => p.Name).HasMaxLength(50);
+            modelBuilder.Entity<Category>()
+                .HasMany<Product>(e => e.Products)
+                .WithOne(s => s.Category)
+                .OnDelete(DeleteBehavior.SetNull);
             //Fee
             modelBuilder.Entity<Fee>().Property(p => p.Name).HasMaxLength(100);
             modelBuilder.Entity<Fee>().Property(p => p.Cost).HasColumnType("decimal(2,2)");
@@ -50,6 +54,14 @@ namespace DAO
             modelBuilder.Entity<Product>().Property(p => p.ProductDescription).HasMaxLength(250);
             modelBuilder.Entity<Product>().Property(o => o.DateCreated).HasColumnType("smalldatetime");
             modelBuilder.Entity<Product>().Property(o => o.DateModified).HasColumnType("smalldatetime");
+            modelBuilder.Entity<Product>()
+                .HasMany<Rating>(e => e.Ratings)
+                .WithOne(e => e.Product)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Product>()
+                .HasMany<ProductAttr>(e => e.ProductAttrs)
+                .WithOne(e => e.Product)
+                .OnDelete(DeleteBehavior.Cascade);
             //ProductDetail
             modelBuilder.Entity<ProductAttr>().HasKey(p => p.Id);
             modelBuilder.Entity<ProductAttr>().Property(p => p.Size).HasMaxLength(20);

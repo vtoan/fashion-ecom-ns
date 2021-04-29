@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using CustomerSite.Models;
 using CustomerSite.Interfaces;
 using Shared.ViewModels;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 
 namespace CustomerSite.Controllers
 {
@@ -25,12 +25,12 @@ namespace CustomerSite.Controllers
 
         [HttpPost("/rating/{productId}")]
         [Authorize]
-        public IActionResult Submit(int productId, RatingVM ratingVM)
+        public async Task<IActionResult> SubmitAsync(int productId, RatingVM ratingVM)
         {
             if (!ModelState.IsValid) return Redirect("/product/" + productId);
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ratingVM.UserId = userId;
-            _request.CreateAsync(productId, userId, ratingVM);
+            await _request.CreateAsync(productId, ratingVM);
             ViewBag.ProductId = productId;
             return View("Index");
         }

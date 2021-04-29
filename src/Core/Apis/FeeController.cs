@@ -59,6 +59,7 @@ namespace Core.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
+            if (id <= 0) return BadRequest();
             var result = _feeSer.Delete(id);
             if (!result) return NotFound();
             return NoContent();

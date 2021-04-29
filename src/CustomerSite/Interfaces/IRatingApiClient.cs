@@ -8,6 +8,6 @@ namespace CustomerSite.Interfaces
     public interface IRatingApiClient
     {
         Task<IEnumerable<RatingVM>> GetByProductAsync(int id);
-        Task<RatingVM> CreateAsync(int productId, string userId, RatingVM ratingVM);
+        Task<RatingVM> CreateAsync(int productId, RatingVM ratingVM);
     }
 }
