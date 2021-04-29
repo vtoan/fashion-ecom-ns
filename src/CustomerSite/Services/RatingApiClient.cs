@@ -15,9 +15,9 @@ namespace CustomerSite.Services
             _request = request;
         }
 
-        public async Task<RatingVM> CreateAsync(int productId, string userId, RatingVM ratingVM)
+        public async Task<RatingVM> CreateAsync(int productId, RatingVM ratingVM)
         {
-            var router = routeName + "?productId=" + productId + "&&userId" + userId;
+            var router = routeName + "?productId=" + productId;
             return await _request.PostAsync<RatingVM>(router, ratingVM);
         }
 

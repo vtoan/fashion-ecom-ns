@@ -15,10 +15,11 @@ namespace CustomerSite.Controllers
 
         [Route("/Error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error([FromServices] IExceptionHandlerFeature ex)
+        public IActionResult Error()
         {
-            var exception = ex.Error;
-            return View(exception);
+            var exception = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            var msg = exception.Error ?? null;
+            return View(msg);
         }
 
     }
