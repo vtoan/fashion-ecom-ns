@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Core.ServiceInjection;
+using Core.ServiceExtensions;
 using IdentityServer4.Models;
 
 namespace Core.Identity

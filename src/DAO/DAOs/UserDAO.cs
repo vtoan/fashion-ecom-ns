@@ -24,12 +24,8 @@ namespace DAO.DAOs
                 if (offset * limited > totalItem) throw new Exception("Offset is outbound");
                 sqlString = sqlString.Skip(offset * limited);
             }
-            if (limited > 0)
-            {
-                if (offset * limited <= totalItem)
-                    sqlString = sqlString.Take(limited);
-            }
-            //sort
+            if (limited > 0) sqlString = sqlString.Take(limited);
+
             var result = sqlString.ToList();
             return (result, totalItem);
         }

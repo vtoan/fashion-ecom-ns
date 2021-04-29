@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
-using BUS.Interfaces.Services;
-using BUS.Services;
-using Core.Interfaces;
-using Core.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.ServiceInjection
+namespace Core.ServiceExtensions
 {
     public static class ReadConfig
     {

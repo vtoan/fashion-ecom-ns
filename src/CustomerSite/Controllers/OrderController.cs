@@ -49,7 +49,7 @@ namespace CustomerSite.Controllers
         {
             if (
                 String.IsNullOrWhiteSpace(attrIds)
-                || attrIds == "") throw new Exception();
+                || String.IsNullOrEmpty(attrIds)) throw new Exception("Can't get order items");
             //
             var cartItems = JsonSerializer.Deserialize<List<OrderItemVM>>(attrIds);
             var arrAttrIds = cartItems.Select(item => item.AttributeId);

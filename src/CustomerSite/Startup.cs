@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using CustomerSite.ServiceInjection;
+using CustomerSite.ServiceExtensions;
 
 namespace CustomerSite
 {
@@ -40,7 +40,7 @@ namespace CustomerSite
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
             app.UseSession();

@@ -1,11 +1,7 @@
-using Shared.Enums;
 using BUS.Interfaces.Services;
 using Core.Helper;
-using Core.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ViewModels;
-using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 
@@ -22,7 +18,6 @@ namespace Core.Controllers
         {
             _userSer = userSer;
         }
-
 
         [HttpGet]
         [AllowAnonymous]

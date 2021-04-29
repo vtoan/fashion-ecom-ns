@@ -48,20 +48,22 @@ namespace Core.Controllers
 
         [HttpGet("phone")]
         [AllowAnonymous]
-        public IEnumerable<OrderVM> GetListByPhone(string phone, int provinceId, int limited, int offset)
+        public ActionResult<IEnumerable<OrderVM>> GetListByPhone(string phone, int provinceId, int limited, int offset)
         {
+            if (string.IsNullOrEmpty(phone) || string.IsNullOrWhiteSpace(phone)) return BadRequest();
             var result = _orderSer.GetListByPhone(phone, provinceId, limited, offset);
             RespHelper.AddTotalPage(HttpContext, result.TotalItem);
-            return result.Orders;
+            return Ok(result.Orders);
         }
 
         [HttpGet("user")]
         [AllowAnonymous]
-        public IEnumerable<OrderVM> GetListByUser(string userId, int provinceId, int limited, int offset)
+        public ActionResult<IEnumerable<OrderVM>> GetListByUser(string userId, int provinceId, int limited, int offset)
         {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrWhiteSpace(userId)) return BadRequest();
             var result = _orderSer.GetListByUser(userId, provinceId, limited, offset);
             RespHelper.AddTotalPage(HttpContext, result.TotalItem);
-            return result.Orders;
+            return Ok(result.Orders);
         }
     }
 }

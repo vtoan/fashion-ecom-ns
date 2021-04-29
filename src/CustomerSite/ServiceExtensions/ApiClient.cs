@@ -2,7 +2,7 @@ using CustomerSite.Interfaces;
 using CustomerSite.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CustomerSite.ServiceInjection
+namespace CustomerSite.ServiceExtensions
 {
     public static class ApiClient
     {

@@ -57,11 +57,8 @@ namespace BUS.Services
         //Mapper for List Object
         protected List<K> _mapList<K, S>(ICollection<S> source)
         {
-            List<K> des = new List<K>();
-            if (source == null || source.Count == 0) return des;
-            foreach (var item in source)
-                des.Add(_mapper.Map<K>(item));
-            return des;
+            if (source == null || source.Count == 0) return new List<K>();
+            return _mapper.Map<List<K>>(source);
         }
 
         //Reflection Proprety

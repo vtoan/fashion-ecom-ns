@@ -2,7 +2,7 @@ using BUS.Interfaces.Services;
 using BUS.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.ServiceInjection
+namespace Core.ServiceExtensions
 {
     public static class BUSServices
     {

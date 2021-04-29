@@ -3,7 +3,7 @@ using BUS;
 using BUS.Domains;
 using Core.Identity;
 using Core.Middlewares;
-using Core.ServiceInjection;
+using Core.ServiceExtensions;
 using DAO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -51,6 +51,13 @@ namespace Core
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseGlobalHandlerException();
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
             app.UseSwagger(c =>
             {
                 c.SerializeAsV2 = true;
@@ -62,14 +69,6 @@ namespace Core
                 c.RoutePrefix = string.Empty;
             });
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                // app.UseExceptionHandler("/Error");
-            }
 
             app.UseCors(builder =>
             {
@@ -83,8 +82,6 @@ namespace Core
             app.UseStaticFiles();
 
             app.UseStatusCodePages();
-
-            app.UseGlobalHandlerException();
 
             app.UseHttpsRedirection();
 

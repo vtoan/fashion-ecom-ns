@@ -38,6 +38,7 @@ namespace CustomerSite.Controllers
         [HttpPost("/Checkout")]
         public async Task<IActionResult> CheckoutSubmitAsync(OrderDetailVM orderDetailVM)
         {
+            if (!ModelState.IsValid) return RedirectToAction("CheckoutAsync");
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var listOrderItem = _getOrderItemsInSession(HttpContext);

@@ -4,7 +4,7 @@ using Core.Interfaces;
 using Core.Service;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.ServiceInjection
+namespace Core.ServiceExtensions
 {
     public static class HelpfulServices
     {

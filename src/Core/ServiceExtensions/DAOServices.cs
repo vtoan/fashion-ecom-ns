@@ -3,7 +3,7 @@ using BUS.Interfaces.DAOs;
 using DAO.DAOs;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.ServiceInjection
+namespace Core.ServiceExtensions
 {
     public static class DAOServices
     {

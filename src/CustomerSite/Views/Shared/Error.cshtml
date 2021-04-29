@@ -1,15 +1,16 @@
-@model ErrorViewModel
 @{
     ViewData["Title"] = "Error";
 }
 <div class=" text-center" style="padding: 200px 0;">
     <h1 class="impress">ERROR.</h1>
     <p class="">An error occurred while processing your request.</p>
-    @if (Model.ShowRequestId)
+    @if (Model == null)
     {
-        <p>
-            <strong>Request ID:</strong> <code>@Model.RequestId</code>
-        </p>
+        <p><strong>404</strong></p>
+    }
+    else
+    {
+        <p><strong>@Model</strong></p>
     }
     <a class="d-inline-block" href="/">Back to home</a>
 </div>

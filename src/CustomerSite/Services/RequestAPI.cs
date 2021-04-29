@@ -26,8 +26,7 @@ namespace CustomerSite.Services
             try
             {
                 var resp = await _host.GetAsync(route + routeParams);
-                if (!resp.IsSuccessStatusCode)
-                    return default(T);
+                if (!resp.IsSuccessStatusCode || resp.Content == null) return default(T);
                 // throw new Exception(resp.StatusCode.ToString());
                 return await resp.Content.ReadFromJsonAsync<T>();
             }
@@ -42,7 +41,7 @@ namespace CustomerSite.Services
             try
             {
                 var resp = await _host.GetAsync(route + routeParams);
-                if (!resp.IsSuccessStatusCode)
+                if (!resp.IsSuccessStatusCode || resp.Content == null)
                     return (default(T), null);
                 // throw new Exception(resp.StatusCode.ToString());
                 return (await resp.Content.ReadFromJsonAsync<T>(), resp.Headers);
@@ -58,15 +57,14 @@ namespace CustomerSite.Services
             try
             {
                 var resp = await _host.PostAsJsonAsync(route + routeParams, bodyContent);
-                if (!resp.IsSuccessStatusCode)
-                    throw new Exception(resp.StatusCode.ToString());
+                if (!resp.IsSuccessStatusCode || resp.Content == null) return default(T);
+                // throw new Exception(resp.StatusCode.ToString());
                 return await resp.Content.ReadFromJsonAsync<T>();
             }
             catch (Exception)
             {
                 throw new ServeNotAvaiableException();
             }
-
         }
 
         public async Task<bool> PutAsync(string route, object bodyContent, string routeParams = "")
@@ -74,8 +72,7 @@ namespace CustomerSite.Services
             try
             {
                 var resp = await _host.PutAsJsonAsync(route + routeParams, bodyContent);
-                if (!resp.IsSuccessStatusCode)
-                    throw new Exception(resp.StatusCode.ToString());
+                if (!resp.IsSuccessStatusCode || resp.Content == null) return false;
                 return true;
             }
             catch (Exception)
@@ -94,8 +91,7 @@ namespace CustomerSite.Services
                     RequestUri = new Uri(Startup.HostUri + route + routeParams)
                 };
                 var resp = await _host.SendAsync(request);
-                if (!resp.IsSuccessStatusCode)
-                    throw new Exception(resp.StatusCode.ToString());
+                if (!resp.IsSuccessStatusCode || resp.Content == null) return false;
                 return true;
             }
             catch (Exception)

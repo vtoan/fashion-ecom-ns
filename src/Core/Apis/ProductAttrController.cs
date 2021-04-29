@@ -28,10 +28,11 @@ namespace Core.Controllers
 
         [HttpGet("attrs")]
         [AllowAnonymous]
-        public IEnumerable<OrderItemVM> GeListCartItem(string attrIds)
+        public ActionResult<IEnumerable<OrderItemVM>> GeListCartItem(string attrIds)
         {
+            if (string.IsNullOrEmpty(attrIds) || string.IsNullOrWhiteSpace(attrIds)) return BadRequest();
             var arrAttribute = JsonSerializer.Deserialize<int[]>(attrIds);
-            return _productAttrSer.GetListCartItem(arrAttribute);
+            return Ok(_productAttrSer.GetListCartItem(arrAttribute));
         }
 
         [HttpPost("{productId}/attrs")]
@@ -58,6 +59,7 @@ namespace Core.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
+            if (id <= 0) return BadRequest();
             var result = _productAttrSer.Delete(id);
             if (!result) return NotFound();
             return NoContent();

@@ -20,23 +20,25 @@ namespace Core.Controllers
 
         [HttpGet("product/{id}")]
         [AllowAnonymous]
-        public IEnumerable<RatingVM> GetByProduct(int id)
+        public ActionResult<IEnumerable<RatingVM>> GetByProduct(int id)
         {
-            return _ratingSer.GetByProduct(id);
+            if (id <= 0) return BadRequest();
+            return Ok(_ratingSer.GetByProduct(id));
         }
 
         [HttpGet("user/{id}")]
         [AllowAnonymous]
-        public IEnumerable<RatingVM> GetByUser(int id)
+        public ActionResult<IEnumerable<RatingVM>> GetByUser(int id)
         {
-            return _ratingSer.GetByProduct(id);
+            if (id <= 0) return BadRequest();
+            return Ok(_ratingSer.GetByProduct(id));
         }
 
         [HttpPost]
         [AllowAnonymous]
         public ActionResult<RatingVM> Create(int productId, string userId, RatingVM ratingVM)
         {
-            if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid || productId <= 0 || string.IsNullOrEmpty(userId) || string.IsNullOrWhiteSpace(userId)) return BadRequest();
             var result = _ratingSer.Add(productId, ratingVM);
             if (result == null) return Problem("Can't add rating");
             return CreatedAtAction(nameof(Create), result);
@@ -46,6 +48,7 @@ namespace Core.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
+            if (id <= 0) return BadRequest();
             var result = _ratingSer.Delete(id);
             if (!result) return NotFound();
             return NoContent();

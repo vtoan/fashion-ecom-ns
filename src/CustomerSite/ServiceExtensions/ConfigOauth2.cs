@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace CustomerSite.ServiceInjection
+namespace CustomerSite.ServiceExtensions
 {
     public static class ConfigOauth2
     {

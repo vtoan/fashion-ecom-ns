@@ -1,6 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using CustomerSite.Models;
 
 namespace CustomerSite.Controllers
 {
@@ -14,11 +13,12 @@ namespace CustomerSite.Controllers
             return View();
         }
 
-
+        [Route("/Error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error([FromServices] IExceptionHandlerFeature ex)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var exception = ex.Error;
+            return View(exception);
         }
 
     }

@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using CustomerSite.Models;
 using CustomerSite.Interfaces;
 using Shared.ViewModels;
 using System.Security.Claims;

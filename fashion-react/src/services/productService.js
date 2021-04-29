@@ -62,7 +62,7 @@ class productService extends commonService {
     return axios({
       url: this.pathSer + "/" + productId + "/images?imageName=" + imageName,
       method: "delete",
-      actionName: `Delete Product Attribute ${productId}`,
+      actionName: `Delete Image ${productId}`,
     });
   }
 }
