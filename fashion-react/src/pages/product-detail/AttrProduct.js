@@ -1,7 +1,7 @@
 import React from "react";
 import { InputGroup, InputGroupAddon, Button, Input, Alert } from "reactstrap";
 
-import _prodSer from "../../services/productService";
+import _attrProdSer from "../../services/attributeProdService";
 
 export default function AttrProduct({ productId, datas }) {
   const inputRef = React.useRef(null);
@@ -14,7 +14,7 @@ export default function AttrProduct({ productId, datas }) {
   //handle
   const _fetchAttrData = () => {
     if (productId)
-      _prodSer.getListAttr(productId).then(({ data }) => {
+      _attrProdSer.getListAttr(productId).then(({ data }) => {
         setAttrs(data);
       });
   };
@@ -23,7 +23,7 @@ export default function AttrProduct({ productId, datas }) {
     if (attrName) {
       let result = window.confirm("Add the new item?");
       if (result)
-        _prodSer.createAttr(productId, attrName).then(() => {
+        _attrProdSer.createAttr(productId, attrName).then(() => {
           _fetchAttrData();
           inputRef.current.value = "";
         });
@@ -33,7 +33,7 @@ export default function AttrProduct({ productId, datas }) {
     if (itemId) {
       let result = window.confirm("Delete this item?");
       if (result)
-        _prodSer.deleteAttr(productId, itemId).then(() => {
+        _attrProdSer.deleteAttr(productId, itemId).then(() => {
           _fetchAttrData();
         });
     }

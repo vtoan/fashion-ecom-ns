@@ -2,7 +2,8 @@ import React from "react";
 import { Button, Col, Row, Input, FormGroup } from "reactstrap";
 import ProductImage from "../../components/ProductImage";
 
-import _proSer from "../../services/productService";
+import _imageProdSer from "../../services/imageProdService";
+import _prodSer from "../../services/productService";
 
 export default function Images({ productId, productImage }) {
   const [imageDefault, setDefault] = React.useState(productImage);
@@ -10,9 +11,11 @@ export default function Images({ productId, productImage }) {
   const [listImages, setImages] = React.useState([]);
 
   React.useEffect(() => {
-    _proSer.getListImages(productId).then(({ data }) => {
+    _imageProdSer.getListImages(productId).then(({ data }) => {
       setImages(data);
       setDefault(productImage);
+      console.log(data);
+      console.log(productImage);
     });
   }, [productId, productImage]);
 
@@ -22,7 +25,7 @@ export default function Images({ productId, productImage }) {
   const handleUpload = () => {
     let result = window.confirm("Add the new item?");
     if (result)
-      _proSer.uploadImage(productId, imageUpload).then(({ data }) => {
+      _imageProdSer.uploadImage(productId, imageUpload).then(({ data }) => {
         setImages([...listImages, productId + "/" + data]);
       });
   };
@@ -30,7 +33,7 @@ export default function Images({ productId, productImage }) {
   const handleChangeDefault = (imageName) => {
     let result = window.confirm("Change to this item?");
     if (result)
-      _proSer.changeImageDefault(productId, imageName).then(() => {
+      _imageProdSer.changeImageDefault(productId, imageName).then(() => {
         setDefault(imageName);
       });
   };
@@ -38,9 +41,11 @@ export default function Images({ productId, productImage }) {
   const handleRemove = (imageName) => {
     let result = window.confirm("Delete this item?");
     if (result)
-      _proSer.removeImage(productId, imageName).then(() => {
-        setImages(listImages.filter((img) => img !== imageName));
-      });
+      if (imageName === imageDefault)
+        _prodSer.edit(productId, { Id: productId, Image: null });
+    _imageProdSer.removeImage(productId, imageName).then(() => {
+      setImages(listImages.filter((img) => img !== imageName));
+    });
   };
 
   return (

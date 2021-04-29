@@ -15,14 +15,16 @@ export default function httpClient() {
       return response;
     },
     function (error) {
-      let msg = error.config["actionName"] + "-" + error;
+      console.dir(error);
+      let msg =
+        error.config["actionName"] + ". \n" + error.response?.data?.detail;
       if (msg) _message(msg, false);
       return Promise.reject(error);
     }
   );
 
   function _message(msg, status) {
-    if (status) toast.success(msg + " success");
-    else toast.error(msg + " failed");
+    if (status) toast.success("Success -" + msg);
+    else toast.error("Failed -" + msg);
   }
 }
