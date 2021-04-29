@@ -12,7 +12,6 @@ namespace Shared.ViewModels
         [Required(ErrorMessage = "Customer phone is required")]
         public string CustomerPhone { get; set; }
         public int? CustomerProvince { get; set; }
-        [Required(ErrorMessage = "User Id is required")]
         public string UserId { get; set; }
     }
 }
