@@ -1,6 +1,6 @@
 import axios from "axios";
 
-class productService {
+class attributeProdService {
   constructor(pathSer, aliasName) {
     this.pathSer = pathSer;
     this.aliasName = aliasName;
@@ -30,4 +30,4 @@ class productService {
   }
 }
 
-export default new productService("product", "Product Attribute");
+export default new attributeProdService("product", "Product Attribute");

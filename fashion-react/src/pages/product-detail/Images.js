@@ -41,11 +41,19 @@ export default function Images({ productId, productImage }) {
   const handleRemove = (imageName) => {
     let result = window.confirm("Delete this item?");
     if (result)
-      if (imageName === imageDefault)
-        _prodSer.edit(productId, { Id: productId, Image: null });
+      if (_isEqualImageName(imageName, imageDefault))
+        _imageProdSer.changeImageDefault(productId, "");
     _imageProdSer.removeImage(productId, imageName).then(() => {
       setImages(listImages.filter((img) => img !== imageName));
     });
+  };
+
+  const _isEqualImageName = (imgDes, imgSrc) => {
+    console.log(imgDes);
+    console.log(imgSrc);
+    var imageChangeRoot = imgDes?.replace("\\", "").replace("/", "");
+    var imageDefRoot = imgSrc?.replace("\\", "").replace("/", "");
+    return imageChangeRoot === imageDefRoot;
   };
 
   return (
@@ -78,7 +86,7 @@ export default function Images({ productId, productImage }) {
                 >
                   Remove
                 </Button>
-                {imageDefault !== item && (
+                {!_isEqualImageName(item, imageDefault) && (
                   <Button
                     color="link"
                     onClick={() => handleChangeDefault(item)}

@@ -14,7 +14,7 @@ export default function AttrProduct({ productId, datas }) {
   //handle
   const _fetchAttrData = () => {
     if (productId)
-      _attrProdSer.getListAttr(productId).then(({ data }) => {
+      _attrProdSer.getList(productId).then(({ data }) => {
         setAttrs(data);
       });
   };
@@ -23,7 +23,7 @@ export default function AttrProduct({ productId, datas }) {
     if (attrName) {
       let result = window.confirm("Add the new item?");
       if (result)
-        _attrProdSer.createAttr(productId, attrName).then(() => {
+        _attrProdSer.create(productId, attrName).then(() => {
           _fetchAttrData();
           inputRef.current.value = "";
         });
@@ -33,7 +33,7 @@ export default function AttrProduct({ productId, datas }) {
     if (itemId) {
       let result = window.confirm("Delete this item?");
       if (result)
-        _attrProdSer.deleteAttr(productId, itemId).then(() => {
+        _attrProdSer.delete(productId, itemId).then(() => {
           _fetchAttrData();
         });
     }
