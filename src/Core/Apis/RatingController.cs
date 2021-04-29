@@ -36,9 +36,9 @@ namespace Core.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult<RatingVM> Create(int productId, string userId, RatingVM ratingVM)
+        public ActionResult<RatingVM> Create(int productId, RatingVM ratingVM)
         {
-            if (!ModelState.IsValid || productId <= 0 || string.IsNullOrEmpty(userId) || string.IsNullOrWhiteSpace(userId)) return BadRequest();
+            if (!ModelState.IsValid || productId <= 0) return BadRequest();
             var result = _ratingSer.Add(productId, ratingVM);
             if (result == null) return Problem("Can't add rating");
             return CreatedAtAction(nameof(Create), result);

@@ -21,16 +21,18 @@ namespace Core.Controllers
 
         [HttpGet("{id}")]
         [AllowAnonymous]
-        public OrderDetailVM Get(int id)
+        public ActionResult<OrderDetailVM> Get(int id)
         {
-            return _orderSer.Get(id);
+            var result = _orderSer.Get(id);
+            if (result == null) return NotFound();
+            return result;
         }
 
         [HttpPost]
         [AllowAnonymous]
         public ActionResult<OrderDetailVM> Create(OrderDetailVM orderDetailVM)
         {
-            if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid || orderDetailVM.UserId == null) return BadRequest();
             var result = _orderSer.Add(orderDetailVM);
             if (result == null) return Problem("Can't add new order");
             return CreatedAtAction(nameof(Get), new { id = result.Id }, result);

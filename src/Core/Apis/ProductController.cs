@@ -30,7 +30,9 @@ namespace Core.Controllers
         [AllowAnonymous]
         public ActionResult<ProductDetailVM> Get(int id)
         {
-            return _productSer.Get(id);
+            var result = _productSer.Get(id);
+            if (result == null) return NotFound();
+            return result;
         }
 
         [HttpGet]
@@ -94,8 +96,8 @@ namespace Core.Controllers
         public ActionResult<string> ChangeDefaultImage([FromServices] IFileService fileSer, int productId, ProductImageModel imageModel)
         {
             if (!ModelState.IsValid || productId <= 0) return BadRequest();
-            var fileExsist = fileSer.CheckFileExsist(_imageFolder, imageModel.Image);
-            if (!fileExsist) return NotFound();
+            // var fileExsist = fileSer.CheckFileExsist(_imageFolder, imageModel.Image);
+            // if (!fileExsist) return NotFound();
             var result = _productSer.Update(imageModel.Id, new ProductDetailVM() { Id = imageModel.Id, Image = imageModel.Image });
             if (!result) return NotFound();
             return NoContent();
