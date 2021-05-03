@@ -27,5 +27,16 @@ namespace DAO.DAOs
 
         }
 
+        public new bool DeleteItem(int id)
+        {
+            var obj = _context.ProductAttrs.Find(id);
+            if (obj == null) return false;
+            var itemExsists = _context.ProductAttrs.Where(item => item.ProductId == obj.ProductId).Count();
+            if (itemExsists <= 1) throw new System.Exception("Must have one attribute.");
+            _context.ProductAttrs.Remove(obj);
+            _context.SaveChangesAsync().Wait();
+            return true;
+        }
+
     }
 }

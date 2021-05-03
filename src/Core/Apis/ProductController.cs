@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Core.Models;
+using System.IO;
 
 namespace Core.Controllers
 {
@@ -85,10 +86,16 @@ namespace Core.Controllers
 
         [HttpPost("{productId}/images")]
         [Authorize(Roles = "admin")]
-        public ActionResult<string> UploadImage([FromServices] IFileService fileSer, IFormFile image, int productId)
+        public ActionResult<List<string>> UploadImage([FromServices] IFileService fileSer, IFormFileCollection images, int productId)
         {
-            if (image == null || productId <= 0) return BadRequest();
-            return _uploadImage(fileSer, image, productId);
+            if (images == null || images.Count <= 0 || productId <= 0) return BadRequest();
+            var files = new List<string>();
+            foreach (var item in images)
+            {
+                var fileName = _uploadImage(fileSer, item, productId);
+                files.Add(fileName);
+            }
+            return files;
         }
 
         [HttpPut("{productId}/images")]
@@ -116,7 +123,7 @@ namespace Core.Controllers
         {
             var fileName = id + "_" + DateTime.Now.Millisecond + "_" + image.FileName;
             fileSer.UploadFileAsync(_imageFolder + id, image, fileName);
-            return fileName;
+            return Path.Combine(id + "", fileName);
         }
     }
 }

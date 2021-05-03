@@ -34,6 +34,10 @@ namespace Core.Identity
                     PostLogoutRedirectUris = { ReadConfig.clientUrls["mvc"] +"/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
+                    AccessTokenLifetime = 63113904,
+                    IdentityTokenLifetime = 63113904,
+                    RefreshTokenExpiration = TokenExpiration.Sliding,
+                    SlidingRefreshTokenLifetime = 63113904,
                     AllowedScopes = { "openid", "profile", "fashion.client" }
                 },
                 new Client
@@ -51,7 +55,12 @@ namespace Core.Identity
                     PostLogoutRedirectUris = { ReadConfig.clientUrls["react"]+"/signout-callback-oidc" },
                     AllowedCorsOrigins = { ReadConfig.clientUrls["react"] },
                     AllowedScopes = { "openid", "profile", "fashion.client" },
-                    AllowAccessTokensViaBrowser = true
+                    AllowAccessTokensViaBrowser = true,
+                    AllowOfflineAccess = true,
+                    AccessTokenLifetime = 63113904,
+                    IdentityTokenLifetime = 63113904,
+                    RefreshTokenExpiration = TokenExpiration.Sliding,
+                    SlidingRefreshTokenLifetime = 63113904
                 }
             };
     }

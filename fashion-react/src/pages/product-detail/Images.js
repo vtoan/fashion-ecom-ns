@@ -3,7 +3,6 @@ import { Button, Col, Row, Input, FormGroup } from "reactstrap";
 import ProductImage from "../../components/ProductImage";
 
 import _imageProdSer from "../../services/imageProdService";
-import _prodSer from "../../services/productService";
 
 export default function Images({ productId, productImage }) {
   const [imageDefault, setDefault] = React.useState(productImage);
@@ -20,13 +19,15 @@ export default function Images({ productId, productImage }) {
   }, [productId, productImage]);
 
   //handle
-  const handleChangeFile = (e) => setImageUpload(e.target.files[0]);
+  const handleChangeFile = (e) => setImageUpload(e.target.files);
 
   const handleUpload = () => {
     let result = window.confirm("Add the new item?");
     if (result)
       _imageProdSer.uploadImage(productId, imageUpload).then(({ data }) => {
-        setImages([...listImages, productId + "/" + data]);
+        setImages(listImages.concat(data));
+        console.log(data);
+        setImageUpload(null);
       });
   };
 
@@ -50,9 +51,12 @@ export default function Images({ productId, productImage }) {
 
   const _isEqualImageName = (imgDes, imgSrc) => {
     console.log(imgDes);
-    console.log(imgSrc);
-    var imageChangeRoot = imgDes?.replace("\\", "").replace("/", "");
-    var imageDefRoot = imgSrc?.replace("\\", "").replace("/", "");
+    var imageChangeRoot = imgDes;
+    var imageDefRoot = imgSrc;
+    if (imageChangeRoot && imageChangeRoot.includes("\\"))
+      imageChangeRoot = imgDes?.replace("\\", "").replace("/", "");
+    if (imageDefRoot && imageDefRoot.includes("\\"))
+      imageDefRoot = imgSrc?.replace("\\", "").replace("/", "");
     return imageChangeRoot === imageDefRoot;
   };
 
@@ -61,7 +65,12 @@ export default function Images({ productId, productImage }) {
       <h5>Images</h5>
       <FormGroup row className="mb-3">
         <Col sm={8}>
-          <Input type="file" name="image" onChange={handleChangeFile} />
+          <Input
+            type="file"
+            name="images"
+            multiple
+            onChange={handleChangeFile}
+          />
         </Col>
         <Col sm={4} className="text-right">
           <Button
