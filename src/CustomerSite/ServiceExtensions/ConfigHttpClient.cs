@@ -15,8 +15,8 @@ namespace CustomerSite.ServiceExtensions
         {
 
             // url
-            Startup.HostUri = configuration.GetValue<string>("HostUri");
-            Startup.HostProductRes = configuration.GetValue<string>("HostProductRes");
+            Startup.HostUri = configuration["HostUri"];
+            Startup.HostProductRes = configuration["HostProductRes"];
 
             services.AddHttpContextAccessor();
 
