@@ -17,7 +17,8 @@ export default function httpClient() {
     function (error) {
       console.dir(error);
       let msg =
-        error.config["actionName"] + ". \n" + error.response?.data?.detail;
+        error.config["actionName"] + ". \n" + error.response?.data?.detail ??
+        "";
       if (msg) _message(msg, false);
       return Promise.reject(error);
     }

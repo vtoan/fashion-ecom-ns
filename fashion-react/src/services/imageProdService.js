@@ -22,9 +22,13 @@ class imageProdService {
     });
   }
 
-  uploadImage(productId, newImage) {
+  uploadImage(productId, newImages) {
     let formData = new FormData();
-    formData.append("image", newImage);
+    if (!newImages) return;
+    let lengImages = newImages.length;
+    for (let i = 0; i < lengImages; i++) {
+      formData.append("images", newImages[i]);
+    }
     return axios({
       url: this.pathSer + "/" + productId + "/images",
       method: "post",
