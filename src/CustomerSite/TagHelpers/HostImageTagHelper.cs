@@ -8,7 +8,7 @@ namespace CustomerSite.TagHelpers
         public string ProductSrc { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            var srcImg = Startup.HostUri + Startup.HostProductRes + ProductSrc;
+            var srcImg = Startup.HostUri + "/" + Startup.HostProductRes + ProductSrc;
             output.Attributes.SetAttribute("src", srcImg);
         }
     }

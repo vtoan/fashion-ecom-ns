@@ -49,7 +49,7 @@ namespace Core.Identity
                     RequireClientSecret = false,
                     RedirectUris =
                     {
-                        "http://localhost:3000/signin-oidc",
+                        ReadConfig.clientUrls["react"] +"/signin-oidc",
                     },
                     FrontChannelLogoutUri = ReadConfig.clientUrls["react"]+ "/signout-oidc",
                     PostLogoutRedirectUris = { ReadConfig.clientUrls["react"]+"/signout-callback-oidc" },
