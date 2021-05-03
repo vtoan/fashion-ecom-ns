@@ -19,7 +19,7 @@ namespace CustomerSite.ServiceExtensions
                  .AddCookie("Cookies")
                  .AddOpenIdConnect("oidc", options =>
                  {
-                     options.Authority = "https://localhost:5001";
+                     options.Authority = Startup.HostUri;
                      //  options.RequireHttpsMetadata = false;
                      options.GetClaimsFromUserInfoEndpoint = true;
 
