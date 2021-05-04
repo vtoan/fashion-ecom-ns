@@ -43,6 +43,10 @@ Build an ecommerce web site with minimum functionality below:
 - Login/Logout
 <hr/>
 
+![Fashion Project]https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/Fashion%20Architecture.png)
+
+<hr/>
+
 # I. Backend Project (.NETCore Api)
 ### 1. Using
 - .NET 5.0 (with API Project Template)
