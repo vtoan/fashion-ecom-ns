@@ -43,7 +43,7 @@ Build an ecommerce web site with minimum functionality below:
 - Login/Logout
 <hr/>
 
-![Fashion Project]https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/Fashion%20Architecture.png)
+![Fashion Project](https://github.com/vtoan/fashion-ecom-ns/blob/main/docs/Fashion%20Architecture.png)
 
 <hr/>
 
